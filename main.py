@@ -4,11 +4,11 @@ import config
 import os
 
 intents = nextcord.Intents.all()
-bot = commands.Bot(command_prefix=config.bot_prefix, intents=intents)
+bot = commands.Bot(command_prefix=config.bot_prefix, intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} is ready!')
+    print(f'{bot.user} is ready! Created by koz')
     activity = nextcord.Activity(type=nextcord.ActivityType.playing, name=config.bot_activity)
     await bot.change_presence(activity=activity)
 
