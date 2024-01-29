@@ -12,6 +12,20 @@ async def on_ready():
     activity = nextcord.Activity(type=nextcord.ActivityType.playing, name=config.bot_activity)
     await bot.change_presence(activity=activity)
 
+# Error Handling
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send('This command does not exist.')
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.send("You don't have the required permissions to use this command.")
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("You are missing a required argument.")
+    elif isinstance(error, commands.CommandOnCooldown):
+        await ctx.send("This command is on cooldown. Please try again later.")
+    else:
+        await ctx.send(f'An error occured: {error}')
+
 @bot.command()
 async def ping(ctx):
     await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
