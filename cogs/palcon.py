@@ -113,7 +113,7 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Show information about the server.")
+    @palcon.subcommand(description="Save the server.")
     async def save(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         response = await self.rcon_command(server, f"Save")
