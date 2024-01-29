@@ -101,5 +101,29 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
+    @palcon.subcommand(description="Shutdown the server.")
+    async def shutdown(self, interaction: nextcord.Interaction, time: str = nextcord.SlashOption(description="Time for the shutdown"), reason: str = nextcord.SlashOption(description="Reason for the shutdown"), server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        response = await self.rcon_command(server, f"Shutdown {time} {reason}")
+        embed = nextcord.Embed(title=f"Shutdown - {server}", color=nextcord.Color.blue())
+        embed.description = f"**Response:** {response}"
+        await interaction.followup.send(embed=embed)
+
+    @shutdown.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+
+    @palcon.subcommand(description="Show information about the server.")
+    async def save(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        response = await self.rcon_command(server, f"Save")
+        embed = nextcord.Embed(title=f"Save - {server}", color=nextcord.Color.blue())
+        embed.description = f"**Response:** {response}"
+        await interaction.followup.send(embed=embed)
+
+    @save.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+
 def setup(bot):
     bot.add_cog(PalconCog(bot))
