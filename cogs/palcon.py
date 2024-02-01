@@ -23,7 +23,7 @@ class PalconCog(commands.Cog):
             return f"Server '{server_name}' not found."
 
         try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"]) as pc:
+            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=self.timeout) as pc:
                 response = await asyncio.wait_for(pc.send(command), timeout=self.timeout)
                 return response
         except Exception as error:

@@ -3,6 +3,32 @@
  
  The official Palbot repo for Palworld Discord Bot. Invite the verified [Palbot](https://discord.com/api/oauth2/authorize?client_id=1197954327642378352&permissions=8&scope=bot%20applications.commands).
 
+## Config Example
+```
+{
+    "PALWORLD_SERVERS": {
+        "Palworld Server 1": {
+            "RCON_HOST": "127.0.0.1",
+            "RCON_PORT": 25575,
+            "RCON_PASS": "rcon_password"
+        },
+        "Palworld Other Server": {
+            "RCON_HOST": "127.0.0.1",
+            "RCON_PORT": 25575,
+            "RCON_PASS": "rcon_password",
+            "SERVER_PORT": 8211,
+            "QUERY_CHANNEL": 12345678910
+        }
+    }
+}
+```
+Configuration Explained:
+- RCON_HOST: This is the IP address to your server.
+- RCON_PORT: This is the port to your rcon, not the connection port.
+- RCON_PASS: This is the password to access your rcon.
+- SERVER_PORT: This is the connection port to your server.
+- QUERY_CHANNEL: Channel ID where the query status will be posted.
+
 ## Setup on Linux
 1. Create a new user and switch to it.
 ```
