@@ -104,7 +104,8 @@ class PalconCog(commands.Cog):
     @palcon.subcommand(description="Shutdown the server.")
     async def shutdown(self, interaction: nextcord.Interaction, time: str = nextcord.SlashOption(description="Time for the shutdown"), reason: str = nextcord.SlashOption(description="Reason for the shutdown"), server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
-        response = await self.rcon_command(server, f"Shutdown {time} {reason}")
+        reason_format = reason.replace(" ", "_")
+        response = await self.rcon_command(server, f"Shutdown {time} {reason_format}")
         embed = nextcord.Embed(title=f"Shutdown - {server}", color=nextcord.Color.blue())
         embed.description = f"**Response:** {response}"
         await interaction.followup.send(embed=embed)
@@ -122,6 +123,19 @@ class PalconCog(commands.Cog):
         await interaction.followup.send(embed=embed)
 
     @save.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+
+    @palcon.subcommand(description="Broadcast a message to the server.")
+    async def broadcast(self, interaction: nextcord.Interaction, message: str, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        message_format = message.replace(" ", "_")
+        response = await self.rcon_command(server, f"Broadcast {message_format}")
+        embed = nextcord.Embed(title=f"Broadcast - {server}", color=nextcord.Color.blue())
+        embed.description = f"**Response:** {response}"
+        await interaction.followup.send(embed=embed)
+
+    @broadcast.on_autocomplete("server")
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
