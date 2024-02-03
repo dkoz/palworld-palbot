@@ -33,7 +33,7 @@ class QueryCog(commands.Cog):
             json.dump(self.message_ids, file, indent=4)
 
     def create_task(self, server_name, server_config):
-        @tasks.loop(minutes=5)
+        @tasks.loop(minutes=2)
         async def server_status_check():
             # Just simple check if query channel is set.
             if "QUERY_CHANNEL" in server_config:

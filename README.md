@@ -3,6 +3,11 @@
  
  The official Palbot repo for Palworld Discord Bot. Invite the verified [Palbot](https://discord.com/api/oauth2/authorize?client_id=1197954327642378352&permissions=8&scope=bot%20applications.commands).
 
+## Features
+- RCON Protocol: Control your server remotely from discord with the built in rcon commands.
+- Query Protocol: Query your server for information like online status and player count.
+- Whitelist Protocol: The bot will constantly monitor your server for users not added to the list. They will be kicked from the server if not added.
+
 ## Config Example
 ```
 {
