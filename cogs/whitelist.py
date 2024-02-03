@@ -195,4 +195,13 @@ class PlayerInfoCog(commands.Cog):
             await interaction.response.send_message(f"Player {steamid} not found or not on whitelist.", ephemeral=True)
 
 def setup(bot):
-    bot.add_cog(PlayerInfoCog(bot))
+    cog = PlayerInfoCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, 'all_slash_commands'):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend([
+        cog.search,
+        cog.searchname,
+        cog.whitelist_add,
+        cog.whitelist_remove
+    ])
