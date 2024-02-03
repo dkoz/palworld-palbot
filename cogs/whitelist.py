@@ -13,7 +13,8 @@ class PlayerInfoCog(commands.Cog):
         self.player_data_file = os.path.join(self.data_folder, 'players.json')
         self.servers = self.load_servers_config()
         self.ensure_data_file()
-        self.bot.loop.create_task(self.update_player_data_task())
+        self.kicking_enabled = True
+        self.bot.loop.create_task(self.update_players())
 
     def load_servers_config(self):
         config_path = os.path.join(self.data_folder, 'config.json')
@@ -34,16 +35,19 @@ class PlayerInfoCog(commands.Cog):
             print(f"Error executing ShowPlayers command: {e}")
             return None
 
-    async def update_player_data_task(self):
+    async def update_players(self):
         while True:
             for server_name, server_info in self.servers.items():
                 player_data = await self.run_showplayers_command(server_info)
                 if player_data:
                     self.process_and_save_player_data(player_data)
-                    await self.check_and_kick_non_whitelisted_players(server_info, player_data)
+                    await self.whitelist_check(server_info, player_data)
             await asyncio.sleep(20)
 
-    async def check_and_kick_non_whitelisted_players(self, server, player_data):
+    async def whitelist_check(self, server, player_data):
+        if not self.kicking_enabled:
+            return
+
         with open(self.player_data_file, 'r') as file:
             players = json.load(file)
 
@@ -193,6 +197,15 @@ class PlayerInfoCog(commands.Cog):
             await interaction.response.send_message(f"Player {steamid} removed from whitelist.", ephemeral=True)
         else:
             await interaction.response.send_message(f"Player {steamid} not found or not on whitelist.", ephemeral=True)
+
+    @paldb.subcommand(name="toggle", description="Toggle whitelist state (Enabled by default)")
+    async def whitelist_toggle(self, interaction: nextcord.Interaction, state: str = nextcord.SlashOption(name="state", description="Enable or Disable kicking", choices={"Enable": "enable", "Disable": "disable"})):
+        if state == "enable":
+            self.kicking_enabled = True
+            await interaction.response.send_message("Kicking non-whitelisted players enabled.", ephemeral=True)
+        elif state == "disable":
+            self.kicking_enabled = False
+            await interaction.response.send_message("Kicking non-whitelisted players disabled.", ephemeral=True)
 
 def setup(bot):
     cog = PlayerInfoCog(bot)
