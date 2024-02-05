@@ -3,7 +3,8 @@ import os
 import asyncio
 import nextcord
 from nextcord.ext import commands
-from gamercon_async import GameRCON
+from util.gamercon_async import GameRCON
+import util.constants as constants
 import re
 
 class PlayerInfoCog(commands.Cog):
@@ -13,7 +14,7 @@ class PlayerInfoCog(commands.Cog):
         self.player_data_file = os.path.join(self.data_folder, 'players.json')
         self.servers = self.load_servers_config()
         self.ensure_data_file()
-        self.kicking_enabled = True
+        self.kicking_enabled = False
         self.bot.loop.create_task(self.update_players())
 
     def load_servers_config(self):
@@ -122,6 +123,7 @@ class PlayerInfoCog(commands.Cog):
             embed.add_field(name="Name", value=player_info["name"], inline=True)
             embed.add_field(name="Player UID", value=player_info["playeruid"], inline=True)
             embed.add_field(name="SteamID", value=steamid, inline=True)
+            embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
             await interaction.response.send_message(embed=embed)
         else:
             await interaction.response.send_message(f"No player found with SteamID {steamid}", ephemeral=True)
@@ -158,6 +160,7 @@ class PlayerInfoCog(commands.Cog):
             embed.add_field(name="Player UID", value=player_info["playeruid"], inline=True)
             embed.add_field(name="SteamID", value=player_steamid, inline=True)
             embed.add_field(name="Whitelist", value=player_info["whitelist"], inline=True)
+            embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
             await interaction.response.send_message(embed=embed)
         else:
             await interaction.response.send_message(f"No player found with name '{name}'", ephemeral=True)

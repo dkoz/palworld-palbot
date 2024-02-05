@@ -2,7 +2,8 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands, tasks
-from gamercon_async import GameRCON
+from util.gamercon_async import GameRCON
+import util.constants as constants
 
 class QueryCog(commands.Cog):
     def __init__(self, bot):
@@ -35,7 +36,6 @@ class QueryCog(commands.Cog):
     def create_task(self, server_name, server_config):
         @tasks.loop(minutes=2)
         async def server_status_check():
-            # Just simple check if query channel is set.
             if "QUERY_CHANNEL" in server_config:
                 channel_id = server_config["QUERY_CHANNEL"]
                 channel = self.bot.get_channel(channel_id)
@@ -43,10 +43,10 @@ class QueryCog(commands.Cog):
                     status = await self.check_server_status(server_config)
                     player_count = await self.get_player_count(server_config) if status == "Online" else 0
 
-                    embed = nextcord.Embed(title=f"{server_name} Server Status", description=f"**Status:** {status}", color=nextcord.Color.green())
+                    embed = nextcord.Embed(title=f"{server_name} Status", description=f"**Status:** {status}", color=nextcord.Color.green())
                     embed.add_field(name="Players", value=f"{player_count}/32", inline=False)
                     embed.add_field(name="Connection Info", value=f"```{server_config['RCON_HOST']}:{server_config['SERVER_PORT']}```", inline=False)
-                    embed.set_thumbnail(url="https://i.imgur.com/wegbb5R.jpeg")
+                    embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
 
                     message_key = f"{server_name}_{channel_id}"
                     message_id = self.message_ids.get(message_key)
@@ -61,7 +61,33 @@ class QueryCog(commands.Cog):
                         message = await channel.send(embed=embed)
                         self.message_ids[message_key] = message.id
 
-                    self.save_message_ids()
+                if status == "Online":
+                    players = await self.get_player_names(server_config)  # Ensure you have this method to get player names
+                    if players:
+                        player_list = '\n'.join(players)
+                        description = f"Players Online:\n{player_list}"
+                    else:
+                        description = "No players online"
+                else:
+                    description = "Server Offline"
+
+                players_embed = nextcord.Embed(title=f"Players Online", description=description, color=nextcord.Color.blue())
+                #players_embed.set_thumbnail(url="https://i.imgur.com/wegbb5R.jpeg")  # Adjust as needed
+
+                player_message_key = f"{server_name}_{channel_id}_players"
+                player_message_id = self.message_ids.get(player_message_key)
+                if player_message_id:
+                    try:
+                        player_message = await channel.fetch_message(player_message_id)
+                        await player_message.edit(embed=players_embed)
+                    except nextcord.NotFound:
+                        player_message = await channel.send(embed=players_embed)
+                        self.message_ids[player_message_key] = player_message.id
+                else:
+                    player_message = await channel.send(embed=players_embed)
+                    self.message_ids[player_message_key] = player_message.id
+
+                self.save_message_ids()
 
         @server_status_check.before_loop
         async def before_server_status_check():
@@ -83,6 +109,15 @@ class QueryCog(commands.Cog):
                 return len(self.parse_players(players_output))
         except Exception:
             return 0
+        
+    async def get_player_names(self, server_config):
+        # This method should return a list of player names using a similar approach as in `get_player_count`
+        try:
+            async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"]) as pc:
+                players_output = await pc.send("ShowPlayers")
+                return self.parse_players(players_output)  # Ensure this returns player names
+        except Exception:
+            return []
 
     def parse_players(self, players_output):
         players = []
