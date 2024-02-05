@@ -14,7 +14,7 @@ class PlayerInfoCog(commands.Cog):
         self.player_data_file = os.path.join(self.data_folder, 'players.json')
         self.servers = self.load_servers_config()
         self.ensure_data_file()
-        self.kicking_enabled = False
+        self.kicking_enabled = False # off by default
         self.bot.loop.create_task(self.update_players())
 
     def load_servers_config(self):
