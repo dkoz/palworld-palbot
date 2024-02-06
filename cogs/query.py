@@ -62,17 +62,16 @@ class QueryCog(commands.Cog):
                         self.message_ids[message_key] = message.id
 
                 if status == "Online":
-                    players = await self.get_player_names(server_config)  # Ensure you have this method to get player names
+                    players = await self.get_player_names(server_config)
                     if players:
                         player_list = '\n'.join(players)
-                        description = f"Players Online:\n{player_list}"
+                        description = f"{player_list}"
                     else:
                         description = "No players online"
                 else:
                     description = "Server Offline"
 
                 players_embed = nextcord.Embed(title=f"Players Online", description=description, color=nextcord.Color.blue())
-                #players_embed.set_thumbnail(url="https://i.imgur.com/wegbb5R.jpeg")  # Adjust as needed
 
                 player_message_key = f"{server_name}_{channel_id}_players"
                 player_message_id = self.message_ids.get(player_message_key)
@@ -111,11 +110,10 @@ class QueryCog(commands.Cog):
             return 0
         
     async def get_player_names(self, server_config):
-        # This method should return a list of player names using a similar approach as in `get_player_count`
         try:
             async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"]) as pc:
                 players_output = await pc.send("ShowPlayers")
-                return self.parse_players(players_output)  # Ensure this returns player names
+                return self.parse_players(players_output)
         except Exception:
             return []
 
