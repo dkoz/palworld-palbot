@@ -113,18 +113,14 @@ class GameRCON:
         await self._writer.drain()
 
     async def _read_packet(self):
-        size_data = await asyncio.wait_for(self._reader.read(4), self.timeout)
-        if not size_data:
+        response = await asyncio.wait_for(self._reader.read(4096), self.timeout)
+        if not response:
             raise EmptyResponse()
 
-        size = LittleEndianSignedInt32.from_bytes(size_data)
-        packet_data = await asyncio.wait_for(self._reader.read(size), self.timeout)
-        if not packet_data:
-            raise EmptyResponse()
-
-        id = LittleEndianSignedInt32.from_bytes(packet_data[:4])
-        type = Type(LittleEndianSignedInt32.from_bytes(packet_data[4:8]))
-        payload = packet_data[8:-2]
+        size = LittleEndianSignedInt32.from_bytes(response[:4])
+        id = LittleEndianSignedInt32.from_bytes(response[4:8])
+        type = Type(LittleEndianSignedInt32.from_bytes(response[8:12]))
+        payload = response[12:size+4-2]
         return Packet(id, type, payload)
 
     async def send(self, cmd):
@@ -141,10 +137,10 @@ class GameRCON:
             raise CommandExecutionError("Unexpected response type.")
 
         return response_packet.payload.decode('utf-8')
-        
+
 async def main():
     async with GameRCON("127.0.0.1", 25575, "pass") as rcon:
-        response = await rcon.send("ListPlayers")
+        response = await rcon.send("ShowPlayers")
         print(response)
 
 if __name__ == "__main__":
