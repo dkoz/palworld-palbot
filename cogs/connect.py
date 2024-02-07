@@ -57,11 +57,12 @@ class ConnectCog(commands.Cog):
 
     async def announce_player_join(self, server_name, player):
         name, steamid = player
-        announcement_channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
-        channel = self.bot.get_channel(announcement_channel_id)
-        # This message needs to be formatted better.
-        if channel:
-            await channel.send(f"`Player joined on {server_name}: {name} (SteamID: {steamid})`")
+        if "CONNECTION_CHANNEL" in self.servers[server_name]:
+            announcement_channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
+            channel = self.bot.get_channel(announcement_channel_id)
+            # This message needs to be formatted better.
+            if channel:
+                await channel.send(f"`Player joined on {server_name}: {name} (SteamID: {steamid})`")
 
 def setup(bot):
     bot.add_cog(ConnectCog(bot))
