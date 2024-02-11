@@ -12,6 +12,7 @@
 - **Server Query:** Retrieve real-time information about your server's status, including player count and connection info.
 - **Whitelist Management:** Easily manage your server's whitelist and create a database of players SteamID, PlayUID, and other information for secure access control.
 - **Player Logging:** Keep track of player activity by logging join and leave events on your server.
+- **Scheduled Restarts:** Automate server reboots at set intervals for updates and maintenance, enhancing stability while minimizing disruption to players. This requires implementing a watchdog mechanism to detect when the server stops and automatically restarts it, similar to capabilities found in game panels or batch scripts.
 
 ## Config Example
 ```
