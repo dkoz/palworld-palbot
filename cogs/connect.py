@@ -32,7 +32,7 @@ class ConnectCog(commands.Cog):
                 current_players = await self.run_command(server_info)
                 if current_players:
                     await self.announce_new_players(server_name, current_players)
-            await asyncio.sleep(30)
+            await asyncio.sleep(18)
 
     async def announce_new_players(self, server_name, current_players):
         new_players = self.extract_players(current_players)

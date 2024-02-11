@@ -10,8 +10,9 @@
             "RCON_PORT": 25575,
             "RCON_PASS": "rcon_password",
             "SERVER_PORT": 8211,
-            "QUERY_CHANNEL": CHANNEL_ID,
-            "CONNECTION_CHANNEL": CHANNEL_ID
+            "QUERY_CHANNEL": 12345678,
+            "CONNECTION_CHANNEL": 123456788,
+            "WHITELIST_ENABLED": true
         }
     },
     "SHUTDOWN_SCHEDULE": {

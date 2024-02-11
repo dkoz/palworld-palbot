@@ -14,13 +14,15 @@ class PlayerInfoCog(commands.Cog):
         self.player_data_file = os.path.join(self.data_folder, 'players.json')
         self.servers = self.load_servers_config()
         self.ensure_data_file()
-        self.kicking_enabled = False # off by default
         self.bot.loop.create_task(self.update_players())
 
     def load_servers_config(self):
         config_path = os.path.join(self.data_folder, 'config.json')
         with open(config_path) as config_file:
-            return json.load(config_file)["PALWORLD_SERVERS"]
+            config = json.load(config_file)
+            for server in config["PALWORLD_SERVERS"].values():
+                server.setdefault('WHITELIST_ENABLED', False)
+            return config["PALWORLD_SERVERS"]
 
     def ensure_data_file(self):
         if not os.path.exists(self.player_data_file):
@@ -41,14 +43,12 @@ class PlayerInfoCog(commands.Cog):
             for server_name, server_info in self.servers.items():
                 player_data = await self.run_showplayers_command(server_info)
                 if player_data:
-                    self.process_and_save_player_data(player_data)
-                    await self.whitelist_check(server_info, player_data)
+                    self.process_and_save_player_data(server_name, player_data)
+                    if server_info.get('WHITELIST_ENABLED', False):
+                        await self.whitelist_check(server_info, player_data)
             await asyncio.sleep(20)
 
     async def whitelist_check(self, server, player_data):
-        if not self.kicking_enabled:
-            return
-
         with open(self.player_data_file, 'r') as file:
             players = json.load(file)
 
@@ -66,18 +66,19 @@ class PlayerInfoCog(commands.Cog):
     async def kick_player(self, server, steamid):
         try:
             async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc:
-                response = await asyncio.wait_for(pc.send(f"KickPlayer {steamid}"), timeout=10.0)
-                print(f"Kicked non-whitelisted player {steamid}: {response}")
+                await asyncio.wait_for(pc.send(f"KickPlayer {steamid}"), timeout=10.0)
         except Exception as e:
             print(f"Error kicking player {steamid}: {e}")
-            
+
+    # Check if a SteamID is valid
     def is_valid_steamid(self, steamid):
         return bool(re.match(r'^7656119[0-9]{10}$', steamid))
 
+    # Sanitize data to remove non-ascii characters
     def sanitize_data(self, data):
         return re.sub(r'[^\x00-\x7F]+', '', data).strip()
-
-    def process_and_save_player_data(self, data):
+    
+    def process_and_save_player_data(self, server_name, data):
         if not data.strip():
             return
 
@@ -92,10 +93,9 @@ class PlayerInfoCog(commands.Cog):
                     name, playeruid, steamid = parts
                     steamid = self.sanitize_data(steamid)
                     if not self.is_valid_steamid(steamid):
-                        print(f"Ignored invalid or malformed SteamID: '{steamid}'")
                         continue
-                    player_info = existing_players.get(steamid, {"whitelist": False})
-                    player_info.update({"name": self.sanitize_data(name), "playeruid": playeruid})
+                    player_info = existing_players.get(steamid, {})
+                    player_info.update({"name": self.sanitize_data(name), "playeruid": playeruid, "whitelist": player_info.get("whitelist", False)})
                     existing_players[steamid] = player_info
 
         with open(self.player_data_file, 'w') as file:
@@ -123,6 +123,7 @@ class PlayerInfoCog(commands.Cog):
             embed.add_field(name="Name", value=player_info["name"], inline=True)
             embed.add_field(name="Player UID", value=player_info["playeruid"], inline=True)
             embed.add_field(name="SteamID", value=steamid, inline=True)
+            embed.add_field(name="Whitelist", value=player_info["whitelist"], inline=True)
             embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
             await interaction.response.send_message(embed=embed)
         else:
@@ -200,15 +201,6 @@ class PlayerInfoCog(commands.Cog):
             await interaction.response.send_message(f"Player {steamid} removed from whitelist.", ephemeral=True)
         else:
             await interaction.response.send_message(f"Player {steamid} not found or not on whitelist.", ephemeral=True)
-
-    @paldb.subcommand(name="toggle", description="Toggle whitelist state (Enabled by default)")
-    async def whitelist_toggle(self, interaction: nextcord.Interaction, state: str = nextcord.SlashOption(name="state", description="Enable or Disable kicking", choices={"Enable": "enable", "Disable": "disable"})):
-        if state == "enable":
-            self.kicking_enabled = True
-            await interaction.response.send_message("Kicking non-whitelisted players enabled.", ephemeral=True)
-        elif state == "disable":
-            self.kicking_enabled = False
-            await interaction.response.send_message("Kicking non-whitelisted players disabled.", ephemeral=True)
 
 def setup(bot):
     cog = PlayerInfoCog(bot)
