@@ -13,5 +13,10 @@
             "QUERY_CHANNEL": CHANNEL_ID,
             "CONNECTION_CHANNEL": CHANNEL_ID
         }
+    },
+    "SHUTDOWN_SCHEDULE": {
+        "enabled": false,
+        "times": ["06:30", "18:30"],
+        "timezone": "America/New_York"
     }
 }
