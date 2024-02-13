@@ -13,7 +13,7 @@
  - **Scheduled Restarts:** Automate server reboots at set intervals for updates and maintenance, enhancing stability while minimizing disruption to players. This requires implementing a watchdog mechanism to detect when the server stops and automatically restarts it, similar to capabilities found in game panels or batch scripts.
 
  ## Experimental Features
- - **EOS Protocol**: Query the EOS API for information on your server. This protocol is still experimental and in the beginning stages.
+ - **EOS Protocol**: Interact with the Epic Online Services (EOS) API to retrieve detailed information about your server. This is currently experimental and does have some issues.
 
 ## Guides:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
