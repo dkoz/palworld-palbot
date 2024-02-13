@@ -1,3 +1,5 @@
+import os
+import json
 from nextcord.ext import commands
 import nextcord
 from util.eos import PalworldProtocol
@@ -6,6 +8,7 @@ import util.constants as constants
 class EOSCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.load_config()
         self.palworld_protocol = PalworldProtocol(
             client_id='xyza78916PZ5DF0fAahu4tnrKKyFpqRE',
             client_secret='j0NapLEPm3R3EOrlQiM8cRLKq3Rt02ZVVwT0SkZstSg',
@@ -13,24 +16,41 @@ class EOSCog(commands.Cog):
             epic_api='https://api.epicgames.dev'
         )
 
+    def load_config(self):
+        config_path = os.path.join('data', 'config.json')
+        with open(config_path) as config_file:
+            config = json.load(config_file)
+            self.servers = config["PALWORLD_SERVERS"]
+
     # This command is still a work in progress.
-    @nextcord.slash_command(name="query", description="Query EOS for your server's status. (Experimental)")
-    async def queryserver(self, interaction: nextcord.Interaction, server_ip: str):
-        access_token = await self.palworld_protocol.get_access_token()
-        server_info_list = await self.palworld_protocol.query_server_info(access_token, server_ip)
-        if not server_info_list:
-            await interaction.response.send_message(f"No server found with IP: {server_ip}", ephemeral=True)
+    @nextcord.slash_command(name="server", description="Query EOS for your server's status. (Experimental)")
+    async def queryserver(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+
+        server = self.servers.get(server)
+        if not server:
+            await interaction.followup.send(f"No server found with name: {server}", ephemeral=True)
             return
 
-        if server_info_list:
-            server_info = server_info_list[0]
-            embed = self.create_server_info_embed(server_info)
-            await interaction.response.send_message(embed=embed)
-        else:
-            await interaction.response.send_message("Multiple servers found, showing the first one.", ephemeral=True)
-            server_info = server_info_list[0]
-            embed = self.create_server_info_embed(server_info)
-            await interaction.followup.send(embed=embed)
+        server_ip = server["RCON_HOST"]
+        server_port = server["SERVER_PORT"]
+        access_token = await self.palworld_protocol.get_access_token()
+        servers_info = await self.palworld_protocol.query_server_info(access_token, server_ip)
+        
+        filtered_servers = [s for s in servers_info if str(s['serverPort']) == str(server_port)]
+        
+        if not filtered_servers:
+            await interaction.followup.send(f"No server found with IP: {server_ip} and port: {server_port}", ephemeral=True)
+            return
+
+        server_info = filtered_servers[0]
+        embed = self.create_server_info_embed(server_info)
+        await interaction.followup.send(embed=embed)
+
+    @queryserver.on_autocomplete("server")
+    async def server_autocomplete(self, interaction: nextcord.Interaction, current: str):
+        choices = [server for server in self.servers if current.lower() in server.lower()]
+        await interaction.response.send_autocomplete(choices)
 
     def create_server_info_embed(self, server_info):
         embed = nextcord.Embed(title=f"{server_info['serverName']}", description=server_info['description'],color=nextcord.Color.green())
