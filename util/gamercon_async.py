@@ -121,7 +121,11 @@ class GameRCON:
         id = LittleEndianSignedInt32.from_bytes(response[4:8])
         type = Type(LittleEndianSignedInt32.from_bytes(response[8:12]))
         payload = response[12:size+4-2]
-        return Packet(id, type, payload)
+        try:
+            decoded_payload = payload.decode('utf-8')
+        except UnicodeDecodeError:
+            decoded_payload = payload.decode('utf-8', errors='ignore')
+        return Packet(id, type, decoded_payload)
 
     async def send(self, cmd):
         if not self._auth:
@@ -136,7 +140,7 @@ class GameRCON:
         if response_packet.type != Type.SERVERDATA_RESPONSE_VALUE:
             raise CommandExecutionError("Unexpected response type.")
 
-        return response_packet.payload.decode('utf-8')
+        return response_packet.payload
 
 async def main():
     async with GameRCON("127.0.0.1", 25575, "pass") as rcon:
