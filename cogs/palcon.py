@@ -39,7 +39,7 @@ class PalconCog(commands.Cog):
     async def palcon(self, interaction: nextcord.Interaction):
         pass
 
-    @palcon.subcommand(description="Send a remote rcon command to Path of Titans server.")
+    @palcon.subcommand(description="Send a remote command to your Palworld server.")
     async def command(self, interaction: nextcord.Interaction, command: str, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         response = await self.rcon_command(server, command)
