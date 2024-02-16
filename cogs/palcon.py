@@ -5,6 +5,7 @@ from nextcord.ext import commands
 from util.gamercon_async import GameRCON
 import util.constants as constants
 import asyncio
+import datetime
 
 class PalconCog(commands.Cog):
     def __init__(self, bot):
@@ -44,7 +45,7 @@ class PalconCog(commands.Cog):
         response = await self.rcon_command(server, command)
         embed = nextcord.Embed(title=server, color=nextcord.Color.green())
         embed.description = f"**Response:** {response}"
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @command.on_autocomplete("server")
@@ -57,7 +58,7 @@ class PalconCog(commands.Cog):
         response = await self.rcon_command(server, f"ShowPlayers")
         embed = nextcord.Embed(title=f"Player List: {server}", color=nextcord.Color.red())
         embed.description = f"{response}"
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @showplayers.on_autocomplete("server")
@@ -72,7 +73,7 @@ class PalconCog(commands.Cog):
         embed.add_field(name="Server", value=server, inline=True)
         embed.add_field(name="SteamID", value=steamid, inline=True)
         embed.add_field(name="Response", value=response, inline=False)
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @kickplayer.on_autocomplete("server")
@@ -87,7 +88,7 @@ class PalconCog(commands.Cog):
         embed.add_field(name="Server", value=server, inline=True)
         embed.add_field(name="SteamID", value=steamid, inline=True)
         embed.add_field(name="Response", value=response, inline=False)
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @banplayer.on_autocomplete("server")
@@ -100,7 +101,7 @@ class PalconCog(commands.Cog):
         response = await self.rcon_command(server, f"Info")
         embed = nextcord.Embed(title=f"Info - {server}", color=nextcord.Color.blue())
         embed.description = f"**Response:** {response}"
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @info.on_autocomplete("server")
@@ -114,7 +115,7 @@ class PalconCog(commands.Cog):
         response = await self.rcon_command(server, f"Shutdown {time} {reason_format}")
         embed = nextcord.Embed(title=f"Shutdown - {server}", color=nextcord.Color.blue())
         embed.description = f"**Response:** {response}"
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @shutdown.on_autocomplete("server")
@@ -127,7 +128,7 @@ class PalconCog(commands.Cog):
         response = await self.rcon_command(server, f"Save")
         embed = nextcord.Embed(title=f"Save - {server}", color=nextcord.Color.blue())
         embed.description = f"**Response:** {response}"
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @save.on_autocomplete("server")
@@ -141,7 +142,7 @@ class PalconCog(commands.Cog):
         response = await self.rcon_command(server, f"Broadcast {message_format}")
         embed = nextcord.Embed(title=f"Broadcast - {server}", color=nextcord.Color.blue())
         embed.description = f"**Response:** {response}"
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         await interaction.followup.send(embed=embed)
 
     @broadcast.on_autocomplete("server")
