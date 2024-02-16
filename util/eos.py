@@ -106,6 +106,7 @@ class PalworldProtocol:
                 'serverName': session.get('attributes', {}).get('NAME_s', 'Unknown'),
                 'serverIP': session.get('attributes', {}).get('ADDRESS_s', 'Unknown'),
                 'serverPort': session.get('attributes', {}).get('GAMESERVER_PORT_l', 'Unknown'),
+                'serverPassword': session.get('attributes', {}).get('ISPASSWORD_b', 'Unknown'),
                 'mapName': session.get('attributes', {}).get('MAPNAME_s', 'Unknown'),
                 'daysRunning': session.get('attributes', {}).get('DAYS_l', 'Unknown'),
                 'serverVersion': session.get('attributes', {}).get('VERSION_s', 'Unknown'),

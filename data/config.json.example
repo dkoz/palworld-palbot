@@ -1,12 +1,12 @@
 {
     "PALWORLD_SERVERS": {
-        "Palworld Server 1": {
+        "Palworld Server Example": {
             "RCON_HOST": "127.0.0.1",
             "RCON_PORT": 25575,
             "RCON_PASS": "rcon_password",
             "SERVER_PORT": 8211
         },
-        "Palworld Other Server": {
+        "Palworld Second Server Example": {
             "RCON_HOST": "127.0.0.1",
             "RCON_PORT": 25575,
             "RCON_PASS": "rcon_password",

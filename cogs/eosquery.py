@@ -4,6 +4,7 @@ from nextcord.ext import commands
 import nextcord
 from util.eos import PalworldProtocol
 import util.constants as constants
+import datetime
 
 class EOSCog(commands.Cog):
     def __init__(self, bot):
@@ -25,7 +26,7 @@ class EOSCog(commands.Cog):
     # This command is still a work in progress.
     @nextcord.slash_command(name="server", description="Query EOS for your server's status. (Experimental)")
     async def queryserver(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
-        await interaction.response.defer(ephemeral=True)
+        await interaction.response.defer()
 
         server = self.servers.get(server)
         if not server:
@@ -53,14 +54,22 @@ class EOSCog(commands.Cog):
         await interaction.response.send_autocomplete(choices)
 
     def create_server_info_embed(self, server_info):
-        embed = nextcord.Embed(title=f"{server_info['serverName']}", description=server_info['description'],color=nextcord.Color.green())
+        embed = nextcord.Embed(title=f"{server_info['serverName']}", description=server_info['description'], url=constants.TITLE_URL, color=nextcord.Color.blue())
         embed.add_field(name="Map Name", value=server_info['mapName'], inline=True)
         embed.add_field(name="Players Online", value=f"{server_info['players']}/{server_info['maxPublicPlayers']}", inline=True)
         embed.add_field(name="Days Running", value=str(server_info['daysRunning']), inline=True)
         embed.add_field(name="Version", value=server_info['serverVersion'], inline=True)
+        embed.add_field(name="Password", value="Yes" if server_info['serverPassword'] else "No", inline=True)
+        embed.add_field(name="\u200b", value="\u200b", inline=True)
         embed.add_field(name="Connection", value=f"```{server_info['serverIP']}:{str(server_info['serverPort'])}```", inline=False)
-        embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
+        embed.set_footer(text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}", icon_url=constants.FOOTER_IMAGE)
         return embed
 
 def setup(bot):
-    bot.add_cog(EOSCog(bot))
+    cog = EOSCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, 'all_slash_commands'):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend([
+        cog.queryserver
+    ])
