@@ -171,7 +171,11 @@ class PlayerInfoCog(commands.Cog):
         choices = await self.name_autocomplete(interaction, current)
         await interaction.response.send_autocomplete(choices)
 
-    @paldb.subcommand(name="whitelistadd", description="Add player to whitelist")
+    @nextcord.slash_command(description="Manage the whitelist", default_member_permissions=nextcord.Permissions(administrator=True))
+    async def whitelist(self, interaction: nextcord.Interaction):
+        pass
+
+    @whitelist.subcommand(name="add", description="Add player to whitelist")
     async def whitelist_add(self, interaction: nextcord.Interaction, steamid: str):
         with open(self.player_data_file, 'r+') as file:
             players = json.load(file)
@@ -189,7 +193,7 @@ class PlayerInfoCog(commands.Cog):
                 file.truncate()
                 await interaction.response.send_message(f"Player {steamid} added to whitelist.", ephemeral=True)
 
-    @paldb.subcommand(name="whitelistremove", description="Remove player from whitelist")
+    @whitelist.subcommand(name="remove", description="Remove player from whitelist")
     async def whitelist_remove(self, interaction: nextcord.Interaction, steamid: str):
         with open(self.player_data_file, 'r') as file:
             players = json.load(file)

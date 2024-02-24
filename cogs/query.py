@@ -58,9 +58,9 @@ class QueryCog(commands.Cog):
                     players_chunks = list(self.split_players(players, 11))
                     players_embed = nextcord.Embed(title=f"Players Online", color=nextcord.Color.blue())
                     
-                    for index, chunk in enumerate(players_chunks, start=1):
+                    for chunk in players_chunks:
                         players_list = '\n'.join(chunk) if chunk else "No players"
-                        players_embed.add_field(name=f"Column {index}", value=players_list, inline=True)
+                        players_embed.add_field(name="\u200b", value=players_list, inline=True)
 
                     message_key = f"{server_name}_{channel_id}"
                     message_id = self.message_ids.get(message_key)
