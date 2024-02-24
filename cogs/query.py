@@ -34,6 +34,11 @@ class QueryCog(commands.Cog):
         for server_name, server_config in self.servers.items():
             self.bot.loop.create_task(self.server_status_check(server_name, server_config))
 
+    # Split player list into chunks
+    def split_players(self, lst, chunk_size):
+        for i in range(0, len(lst), chunk_size):
+            yield lst[i:i + chunk_size]
+
     async def server_status_check(self, server_name, server_config):
         await self.bot.wait_until_ready()
         while not self.bot.is_closed():
@@ -50,8 +55,12 @@ class QueryCog(commands.Cog):
                     embed.add_field(name="Connection Info", value=f"```{server_config['RCON_HOST']}:{server_config['SERVER_PORT']}```", inline=False)
                     embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
 
-                    player_list = '\n'.join(players) if players else "No players online"
-                    players_embed = nextcord.Embed(title=f"Players Online", description=player_list, color=nextcord.Color.blue())
+                    players_chunks = list(self.split_players(players, 11))
+                    players_embed = nextcord.Embed(title=f"Players Online", color=nextcord.Color.blue())
+                    
+                    for index, chunk in enumerate(players_chunks, start=1):
+                        players_list = '\n'.join(chunk) if chunk else "No players"
+                        players_embed.add_field(name=f"Column {index}", value=players_list, inline=True)
 
                     message_key = f"{server_name}_{channel_id}"
                     message_id = self.message_ids.get(message_key)
