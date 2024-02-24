@@ -20,5 +20,6 @@
         "enabled": false,
         "times": ["06:30", "18:30"],
         "timezone": "America/New_York"
-    }
+    },
+    "STATUS_TRACKING": false
 }

@@ -11,6 +11,7 @@
  - **Whitelist Management:** Easily manage your server's whitelist and create a database of players SteamID, PlayUID, and other information for secure access control.
  - **Player Logging:** Keep track of player activity by logging join and leave events on your server.
  - **Scheduled Restarts:** Automate server reboots at set intervals for updates and maintenance, enhancing stability while minimizing disruption to players. This requires implementing a watchdog mechanism to detect when the server stops and automatically restarts it, similar to capabilities found in game panels or batch scripts.
+ - **Status Tracking:** Track the total number of players across all your servers by enabling the status tracker.
 
  ## Experimental Features
  - **EOS Protocol**: Interact with the Epic Online Services (EOS) API to retrieve detailed information about your server. This is currently experimental and does have some issues.
