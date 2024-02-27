@@ -24,7 +24,7 @@ class EOSCog(commands.Cog):
             self.servers = config["PALWORLD_SERVERS"]
 
     # This command is still a work in progress.
-    @nextcord.slash_command(name="server", description="Query EOS for your server's status. (Experimental)")
+    @nextcord.slash_command(name="server", description="Query EOS for your server's status. (Currently Broken)")
     async def queryserver(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer()
 

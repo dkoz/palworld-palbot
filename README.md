@@ -14,6 +14,7 @@
  - **Status Tracking:** Track the total number of players across all your servers by enabling the status tracker.
 
  ## Experimental Features
+ > This is currently broken and not functioning correctly. Filtering doesn't seem to be working with the current API endpoint.
  - **EOS Protocol**: Interact with the Epic Online Services (EOS) API to retrieve detailed information about your server. This is currently experimental and does have some issues.
 
 ## Guides:

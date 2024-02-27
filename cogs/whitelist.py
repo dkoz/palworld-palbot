@@ -62,6 +62,7 @@ class PlayerInfoCog(commands.Cog):
                 _, _, steamid = parts
                 if steamid in players and not players[steamid].get("whitelist", False):
                     await self.kick_player(server, steamid)
+                    print(f"Player {steamid} not on whitelist, kicked.")
 
     async def kick_player(self, server, steamid):
         try:
@@ -101,7 +102,7 @@ class PlayerInfoCog(commands.Cog):
         with open(self.player_data_file, 'w') as file:
             json.dump(existing_players, file)
 
-    @nextcord.slash_command(description="Search the Paltopia user database", default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(description="Search the user database.", default_member_permissions=nextcord.Permissions(administrator=True))
     async def paldb(self, interaction: nextcord.Interaction):
         pass
 
