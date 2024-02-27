@@ -24,7 +24,7 @@ class StatusTracker(commands.Cog):
         await self.bot.wait_until_ready()
         while not self.bot.is_closed() and self.config.get("STATUS_TRACKING", False):
             total_players = await self.get_total_players()
-            max_players = len(self.servers) * 32
+            max_players = sum(server.get("SERVER_SLOTS", 32) for server in self.servers.values())
             status_message = f"{total_players}/{max_players} players"
             await self.bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.watching, name=status_message))
             await asyncio.sleep(60)
