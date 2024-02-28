@@ -51,7 +51,8 @@ class QueryCog(commands.Cog):
                     players = await self.get_player_names(server_config) if status == "Online" else []
 
                     embed = nextcord.Embed(title=f"{server_name} Status", description=f"**Status:** {status}", color=nextcord.Color.green() if status == "Online" else nextcord.Color.red())
-                    embed.add_field(name="Players", value=f"{player_count}/32", inline=False)
+                    max_players = server_config.get('SERVER_SLOTS', 32)
+                    embed.add_field(name="Players", value=f"{player_count}/{max_players}", inline=False)
                     embed.add_field(name="Connection Info", value=f"```{server_config['RCON_HOST']}:{server_config['SERVER_PORT']}```", inline=False)
                     embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
 

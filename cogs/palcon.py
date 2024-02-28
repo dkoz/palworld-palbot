@@ -111,7 +111,7 @@ class PalconCog(commands.Cog):
     @palcon.subcommand(description="Shutdown the server.")
     async def shutdown(self, interaction: nextcord.Interaction, time: str = nextcord.SlashOption(description="Time for the shutdown"), reason: str = nextcord.SlashOption(description="Reason for the shutdown"), server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
-        reason_format = reason.replace(" ", "\x1F")
+        reason_format = reason.replace(" ", "\u001f")
         response = await self.rcon_command(server, f"Shutdown {time} {reason_format}")
         embed = nextcord.Embed(title=f"Shutdown - {server}", color=nextcord.Color.blue())
         embed.description = f"**Response:** {response}"
@@ -138,7 +138,7 @@ class PalconCog(commands.Cog):
     @palcon.subcommand(description="Broadcast a message to the server.")
     async def broadcast(self, interaction: nextcord.Interaction, message: str, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
-        message_format = message.replace(" ", "\x1F")
+        message_format = message.replace(" ", "\u001f")
         response = await self.rcon_command(server, f"Broadcast {message_format}")
         embed = nextcord.Embed(title=f"Broadcast - {server}", color=nextcord.Color.blue())
         embed.description = f"**Response:** {response}"
