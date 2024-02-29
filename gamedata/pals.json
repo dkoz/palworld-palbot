@@ -1,320 +1,1264 @@
 {
     "creatures": [
-        {"name": "Anubis", "id": "Anubis"},
-        {"name": "Anubis (Boss)", "id": "Boss_Anubis"},
-        {"name": "Arsox", "id": "FlameBuffalo"},
-        {"name": "Arsox (Boss)", "id": "BOSS_FlameBuffalo"},
-        {"name": "Astegon", "id": "BlackMetalDragon"},
-        {"name": "Astegon (Boss)", "id": "BOSS_BlackMetalDragon"},
-        {"name": "Axel & Orserk (Boss)", "id": "GYM_ThunderDragonMan"},
-        {"name": "Azurobe", "id": "BlueDragon"},
-        {"name": "Azurobe (Boss)", "id": "BOSS_BlueDragon"},
-        {"name": "Bad Catgirl", "id": "BadCatgirl"},
-        {"name": "Bad Catgirl (Boss)", "id": "BOSS_BadCatgirl"},
-        {"name": "Beakon", "id": "ThunderBird"},
-        {"name": "Beakon (Boss)", "id": "BOSS_ThunderBird"},
-        {"name": "Bearded Dragon", "id": "BeardedDragon"},
-        {"name": "Bearded Dragon (Boss)", "id": "BOSS_BeardedDragon"},
-        {"name": "Beegarde", "id": "SoldierBee"},
-        {"name": "Beegarde (Boss)", "id": "BOSS_SoldierBee"},
-        {"name": "Blazamut", "id": "KingBahamut"},
-        {"name": "Blazamut (Boss)", "id": "BOSS_KingBahamut"},
-        {"name": "Blazehowl", "id": "Manticore"},
-        {"name": "Blazehowl (Boss)", "id": "BOSS_Manticore"},
-        {"name": "Blazehowl Noct", "id": "Manticore_Dark"},
-        {"name": "Blazehowl Noct (Boss)", "id": "BOSS_Manticore_Dark"},
-        {"name": "Blueberry Fairy", "id": "BlueberryFairy"},
-        {"name": "Blueberry Fairy (Boss)", "id": "BOSS_BlueberryFairy"},
-        {"name": "Boltmane", "id": "ElecLion"},
-        {"name": "Boltmane (Boss)", "id": "BOSS_ElecLion"},
-        {"name": "Bristla", "id": "LittleBriarRose"},
-        {"name": "Bristla (Boss)", "id": "BOSS_LittleBriarRose"},
-        {"name": "Broncherry", "id": "SakuraSaurus"},
-        {"name": "Broncherry (Boss)", "id": "BOSS_SakuraSaurus"},
-        {"name": "Broncherry Aqua", "id": "SakuraSaurus_Water"},
-        {"name": "Broncherry Aqua (Boss)", "id": "BOSS_SakuraSaurus_Water"},
-        {"name": "Brown Rabbit", "id": "BrownRabbit"},
-        {"name": "Brown Rabbit (Boss)", "id": "BOSS_BrownRabbit"},
-        {"name": "Bushi", "id": "Ronin"},
-        {"name": "Bushi (Boss)", "id": "BOSS_Ronin"},
-        {"name": "Caprity", "id": "BerryGoat"},
-        {"name": "Caprity (Boss)", "id": "BOSS_BerryGoat"},
-        {"name": "Cattiva", "id": "PinkCat"},
-        {"name": "Cattiva (Boss)", "id": "BOSS_PinkCat"},
-        {"name": "Cawgnito", "id": "DarkCrow"},
-        {"name": "Cawgnito (Boss)", "id": "BOSS_DarkCrow"},
-        {"name": "Celaray", "id": "FlyingManta"},
-        {"name": "Celaray (Boss)", "id": "BOSS_FlyingManta"},
-        {"name": "Chikipi", "id": "ChickenPal"},
-        {"name": "Chikipi (Boss)", "id": "BOSS_ChickenPal"},
-        {"name": "Chillet", "id": "WeaselDragon"},
-        {"name": "Chillet (Boss)", "id": "BOSS_WeaselDragon"},
-        {"name": "Cinnamoth", "id": "CuteButterfly"},
-        {"name": "Cinnamoth (Boss)", "id": "BOSS_CuteButterfly"},
-        {"name": "Cremis", "id": "WoolFox"},
-        {"name": "Cremis (Boss)", "id": "BOSS_WoolFox"},
-        {"name": "Cryolinx", "id": "WhiteTiger"},
-        {"name": "Cryolinx (Boss)", "id": "BOSS_WhiteTiger"},
-        {"name": "Daedream", "id": "DreamDemon"},
-        {"name": "Daedream (Boss)", "id": "BOSS_DreamDemon"},
-        {"name": "Dark Mutant", "id": "DarkMutant"},
-        {"name": "Dark Mutant (Boss)", "id": "BOSS_DarkMutant"},
-        {"name": "Dazzi", "id": "RaijinDaughter"},
-        {"name": "Dazzi (Boss)", "id": "BOSS_RaijinDaughter"},
-        {"name": "Depresso", "id": "NegativeKoala"},
-        {"name": "Depresso (Boss)", "id": "BOSS_NegativeKoala"},
-        {"name": "Digtoise", "id": "DrillGame"},
-        {"name": "Digtoise (Boss)", "id": "BOSS_DrillGame"},
-        {"name": "Dinossom", "id": "FlowerDinosaur"},
-        {"name": "Dinossom (Boss)", "id": "BOSS_FlowerDinosaur"},
-        {"name": "Dinossom Lux", "id": "FlowerDinosaur_Electric"},
-        {"name": "Dinossom Lux (Boss)", "id": "BOSS_FlowerDinosaur_Electric"},
-        {"name": "Direhowl", "id": "Garm"},
-        {"name": "Direhowl (Boss)", "id": "BOSS_Garm"},
-        {"name": "Dragostrophe", "id": "BlackFurDragon"},
-        {"name": "Dragostrophe (Boss)", "id": "BOSS_BlackFurDragon"},
-        {"name": "Dumud", "id": "LazyCatfish"},
-        {"name": "Dumud (Boss)", "id": "BOSS_LazyCatfish"},
-        {"name": "Eikthyrdeer", "id": "Deer"},
-        {"name": "Eikthyrdeer (Boss)", "id": "BOSS_Deer"},
-        {"name": "Eikthyrdeer Terra", "id": "Deer_Ground"},
-        {"name": "Eikthyrdeer Terra (Boss)", "id": "BOSS_Deer_Ground"},
-        {"name": "Elizabee", "id": "QueenBee"},
-        {"name": "Elizabee (Boss)", "id": "BOSS_QueenBee"},
-        {"name": "Elphidran", "id": "FairyDragon"},
-        {"name": "Elphidran (Boss)", "id": "BOSS_FairyDragon"},
-        {"name": "Elphidran Aqua", "id": "FairyDragon_Water"},
-        {"name": "Elphidran Aqua (Boss)", "id": "BOSS_FairyDragon_Water"},
-        {"name": "Faleris", "id": "Horus"},
-        {"name": "Faleris (Boss)", "id": "BOSS_Horus"},
-        {"name": "Feather Ostrich", "id": "FeatherOstrich"},
-        {"name": "Feather Ostrich (Boss)", "id": "BOSS_FeatherOstrich"},
-        {"name": "Felbat", "id": "CatVampire"},
-        {"name": "Felbat (Boss)", "id": "BOSS_CatVampire"},
-        {"name": "Fenglope", "id": "FengyunDeeper"},
-        {"name": "Fenglope (Boss)", "id": "BOSS_FengyunDeeper"},
-        {"name": "Flambelle", "id": "LavaGirl"},
-        {"name": "Flambelle (Boss)", "id": "BOSS_LavaGirl"},
-        {"name": "Flopie", "id": "FlowerRabbit"},
-        {"name": "Flopie (Boss)", "id": "BOSS_FlowerRabbit"},
-        {"name": "Foxcicle", "id": "IceFox"},
-        {"name": "Foxcicle (Boss)", "id": "BOSS_IceFox"},
-        {"name": "Foxparks", "id": "Kitsunebi"},
-        {"name": "Foxparks (Boss)", "id": "BOSS_Kitsunebi"},
-        {"name": "Frostallion", "id": "IceHorse"},
-        {"name": "Frostallion (Boss)", "id": "BOSS_IceHorse"},
-        {"name": "Frostallion Noct", "id": "IceHorse_Dark"},
-        {"name": "Frostallion Noct (Boss)", "id": "BOSS_IceHorse_Dark"},
-        {"name": "Fuack", "id": "BluePlatypus"},
-        {"name": "Fuack (Boss)", "id": "BOSS_BluePlatypus"},
-        {"name": "Fuddler", "id": "CuteMole"},
-        {"name": "Fuddler (Boss)", "id": "BOSS_CuteMole"},
-        {"name": "Galeclaw", "id": "Eagle"},
-        {"name": "Galeclaw (Boss)", "id": "BOSS_Eagle"},
-        {"name": "Gobfin", "id": "SharkKid"},
-        {"name": "Gobfin (Boss)", "id": "BOSS_SharkKid"},
-        {"name": "Gobfin Ignis", "id": "SharkKid_Fire"},
-        {"name": "Gobfin Ignis (Boss)", "id": "BOSS_SharkKid_Fire"},
-        {"name": "Golden Horse", "id": "GoldenHorse"},
-        {"name": "Golden Horse (Boss)", "id": "BOSS_GoldenHorse"},
-        {"name": "Gorirat", "id": "Gorilla"},
-        {"name": "Gorirat (Boss)", "id": "BOSS_Gorilla"},
-        {"name": "Grass Dragon", "id": "GrassDragon"},
-        {"name": "Grass Dragon (Boss)", "id": "BOSS_GrassDragon"},
-        {"name": "Grintale", "id": "NaughtyCat"},
-        {"name": "Grintale (Boss)", "id": "BOSS_NaughtyCat"},
-        {"name": "Grizzbolt", "id": "ElecPanda"},
-        {"name": "Grizzbolt (Boss)", "id": "BOSS_ElecPanda"},
-        {"name": "Guardian Dog", "id": "GuardianDog"},
-        {"name": "Guardian Dog (Boss)", "id": "BOSS_GuardianDog"},
-        {"name": "Gumoss", "id": "PlantSlime_Flower"},
-        {"name": "Gumoss", "id": "PlantSlime"},
-        {"name": "Gumoss (Boss)", "id": "BOSS_PlantSlime_Flower"},
-        {"name": "Gumoss (Boss)", "id": "BOSS_PlantSlime"},
-        {"name": "Hangyu", "id": "WindChimes"},
-        {"name": "Hangyu (Boss)", "id": "BOSS_WindChimes"},
-        {"name": "Hangyu Cryst", "id": "WindChimes_Ice"},
-        {"name": "Hangyu Cryst (Boss)", "id": "BOSS_WindChimes_Ice"},
-        {"name": "Helzephyr", "id": "HadesBird"},
-        {"name": "Helzephyr (Boss)", "id": "BOSS_HadesBird"},
-        {"name": "Hoocrates", "id": "WizardOwl"},
-        {"name": "Hoocrates (Boss)", "id": "BOSS_WizardOwl"},
-        {"name": "Ice Kingpaca", "id": "KingAlpaca_Ice"},
-        {"name": "Ice Kingpaca (Boss)", "id": "BOSS_KingAlpaca_Ice"},
-        {"name": "Ice Reptyro", "id": "VolcanicMonster_Ice"},
-        {"name": "Ice Reptyro (Boss)", "id": "BOSS_VolcanicMonster_Ice"},
-        {"name": "Incineram", "id": "Baphomet"},
-        {"name": "Incineram (Boss)", "id": "BOSS_Baphomet"},
-        {"name": "Incineram Noct", "id": "Baphomet_Dark"},
-        {"name": "Incineram Noct (Boss)", "id": "BOSS_Baphomet_Dark"},
-        {"name": "Jetragon", "id": "JetDragon"},
-        {"name": "Jetragon (Boss)", "id": "BOSS_JetDragon"},
-        {"name": "Jolthog", "id": "Hedgehog"},
-        {"name": "Jolthog (Boss)", "id": "BOSS_Hedgehog"},
-        {"name": "Jolthog Cryst", "id": "Hedgehog_Ice"},
-        {"name": "Jolthog Cryst (Boss)", "id": "BOSS_Hedgehog_Ice"},
-        {"name": "Jormuntide", "id": "Umihebi"},
-        {"name": "Jormuntide (Boss)", "id": "BOSS_Umihebi"},
-        {"name": "Jormuntide Ignis", "id": "Umihebi_Fire"},
-        {"name": "Jormuntide Ignis (Boss)", "id": "BOSS_Umihebi_Fire"},
-        {"name": "Katress", "id": "CatMage"},
-        {"name": "Katress (Boss)", "id": "BOSS_CatMage"},
-        {"name": "Kelpsea", "id": "Kelpie"},
-        {"name": "Kelpsea (Boss)", "id": "BOSS_Kelpie"},
-        {"name": "Kelpsea Ignis", "id": "Kelpie_Fire"},
-        {"name": "Kelpsea Ignis (Boss)", "id": "BOSS_Kelpie_Fire"},
-        {"name": "Killamari", "id": "NegativeOctopus"},
-        {"name": "Killamari (Boss)", "id": "BOSS_NegativeOctopus"},
-        {"name": "Kingpaca", "id": "KingAlpaca"},
-        {"name": "Kingpaca (Boss)", "id": "BOSS_KingAlpaca"},
-        {"name": "Kitsun", "id": "AmaterasuWolf"},
-        {"name": "Kitsun (Boss)", "id": "BOSS_AmaterasuWolf"},
-        {"name": "Lamball", "id": "SheepBall"},
-        {"name": "Lamball (Boss)", "id": "BOSS_SheepBall"},
-        {"name": "Leezpunk", "id": "LizardMan"},
-        {"name": "Leezpunk (Boss)", "id": "BOSS_LizardMan"},
-        {"name": "Leezpunk Ignis", "id": "LizardMan_Fire"},
-        {"name": "Leezpunk Ignis (Boss)", "id": "BOSS_LizardMan_Fire"},
-        {"name": "Lifmunk", "id": "Carbunclo"},
-        {"name": "Lifmunk (Boss)", "id": "BOSS_Carbunclo"},
-        {"name": "Lily & Lyleen (Boss)", "id": "GYM_LilyQueen"},
-        {"name": "Loupmoon", "id": "Werewolf"},
-        {"name": "Loupmoon (Boss)", "id": "BOSS_Werewolf"},
-        {"name": "Lovander", "id": "PinkLizard"},
-        {"name": "Lovander (Boss)", "id": "BOSS_PinkLizard"},
-        {"name": "Lunaris", "id": "Mutant"},
-        {"name": "Lunaris (Boss)", "id": "BOSS_Mutant"},
-        {"name": "Lyleen", "id": "LilyQueen"},
-        {"name": "Lyleen (Boss)", "id": "BOSS_LilyQueen"},
-        {"name": "Lyleen Noct", "id": "LilyQueen_Dark"},
-        {"name": "Lyleen Noct (Boss)", "id": "BOSS_LilyQueen_Dark"},
-        {"name": "Mammorest", "id": "GrassMammoth"},
-        {"name": "Mammorest (Boss)", "id": "BOSS_GrassMammoth"},
-        {"name": "Mammorest Cryst", "id": "GrassMammoth_Ice"},
-        {"name": "Mammorest Cryst (Boss)", "id": "BOSS_GrassMammoth_Ice"},
-        {"name": "Maraith", "id": "GhostBeast"},
-        {"name": "Maraith (Boss)", "id": "BOSS_GhostBeast"},
-        {"name": "Marcus & Faleris (Boss)", "id": "GYM_Horus"},
-        {"name": "Mau", "id": "Bastet"},
-        {"name": "Mau (Boss)", "id": "BOSS_Bastet"},
-        {"name": "Mau Cryst", "id": "Bastet_Ice"},
-        {"name": "Mau Cryst (Boss)", "id": "BOSS_Bastet_Ice"},
-        {"name": "Melpaca", "id": "Alpaca"},
-        {"name": "Melpaca (Boss)", "id": "BOSS_Alpaca"},
-        {"name": "Menasting", "id": "DarkScorpion"},
-        {"name": "Menasting (Boss)", "id": "BOSS_DarkScorpion"},
-        {"name": "Mossanda", "id": "GrassPanda"},
-        {"name": "Mossanda (Boss)", "id": "BOSS_GrassPanda"},
-        {"name": "Mossanda Lux", "id": "GrassPanda_Electric"},
-        {"name": "Mossanda Lux (Boss)", "id": "BOSS_GrassPanda_Electric"},
-        {"name": "Mozzarina", "id": "CowPal"},
-        {"name": "Mozzarina (Boss)", "id": "BOSS_CowPal"},
-        {"name": "Necromus", "id": "BlackCentaur"},
-        {"name": "Necromus (Boss)", "id": "BOSS_BlackCentaur"},
-        {"name": "Nitewing", "id": "HawkBird"},
-        {"name": "Nitewing (Boss)", "id": "BOSS_HawkBird"},
-        {"name": "Nox", "id": "NightFox"},
-        {"name": "Nox (Boss)", "id": "BOSS_NightFox"},
-        {"name": "Orserk", "id": "ThunderDragonMan"},
-        {"name": "Orserk (Boss)", "id": "BOSS_ThunderDragonMan"},
-        {"name": "Paladius", "id": "SaintCentaur"},
-        {"name": "Paladius (Boss)", "id": "BOSS_SaintCentaur"},
-        {"name": "Pengullet", "id": "Penguin"},
-        {"name": "Pengullet (Boss)", "id": "BOSS_Penguin"},
-        {"name": "Penking", "id": "CaptainPenguin"},
-        {"name": "Penking (Boss)", "id": "BOSS_CaptainPenguin"},
-        {"name": "Petallia", "id": "FlowerDoll"},
-        {"name": "Petallia (Boss)", "id": "BOSS_FlowerDoll"},
-        {"name": "Pink Kangaroo", "id": "PinkKangaroo"},
-        {"name": "Pink Kangaroo (Boss)", "id": "BOSS_PinkKangaroo"},
-        {"name": "Pyrin", "id": "FireKirin"},
-        {"name": "Pyrin (Boss)", "id": "BOSS_FireKirin"},
-        {"name": "Pyrin Noct", "id": "FireKirin_Dark"},
-        {"name": "Pyrin Noct (Boss)", "id": "BOSS_FireKirin_Dark"},
-        {"name": "Quivern", "id": "SkyDragon"},
-        {"name": "Quivern (Boss)", "id": "BOSS_SkyDragon"},
-        {"name": "Ragnahawk", "id": "RedArmorBird"},
-        {"name": "Ragnahawk (Boss)", "id": "BOSS_RedArmorBird"},
-        {"name": "Rayhound", "id": "ThunderDog"},
-        {"name": "Rayhound (Boss)", "id": "BOSS_ThunderDog"},
-        {"name": "Reindrix", "id": "IceDeer"},
-        {"name": "Reindrix (Boss)", "id": "BOSS_IceDeer"},
-        {"name": "Relaxaurus", "id": "LazyDragon"},
-        {"name": "Relaxaurus (Boss)", "id": "BOSS_LazyDragon"},
-        {"name": "Relaxaurus Lux", "id": "LazyDragon_Electric"},
-        {"name": "Relaxaurus Lux (Boss)", "id": "BOSS_LazyDragon_Electric"},
-        {"name": "Reptyro", "id": "VolcanicMonster"},
-        {"name": "Reptyro (Boss)", "id": "BOSS_VolcanicMonster"},
-        {"name": "Ribbuny", "id": "PinkRabbit"},
-        {"name": "Ribbuny (Boss)", "id": "BOSS_PinkRabbit"},
-        {"name": "Robinquill", "id": "RobinHood"},
-        {"name": "Robinquill (Boss)", "id": "BOSS_RobinHood"},
-        {"name": "Robinquill Terra", "id": "RobinHood_Ground"},
-        {"name": "Robinquill Terra (Boss)", "id": "BOSS_RobinHood_Ground"},
-        {"name": "Rooby", "id": "FlameBambi"},
-        {"name": "Rooby (Boss)", "id": "BOSS_FlameBambi"},
-        {"name": "Rushoar", "id": "Boar"},
-        {"name": "Rushoar (Boss)", "id": "BOSS_Boar"},
-        {"name": "Scorpion Man", "id": "ScorpionMan"},
-        {"name": "Scorpion Man (Boss)", "id": "BOSS_ScorpionMan"},
-        {"name": "Shadowbeak", "id": "BlackGriffon"},
-        {"name": "Shadowbeak (Boss)", "id": "BOSS_BlackGriffon"},
-        {"name": "Sibelyx", "id": "WhiteMoth"},
-        {"name": "Sibelyx (Boss)", "id": "BOSS_WhiteMoth"},
-        {"name": "Sifu Dog", "id": "SifuDog"},
-        {"name": "Sifu Dog (Boss)", "id": "BOSS_SifuDog"},
-        {"name": "Sparkit", "id": "ElecCat"},
-        {"name": "Sparkit (Boss)", "id": "BOSS_ElecCat"},
-        {"name": "Surfent", "id": "Serpent"},
-        {"name": "Surfent (Boss)", "id": "BOSS_Serpent"},
-        {"name": "Surfent Terra", "id": "Serpent_Ground"},
-        {"name": "Surfent Terra (Boss)", "id": "BOSS_Serpent_Ground"},
-        {"name": "Suzaku", "id": "Suzaku"},
-        {"name": "Suzaku (Boss)", "id": "BOSS_Suzaku"},
-        {"name": "Suzaku Aqua", "id": "Suzaku_Water"},
-        {"name": "Suzaku Aqua (Boss)", "id": "BOSS_Suzaku_Water"},
-        {"name": "Swee", "id": "MopBaby"},
-        {"name": "Swee (Boss)", "id": "BOSS_MopBaby"},
-        {"name": "Sweepa", "id": "MopKing"},
-        {"name": "Sweepa (Boss)", "id": "BOSS_MopKing"},
-        {"name": "Tanzee", "id": "Monkey"},
-        {"name": "Tanzee (Boss)", "id": "BOSS_Monkey"},
-        {"name": "Teafant", "id": "Ganesha"},
-        {"name": "Teafant (Boss)", "id": "BOSS_Ganesha"},
-        {"name": "Tentacle Turtle", "id": "TentacleTurtle"},
-        {"name": "Tentacle Turtle (Boss)", "id": "BOSS_TentacleTurtle"},
-        {"name": "Tocotoco", "id": "ColorfulBird"},
-        {"name": "Tocotoco (Boss)", "id": "BOSS_ColorfulBird"},
-        {"name": "Tombat", "id": "CatBat"},
-        {"name": "Tombat (Boss)", "id": "BOSS_CatBat"},
-        {"name": "Univolt", "id": "Kirin"},
-        {"name": "Univolt (Boss)", "id": "BOSS_Kirin"},
-        {"name": "Vaelet", "id": "VioletFairy"},
-        {"name": "Vaelet (Boss)", "id": "BOSS_VioletFairy"},
-        {"name": "Vanwyrm", "id": "BirdDragon"},
-        {"name": "Vanwyrm (Boss)", "id": "BOSS_BirdDragon"},
-        {"name": "Vanwyrm Cryst", "id": "BirdDragon_Ice"},
-        {"name": "Vanwyrm Cryst (Boss)", "id": "BOSS_BirdDragon_Ice"},
-        {"name": "Verdash", "id": "GrassRabbitMan"},
-        {"name": "Verdash (Boss)", "id": "BOSS_GrassRabbitMan"},
-        {"name": "Victor & Shadowbeak (Boss)", "id": "GYM_BlackGriffon"},
-        {"name": "Vixy", "id": "CuteFox"},
-        {"name": "Vixy (Boss)", "id": "BOSS_CuteFox"},
-        {"name": "Warsect", "id": "HerculesBeetle"},
-        {"name": "Warsect (Boss)", "id": "BOSS_HerculesBeetle"},
-        {"name": "Water Lizard", "id": "WaterLizard"},
-        {"name": "Water Lizard (Boss)", "id": "BOSS_WaterLizard"},
-        {"name": "Wing Golem", "id": "WingGolem"},
-        {"name": "Wing Golem (Boss)", "id": "BOSS_WingGolem"},
-        {"name": "Wixen", "id": "FoxMage"},
-        {"name": "Wixen (Boss)", "id": "BOSS_FoxMage"},
-        {"name": "Woolipop", "id": "SweetsSheep"},
-        {"name": "Woolipop (Boss)", "id": "BOSS_SweetsSheep"},
-        {"name": "Wumpo", "id": "Yeti"},
-        {"name": "Wumpo (Boss)", "id": "BOSS_Yeti"},
-        {"name": "Wumpo Botan", "id": "Yeti_Grass"},
-        {"name": "Wumpo Botan (Boss)", "id": "BOSS_Yeti_Grass"},
-        {"name": "Zoe & Grizzbolt (Boss)", "id": "GYM_ElecPanda"}
+        {
+            "name": "Anubis",
+            "id": "Anubis"
+        },
+        {
+            "name": "Anubis (Boss)",
+            "id": "Boss_Anubis"
+        },
+        {
+            "name": "Arsox",
+            "id": "FlameBuffalo"
+        },
+        {
+            "name": "Arsox (Boss)",
+            "id": "BOSS_FlameBuffalo"
+        },
+        {
+            "name": "Astegon",
+            "id": "BlackMetalDragon"
+        },
+        {
+            "name": "Astegon (Boss)",
+            "id": "BOSS_BlackMetalDragon"
+        },
+        {
+            "name": "Axel & Orserk (Boss)",
+            "id": "GYM_ThunderDragonMan"
+        },
+        {
+            "name": "Azurobe",
+            "id": "BlueDragon"
+        },
+        {
+            "name": "Azurobe (Boss)",
+            "id": "BOSS_BlueDragon"
+        },
+        {
+            "name": "Bad Catgirl",
+            "id": "BadCatgirl"
+        },
+        {
+            "name": "Bad Catgirl (Boss)",
+            "id": "BOSS_BadCatgirl"
+        },
+        {
+            "name": "Beakon",
+            "id": "ThunderBird"
+        },
+        {
+            "name": "Beakon (Boss)",
+            "id": "BOSS_ThunderBird"
+        },
+        {
+            "name": "Bearded Dragon",
+            "id": "BeardedDragon"
+        },
+        {
+            "name": "Bearded Dragon (Boss)",
+            "id": "BOSS_BeardedDragon"
+        },
+        {
+            "name": "Beegarde",
+            "id": "SoldierBee"
+        },
+        {
+            "name": "Beegarde (Boss)",
+            "id": "BOSS_SoldierBee"
+        },
+        {
+            "name": "Blazamut",
+            "id": "KingBahamut"
+        },
+        {
+            "name": "Blazamut (Boss)",
+            "id": "BOSS_KingBahamut"
+        },
+        {
+            "name": "Blazehowl",
+            "id": "Manticore"
+        },
+        {
+            "name": "Blazehowl (Boss)",
+            "id": "BOSS_Manticore"
+        },
+        {
+            "name": "Blazehowl Noct",
+            "id": "Manticore_Dark"
+        },
+        {
+            "name": "Blazehowl Noct (Boss)",
+            "id": "BOSS_Manticore_Dark"
+        },
+        {
+            "name": "Blueberry Fairy",
+            "id": "BlueberryFairy"
+        },
+        {
+            "name": "Blueberry Fairy (Boss)",
+            "id": "BOSS_BlueberryFairy"
+        },
+        {
+            "name": "Boltmane",
+            "id": "ElecLion"
+        },
+        {
+            "name": "Boltmane (Boss)",
+            "id": "BOSS_ElecLion"
+        },
+        {
+            "name": "Bristla",
+            "id": "LittleBriarRose"
+        },
+        {
+            "name": "Bristla (Boss)",
+            "id": "BOSS_LittleBriarRose"
+        },
+        {
+            "name": "Broncherry",
+            "id": "SakuraSaurus"
+        },
+        {
+            "name": "Broncherry (Boss)",
+            "id": "BOSS_SakuraSaurus"
+        },
+        {
+            "name": "Broncherry Aqua",
+            "id": "SakuraSaurus_Water"
+        },
+        {
+            "name": "Broncherry Aqua (Boss)",
+            "id": "BOSS_SakuraSaurus_Water"
+        },
+        {
+            "name": "Brown Rabbit",
+            "id": "BrownRabbit"
+        },
+        {
+            "name": "Brown Rabbit (Boss)",
+            "id": "BOSS_BrownRabbit"
+        },
+        {
+            "name": "Bushi",
+            "id": "Ronin"
+        },
+        {
+            "name": "Bushi (Boss)",
+            "id": "BOSS_Ronin"
+        },
+        {
+            "name": "Caprity",
+            "id": "BerryGoat"
+        },
+        {
+            "name": "Caprity (Boss)",
+            "id": "BOSS_BerryGoat"
+        },
+        {
+            "name": "Cattiva",
+            "id": "PinkCat"
+        },
+        {
+            "name": "Cattiva (Boss)",
+            "id": "BOSS_PinkCat"
+        },
+        {
+            "name": "Cawgnito",
+            "id": "DarkCrow"
+        },
+        {
+            "name": "Cawgnito (Boss)",
+            "id": "BOSS_DarkCrow"
+        },
+        {
+            "name": "Celaray",
+            "id": "FlyingManta"
+        },
+        {
+            "name": "Celaray (Boss)",
+            "id": "BOSS_FlyingManta"
+        },
+        {
+            "name": "Chikipi",
+            "id": "ChickenPal"
+        },
+        {
+            "name": "Chikipi (Boss)",
+            "id": "BOSS_ChickenPal"
+        },
+        {
+            "name": "Chillet",
+            "id": "WeaselDragon"
+        },
+        {
+            "name": "Chillet (Boss)",
+            "id": "BOSS_WeaselDragon"
+        },
+        {
+            "name": "Cinnamoth",
+            "id": "CuteButterfly"
+        },
+        {
+            "name": "Cinnamoth (Boss)",
+            "id": "BOSS_CuteButterfly"
+        },
+        {
+            "name": "Cremis",
+            "id": "WoolFox"
+        },
+        {
+            "name": "Cremis (Boss)",
+            "id": "BOSS_WoolFox"
+        },
+        {
+            "name": "Cryolinx",
+            "id": "WhiteTiger"
+        },
+        {
+            "name": "Cryolinx (Boss)",
+            "id": "BOSS_WhiteTiger"
+        },
+        {
+            "name": "Daedream",
+            "id": "DreamDemon"
+        },
+        {
+            "name": "Daedream (Boss)",
+            "id": "BOSS_DreamDemon"
+        },
+        {
+            "name": "Dark Mutant",
+            "id": "DarkMutant"
+        },
+        {
+            "name": "Dark Mutant (Boss)",
+            "id": "BOSS_DarkMutant"
+        },
+        {
+            "name": "Dazzi",
+            "id": "RaijinDaughter"
+        },
+        {
+            "name": "Dazzi (Boss)",
+            "id": "BOSS_RaijinDaughter"
+        },
+        {
+            "name": "Depresso",
+            "id": "NegativeKoala"
+        },
+        {
+            "name": "Depresso (Boss)",
+            "id": "BOSS_NegativeKoala"
+        },
+        {
+            "name": "Digtoise",
+            "id": "DrillGame"
+        },
+        {
+            "name": "Digtoise (Boss)",
+            "id": "BOSS_DrillGame"
+        },
+        {
+            "name": "Dinossom",
+            "id": "FlowerDinosaur"
+        },
+        {
+            "name": "Dinossom (Boss)",
+            "id": "BOSS_FlowerDinosaur"
+        },
+        {
+            "name": "Dinossom Lux",
+            "id": "FlowerDinosaur_Electric"
+        },
+        {
+            "name": "Dinossom Lux (Boss)",
+            "id": "BOSS_FlowerDinosaur_Electric"
+        },
+        {
+            "name": "Direhowl",
+            "id": "Garm"
+        },
+        {
+            "name": "Direhowl (Boss)",
+            "id": "BOSS_Garm"
+        },
+        {
+            "name": "Dragostrophe",
+            "id": "BlackFurDragon"
+        },
+        {
+            "name": "Dragostrophe (Boss)",
+            "id": "BOSS_BlackFurDragon"
+        },
+        {
+            "name": "Dumud",
+            "id": "LazyCatfish"
+        },
+        {
+            "name": "Dumud (Boss)",
+            "id": "BOSS_LazyCatfish"
+        },
+        {
+            "name": "Eikthyrdeer",
+            "id": "Deer"
+        },
+        {
+            "name": "Eikthyrdeer (Boss)",
+            "id": "BOSS_Deer"
+        },
+        {
+            "name": "Eikthyrdeer Terra",
+            "id": "Deer_Ground"
+        },
+        {
+            "name": "Eikthyrdeer Terra (Boss)",
+            "id": "BOSS_Deer_Ground"
+        },
+        {
+            "name": "Elizabee",
+            "id": "QueenBee"
+        },
+        {
+            "name": "Elizabee (Boss)",
+            "id": "BOSS_QueenBee"
+        },
+        {
+            "name": "Elphidran",
+            "id": "FairyDragon"
+        },
+        {
+            "name": "Elphidran (Boss)",
+            "id": "BOSS_FairyDragon"
+        },
+        {
+            "name": "Elphidran Aqua",
+            "id": "FairyDragon_Water"
+        },
+        {
+            "name": "Elphidran Aqua (Boss)",
+            "id": "BOSS_FairyDragon_Water"
+        },
+        {
+            "name": "Faleris",
+            "id": "Horus"
+        },
+        {
+            "name": "Faleris (Boss)",
+            "id": "BOSS_Horus"
+        },
+        {
+            "name": "Feather Ostrich",
+            "id": "FeatherOstrich"
+        },
+        {
+            "name": "Feather Ostrich (Boss)",
+            "id": "BOSS_FeatherOstrich"
+        },
+        {
+            "name": "Felbat",
+            "id": "CatVampire"
+        },
+        {
+            "name": "Felbat (Boss)",
+            "id": "BOSS_CatVampire"
+        },
+        {
+            "name": "Fenglope",
+            "id": "FengyunDeeper"
+        },
+        {
+            "name": "Fenglope (Boss)",
+            "id": "BOSS_FengyunDeeper"
+        },
+        {
+            "name": "Flambelle",
+            "id": "LavaGirl"
+        },
+        {
+            "name": "Flambelle (Boss)",
+            "id": "BOSS_LavaGirl"
+        },
+        {
+            "name": "Flopie",
+            "id": "FlowerRabbit"
+        },
+        {
+            "name": "Flopie (Boss)",
+            "id": "BOSS_FlowerRabbit"
+        },
+        {
+            "name": "Foxcicle",
+            "id": "IceFox"
+        },
+        {
+            "name": "Foxcicle (Boss)",
+            "id": "BOSS_IceFox"
+        },
+        {
+            "name": "Foxparks",
+            "id": "Kitsunebi"
+        },
+        {
+            "name": "Foxparks (Boss)",
+            "id": "BOSS_Kitsunebi"
+        },
+        {
+            "name": "Frostallion",
+            "id": "IceHorse"
+        },
+        {
+            "name": "Frostallion (Boss)",
+            "id": "BOSS_IceHorse"
+        },
+        {
+            "name": "Frostallion Noct",
+            "id": "IceHorse_Dark"
+        },
+        {
+            "name": "Frostallion Noct (Boss)",
+            "id": "BOSS_IceHorse_Dark"
+        },
+        {
+            "name": "Fuack",
+            "id": "BluePlatypus"
+        },
+        {
+            "name": "Fuack (Boss)",
+            "id": "BOSS_BluePlatypus"
+        },
+        {
+            "name": "Fuddler",
+            "id": "CuteMole"
+        },
+        {
+            "name": "Fuddler (Boss)",
+            "id": "BOSS_CuteMole"
+        },
+        {
+            "name": "Galeclaw",
+            "id": "Eagle"
+        },
+        {
+            "name": "Galeclaw (Boss)",
+            "id": "BOSS_Eagle"
+        },
+        {
+            "name": "Gobfin",
+            "id": "SharkKid"
+        },
+        {
+            "name": "Gobfin (Boss)",
+            "id": "BOSS_SharkKid"
+        },
+        {
+            "name": "Gobfin Ignis",
+            "id": "SharkKid_Fire"
+        },
+        {
+            "name": "Gobfin Ignis (Boss)",
+            "id": "BOSS_SharkKid_Fire"
+        },
+        {
+            "name": "Golden Horse",
+            "id": "GoldenHorse"
+        },
+        {
+            "name": "Golden Horse (Boss)",
+            "id": "BOSS_GoldenHorse"
+        },
+        {
+            "name": "Gorirat",
+            "id": "Gorilla"
+        },
+        {
+            "name": "Gorirat (Boss)",
+            "id": "BOSS_Gorilla"
+        },
+        {
+            "name": "Grass Dragon",
+            "id": "GrassDragon"
+        },
+        {
+            "name": "Grass Dragon (Boss)",
+            "id": "BOSS_GrassDragon"
+        },
+        {
+            "name": "Grintale",
+            "id": "NaughtyCat"
+        },
+        {
+            "name": "Grintale (Boss)",
+            "id": "BOSS_NaughtyCat"
+        },
+        {
+            "name": "Grizzbolt",
+            "id": "ElecPanda"
+        },
+        {
+            "name": "Grizzbolt (Boss)",
+            "id": "BOSS_ElecPanda"
+        },
+        {
+            "name": "Guardian Dog",
+            "id": "GuardianDog"
+        },
+        {
+            "name": "Guardian Dog (Boss)",
+            "id": "BOSS_GuardianDog"
+        },
+        {
+            "name": "Gumoss",
+            "id": "PlantSlime_Flower"
+        },
+        {
+            "name": "Gumoss",
+            "id": "PlantSlime"
+        },
+        {
+            "name": "Gumoss (Boss)",
+            "id": "BOSS_PlantSlime_Flower"
+        },
+        {
+            "name": "Gumoss (Boss)",
+            "id": "BOSS_PlantSlime"
+        },
+        {
+            "name": "Hangyu",
+            "id": "WindChimes"
+        },
+        {
+            "name": "Hangyu (Boss)",
+            "id": "BOSS_WindChimes"
+        },
+        {
+            "name": "Hangyu Cryst",
+            "id": "WindChimes_Ice"
+        },
+        {
+            "name": "Hangyu Cryst (Boss)",
+            "id": "BOSS_WindChimes_Ice"
+        },
+        {
+            "name": "Helzephyr",
+            "id": "HadesBird"
+        },
+        {
+            "name": "Helzephyr (Boss)",
+            "id": "BOSS_HadesBird"
+        },
+        {
+            "name": "Hoocrates",
+            "id": "WizardOwl"
+        },
+        {
+            "name": "Hoocrates (Boss)",
+            "id": "BOSS_WizardOwl"
+        },
+        {
+            "name": "Ice Kingpaca",
+            "id": "KingAlpaca_Ice"
+        },
+        {
+            "name": "Ice Kingpaca (Boss)",
+            "id": "BOSS_KingAlpaca_Ice"
+        },
+        {
+            "name": "Ice Reptyro",
+            "id": "VolcanicMonster_Ice"
+        },
+        {
+            "name": "Ice Reptyro (Boss)",
+            "id": "BOSS_VolcanicMonster_Ice"
+        },
+        {
+            "name": "Incineram",
+            "id": "Baphomet"
+        },
+        {
+            "name": "Incineram (Boss)",
+            "id": "BOSS_Baphomet"
+        },
+        {
+            "name": "Incineram Noct",
+            "id": "Baphomet_Dark"
+        },
+        {
+            "name": "Incineram Noct (Boss)",
+            "id": "BOSS_Baphomet_Dark"
+        },
+        {
+            "name": "Jetragon",
+            "id": "JetDragon"
+        },
+        {
+            "name": "Jetragon (Boss)",
+            "id": "BOSS_JetDragon"
+        },
+        {
+            "name": "Jolthog",
+            "id": "Hedgehog"
+        },
+        {
+            "name": "Jolthog (Boss)",
+            "id": "BOSS_Hedgehog"
+        },
+        {
+            "name": "Jolthog Cryst",
+            "id": "Hedgehog_Ice"
+        },
+        {
+            "name": "Jolthog Cryst (Boss)",
+            "id": "BOSS_Hedgehog_Ice"
+        },
+        {
+            "name": "Jormuntide",
+            "id": "Umihebi"
+        },
+        {
+            "name": "Jormuntide (Boss)",
+            "id": "BOSS_Umihebi"
+        },
+        {
+            "name": "Jormuntide Ignis",
+            "id": "Umihebi_Fire"
+        },
+        {
+            "name": "Jormuntide Ignis (Boss)",
+            "id": "BOSS_Umihebi_Fire"
+        },
+        {
+            "name": "Katress",
+            "id": "CatMage"
+        },
+        {
+            "name": "Katress (Boss)",
+            "id": "BOSS_CatMage"
+        },
+        {
+            "name": "Kelpsea",
+            "id": "Kelpie"
+        },
+        {
+            "name": "Kelpsea (Boss)",
+            "id": "BOSS_Kelpie"
+        },
+        {
+            "name": "Kelpsea Ignis",
+            "id": "Kelpie_Fire"
+        },
+        {
+            "name": "Kelpsea Ignis (Boss)",
+            "id": "BOSS_Kelpie_Fire"
+        },
+        {
+            "name": "Killamari",
+            "id": "NegativeOctopus"
+        },
+        {
+            "name": "Killamari (Boss)",
+            "id": "BOSS_NegativeOctopus"
+        },
+        {
+            "name": "Kingpaca",
+            "id": "KingAlpaca"
+        },
+        {
+            "name": "Kingpaca (Boss)",
+            "id": "BOSS_KingAlpaca"
+        },
+        {
+            "name": "Kitsun",
+            "id": "AmaterasuWolf"
+        },
+        {
+            "name": "Kitsun (Boss)",
+            "id": "BOSS_AmaterasuWolf"
+        },
+        {
+            "name": "Lamball",
+            "id": "SheepBall"
+        },
+        {
+            "name": "Lamball (Boss)",
+            "id": "BOSS_SheepBall"
+        },
+        {
+            "name": "Leezpunk",
+            "id": "LizardMan"
+        },
+        {
+            "name": "Leezpunk (Boss)",
+            "id": "BOSS_LizardMan"
+        },
+        {
+            "name": "Leezpunk Ignis",
+            "id": "LizardMan_Fire"
+        },
+        {
+            "name": "Leezpunk Ignis (Boss)",
+            "id": "BOSS_LizardMan_Fire"
+        },
+        {
+            "name": "Lifmunk",
+            "id": "Carbunclo"
+        },
+        {
+            "name": "Lifmunk (Boss)",
+            "id": "BOSS_Carbunclo"
+        },
+        {
+            "name": "Lily & Lyleen (Boss)",
+            "id": "GYM_LilyQueen"
+        },
+        {
+            "name": "Loupmoon",
+            "id": "Werewolf"
+        },
+        {
+            "name": "Loupmoon (Boss)",
+            "id": "BOSS_Werewolf"
+        },
+        {
+            "name": "Lovander",
+            "id": "PinkLizard"
+        },
+        {
+            "name": "Lovander (Boss)",
+            "id": "BOSS_PinkLizard"
+        },
+        {
+            "name": "Lunaris",
+            "id": "Mutant"
+        },
+        {
+            "name": "Lunaris (Boss)",
+            "id": "BOSS_Mutant"
+        },
+        {
+            "name": "Lyleen",
+            "id": "LilyQueen"
+        },
+        {
+            "name": "Lyleen (Boss)",
+            "id": "BOSS_LilyQueen"
+        },
+        {
+            "name": "Lyleen Noct",
+            "id": "LilyQueen_Dark"
+        },
+        {
+            "name": "Lyleen Noct (Boss)",
+            "id": "BOSS_LilyQueen_Dark"
+        },
+        {
+            "name": "Mammorest",
+            "id": "GrassMammoth"
+        },
+        {
+            "name": "Mammorest (Boss)",
+            "id": "BOSS_GrassMammoth"
+        },
+        {
+            "name": "Mammorest Cryst",
+            "id": "GrassMammoth_Ice"
+        },
+        {
+            "name": "Mammorest Cryst (Boss)",
+            "id": "BOSS_GrassMammoth_Ice"
+        },
+        {
+            "name": "Maraith",
+            "id": "GhostBeast"
+        },
+        {
+            "name": "Maraith (Boss)",
+            "id": "BOSS_GhostBeast"
+        },
+        {
+            "name": "Marcus & Faleris (Boss)",
+            "id": "GYM_Horus"
+        },
+        {
+            "name": "Mau",
+            "id": "Bastet"
+        },
+        {
+            "name": "Mau (Boss)",
+            "id": "BOSS_Bastet"
+        },
+        {
+            "name": "Mau Cryst",
+            "id": "Bastet_Ice"
+        },
+        {
+            "name": "Mau Cryst (Boss)",
+            "id": "BOSS_Bastet_Ice"
+        },
+        {
+            "name": "Melpaca",
+            "id": "Alpaca"
+        },
+        {
+            "name": "Melpaca (Boss)",
+            "id": "BOSS_Alpaca"
+        },
+        {
+            "name": "Menasting",
+            "id": "DarkScorpion"
+        },
+        {
+            "name": "Menasting (Boss)",
+            "id": "BOSS_DarkScorpion"
+        },
+        {
+            "name": "Mossanda",
+            "id": "GrassPanda"
+        },
+        {
+            "name": "Mossanda (Boss)",
+            "id": "BOSS_GrassPanda"
+        },
+        {
+            "name": "Mossanda Lux",
+            "id": "GrassPanda_Electric"
+        },
+        {
+            "name": "Mossanda Lux (Boss)",
+            "id": "BOSS_GrassPanda_Electric"
+        },
+        {
+            "name": "Mozzarina",
+            "id": "CowPal"
+        },
+        {
+            "name": "Mozzarina (Boss)",
+            "id": "BOSS_CowPal"
+        },
+        {
+            "name": "Necromus",
+            "id": "BlackCentaur"
+        },
+        {
+            "name": "Necromus (Boss)",
+            "id": "BOSS_BlackCentaur"
+        },
+        {
+            "name": "Nitewing",
+            "id": "HawkBird"
+        },
+        {
+            "name": "Nitewing (Boss)",
+            "id": "BOSS_HawkBird"
+        },
+        {
+            "name": "Nox",
+            "id": "NightFox"
+        },
+        {
+            "name": "Nox (Boss)",
+            "id": "BOSS_NightFox"
+        },
+        {
+            "name": "Orserk",
+            "id": "ThunderDragonMan"
+        },
+        {
+            "name": "Orserk (Boss)",
+            "id": "BOSS_ThunderDragonMan"
+        },
+        {
+            "name": "Paladius",
+            "id": "SaintCentaur"
+        },
+        {
+            "name": "Paladius (Boss)",
+            "id": "BOSS_SaintCentaur"
+        },
+        {
+            "name": "Pengullet",
+            "id": "Penguin"
+        },
+        {
+            "name": "Pengullet (Boss)",
+            "id": "BOSS_Penguin"
+        },
+        {
+            "name": "Penking",
+            "id": "CaptainPenguin"
+        },
+        {
+            "name": "Penking (Boss)",
+            "id": "BOSS_CaptainPenguin"
+        },
+        {
+            "name": "Petallia",
+            "id": "FlowerDoll"
+        },
+        {
+            "name": "Petallia (Boss)",
+            "id": "BOSS_FlowerDoll"
+        },
+        {
+            "name": "Pink Kangaroo",
+            "id": "PinkKangaroo"
+        },
+        {
+            "name": "Pink Kangaroo (Boss)",
+            "id": "BOSS_PinkKangaroo"
+        },
+        {
+            "name": "Pyrin",
+            "id": "FireKirin"
+        },
+        {
+            "name": "Pyrin (Boss)",
+            "id": "BOSS_FireKirin"
+        },
+        {
+            "name": "Pyrin Noct",
+            "id": "FireKirin_Dark"
+        },
+        {
+            "name": "Pyrin Noct (Boss)",
+            "id": "BOSS_FireKirin_Dark"
+        },
+        {
+            "name": "Quivern",
+            "id": "SkyDragon"
+        },
+        {
+            "name": "Quivern (Boss)",
+            "id": "BOSS_SkyDragon"
+        },
+        {
+            "name": "Ragnahawk",
+            "id": "RedArmorBird"
+        },
+        {
+            "name": "Ragnahawk (Boss)",
+            "id": "BOSS_RedArmorBird"
+        },
+        {
+            "name": "Rayhound",
+            "id": "ThunderDog"
+        },
+        {
+            "name": "Rayhound (Boss)",
+            "id": "BOSS_ThunderDog"
+        },
+        {
+            "name": "Reindrix",
+            "id": "IceDeer"
+        },
+        {
+            "name": "Reindrix (Boss)",
+            "id": "BOSS_IceDeer"
+        },
+        {
+            "name": "Relaxaurus",
+            "id": "LazyDragon"
+        },
+        {
+            "name": "Relaxaurus (Boss)",
+            "id": "BOSS_LazyDragon"
+        },
+        {
+            "name": "Relaxaurus Lux",
+            "id": "LazyDragon_Electric"
+        },
+        {
+            "name": "Relaxaurus Lux (Boss)",
+            "id": "BOSS_LazyDragon_Electric"
+        },
+        {
+            "name": "Reptyro",
+            "id": "VolcanicMonster"
+        },
+        {
+            "name": "Reptyro (Boss)",
+            "id": "BOSS_VolcanicMonster"
+        },
+        {
+            "name": "Ribbuny",
+            "id": "PinkRabbit"
+        },
+        {
+            "name": "Ribbuny (Boss)",
+            "id": "BOSS_PinkRabbit"
+        },
+        {
+            "name": "Robinquill",
+            "id": "RobinHood"
+        },
+        {
+            "name": "Robinquill (Boss)",
+            "id": "BOSS_RobinHood"
+        },
+        {
+            "name": "Robinquill Terra",
+            "id": "RobinHood_Ground"
+        },
+        {
+            "name": "Robinquill Terra (Boss)",
+            "id": "BOSS_RobinHood_Ground"
+        },
+        {
+            "name": "Rooby",
+            "id": "FlameBambi"
+        },
+        {
+            "name": "Rooby (Boss)",
+            "id": "BOSS_FlameBambi"
+        },
+        {
+            "name": "Rushoar",
+            "id": "Boar"
+        },
+        {
+            "name": "Rushoar (Boss)",
+            "id": "BOSS_Boar"
+        },
+        {
+            "name": "Scorpion Man",
+            "id": "ScorpionMan"
+        },
+        {
+            "name": "Scorpion Man (Boss)",
+            "id": "BOSS_ScorpionMan"
+        },
+        {
+            "name": "Shadowbeak",
+            "id": "BlackGriffon"
+        },
+        {
+            "name": "Shadowbeak (Boss)",
+            "id": "BOSS_BlackGriffon"
+        },
+        {
+            "name": "Sibelyx",
+            "id": "WhiteMoth"
+        },
+        {
+            "name": "Sibelyx (Boss)",
+            "id": "BOSS_WhiteMoth"
+        },
+        {
+            "name": "Sifu Dog",
+            "id": "SifuDog"
+        },
+        {
+            "name": "Sifu Dog (Boss)",
+            "id": "BOSS_SifuDog"
+        },
+        {
+            "name": "Sparkit",
+            "id": "ElecCat"
+        },
+        {
+            "name": "Sparkit (Boss)",
+            "id": "BOSS_ElecCat"
+        },
+        {
+            "name": "Surfent",
+            "id": "Serpent"
+        },
+        {
+            "name": "Surfent (Boss)",
+            "id": "BOSS_Serpent"
+        },
+        {
+            "name": "Surfent Terra",
+            "id": "Serpent_Ground"
+        },
+        {
+            "name": "Surfent Terra (Boss)",
+            "id": "BOSS_Serpent_Ground"
+        },
+        {
+            "name": "Suzaku",
+            "id": "Suzaku"
+        },
+        {
+            "name": "Suzaku (Boss)",
+            "id": "BOSS_Suzaku"
+        },
+        {
+            "name": "Suzaku Aqua",
+            "id": "Suzaku_Water"
+        },
+        {
+            "name": "Suzaku Aqua (Boss)",
+            "id": "BOSS_Suzaku_Water"
+        },
+        {
+            "name": "Swee",
+            "id": "MopBaby"
+        },
+        {
+            "name": "Swee (Boss)",
+            "id": "BOSS_MopBaby"
+        },
+        {
+            "name": "Sweepa",
+            "id": "MopKing"
+        },
+        {
+            "name": "Sweepa (Boss)",
+            "id": "BOSS_MopKing"
+        },
+        {
+            "name": "Tanzee",
+            "id": "Monkey"
+        },
+        {
+            "name": "Tanzee (Boss)",
+            "id": "BOSS_Monkey"
+        },
+        {
+            "name": "Teafant",
+            "id": "Ganesha"
+        },
+        {
+            "name": "Teafant (Boss)",
+            "id": "BOSS_Ganesha"
+        },
+        {
+            "name": "Tentacle Turtle",
+            "id": "TentacleTurtle"
+        },
+        {
+            "name": "Tentacle Turtle (Boss)",
+            "id": "BOSS_TentacleTurtle"
+        },
+        {
+            "name": "Tocotoco",
+            "id": "ColorfulBird"
+        },
+        {
+            "name": "Tocotoco (Boss)",
+            "id": "BOSS_ColorfulBird"
+        },
+        {
+            "name": "Tombat",
+            "id": "CatBat"
+        },
+        {
+            "name": "Tombat (Boss)",
+            "id": "BOSS_CatBat"
+        },
+        {
+            "name": "Univolt",
+            "id": "Kirin"
+        },
+        {
+            "name": "Univolt (Boss)",
+            "id": "BOSS_Kirin"
+        },
+        {
+            "name": "Vaelet",
+            "id": "VioletFairy"
+        },
+        {
+            "name": "Vaelet (Boss)",
+            "id": "BOSS_VioletFairy"
+        },
+        {
+            "name": "Vanwyrm",
+            "id": "BirdDragon"
+        },
+        {
+            "name": "Vanwyrm (Boss)",
+            "id": "BOSS_BirdDragon"
+        },
+        {
+            "name": "Vanwyrm Cryst",
+            "id": "BirdDragon_Ice"
+        },
+        {
+            "name": "Vanwyrm Cryst (Boss)",
+            "id": "BOSS_BirdDragon_Ice"
+        },
+        {
+            "name": "Verdash",
+            "id": "GrassRabbitMan"
+        },
+        {
+            "name": "Verdash (Boss)",
+            "id": "BOSS_GrassRabbitMan"
+        },
+        {
+            "name": "Victor & Shadowbeak (Boss)",
+            "id": "GYM_BlackGriffon"
+        },
+        {
+            "name": "Vixy",
+            "id": "CuteFox"
+        },
+        {
+            "name": "Vixy (Boss)",
+            "id": "BOSS_CuteFox"
+        },
+        {
+            "name": "Warsect",
+            "id": "HerculesBeetle"
+        },
+        {
+            "name": "Warsect (Boss)",
+            "id": "BOSS_HerculesBeetle"
+        },
+        {
+            "name": "Water Lizard",
+            "id": "WaterLizard"
+        },
+        {
+            "name": "Water Lizard (Boss)",
+            "id": "BOSS_WaterLizard"
+        },
+        {
+            "name": "Wing Golem",
+            "id": "WingGolem"
+        },
+        {
+            "name": "Wing Golem (Boss)",
+            "id": "BOSS_WingGolem"
+        },
+        {
+            "name": "Wixen",
+            "id": "FoxMage"
+        },
+        {
+            "name": "Wixen (Boss)",
+            "id": "BOSS_FoxMage"
+        },
+        {
+            "name": "Woolipop",
+            "id": "SweetsSheep"
+        },
+        {
+            "name": "Woolipop (Boss)",
+            "id": "BOSS_SweetsSheep"
+        },
+        {
+            "name": "Wumpo",
+            "id": "Yeti"
+        },
+        {
+            "name": "Wumpo (Boss)",
+            "id": "BOSS_Yeti"
+        },
+        {
+            "name": "Wumpo Botan",
+            "id": "Yeti_Grass"
+        },
+        {
+            "name": "Wumpo Botan (Boss)",
+            "id": "BOSS_Yeti_Grass"
+        },
+        {
+            "name": "Zoe & Grizzbolt (Boss)",
+            "id": "GYM_ElecPanda"
+        }
     ]
 }
-  
