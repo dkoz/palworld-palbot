@@ -11,12 +11,13 @@
  - **Whitelist Management:** Easily manage your server's whitelist and create a database of players SteamID, PlayUID, and other information for secure access control.
  - **Player Logging:** Keep track of player activity by logging join and leave events on your server.
  - **Scheduled Restarts:** Automate server reboots at set intervals for updates and maintenance, enhancing stability while minimizing disruption to players. This requires implementing a watchdog mechanism to detect when the server stops and automatically restarts it, similar to capabilities found in game panels or batch scripts.
- - **Status Tracking:** Track the total number of players across all your servers by enabling the status tracker.
+ - **Status Tracking:** Enable the status tracker to monitor the collective number of players on all your servers.
+ - **Palguard Integration**: Offers RCON integration for executing PalGuard commands, such as item and pal spawning. Features a customizable game database with a search function to easily spawn desired items or pals.
 
  ## Experimental Features
- - **Palguard Support**: Still in the early stages, but slowly adding support for Palguard.
+ > This is currently broken and not functioning correctly. Filtering doesn't seem to be working with the current API endpoint.
  - **EOS Protocol**: Interact with the Epic Online Services (EOS) API to retrieve detailed information about your server. This is currently experimental and does have some issues.
-  > This is currently broken and not functioning correctly. Filtering doesn't seem to be working with the current API endpoint.
+
 
 ## Guides:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.

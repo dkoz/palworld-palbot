@@ -22,5 +22,6 @@
         "times": ["06:30", "18:30"],
         "timezone": "America/New_York"
     },
-    "STATUS_TRACKING": false
+    "STATUS_TRACKING": true,
+    "PALGUARD_ACTIVE": false
 }
