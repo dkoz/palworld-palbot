@@ -14,8 +14,9 @@
  - **Status Tracking:** Track the total number of players across all your servers by enabling the status tracker.
 
  ## Experimental Features
- > This is currently broken and not functioning correctly. Filtering doesn't seem to be working with the current API endpoint.
+ - **Palguard Support**: Still in the early stages, but slowly adding support for Palguard.
  - **EOS Protocol**: Interact with the Epic Online Services (EOS) API to retrieve detailed information about your server. This is currently experimental and does have some issues.
+  > This is currently broken and not functioning correctly. Filtering doesn't seem to be working with the current API endpoint.
 
 ## Guides:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.

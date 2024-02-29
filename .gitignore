@@ -1,3 +1,5 @@
 *.pyc
 *.json
 *.env
+
+!gamedata/*.json
