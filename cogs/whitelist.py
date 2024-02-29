@@ -143,15 +143,14 @@ class PlayerInfoCog(commands.Cog):
         return matches[:25]
 
     @paldb.subcommand(name="name", description="Find player by name")
-    async def searchname(self, interaction: nextcord.Interaction, 
-                         name: str = nextcord.SlashOption(description="Enter player name", autocomplete=True)):
+    async def searchname(self, interaction: nextcord.Interaction, name: str = nextcord.SlashOption(description="Enter player name", autocomplete=True)):
         with open(self.player_data_file, 'r') as file:
             players = json.load(file)
 
         player_info = None
         player_steamid = None
         for steamid, player in players.items():
-            if player["name"].lower() == name.lower():
+            if player.get("name") and player["name"].lower() == name.lower():
                 player_info = player
                 player_steamid = steamid
                 break
