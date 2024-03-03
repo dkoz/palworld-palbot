@@ -1,0 +1,184 @@
+{
+    "eggs": [
+        {
+            "name": "Dark Egg",
+            "id": "PalEgg_Dark_01"
+        },
+        {
+            "name": "Dark Egg",
+            "id": "PalEgg_Dark_02"
+        },
+        {
+            "name": "Large Dark Egg",
+            "id": "PalEgg_Dark_03"
+        },
+        {
+            "name": "Large Dark Egg",
+            "id": "PalEgg_Dark_04"
+        },
+        {
+            "name": "Huge Dark Egg",
+            "id": "PalEgg_Dark_05"
+        },
+        {
+            "name": "Dragon Egg",
+            "id": "PalEgg_Dragon_01"
+        },
+        {
+            "name": "Dragon Egg",
+            "id": "PalEgg_Dragon_02"
+        },
+        {
+            "name": "Large Dragon Egg",
+            "id": "PalEgg_Dragon_03"
+        },
+        {
+            "name": "Large Dragon Egg",
+            "id": "PalEgg_Dragon_04"
+        },
+        {
+            "name": "Huge Dragon Egg",
+            "id": "PalEgg_Dragon_05"
+        },
+        {
+            "name": "Rocky Egg",
+            "id": "PalEgg_Earth_01"
+        },
+        {
+            "name": "Rocky Egg",
+            "id": "PalEgg_Earth_02"
+        },
+        {
+            "name": "Large Rocky Egg",
+            "id": "PalEgg_Earth_03"
+        },
+        {
+            "name": "Large Rocky Egg",
+            "id": "PalEgg_Earth_04"
+        },
+        {
+            "name": "Huge Rocky Egg",
+            "id": "PalEgg_Earth_05"
+        },
+        {
+            "name": "Electric Egg",
+            "id": "PalEgg_Electricity_01"
+        },
+        {
+            "name": "Electric Egg",
+            "id": "PalEgg_Electricity_02"
+        },
+        {
+            "name": "Large Electric Egg",
+            "id": "PalEgg_Electricity_03"
+        },
+        {
+            "name": "Large Electric Egg",
+            "id": "PalEgg_Electricity_04"
+        },
+        {
+            "name": "Huge Electric Egg",
+            "id": "PalEgg_Electricity_05"
+        },
+        {
+            "name": "Scorching Egg",
+            "id": "PalEgg_Fire_01"
+        },
+        {
+            "name": "Scorching Egg",
+            "id": "PalEgg_Fire_02"
+        },
+        {
+            "name": "Large Scorching Egg",
+            "id": "PalEgg_Fire_03"
+        },
+        {
+            "name": "Large Scorching Egg",
+            "id": "PalEgg_Fire_04"
+        },
+        {
+            "name": "Huge Scorching Egg",
+            "id": "PalEgg_Fire_05"
+        },
+        {
+            "name": "Frozen Egg",
+            "id": "PalEgg_Ice_01"
+        },
+        {
+            "name": "Frozen Egg",
+            "id": "PalEgg_Ice_02"
+        },
+        {
+            "name": "Large Frozen Egg",
+            "id": "PalEgg_Ice_03"
+        },
+        {
+            "name": "Large Frozen Egg",
+            "id": "PalEgg_Ice_04"
+        },
+        {
+            "name": "Huge Frozen Egg",
+            "id": "PalEgg_Ice_05"
+        },
+        {
+            "name": "Verdant Egg",
+            "id": "PalEgg_Leaf_01"
+        },
+        {
+            "name": "Verdant Egg",
+            "id": "PalEgg_Leaf_02"
+        },
+        {
+            "name": "Large Verdant Egg",
+            "id": "PalEgg_Leaf_03"
+        },
+        {
+            "name": "Large Verdant Egg",
+            "id": "PalEgg_Leaf_04"
+        },
+        {
+            "name": "Huge Verdant Egg",
+            "id": "PalEgg_Leaf_05"
+        },
+        {
+            "name": "Common Egg",
+            "id": "PalEgg_Normal_01"
+        },
+        {
+            "name": "Common Egg",
+            "id": "PalEgg_Normal_02"
+        },
+        {
+            "name": "Large Common Egg",
+            "id": "PalEgg_Normal_03"
+        },
+        {
+            "name": "Large Common Egg",
+            "id": "PalEgg_Normal_04"
+        },
+        {
+            "name": "Huge Common Egg",
+            "id": "PalEgg_Normal_05"
+        },
+        {
+            "name": "Damp Egg",
+            "id": "PalEgg_Water_01"
+        },
+        {
+            "name": "Damp Egg",
+            "id": "PalEgg_Water_02"
+        },
+        {
+            "name": "Large Damp Egg",
+            "id": "PalEgg_Water_03"
+        },
+        {
+            "name": "Large Damp Egg",
+            "id": "PalEgg_Water_04"
+        },
+        {
+            "name": "Huge Damp Egg",
+            "id": "PalEgg_Water_05"
+        }
+    ]
+}

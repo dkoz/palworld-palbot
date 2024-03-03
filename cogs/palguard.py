@@ -12,6 +12,7 @@ class PalguardCog(commands.Cog):
         self.load_config()
         self.load_pals()
         self.load_items()
+        self.load_eggs()
         self.timeout = 30
 
     def load_config(self):
@@ -29,6 +30,11 @@ class PalguardCog(commands.Cog):
         items_path = os.path.join('gamedata', 'items.json')
         with open(items_path) as items_file:
             self.items = json.load(items_file)["items"]
+
+    def load_eggs(self):
+        eggs_path = os.path.join('gamedata', 'eggs.json')
+        with open(eggs_path) as eggs_file:
+            self.eggs = json.load(eggs_file)["eggs"]
 
     async def rcon_command(self, server_name, command):
         server = self.servers.get(server_name)
@@ -52,6 +58,10 @@ class PalguardCog(commands.Cog):
 
     async def autocomplete_itemid(self, interaction: nextcord.Interaction, current: str):
         choices = [item["name"] for item in self.items if current.lower() in item["name"].lower()][:25]
+        await interaction.response.send_autocomplete(choices)
+
+    async def autocomplete_eggid(self, interaction: nextcord.Interaction, current: str):
+        choices = [egg["name"] for egg in self.eggs if current.lower() in egg["name"].lower()][:25]
         await interaction.response.send_autocomplete(choices)
 
     @nextcord.slash_command(default_member_permissions=nextcord.Permissions(administrator=True))
@@ -107,6 +117,38 @@ class PalguardCog(commands.Cog):
     @giveitem.on_autocomplete("itemid")
     async def on_autocomplete_items(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_itemid(interaction, current)
+
+    @palguard.subcommand(description="Give experience to a player.")
+    async def giveexp(self, interaction: nextcord.Interaction, steamid: str = nextcord.SlashOption(description="SteamID/UID of the player."), amount: str = nextcord.SlashOption(description="Experience amount"), server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        asyncio.create_task(self.rcon_command(server, f"give_exp {steamid} {amount}"))
+        embed = nextcord.Embed(title=f"Palguard Experience - {server}", color=nextcord.Color.blue())
+        embed.description = f"Giving {amount} experience to {steamid}."
+        await interaction.followup.send(embed=embed)
+
+    @giveexp.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+
+    @palguard.subcommand(description="Give an egg to a player.")
+    async def giveegg(self, interaction: nextcord.Interaction, steamid: str = nextcord.SlashOption(description="SteamID/UID of the player."), eggid: str = nextcord.SlashOption(description="The ID of the Egg.", autocomplete=True), server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        egg_id = next((egg["id"] for egg in self.eggs if egg["name"] == eggid), None)
+        if not egg_id:
+            await interaction.followup.send("Egg ID not found.", ephemeral=True)
+            return
+        asyncio.create_task(self.rcon_command(server, f"giveegg {steamid} {egg_id}"))
+        embed = nextcord.Embed(title=f"Palguard Egg - {server}", color=nextcord.Color.blue())
+        embed.description = f"Giving {eggid} to {steamid}."
+        await interaction.followup.send(embed=embed)
+
+    @giveegg.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+
+    @giveegg.on_autocomplete("eggid")
+    async def on_autocomplete_eggs(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_eggid(interaction, current)
 
 def setup(bot):
     config_path = os.path.join('data', 'config.json')
