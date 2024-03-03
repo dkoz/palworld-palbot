@@ -58,18 +58,25 @@ class PlayerInfoCog(commands.Cog):
                 continue
 
             parts = line.split(',')
-            if len(parts) == 3:
-                _, _, steamid = parts
-                if steamid in players and not players[steamid].get("whitelist", False):
-                    await self.kick_player(server, steamid)
-                    print(f"Player {steamid} not on whitelist, kicked.")
+            if len(parts) >= 3:
+                _, playeruid, steamid = parts
+                if len(steamid) < 17 and playeruid:
+                    valid = any(player for player, info in players.items() if info.get("playeruid") == playeruid and info.get("whitelist", False))
+                    if not valid:
+                        await self.kick_player(server, steamid, playeruid=playeruid)
+                        print(f"Player with PlayerUID {playeruid} not on whitelist, kicked.")
+                else:
+                    if steamid in players and not players[steamid].get("whitelist", False):
+                        await self.kick_player(server, steamid)
+                        print(f"Player {steamid} not on whitelist, kicked.")
 
-    async def kick_player(self, server, steamid):
+    async def kick_player(self, server, steamid, playeruid=None):
         try:
             async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc:
-                await asyncio.wait_for(pc.send(f"KickPlayer {steamid}"), timeout=10.0)
+                command = f"KickPlayer {steamid}" if not playeruid else f"KickPlayer {playeruid}"
+                await asyncio.wait_for(pc.send(command), timeout=10.0)
         except Exception as e:
-            print(f"Error kicking player {steamid}: {e}")
+            print(f"Error kicking player {steamid if steamid else playeruid}: {e}")
 
     # Check if a SteamID is valid
     def is_valid_steamid(self, steamid):
@@ -121,10 +128,10 @@ class PlayerInfoCog(commands.Cog):
         player_info = players.get(steamid)
         if player_info:
             embed = nextcord.Embed(title="Player Information", color=nextcord.Color.blue())
-            embed.add_field(name="Name", value=player_info["name"], inline=True)
-            embed.add_field(name="Player UID", value=player_info["playeruid"], inline=True)
-            embed.add_field(name="SteamID", value=steamid, inline=True)
-            embed.add_field(name="Whitelist", value=player_info["whitelist"], inline=True)
+            embed.add_field(name="Name", value=f"```{player_info["name"]}```", inline=False)
+            embed.add_field(name="Player UID", value=f"```{player_info["playeruid"]}```", inline=False)
+            embed.add_field(name="SteamID", value=f"```{steamid}```", inline=False)
+            embed.add_field(name="Whitelist", value=f"```{player_info["whitelist"]}```", inline=False)
             embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
             await interaction.response.send_message(embed=embed)
         else:
@@ -157,10 +164,10 @@ class PlayerInfoCog(commands.Cog):
 
         if player_info and player_steamid:
             embed = nextcord.Embed(title="Player Information", color=nextcord.Color.blue())
-            embed.add_field(name="Name", value=player_info["name"], inline=True)
-            embed.add_field(name="Player UID", value=player_info["playeruid"], inline=True)
-            embed.add_field(name="SteamID", value=player_steamid, inline=True)
-            embed.add_field(name="Whitelist", value=player_info["whitelist"], inline=True)
+            embed.add_field(name="Name", value=f"```{player_info["name"]}```", inline=False)
+            embed.add_field(name="Player UID", value=f"```{player_info["playeruid"]}```", inline=False)
+            embed.add_field(name="SteamID", value=f"```{player_steamid}```", inline=False)
+            embed.add_field(name="Whitelist", value=f"```{player_info["whitelist"]}```", inline=False)
             embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
             await interaction.response.send_message(embed=embed)
         else:
