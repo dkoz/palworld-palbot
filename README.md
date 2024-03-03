@@ -1,3 +1,4 @@
+![Logo](assets/palbot.png)
 # Palbot - Your Palworld Companion
 ![Discord](https://img.shields.io/discord/1009881575187566632?style=flat-square&label=support)
  
