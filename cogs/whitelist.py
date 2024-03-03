@@ -128,10 +128,10 @@ class PlayerInfoCog(commands.Cog):
         player_info = players.get(steamid)
         if player_info:
             embed = nextcord.Embed(title="Player Information", color=nextcord.Color.blue())
-            embed.add_field(name="Name", value=f"```{player_info["name"]}```", inline=False)
-            embed.add_field(name="Player UID", value=f"```{player_info["playeruid"]}```", inline=False)
+            embed.add_field(name="Name", value=f"```{player_info['name']}```", inline=False)
+            embed.add_field(name="Player UID", value=f"```{player_info['playeruid']}```", inline=False)
             embed.add_field(name="SteamID", value=f"```{steamid}```", inline=False)
-            embed.add_field(name="Whitelist", value=f"```{player_info["whitelist"]}```", inline=False)
+            embed.add_field(name="Whitelist", value=f"```{str(player_info['whitelist'])}```", inline=False)
             embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
             await interaction.response.send_message(embed=embed)
         else:
@@ -164,10 +164,10 @@ class PlayerInfoCog(commands.Cog):
 
         if player_info and player_steamid:
             embed = nextcord.Embed(title="Player Information", color=nextcord.Color.blue())
-            embed.add_field(name="Name", value=f"```{player_info["name"]}```", inline=False)
-            embed.add_field(name="Player UID", value=f"```{player_info["playeruid"]}```", inline=False)
+            embed.add_field(name="Name", value=f"```{player_info['name']}```", inline=False)
+            embed.add_field(name="Player UID", value=f"```{player_info['playeruid']}```", inline=False)
             embed.add_field(name="SteamID", value=f"```{player_steamid}```", inline=False)
-            embed.add_field(name="Whitelist", value=f"```{player_info["whitelist"]}```", inline=False)
+            embed.add_field(name="Whitelist", value=f"```{str(player_info['whitelist'])}```", inline=False)
             embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
             await interaction.response.send_message(embed=embed)
         else:
