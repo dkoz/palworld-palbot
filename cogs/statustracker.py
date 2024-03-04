@@ -33,7 +33,7 @@ class StatusTracker(commands.Cog):
         total_players = 0
         for server_config in self.servers.values():
             try:
-                async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"]) as pc:
+                async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
                     players_output = await pc.send("ShowPlayers")
                     players = self.parse_players(players_output)
                     total_players += len(players)

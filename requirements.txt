@@ -1,4 +1,4 @@
 nextcord==2.6.0
 python-dotenv==1.0.0
-gamercon-async==1.0.4
+gamercon-async==1.0.5
 pytz==2024.1
