@@ -3,7 +3,7 @@ import os
 import asyncio
 import nextcord
 from nextcord.ext import commands
-from util.gamercon_async import GameRCON
+from gamercon_async import GameRCON
 import util.constants as constants
 import re
 

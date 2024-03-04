@@ -3,7 +3,7 @@ import os
 import asyncio
 from nextcord.ext import commands
 import nextcord
-from util.gamercon_async import GameRCON
+from gamercon_async import GameRCON
 
 class StatusTracker(commands.Cog):
     def __init__(self, bot):

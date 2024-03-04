@@ -2,7 +2,7 @@ import asyncio
 import json
 import os
 from nextcord.ext import commands
-from util.gamercon_async import GameRCON
+from gamercon_async import GameRCON
 
 class ConnectCog(commands.Cog):
     def __init__(self, bot):

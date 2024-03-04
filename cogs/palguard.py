@@ -2,7 +2,7 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
-from util.gamercon_async import GameRCON
+from gamercon_async import GameRCON
 import asyncio
 import datetime
 

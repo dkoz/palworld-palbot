@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import nextcord
 from nextcord.ext import commands, tasks
 import pytz
-from util.gamercon_async import GameRCON
+from gamercon_async import GameRCON
 
 class RestartCog(commands.Cog):
     def __init__(self, bot):
