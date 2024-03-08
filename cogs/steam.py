@@ -12,19 +12,24 @@ class Steam(commands.Cog):
     async def steam(self, interaction: Interaction, profile_url: str = SlashOption(description="The full URL to the Steam profile")):
         await interaction.response.defer()
 
-        steamid64 = steam_protocol.extract_steamid64(profile_url)
-        if not steamid64:
-            vanity_url = steam_protocol.extract_vanity_url(profile_url)
-            if vanity_url:
-                steamid64 = await steam_protocol.resolve_vanity_url(vanity_url)
-                if not steamid64:
-                    await interaction.followup.send("Could not resolve Steam profile URL.")
+        try:
+            steamid64 = steam_protocol.extract_steamid64(profile_url)
+            if not steamid64:
+                vanity_url = steam_protocol.extract_vanity_url(profile_url)
+                if vanity_url:
+                    steamid64 = await steam_protocol.resolve_vanity_url(vanity_url)
+                    if not steamid64:
+                        await interaction.followup.send("Could not resolve Steam profile URL.")
+                        return
+                else:
+                    await interaction.followup.send("Invalid Steam profile URL.")
                     return
-            else:
-                await interaction.followup.send("Invalid Steam profile URL.")
-                return
 
-        summary_data, bans_data = await steam_protocol.fetch_steam_profile(steamid64)
+            summary_data, bans_data = await steam_protocol.fetch_steam_profile(steamid64)
+        except steam_protocol.InvalidSteamAPIKeyException:
+            await interaction.followup.send("Error: Invalid Steam API Key. Please configure a valid API key.")
+            return
+
         await self.display_steam_profile(interaction, summary_data, bans_data)
 
     async def display_steam_profile(self, interaction, summary_data, bans_data):

@@ -3,10 +3,16 @@ import re
 import asyncio
 from config import steam_api_key
 
+# exceptions
+class InvalidSteamAPIKeyException(Exception):
+    pass
+
 async def resolve_vanity_url(vanity_url):
     url = f"https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key={steam_api_key}&vanityurl={vanity_url}"
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
+            if response.status == 403:
+                raise InvalidSteamAPIKeyException("Invalid Steam API Key.")
             data = await response.json()
             if data['response']['success'] == 1:
                 return data['response']['steamid']
@@ -29,6 +35,8 @@ async def fetch_steam_profile(steamid64):
             session.get(summary_url),
             session.get(bans_url)
         )
+        if summary_response.status == 403 or bans_response.status == 403:
+            raise InvalidSteamAPIKeyException("Invalid Steam API Key.")
         summary_data = await summary_response.json()
         bans_data = await bans_response.json()
         return summary_data, bans_data
