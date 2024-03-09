@@ -14,8 +14,8 @@ class HelpView(View):
         embed.set_footer(text=f"{constants.FOOTER_TEXT}: Page {self.current_page + 1}", icon_url=constants.FOOTER_IMAGE)
 
         commands = self.bot.all_slash_commands if hasattr(self.bot, 'all_slash_commands') else []
-        start = self.current_page * 6
-        end = min(start + 6, len(commands))
+        start = self.current_page * 9
+        end = min(start + 9, len(commands))
 
         for command in commands[start:end]:
             embed.add_field(name=f"`/{command.name}`", value=command.description or "No description", inline=True)
@@ -30,7 +30,7 @@ class HelpView(View):
 
     @nextcord.ui.button(label="Next", style=nextcord.ButtonStyle.grey)
     async def next_button_callback(self, button, interaction):
-        if (self.current_page + 1) * 6 < len(self.bot.all_slash_commands if hasattr(self.bot, 'all_slash_commands') else []):
+        if (self.current_page + 1) * 9 < len(self.bot.all_slash_commands if hasattr(self.bot, 'all_slash_commands') else []):
             self.current_page += 1
             await self.update_help_message(interaction)
 

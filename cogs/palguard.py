@@ -169,5 +169,15 @@ def setup(bot):
     if config.get("PALGUARD_ACTIVE", False):
         cog = PalguardCog(bot)
         bot.add_cog(cog)
+        if not hasattr(bot, 'all_slash_commands'):
+            bot.all_slash_commands = []
+        bot.all_slash_commands.extend([
+            cog.palguard,
+            cog.reloadcfg,
+            cog.givepal,
+            cog.giveitem,
+            cog.giveexp,
+            cog.giveegg
+        ])
     else:
         print("Palguard disabled by default. Please enable it in config.json")
