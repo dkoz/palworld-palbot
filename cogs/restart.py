@@ -4,7 +4,8 @@ from datetime import datetime, timedelta
 import nextcord
 from nextcord.ext import commands, tasks
 import pytz
-from gamercon_async import GameRCON
+from gamercon_async import GameRCON, GameRCONBase64
+import base64
 
 class RestartCog(commands.Cog):
     def __init__(self, bot):
@@ -20,12 +21,29 @@ class RestartCog(commands.Cog):
             self.shutdown_config = config.get("SHUTDOWN_SCHEDULE", {})
             self.timezone = pytz.timezone(self.shutdown_config.get("timezone", "UTC"))
 
-    async def rcon_command(self, server_info, command):
+    def is_base64_encoded(self, s):
         try:
-            async with GameRCON(server_info["RCON_HOST"], server_info["RCON_PORT"], server_info["RCON_PASS"]) as rcon:
-                return await rcon.send(command)
-        except Exception as e:
-            return f"Error sending command: {e}"
+            if isinstance(s, str):
+                s = s.encode('utf-8')
+            return base64.b64encode(base64.b64decode(s)) == s
+        except Exception:
+            return False
+
+    async def rcon_command(self, server_info, command):
+        async def send_rcon_command(rcon_class):
+            try:
+                async with rcon_class(server_info["RCON_HOST"], server_info["RCON_PORT"], server_info["RCON_PASS"], timeout=10) as rcon:
+                    response = await rcon.send(command)
+                    if self.is_base64_encoded(response):
+                        return None
+                    return response
+            except Exception as e:
+                return f"Error sending command: {e}"
+
+        response = await send_rcon_command(GameRCON)
+        if response is None:
+            response = await send_rcon_command(GameRCONBase64)
+        return response
 
     @tasks.loop(seconds=60)
     async def shutdown_schedule(self):

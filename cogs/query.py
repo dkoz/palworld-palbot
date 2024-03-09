@@ -2,9 +2,10 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
-from gamercon_async import GameRCON
+from gamercon_async import GameRCON, GameRCONBase64
 import util.constants as constants
 import asyncio
+import base64
 
 class QueryCog(commands.Cog):
     def __init__(self, bot):
@@ -94,6 +95,14 @@ class QueryCog(commands.Cog):
                 print(f"An error occurred: {e}")
             await asyncio.sleep(60)
 
+    def is_base64_encoded(self, s):
+        try:
+            if isinstance(s, str):
+                s = s.encode('utf-8')
+            return base64.b64encode(base64.b64decode(s)) == s
+        except Exception:
+            return False
+
     async def check_server_status(self, server_config):
         try:
             async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"]) as pc:
@@ -102,20 +111,38 @@ class QueryCog(commands.Cog):
             return "Offline"
 
     async def get_player_count(self, server_config):
+        players_output = ""
         try:
-            async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"]) as pc:
+            async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
                 players_output = await pc.send("ShowPlayers")
-                return len(self.parse_players(players_output))
-        except Exception:
-            return 0
+        except Exception as e:
+            print(f"Failed to get player count: {e}")
+
+        if self.is_base64_encoded(players_output):
+            try:
+                async with GameRCONBase64(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
+                    players_output = await pc.send("ShowPlayers")
+            except Exception as e:
+                print(f"Failed to get player count using Base64 encoding: {e}")
+
+        return len(self.parse_players(players_output)) if players_output else 0
         
     async def get_player_names(self, server_config):
+        players_output = ""
         try:
-            async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"]) as pc:
+            async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
                 players_output = await pc.send("ShowPlayers")
-                return self.parse_players(players_output)
-        except Exception:
-            return []
+        except Exception as e:
+            print(f"Failed to get player names: {e}")
+
+        if self.is_base64_encoded(players_output):
+            try:
+                async with GameRCONBase64(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
+                    players_output = await pc.send("ShowPlayers")
+            except Exception as e:
+                print(f"Failed to get player names using Base64 encoding: {e}")
+
+        return self.parse_players(players_output) if players_output else []
 
     def parse_players(self, players_output):
         players = []

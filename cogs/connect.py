@@ -2,7 +2,8 @@ import asyncio
 import json
 import os
 from nextcord.ext import commands
-from gamercon_async import GameRCON
+from gamercon_async import GameRCON, GameRCONBase64
+import base64
 
 class ConnectCog(commands.Cog):
     def __init__(self, bot):
@@ -16,15 +17,25 @@ class ConnectCog(commands.Cog):
         with open(config_path) as config_file:
             config = json.load(config_file)
         return config["PALWORLD_SERVERS"]
+    
+    def is_base64_encoded(self, s):
+        try:
+            if isinstance(s, str):
+                s = s.encode('utf-8')
+            return base64.b64encode(base64.b64decode(s)) == s
+        except Exception:
+            return False
 
     async def run_command(self, server):
         try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc:
-                response = await asyncio.wait_for(pc.send("ShowPlayers"), timeout=10.0)
+            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
+                response = await rcon.send("ShowPlayers")
+                if self.is_base64_encoded(response):
+                    async with GameRCONBase64(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
+                        response = await rcon.send("ShowPlayers")
                 return response
         except Exception as e:
-            print(f"Error executing ShowPlayers command: {e}")
-            return None
+            print(f"Error sending command: {e}")
 
     async def monitor_player_joins(self):
         while True:

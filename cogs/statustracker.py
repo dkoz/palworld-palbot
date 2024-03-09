@@ -1,9 +1,10 @@
 import json
 import os
 import asyncio
+import base64
 from nextcord.ext import commands
 import nextcord
-from gamercon_async import GameRCON
+from gamercon_async import GameRCON, GameRCONBase64
 
 class StatusTracker(commands.Cog):
     def __init__(self, bot):
@@ -20,6 +21,14 @@ class StatusTracker(commands.Cog):
             self.config = json.load(config_file)
             self.servers = self.config.get("PALWORLD_SERVERS", {})
 
+    def is_base64_encoded(self, s):
+        try:
+            if isinstance(s, str):
+                s = s.encode('utf-8')
+            return base64.b64encode(base64.b64decode(s)) == s
+        except Exception:
+            return False
+
     async def update_status(self):
         await self.bot.wait_until_ready()
         while not self.bot.is_closed() and self.config.get("STATUS_TRACKING", False):
@@ -32,13 +41,22 @@ class StatusTracker(commands.Cog):
     async def get_total_players(self):
         total_players = 0
         for server_config in self.servers.values():
+            players_output = ""
             try:
                 async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
                     players_output = await pc.send("ShowPlayers")
-                    players = self.parse_players(players_output)
-                    total_players += len(players)
             except Exception as e:
                 print(f"Failed to get player count for a server: {e}")
+
+            if self.is_base64_encoded(players_output):
+                try:
+                    async with GameRCONBase64(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
+                        players_output = await pc.send("ShowPlayers")
+                except Exception as e:
+                    print(f"Failed to get player count for a server using Base64 encoding: {e}")
+
+            players = self.parse_players(players_output)
+            total_players += len(players)
         return total_players
 
     def parse_players(self, players_output):

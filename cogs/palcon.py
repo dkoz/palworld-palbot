@@ -2,10 +2,11 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
-from gamercon_async import GameRCON
+from gamercon_async import GameRCON, GameRCONBase64
 import util.constants as constants
 import asyncio
 import datetime
+import base64
 
 class PalconCog(commands.Cog):
     def __init__(self, bot):
@@ -19,17 +20,27 @@ class PalconCog(commands.Cog):
             config = json.load(config_file)
             self.servers = config["PALWORLD_SERVERS"]
 
+    def is_base64_encoded(self, s):
+        try:
+            return base64.b64encode(base64.b64decode(s)).decode() == s
+        except Exception:
+            return False
+
     async def rcon_command(self, server_name, command):
         server = self.servers.get(server_name)
         if not server:
             return f"Server '{server_name}' not found."
 
-        try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"]) as pc:
-                response = await asyncio.wait_for(pc.send(command), timeout=self.timeout)
-                return response
-        except Exception as error:
-            return f"Error sending command: {error}"
+        async def send_command(ProtocolClass):
+            async with ProtocolClass(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"]) as pc:
+                return await asyncio.wait_for(pc.send(command), timeout=self.timeout)
+
+        response = await send_command(GameRCON)
+        
+        if self.is_base64_encoded(response):
+            response = await send_command(GameRCONBase64)
+
+        return response
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
         choices = [server for server in self.servers if current.lower() in server.lower()]

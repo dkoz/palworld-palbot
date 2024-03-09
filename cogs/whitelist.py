@@ -3,9 +3,10 @@ import os
 import asyncio
 import nextcord
 from nextcord.ext import commands
-from gamercon_async import GameRCON
+from gamercon_async import GameRCON, GameRCONBase64
 import util.constants as constants
 import re
+import base64
 
 class PlayerInfoCog(commands.Cog):
     def __init__(self, bot):
@@ -29,14 +30,24 @@ class PlayerInfoCog(commands.Cog):
             with open(self.player_data_file, 'w') as file:
                 json.dump({}, file)
 
+    def is_base64_encoded(self, s):
+        try:
+            if isinstance(s, str):
+                s = s.encode('utf-8')
+            return base64.b64encode(base64.b64decode(s)) == s
+        except Exception:
+            return False
+
     async def run_showplayers_command(self, server):
         try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc:
-                response = await asyncio.wait_for(pc.send("ShowPlayers"), timeout=10.0)
+            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
+                response = await rcon.send("ShowPlayers")
+                if self.is_base64_encoded(response):
+                    async with GameRCONBase64(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
+                        response = await rcon.send("ShowPlayers")
                 return response
         except Exception as e:
-            print(f"Error executing ShowPlayers command: {e}")
-            return None
+            print(f"Error sending command: {e}")
 
     async def update_players(self):
         while True:
@@ -74,7 +85,11 @@ class PlayerInfoCog(commands.Cog):
         try:
             async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc:
                 command = f"KickPlayer {steamid}" if not playeruid else f"KickPlayer {playeruid}"
-                await asyncio.wait_for(pc.send(command), timeout=10.0)
+                response = await pc.send(command)
+                if self.is_base64_encoded(response):
+                    async with GameRCONBase64(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc_base64:
+                        response = await pc_base64.send(command)
+                return response
         except Exception as e:
             print(f"Error kicking player {steamid if steamid else playeruid}: {e}")
 
