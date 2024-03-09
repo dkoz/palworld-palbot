@@ -20,6 +20,7 @@ class RestartCog(commands.Cog):
             self.servers = config.get("PALWORLD_SERVERS", {})
             self.shutdown_config = config.get("SHUTDOWN_SCHEDULE", {})
             self.timezone = pytz.timezone(self.shutdown_config.get("timezone", "UTC"))
+            self.announce_channel = self.shutdown_config.get("channel", None)
 
     def is_base64_encoded(self, s):
         try:
@@ -80,6 +81,19 @@ class RestartCog(commands.Cog):
         for server_name, server_info in self.servers.items():
             response = await self.rcon_command(server_info, command)
             print(f"Shutdown initiated for {server_name}: {response}")
+        await self.announce_restart()
+
+    async def announce_restart(self):
+        if self.announce_channel:
+            channel = self.bot.get_channel(self.announce_channel)
+            if channel:
+                embed = nextcord.Embed(title="Server Restart", description="The server has been restarted.", color=nextcord.Color.blurple())
+                embed.add_field(name="Restart Time", value=datetime.now(self.timezone).strftime("%Y-%m-%d %H:%M:%S"), inline=False)
+                await channel.send(embed=embed)
+            else:
+                print("Announcement channel not found.")
+        else:
+            print("Announcement channel ID not set.")
 
     @shutdown_schedule.before_loop
     async def before_shutdown_schedule(self):

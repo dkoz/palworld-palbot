@@ -20,7 +20,8 @@
     "SHUTDOWN_SCHEDULE": {
         "enabled": false,
         "times": ["06:30", "18:30"],
-        "timezone": "America/New_York"
+        "timezone": "America/New_York",
+        "channel": 12345678
     },
     "STATUS_TRACKING": true,
     "PALGUARD_ACTIVE": false
