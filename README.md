@@ -4,7 +4,9 @@
  
  Welcome to Palbot, your ultimate companion discord bot for Palworld server management! Palbot is a versatile bot designed to enhance your Palworld experience with a range of powerful features.
 
- Welcome to the official Palbot repository for Palworld Discord Bot. Invite the verified [Palbot](https://discord.com/api/oauth2/authorize?client_id=1197954327642378352&permissions=8&scope=bot%20applications.commands) to your server today!
+ Invite the verified [Palbot](https://discord.com/api/oauth2/authorize?client_id=1197954327642378352&permissions=8&scope=bot%20applications.commands) to your server today!
+
+ Support the development on [Patreon](https://www.patreon.com/palbotinn).
 
 ## Features:
  - **RCON Integration:** Seamlessly control your server using RCON commands.
