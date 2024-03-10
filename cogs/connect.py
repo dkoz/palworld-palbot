@@ -5,6 +5,7 @@ import nextcord
 from nextcord.ext import commands
 from gamercon_async import GameRCON, GameRCONBase64
 import base64
+import datetime
 
 class ConnectCog(commands.Cog):
     def __init__(self, bot):
@@ -78,7 +79,10 @@ class ConnectCog(commands.Cog):
             announcement_channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
             channel = self.bot.get_channel(announcement_channel_id)
             if channel:
+                now = datetime.datetime.now()
+                timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
                 embed = nextcord.Embed(title="Player Joined", description=f"Player joined {server_name}: {name} (SteamID: {steamid})", color=nextcord.Color.blurple())
+                embed = embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
 
     async def announce_player_leave(self, server_name, player):
@@ -87,7 +91,10 @@ class ConnectCog(commands.Cog):
             announcement_channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
             channel = self.bot.get_channel(announcement_channel_id)
             if channel:
+                now = datetime.datetime.now()
+                timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
                 embed = nextcord.Embed(title="Player Left", description=f"Player left {server_name}: {name} (SteamID: {steamid})", color=nextcord.Color.red())
+                embed = embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
 
 def setup(bot):

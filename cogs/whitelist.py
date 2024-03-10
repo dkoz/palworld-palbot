@@ -7,6 +7,7 @@ from gamercon_async import GameRCON, GameRCONBase64
 import util.constants as constants
 import re
 import base64
+import datetime
 import unicodedata
 
 class PlayerInfoCog(commands.Cog):
@@ -97,7 +98,10 @@ class PlayerInfoCog(commands.Cog):
                     channel = self.bot.get_channel(announcement_channel_id)
                     if channel:
                         # message = f"Player {steamid if steamid else playeruid} kicked for {reason}."
+                        now = datetime.datetime.now()
+                        timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
                         embed = nextcord.Embed(title=f"Whitelist Check", description=f"Player `{steamid if steamid else playeruid}` kicked for {reason}", color=nextcord.Color.green())
+                        embed = embed.set_footer(text=f"Time: {timestamp}")
                         await channel.send(embed=embed)
                 return response
         except Exception as e:

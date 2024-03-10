@@ -6,6 +6,7 @@ from nextcord.ext import commands, tasks
 import pytz
 from gamercon_async import GameRCON, GameRCONBase64
 import base64
+import datetime
 
 class RestartCog(commands.Cog):
     def __init__(self, bot):
@@ -87,8 +88,11 @@ class RestartCog(commands.Cog):
         if self.announce_channel:
             channel = self.bot.get_channel(self.announce_channel)
             if channel:
-                embed = nextcord.Embed(title="Server Restart", description="The server has been restarted.", color=nextcord.Color.blurple())
-                embed.add_field(name="Restart Time", value=datetime.now(self.timezone).strftime("%Y-%m-%d %H:%M:%S"), inline=False)
+                now = datetime.datetime.now()
+                timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
+                thetime = now.strftime("%I:%M %p")
+                embed = nextcord.Embed(title="Server Restarted", description=f"The server has been restarted at {thetime}.", color=nextcord.Color.blurple())
+                embed = embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
             else:
                 print("Announcement channel not found.")
