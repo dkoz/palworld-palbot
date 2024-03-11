@@ -100,8 +100,8 @@ class PlayerInfoCog(commands.Cog):
                         # message = f"Player {steamid if steamid else playeruid} kicked for {reason}."
                         now = datetime.datetime.now()
                         timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
-                        embed = nextcord.Embed(title=f"Whitelist Check", description=f"Player `{steamid if steamid else playeruid}` kicked for {reason}", color=nextcord.Color.green())
-                        embed = embed.set_footer(text=f"Time: {timestamp}")
+                        embed = nextcord.Embed(title=f"Whitelist Check", description=f"Player `{steamid if steamid else playeruid}` kicked for {reason}.", color=nextcord.Color.green())
+                        embed.set_footer(text=f"Time: {timestamp}")
                         await channel.send(embed=embed)
                 return response
         except Exception as e:

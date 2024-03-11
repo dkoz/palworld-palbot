@@ -6,7 +6,6 @@ from nextcord.ext import commands, tasks
 import pytz
 from gamercon_async import GameRCON, GameRCONBase64
 import base64
-import datetime
 
 class RestartCog(commands.Cog):
     def __init__(self, bot):
@@ -18,10 +17,10 @@ class RestartCog(commands.Cog):
         config_path = os.path.join('data', 'config.json')
         with open(config_path) as config_file:
             config = json.load(config_file)
-            self.servers = config.get("PALWORLD_SERVERS", {})
-            self.shutdown_config = config.get("SHUTDOWN_SCHEDULE", {})
-            self.timezone = pytz.timezone(self.shutdown_config.get("timezone", "UTC"))
-            self.announce_channel = self.shutdown_config.get("channel", None)
+        self.servers = config["PALWORLD_SERVERS"]
+        self.shutdown_config = config["SHUTDOWN_SCHEDULE"]
+        self.timezone = pytz.timezone(self.shutdown_config["timezone"])
+        self.announce_channel = self.shutdown_config["channel"]
 
     def is_base64_encoded(self, s):
         try:
@@ -51,8 +50,8 @@ class RestartCog(commands.Cog):
     async def shutdown_schedule(self):
         now_utc = datetime.now(pytz.utc)
         now_local = now_utc.astimezone(self.timezone)
-        if self.shutdown_config.get("enabled", False):
-            for shutdown_time_str in self.shutdown_config.get("times", []):
+        if self.shutdown_config["enabled"]:
+            for shutdown_time_str in self.shutdown_config["times"]:
                 shutdown_time = datetime.strptime(shutdown_time_str, "%H:%M").time()
                 shutdown_datetime_local = datetime.now(self.timezone).replace(hour=shutdown_time.hour, minute=shutdown_time.minute, second=0, microsecond=0)
                 if shutdown_datetime_local < now_local:
@@ -66,7 +65,7 @@ class RestartCog(commands.Cog):
                 elif 120 <= time_until_shutdown < 180:
                     await self.save_server_state() # Save the server state
                 elif 60 <= time_until_shutdown < 120:
-                    await self.initiate_shutdown("Shutdown 60 Server_restart_in_1_minute")
+                    await self.initiate_shutdown("Shutdown 30 Server_restart_in_30_seconds")
 
     async def broadcast_warning(self, message):
         for server_name, server_info in self.servers.items():
@@ -84,15 +83,16 @@ class RestartCog(commands.Cog):
             print(f"Shutdown initiated for {server_name}: {response}")
         await self.announce_restart()
 
+    # There is a slight 30 second delay between the broadcast and the actual shutdown
     async def announce_restart(self):
         if self.announce_channel:
             channel = self.bot.get_channel(self.announce_channel)
             if channel:
-                now = datetime.datetime.now()
-                timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
-                thetime = now.strftime("%I:%M %p")
-                embed = nextcord.Embed(title="Server Restarted", description=f"The server has been restarted at {thetime}.", color=nextcord.Color.blurple())
-                embed = embed.set_footer(text=f"Time: {timestamp}")
+                now = datetime.now(self.timezone)
+                timestamp = now.strftime("%m-%d-%Y %H:%M:%S")
+                timestamp_desc = now.strftime("%I:%M %p")
+                embed = nextcord.Embed(title="Server Restart", description=f"The server has been restarted at {timestamp_desc}", color=nextcord.Color.blurple())
+                embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
             else:
                 print("Announcement channel not found.")
