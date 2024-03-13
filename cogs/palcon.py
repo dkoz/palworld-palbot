@@ -15,7 +15,7 @@ class PalconCog(commands.Cog):
         self.timeout = 30
 
     def load_config(self):
-        config_path = os.path.join('data', 'config.json')
+        config_path = "config.json"
         with open(config_path) as config_file:
             config = json.load(config_file)
             self.servers = config["PALWORLD_SERVERS"]

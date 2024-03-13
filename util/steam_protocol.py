@@ -1,7 +1,7 @@
 import aiohttp
 import re
 import asyncio
-from config import steam_api_key
+from settings import steam_api_key
 
 # exceptions
 class InvalidSteamAPIKeyException(Exception):

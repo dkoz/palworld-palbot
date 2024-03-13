@@ -20,7 +20,7 @@ class PlayerInfoCog(commands.Cog):
         self.bot.loop.create_task(self.update_players())
 
     def load_servers_config(self):
-        config_path = os.path.join(self.data_folder, 'config.json')
+        config_path = "config.json"
         with open(config_path) as config_file:
             config = json.load(config_file)
             for server in config["PALWORLD_SERVERS"].values():

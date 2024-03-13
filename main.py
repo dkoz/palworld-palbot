@@ -1,15 +1,15 @@
 import nextcord
 from nextcord.ext import commands
-import config
+import settings
 import os
 
 intents = nextcord.Intents.all()
-bot = commands.Bot(command_prefix=config.bot_prefix, intents=intents, help_command=None)
+bot = commands.Bot(command_prefix=settings.bot_prefix, intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
     print(f'{bot.user} is ready! Created by koz')
-    activity = nextcord.Activity(type=nextcord.ActivityType.playing, name=config.bot_activity)
+    activity = nextcord.Activity(type=nextcord.ActivityType.playing, name=settings.bot_activity)
     await bot.change_presence(activity=activity)
 
 # Error Handling
@@ -34,4 +34,4 @@ if __name__ == '__main__':
     for filename in os.listdir("cogs"):
         if filename.endswith(".py"):
             bot.load_extension(f"cogs.{filename[:-3]}")
-    bot.run(config.bot_token)
+    bot.run(settings.bot_token)
