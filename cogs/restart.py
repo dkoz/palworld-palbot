@@ -9,39 +9,44 @@ from util.rconutility import RconUtility
 class RestartCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.shutdown_config = {}
         self.load_config()
         self.rcon_util = RconUtility(self.servers)
-        self.shutdown_schedule.start()
+        if self.shutdown_config.get("enabled", False):
+            self.shutdown_schedule.start()
 
     def load_config(self):
         config_path = "config.json"
         with open(config_path) as config_file:
             config = json.load(config_file)
         self.servers = config["PALWORLD_SERVERS"]
-        self.shutdown_config = config["SHUTDOWN_SCHEDULE"]
-        self.timezone = pytz.timezone(self.shutdown_config["timezone"])
-        self.announce_channel = self.shutdown_config["channel"]
+        self.shutdown_config = config.get("SHUTDOWN_SCHEDULE", {"enabled": False})
+        timezone_str = self.shutdown_config.get("timezone", "UTC")
+        self.timezone = pytz.timezone(timezone_str)
+        self.announce_channel = self.shutdown_config.get("channel")
 
     @tasks.loop(seconds=60)
     async def shutdown_schedule(self):
+        if not self.shutdown_config.get("enabled", False):
+            return
         now_utc = datetime.now(pytz.utc)
         now_local = now_utc.astimezone(self.timezone)
-        if self.shutdown_config["enabled"]:
-            for shutdown_time_str in self.shutdown_config["times"]:
-                shutdown_time = datetime.strptime(shutdown_time_str, "%H:%M").time()
-                shutdown_datetime_local = datetime.now(self.timezone).replace(hour=shutdown_time.hour, minute=shutdown_time.minute, second=0, microsecond=0)
-                if shutdown_datetime_local < now_local:
-                    shutdown_datetime_local += timedelta(days=1)
-                time_until_shutdown = (shutdown_datetime_local - now_local).total_seconds()
+        for shutdown_time_str in self.shutdown_config.get("times", []):
+            shutdown_time = datetime.strptime(shutdown_time_str, "%H:%M").time()
+            shutdown_datetime_local = datetime.now(self.timezone).replace(hour=shutdown_time.hour, minute=shutdown_time.minute, second=0, microsecond=0)
+            if shutdown_datetime_local < now_local:
+                shutdown_datetime_local += timedelta(days=1)
+            time_until_shutdown = (shutdown_datetime_local - now_local).total_seconds()
+            
 
-                if 300 <= time_until_shutdown < 360:  # 5 minutes before
-                    await self.broadcast_warning("Server restart in 5 minutes")
-                elif 180 <= time_until_shutdown < 240:  # 3 minutes before
-                    await self.broadcast_warning("Server restart in 3 minutes")
-                elif 120 <= time_until_shutdown < 180:
-                    await self.save_server_state() # Save the server state
-                elif 60 <= time_until_shutdown < 120:
-                    await self.initiate_shutdown("Shutdown 30 Server_restart_in_30_seconds")
+            if 300 <= time_until_shutdown < 360:
+                await self.broadcast_warning("Server restart in 5 minutes")
+            elif 180 <= time_until_shutdown < 240:
+                await self.broadcast_warning("Server restart in 3 minutes")
+            elif 120 <= time_until_shutdown < 180:
+                await self.save_server_state()
+            elif 60 <= time_until_shutdown < 120:
+                await self.initiate_shutdown("Shutdown 30 Server_restart_in_30_seconds")
 
     async def broadcast_warning(self, message):
         for server_name in self.servers:
