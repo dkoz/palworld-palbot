@@ -2,10 +2,8 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
-from gamercon_async import GameRCON, GameRCONBase64
+from util.rconutility import RconUtility
 import asyncio
-import datetime
-import base64
 
 class PalguardCog(commands.Cog):
     def __init__(self, bot):
@@ -14,6 +12,7 @@ class PalguardCog(commands.Cog):
         self.load_pals()
         self.load_items()
         self.load_eggs()
+        self.rcon_util = RconUtility(self.servers)
         self.timeout = 30
 
     def load_config(self):
@@ -36,28 +35,6 @@ class PalguardCog(commands.Cog):
         eggs_path = os.path.join('gamedata', 'eggs.json')
         with open(eggs_path) as eggs_file:
             self.eggs = json.load(eggs_file)["eggs"]
-
-    def is_base64_encoded(self, s):
-        try:
-            return base64.b64encode(base64.b64decode(s)).decode() == s
-        except Exception:
-            return False
-
-    async def rcon_command(self, server_name, command):
-        server = self.servers.get(server_name)
-        if not server:
-            return f"Server '{server_name}' not found."
-
-        async def send_command(ProtocolClass):
-            async with ProtocolClass(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"]) as pc:
-                return await asyncio.wait_for(pc.send(command), timeout=self.timeout)
-
-        response = await send_command(GameRCON)
-        
-        if self.is_base64_encoded(response):
-            response = await send_command(GameRCONBase64)
-
-        return response
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
         choices = [server for server in self.servers if current.lower() in server.lower()]
@@ -82,7 +59,7 @@ class PalguardCog(commands.Cog):
     @palguard.subcommand(name="reload" ,description="Reload server configuration.")
     async def reloadcfg(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
-        response = await self.rcon_command(server, "reloadcfg")
+        response = await self.rcon_util.rcon_command(server, "reloadcfg")
         await interaction.followup.send(f"**Response:** {response}")
 
     @reloadcfg.on_autocomplete("server")
@@ -96,7 +73,7 @@ class PalguardCog(commands.Cog):
         if not pal_id:
             await interaction.followup.send("Pal ID not found.", ephemeral=True)
             return
-        asyncio.create_task(self.rcon_command(server, f"givepal {steamid} {pal_id} {level}"))
+        asyncio.create_task(self.rcon_util.rcon_command(server, f"givepal {steamid} {pal_id} {level}"))
         embed = nextcord.Embed(title=f"Palguard Pal - {server}", color=nextcord.Color.blue())
         embed.description = f"Giving {palid} to {steamid}."
         await interaction.followup.send(embed=embed)
@@ -116,7 +93,7 @@ class PalguardCog(commands.Cog):
         if not item_id:
             await interaction.followup.send("Item ID not found.", ephemeral=True)
             return
-        asyncio.create_task(self.rcon_command(server, f"give {steamid} {item_id} {amount}"))
+        asyncio.create_task(self.rcon_util.rcon_command(server, f"give {steamid} {item_id} {amount}"))
         embed = nextcord.Embed(title=f"Palguard Item - {server}", color=nextcord.Color.blue())
         embed.description = f"Giving {itemid} to {steamid}."
         await interaction.followup.send(embed=embed)
@@ -132,7 +109,7 @@ class PalguardCog(commands.Cog):
     @palguard.subcommand(description="Give experience to a player.")
     async def giveexp(self, interaction: nextcord.Interaction, steamid: str = nextcord.SlashOption(description="SteamID/UID of the player."), amount: str = nextcord.SlashOption(description="Experience amount"), server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
-        asyncio.create_task(self.rcon_command(server, f"give_exp {steamid} {amount}"))
+        asyncio.create_task(self.rcon_util.rcon_command(server, f"give_exp {steamid} {amount}"))
         embed = nextcord.Embed(title=f"Palguard Experience - {server}", color=nextcord.Color.blue())
         embed.description = f"Giving {amount} experience to {steamid}."
         await interaction.followup.send(embed=embed)
@@ -148,7 +125,7 @@ class PalguardCog(commands.Cog):
         if not egg_id:
             await interaction.followup.send("Egg ID not found.", ephemeral=True)
             return
-        asyncio.create_task(self.rcon_command(server, f"giveegg {steamid} {egg_id}"))
+        asyncio.create_task(self.rcon_util.rcon_command(server, f"giveegg {steamid} {egg_id}"))
         embed = nextcord.Embed(title=f"Palguard Egg - {server}", color=nextcord.Color.blue())
         embed.description = f"Giving {eggid} to {steamid}."
         await interaction.followup.send(embed=embed)

@@ -4,13 +4,13 @@ from datetime import datetime, timedelta
 import nextcord
 from nextcord.ext import commands, tasks
 import pytz
-from gamercon_async import GameRCON, GameRCONBase64
-import base64
+from util.rconutility import RconUtility
 
 class RestartCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.load_config()
+        self.rcon_util = RconUtility(self.servers)
         self.shutdown_schedule.start()
 
     def load_config(self):
@@ -21,30 +21,6 @@ class RestartCog(commands.Cog):
         self.shutdown_config = config["SHUTDOWN_SCHEDULE"]
         self.timezone = pytz.timezone(self.shutdown_config["timezone"])
         self.announce_channel = self.shutdown_config["channel"]
-
-    def is_base64_encoded(self, s):
-        try:
-            if isinstance(s, str):
-                s = s.encode('utf-8')
-            return base64.b64encode(base64.b64decode(s)) == s
-        except Exception:
-            return False
-
-    async def rcon_command(self, server_info, command):
-        async def send_rcon_command(rcon_class):
-            try:
-                async with rcon_class(server_info["RCON_HOST"], server_info["RCON_PORT"], server_info["RCON_PASS"], timeout=10) as rcon:
-                    response = await rcon.send(command)
-                    if self.is_base64_encoded(response):
-                        return None
-                    return response
-            except Exception as e:
-                return f"Error sending command: {e}"
-
-        response = await send_rcon_command(GameRCON)
-        if response is None:
-            response = await send_rcon_command(GameRCONBase64)
-        return response
 
     @tasks.loop(seconds=60)
     async def shutdown_schedule(self):
@@ -59,39 +35,49 @@ class RestartCog(commands.Cog):
                 time_until_shutdown = (shutdown_datetime_local - now_local).total_seconds()
 
                 if 300 <= time_until_shutdown < 360:  # 5 minutes before
-                    await self.broadcast_warning("Server_restart_in_5_minutes")
+                    await self.broadcast_warning("Server restart in 5 minutes")
                 elif 180 <= time_until_shutdown < 240:  # 3 minutes before
-                    await self.broadcast_warning("Server_restart_in_3_minutes")
+                    await self.broadcast_warning("Server restart in 3 minutes")
                 elif 120 <= time_until_shutdown < 180:
                     await self.save_server_state() # Save the server state
                 elif 60 <= time_until_shutdown < 120:
                     await self.initiate_shutdown("Shutdown 30 Server_restart_in_30_seconds")
 
     async def broadcast_warning(self, message):
-        for server_name, server_info in self.servers.items():
-            await self.rcon_command(server_info, f"Broadcast {message}")
-            print(f"Broadcasted to {server_name}: {message}")
+        for server_name in self.servers:
+            try:
+                message_format = message.replace(" ", "\u001f")
+                await self.rcon_util.rcon_command(server_name, f"Broadcast {message_format}")
+                print(f"Broadcasted to {server_name}: {message}")
+            except Exception as e:
+                print(f"Error broadcasting to {server_name}: {e}")
 
     async def save_server_state(self):
-        for server_name, server_info in self.servers.items():
-            response = await self.rcon_command(server_info, "Save")
-            print(f"State saved for {server_name}: {response}")
+        for server_name in self.servers:
+            try:
+                response = await self.rcon_util.rcon_command(server_name, "Save")
+                print(f"State saved for {server_name}: {response}")
+            except Exception as e:
+                print(f"Error saving state for {server_name}: {e}")
 
     async def initiate_shutdown(self, command):
-        for server_name, server_info in self.servers.items():
-            response = await self.rcon_command(server_info, command)
-            print(f"Shutdown initiated for {server_name}: {response}")
-        await self.announce_restart()
+        for server_name in self.servers:
+            try:
+                response = await self.rcon_util.rcon_command(server_name, command)
+                print(f"Shutdown initiated for {server_name}: {response}")
+                await self.announce_restart(server_name)
+            except Exception as e:
+                print(f"Error initiating shutdown for {server_name}: {e}")
 
     # There is a slight 30 second delay between the broadcast and the actual shutdown
-    async def announce_restart(self):
+    async def announce_restart(self, server_name):
         if self.announce_channel:
             channel = self.bot.get_channel(self.announce_channel)
             if channel:
                 now = datetime.now(self.timezone)
                 timestamp = now.strftime("%m-%d-%Y %H:%M:%S")
                 timestamp_desc = now.strftime("%I:%M %p")
-                embed = nextcord.Embed(title="Server Restart", description=f"The server has been restarted at {timestamp_desc}", color=nextcord.Color.blurple())
+                embed = nextcord.Embed(title="Server Restart", description=f"The {server_name} server has been restarted at {timestamp_desc}.", color=nextcord.Color.blurple())
                 embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
             else:

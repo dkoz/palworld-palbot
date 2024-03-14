@@ -1,16 +1,15 @@
 import asyncio
 import json
-import os
 import nextcord
 from nextcord.ext import commands
-from gamercon_async import GameRCON, GameRCONBase64
-import base64
+from util.rconutility import RconUtility
 import datetime
 
 class ConnectCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.servers = self.load_config()
+        self.rcon_util = RconUtility(self.servers)
         self.last_seen_players = {}
         self.bot.loop.create_task(self.monitor_player_activity())
 
@@ -20,32 +19,21 @@ class ConnectCog(commands.Cog):
             config = json.load(config_file)
         return config["PALWORLD_SERVERS"]
     
-    def is_base64_encoded(self, s):
+    async def run_command(self, server_name):
         try:
-            if isinstance(s, str):
-                s = s.encode('utf-8')
-            return base64.b64encode(base64.b64decode(s)) == s
-        except Exception:
-            return False
-
-    async def run_command(self, server):
-        try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
-                response = await rcon.send("ShowPlayers")
-                if self.is_base64_encoded(response):
-                    async with GameRCONBase64(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
-                        response = await rcon.send("ShowPlayers")
-                return response
+            response = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
+            return response
         except Exception as e:
-            print(f"Error sending command: {e}")
-
+            print(f"Error sending command to {server_name}: {e}")
+            return ""
+        
     async def monitor_player_activity(self):
         while True:
             for server_name, server_info in self.servers.items():
-                current_players = await self.run_command(server_info)
+                current_players = await self.run_command(server_name)
                 if current_players:
                     await self.announce_player_changes(server_name, current_players)
-            await asyncio.sleep(18)
+            await asyncio.sleep(13)
 
     async def announce_player_changes(self, server_name, current_players):
         new_players = self.extract_players(current_players)

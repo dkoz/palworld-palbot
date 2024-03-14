@@ -3,12 +3,10 @@ import os
 import asyncio
 import nextcord
 from nextcord.ext import commands
-from gamercon_async import GameRCON, GameRCONBase64
+from util.rconutility import RconUtility
 import util.constants as constants
 import re
-import base64
 import datetime
-import unicodedata
 
 class PlayerInfoCog(commands.Cog):
     def __init__(self, bot):
@@ -16,6 +14,7 @@ class PlayerInfoCog(commands.Cog):
         self.data_folder = 'data'
         self.player_data_file = os.path.join(self.data_folder, 'players.json')
         self.servers = self.load_servers_config()
+        self.rcon_util = RconUtility(self.servers)
         self.ensure_data_file()
         self.bot.loop.create_task(self.update_players())
 
@@ -23,8 +22,6 @@ class PlayerInfoCog(commands.Cog):
         config_path = "config.json"
         with open(config_path) as config_file:
             config = json.load(config_file)
-            for server in config["PALWORLD_SERVERS"].values():
-                server.setdefault('WHITELIST_ENABLED', False)
             return config["PALWORLD_SERVERS"]
 
     def ensure_data_file(self):
@@ -32,113 +29,76 @@ class PlayerInfoCog(commands.Cog):
             with open(self.player_data_file, 'w') as file:
                 json.dump({}, file)
 
-    def is_base64_encoded(self, s):
+    async def run_showplayers_command(self, server_name):
         try:
-            if isinstance(s, str):
-                s = s.encode('utf-8')
-            return base64.b64encode(base64.b64decode(s)) == s
-        except Exception:
-            return False
-
-    async def run_showplayers_command(self, server):
-        try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
-                response = await rcon.send("ShowPlayers")
-                if self.is_base64_encoded(response):
-                    async with GameRCONBase64(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as rcon:
-                        response = await rcon.send("ShowPlayers")
+            response = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
+            if response:
                 return response
+            else:
+                print(f"No response from ShowPlayers command for {server_name}.")
+                return None
         except Exception as e:
-            print(f"Error sending command: {e}")
+            print(f"Exception sending ShowPlayers command for {server_name}: {e}")
+            return None
 
     async def update_players(self):
         while True:
-            for server_name, server_info in self.servers.items():
-                player_data = await self.run_showplayers_command(server_info)
+            for server_name in self.servers.keys():
+                player_data = await self.run_showplayers_command(server_name)
                 if player_data:
                     self.process_and_save_player_data(server_name, player_data)
-                    if server_info.get('WHITELIST_ENABLED', False):
-                        await self.whitelist_check(server_info, player_data)
-            await asyncio.sleep(20)
+                    if self.servers[server_name].get('WHITELIST_ENABLED', False):
+                        await self.whitelist_check(server_name, player_data)
+            await asyncio.sleep(15)
 
-    async def whitelist_check(self, server, player_data):
-        with open(self.player_data_file, 'r') as file:
+    async def whitelist_check(self, server_name, player_data):
+        with open(self.player_data_file) as file:
             players = json.load(file)
 
-        lines = player_data.split('\n')
-        for line in lines[1:]:
-            if not line.strip():
-                continue
+        for line in player_data.split('\n')[1:]:
+            if line.strip():
+                _, playeruid, steamid = line.split(',')[:3]
+                if not any(info.get("whitelist", False) for player, info in players.items() if info.get("playeruid") == playeruid):
+                    await self.kick_player(server_name, steamid, playeruid=playeruid)
 
-            parts = line.split(',')
-            if len(parts) >= 3:
-                _, playeruid, steamid = parts
-                if len(steamid) < 17 and playeruid:
-                    valid = any(player for player, info in players.items() if info.get("playeruid") == playeruid and info.get("whitelist", False))
-                    if not valid:
-                        await self.kick_player(server, steamid, playeruid=playeruid)
-                        print(f"Player with PlayerUID {playeruid} not on whitelist, kicked.")
-                else:
-                    if steamid in players and not players[steamid].get("whitelist", False):
-                        await self.kick_player(server, steamid)
-                        print(f"Player {steamid} not on whitelist, kicked.")
-
-    async def kick_player(self, server, steamid, playeruid=None, reason="not being whitelisted"):
+    async def kick_player(self, server_name, steamid, playeruid=None, reason="not being whitelisted"):
         try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc:
-                command = f"KickPlayer {steamid}" if not playeruid else f"KickPlayer {playeruid}"
-                response = await pc.send(command)
-                if self.is_base64_encoded(response):
-                    async with GameRCONBase64(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], timeout=10) as pc_base64:
-                        response = await pc_base64.send(command)
-                
-                # Announcement part
-                if "CONNECTION_CHANNEL" in server:
-                    announcement_channel_id = server["CONNECTION_CHANNEL"]
-                    channel = self.bot.get_channel(announcement_channel_id)
-                    if channel:
-                        # message = f"Player {steamid if steamid else playeruid} kicked for {reason}."
-                        now = datetime.datetime.now()
-                        timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
-                        embed = nextcord.Embed(title=f"Whitelist Check", description=f"Player `{steamid if steamid else playeruid}` kicked for {reason}.", color=nextcord.Color.green())
-                        embed.set_footer(text=f"Time: {timestamp}")
-                        await channel.send(embed=embed)
-                return response
+            identifier = steamid if steamid and self.is_valid_steamid(steamid) else playeruid
+            command = f"KickPlayer {identifier}"
+            
+            result = await self.rcon_util.rcon_command(server_name, command)
+            
+            if "Failed" in result:
+                print(f"Failed to execute kick command for {identifier} on {server_name}: {result}")
+            else:
+                print(f"Successfully executed kick command for {identifier} on {server_name}: {result}")
+            
+            server_info = self.servers[server_name]
+            if "CONNECTION_CHANNEL" in server_info:
+                channel = self.bot.get_channel(server_info["CONNECTION_CHANNEL"])
+                if channel:
+                    embed_description = f"Player `{identifier}` kicked for {reason}." if "Failed" not in result else f"Failed to kick Player `{identifier}`: {reason}."
+                    embed = nextcord.Embed(title="Whitelist Check", description=embed_description, color=nextcord.Color.red() if "Failed" in result else nextcord.Color.green())
+                    embed.set_footer(text=f"Timestamp: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                    await channel.send(embed=embed)
         except Exception as e:
-            print(f"Error kicking player {steamid if steamid else playeruid}: {e}")
+            print(f"Exception during kick command for {identifier} on {server_name}: {e}")
 
-
-    # Check if a SteamID is valid
     def is_valid_steamid(self, steamid):
         return bool(re.match(r'^7656119[0-9]{10}$', steamid))
 
-    # Sanitize data to remove non-ascii characters
-    #def sanitize_data(self, data):
-    #    return re.sub(r'[^\x00-\x7F]+', '', data).strip()
-    
     def process_and_save_player_data(self, server_name, data):
-        if not data.strip():
-            return
-
-        with open(self.player_data_file, 'r') as file:
-            existing_players = json.load(file)
-
-        lines = data.split('\n')
-        for line in lines[1:]:
-            if line.strip():
-                parts = line.split(',')
-                if len(parts) == 3:
-                    name, playeruid, steamid = [part.strip() for part in parts]
-
-                    if not self.is_valid_steamid(steamid) or not playeruid:
-                        continue
-                    player_info = existing_players.get(steamid, {})
-
-                    player_info.update({"name": name, "playeruid": playeruid, "whitelist": player_info.get("whitelist", False)})
-                    existing_players[steamid] = player_info
-
-        with open(self.player_data_file, 'w') as file:
-            json.dump(existing_players, file)
+        if data.strip():
+            with open(self.player_data_file, 'r+') as file:
+                existing_players = json.load(file)
+                for line in data.split('\n')[1:]:
+                    if line.strip():
+                        name, playeruid, steamid = [part.strip() for part in line.split(',')[:3]]
+                        if self.is_valid_steamid(steamid):
+                            existing_players[steamid] = {"name": name, "playeruid": playeruid, "whitelist": existing_players.get(steamid, {}).get("whitelist", False)}
+                file.seek(0)
+                json.dump(existing_players, file)
+                file.truncate()
 
     @nextcord.slash_command(description="Search the user database.", default_member_permissions=nextcord.Permissions(administrator=True))
     async def paldb(self, interaction: nextcord.Interaction):
@@ -214,22 +174,31 @@ class PlayerInfoCog(commands.Cog):
         pass
 
     @whitelist.subcommand(name="add", description="Add player to whitelist")
-    async def whitelist_add(self, interaction: nextcord.Interaction, steamid: str):
+    async def whitelist_add(self, interaction: nextcord.Interaction, steamid: str = nextcord.SlashOption(description="Enter SteamID", required=True), playeruid: str = nextcord.SlashOption(description="Enter PlayerUID", required=False)):
+        if not steamid and not playeruid:
+            await interaction.response.send_message("Please provide either a SteamID or PlayerUID.", ephemeral=True)
+            return
+
+        identifier = steamid if steamid else playeruid
         with open(self.player_data_file, 'r+') as file:
             players = json.load(file)
 
-            if steamid not in players:
-                players[steamid] = {"name": None, "playeruid": None, "whitelist": True}
+            if identifier not in players:
+                players[identifier] = {"name": None, "playeruid": playeruid if playeruid else None, "whitelist": True}
                 file.seek(0)
                 json.dump(players, file)
                 file.truncate()
-                await interaction.response.send_message(f"Player {steamid} added to whitelist and will be fully registered upon joining.", ephemeral=True)
+                message = f"Player {identifier} added to whitelist and will be fully registered upon joining." if steamid else f"Player with PlayerUID {playeruid} added to whitelist and will be fully registered upon joining."
             else:
-                players[steamid]["whitelist"] = True
+                players[identifier]["whitelist"] = True
+                if playeruid:
+                    players[identifier]["playeruid"] = playeruid
                 file.seek(0)
                 json.dump(players, file)
                 file.truncate()
-                await interaction.response.send_message(f"Player {steamid} added to whitelist.", ephemeral=True)
+                message = f"Player {identifier} added to whitelist." if steamid else f"Player with PlayerUID {playeruid} added to whitelist."
+
+        await interaction.response.send_message(message, ephemeral=True)
 
     @whitelist.subcommand(name="remove", description="Remove player from whitelist")
     async def whitelist_remove(self, interaction: nextcord.Interaction, steamid: str):
