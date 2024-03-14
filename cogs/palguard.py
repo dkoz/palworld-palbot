@@ -138,6 +138,16 @@ class PalguardCog(commands.Cog):
     async def on_autocomplete_eggs(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_eggid(interaction, current)
 
+    @palguard.subcommand(name="help" ,description="List of Palguard commands.")
+    async def palguardhelp(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        response = await self.rcon_util.rcon_command(server, "getrconcmds")
+        await interaction.followup.send(f"{response}")
+
+    @palguardhelp.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+
 def setup(bot):
     config_path = "config.json"
     with open(config_path) as config_file:

@@ -181,7 +181,7 @@
             "id": "Accessory_defense_3"
         },
         {
-            "name": "Unused Item",
+            "name": "Air Grappling Gun",
             "id": "AirGrapplingGun"
         },
         {
@@ -225,19 +225,19 @@
             "id": "AssaultRifle_Default1"
         },
         {
-            "name": "Assault Rifle",
+            "name": "Assault Rifle +2",
             "id": "AssaultRifle_Default2"
         },
         {
-            "name": "Assault Rifle",
+            "name": "Assault Rifle +3",
             "id": "AssaultRifle_Default3"
         },
         {
-            "name": "Assault Rifle",
+            "name": "Assault Rifle +4",
             "id": "AssaultRifle_Default4"
         },
         {
-            "name": "Assault Rifle",
+            "name": "Assault Rifle +5",
             "id": "AssaultRifle_Default5"
         },
         {
@@ -345,7 +345,7 @@
             "id": "Baked_Berries"
         },
         {
-            "name": "Unused Item",
+            "name": "Baked Potato",
             "id": "Baked_Potato"
         },
         {
@@ -369,7 +369,7 @@
             "id": "Berries"
         },
         {
-            "name": "Unused Item",
+            "name": "Berries 2",
             "id": "Berries2"
         },
         {
@@ -1177,7 +1177,7 @@
             "id": "Cake"
         },
         {
-            "name": "Unused Item",
+            "name": "Capture Rope",
             "id": "CaptureRope"
         },
         {
@@ -1189,11 +1189,11 @@
             "id": "Carbonara"
         },
         {
-            "name": "Unused Item",
+            "name": "Cash Fang",
             "id": "CashFang"
         },
         {
-            "name": "Unused Item",
+            "name": "Cash Scales",
             "id": "CashScales"
         },
         {
@@ -1225,11 +1225,11 @@
             "id": "Claws"
         },
         {
-            "name": "Unused Item",
+            "name": "Claws 2",
             "id": "Claws2"
         },
         {
-            "name": "Unused Item",
+            "name": "Claws Pendant",
             "id": "ClawsPendant"
         },
         {
@@ -1301,7 +1301,7 @@
             "id": "ClothArmor_5"
         },
         {
-            "name": "Unused Item",
+            "name": "Cloth Hat",
             "id": "ClothHat"
         },
         {
@@ -1401,7 +1401,7 @@
             "id": "CopperOre"
         },
         {
-            "name": "Unused Item",
+            "name": "Corn",
             "id": "Corn"
         },
         {
@@ -1417,47 +1417,47 @@
             "id": "Curry"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Attack Up",
             "id": "Debug_Handgun_AttackUp"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Burn",
             "id": "Debug_Handgun_Burn"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Darkness",
             "id": "Debug_Handgun_Darkness"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Defense Up",
             "id": "Debug_Handgun_DefenseUp"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Electrical",
             "id": "Debug_Handgun_Electrical"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Freeze",
             "id": "Debug_Handgun_Freeze"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Ivy Cling",
             "id": "Debug_Handgun_IvyCling"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Muddy",
             "id": "Debug_Handgun_Muddy"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Poison",
             "id": "Debug_Handgun_Poison"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Sleep",
             "id": "Debug_Handgun_Stun"
         },
         {
-            "name": "Unused Item",
+            "name": "Debug Handgun Wetness",
             "id": "Debug_Handgun_Wetness"
         },
         {
@@ -1517,11 +1517,11 @@
             "id": "ElectricOrgan"
         },
         {
-            "name": "Unused Item",
+            "name": "Electronic Circuit",
             "id": "ElectronicCircuit"
         },
         {
-            "name": "Unused Item",
+            "name": "Energy Drink",
             "id": "EnergyDrink"
         },
         {
@@ -1533,11 +1533,11 @@
             "id": "Fang"
         },
         {
-            "name": "Unused Item",
+            "name": "Fang 2",
             "id": "Fang2"
         },
         {
-            "name": "Unused Item",
+            "name": "Fang Necklace",
             "id": "FangNecklace"
         },
         {
@@ -1553,7 +1553,7 @@
             "id": "FireOrgan"
         },
         {
-            "name": "Unused Item",
+            "name": "Fish Meat",
             "id": "FishMeat"
         },
         {
@@ -1581,7 +1581,7 @@
             "id": "FlameThrower_NPC"
         },
         {
-            "name": "Unused Item",
+            "name": "Flint",
             "id": "Flint"
         },
         {
@@ -1709,7 +1709,7 @@
             "id": "GasMask"
         },
         {
-            "name": "Unused Item",
+            "name": "Gatling Gun NPC",
             "id": "GatlingGun_NPC"
         },
         {
@@ -2273,7 +2273,7 @@
             "id": "IronIngot"
         },
         {
-            "name": "Unused Item",
+            "name": "Iron Ore",
             "id": "IronOre"
         },
         {
@@ -2281,7 +2281,7 @@
             "id": "JamBun"
         },
         {
-            "name": "Unused Item",
+            "name": "Kitsunebi Fire",
             "id": "Kitsunebi_Fire"
         },
         {
@@ -2289,15 +2289,15 @@
             "id": "Lantern"
         },
         {
-            "name": "Unused Item",
+            "name": "Large Bullet",
             "id": "LargeBullet"
         },
         {
-            "name": "Unused Item",
+            "name": "Laser Bullet",
             "id": "LaserBullet"
         },
         {
-            "name": "Unused Item",
+            "name": "Laser Rifle",
             "id": "LaserRifle"
         },
         {
@@ -2325,7 +2325,7 @@
             "id": "Launcher_Default_5"
         },
         {
-            "name": "Unused Item",
+            "name": "Launcher Meat",
             "id": "Launcher_Meat"
         },
         {
@@ -2381,7 +2381,7 @@
             "id": "MarinatedMushrooms"
         },
         {
-            "name": "Unused Item",
+            "name": "Metal Item 01",
             "id": "MateItem01"
         },
         {
@@ -2501,23 +2501,23 @@
             "id": "Opium"
         },
         {
-            "name": "Unused Item",
+            "name": "Pal Growth Stone L",
             "id": "PAL_Growth_Stone_L"
         },
         {
-            "name": "Unused Item",
+            "name": "Pal Growth Stone M",
             "id": "PAL_Growth_Stone_M"
         },
         {
-            "name": "Unused Item",
+            "name": "Pal Growth Stone S",
             "id": "PAL_Growth_Stone_S"
         },
         {
-            "name": "Unused Item",
+            "name": "Pal Growth Stone XL",
             "id": "PAL_Growth_Stone_XL"
         },
         {
-            "name": "Unused Item",
+            "name": "PV Assault Rifle Default1",
             "id": "PV_AssaultRifle_Default1"
         },
         {
@@ -2813,7 +2813,7 @@
             "id": "Pancake"
         },
         {
-            "name": "Unused Item",
+            "name": "PenguinLauncher",
             "id": "PenguinLauncher"
         },
         {
@@ -2829,7 +2829,7 @@
             "id": "Pickaxe_Tier_02"
         },
         {
-            "name": "Unused Item",
+            "name": "Pickaxe Tier 3",
             "id": "Pickaxe_Tier_03"
         },
         {
@@ -2853,7 +2853,7 @@
             "id": "Potage"
         },
         {
-            "name": "Unused Item",
+            "name": "Potato",
             "id": "Potato"
         },
         {
@@ -2881,7 +2881,7 @@
             "id": "PumpActionShotgun_5"
         },
         {
-            "name": "Unused Item",
+            "name": "Pumpkin",
             "id": "Pumpkin"
         },
         {
@@ -2889,7 +2889,7 @@
             "id": "Quartz"
         },
         {
-            "name": "Unused Item",
+            "name": "Recurve Bow",
             "id": "RecurveBow"
         },
         {
@@ -2921,7 +2921,7 @@
             "id": "Salad"
         },
         {
-            "name": "Unused Item",
+            "name": "Sand",
             "id": "Sand"
         },
         {
@@ -2933,11 +2933,11 @@
             "id": "Sapphire"
         },
         {
-            "name": "Unused Item",
+            "name": "Scales",
             "id": "Scales"
         },
         {
-            "name": "Unused Item",
+            "name": "Scales 2",
             "id": "Scales2"
         },
         {
@@ -3537,11 +3537,11 @@
             "id": "SkillUnlock_Yeti_Grass"
         },
         {
-            "name": "Unused Item",
+            "name": "Small Bullet",
             "id": "SmallBullet"
         },
         {
-            "name": "Unused Item",
+            "name": "Sniper Rifle Default",
             "id": "SniperRifle_Default"
         },
         {
@@ -3701,7 +3701,7 @@
             "id": "TechnologyBook_G3"
         },
         {
-            "name": "Unused Item",
+            "name": "Throw Stone",
             "id": "ThrowStone"
         },
         {
@@ -3737,7 +3737,7 @@
             "id": "Unko_S"
         },
         {
-            "name": "Unused Item",
+            "name": "Venison Boiled in Tomato",
             "id": "VenisonBoiledInTomato"
         },
         {
@@ -3745,7 +3745,7 @@
             "id": "Venom"
         },
         {
-            "name": "Unused Item",
+            "name": "Water Bucket",
             "id": "WaterBucket"
         },
         {
