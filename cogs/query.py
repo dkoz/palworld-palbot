@@ -123,14 +123,5 @@ class QueryCog(commands.Cog):
                 players.append(parts[0])
         return players
 
-    def parse_players(self, players_output):
-        players = []
-        lines = players_output.split('\n')
-        for line in lines[1:]:
-            parts = line.split(',')
-            if len(parts) >= 3:
-                players.append(parts[0])
-        return players
-
 def setup(bot):
     bot.add_cog(QueryCog(bot))
