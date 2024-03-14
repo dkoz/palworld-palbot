@@ -1,10 +1,8 @@
 import json
-import os
 import asyncio
-import base64
 from nextcord.ext import commands
 import nextcord
-from gamercon_async import GameRCON, GameRCONBase64
+from util.rconutility import RconUtility
 
 class StatusTracker(commands.Cog):
     def __init__(self, bot):
@@ -12,6 +10,7 @@ class StatusTracker(commands.Cog):
         self.config = {}
         self.servers = {}
         self.load_config()
+        self.rcon_util = RconUtility(self.servers)
         if self.config.get("STATUS_TRACKING", False):
             self.bot.loop.create_task(self.update_status())
 
@@ -20,14 +19,6 @@ class StatusTracker(commands.Cog):
         with open(config_path) as config_file:
             self.config = json.load(config_file)
             self.servers = self.config.get("PALWORLD_SERVERS", {})
-
-    def is_base64_encoded(self, s):
-        try:
-            if isinstance(s, str):
-                s = s.encode('utf-8')
-            return base64.b64encode(base64.b64decode(s)) == s
-        except Exception:
-            return False
 
     async def update_status(self):
         await self.bot.wait_until_ready()
@@ -40,23 +31,13 @@ class StatusTracker(commands.Cog):
 
     async def get_total_players(self):
         total_players = 0
-        for server_config in self.servers.values():
-            players_output = ""
+        for server_name in self.servers:
             try:
-                async with GameRCON(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
-                    players_output = await pc.send("ShowPlayers")
+                players_output = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
+                players = self.parse_players(players_output)
+                total_players += len(players)
             except Exception as e:
-                print(f"Failed to get player count for a server: {e}")
-
-            if self.is_base64_encoded(players_output):
-                try:
-                    async with GameRCONBase64(server_config["RCON_HOST"], server_config["RCON_PORT"], server_config["RCON_PASS"], timeout=15) as pc:
-                        players_output = await pc.send("ShowPlayers")
-                except Exception as e:
-                    print(f"Failed to get player count for a server using Base64 encoding: {e}")
-
-            players = self.parse_players(players_output)
-            total_players += len(players)
+                print(f"Failed to get player count for server '{server_name}': {e}")
         return total_players
 
     def parse_players(self, players_output):
