@@ -101,18 +101,31 @@ class QueryCog(commands.Cog):
 
     async def check_server_status(self, server_name):
         try:
-            await self.rcon_util.rcon_command(server_name, "Info")
-            return "Online"
+            response = await self.rcon_util.rcon_command(server_name, "Info")
+            if "Welcome to Pal Server" in response:
+                return "Online"
+            else:
+                return "Offline"
         except Exception:
             return "Offline"
 
     async def get_player_count(self, server_name):
-        players_output = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
-        return len(self.parse_players(players_output)) if players_output else 0
+        try:
+            players_output = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
+            if players_output:
+                return len(self.parse_players(players_output))
+            return 0
+        except Exception:
+            return 0
 
     async def get_player_names(self, server_name):
-        players_output = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
-        return self.parse_players(players_output) if players_output else []
+        try:
+            players_output = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
+            if players_output:
+                return self.parse_players(players_output)
+            return []
+        except Exception:
+            return []
 
     def parse_players(self, players_output):
         players = []

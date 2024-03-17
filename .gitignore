@@ -1,6 +1,8 @@
 *.pyc
 *.json
 *.env
+*.db
+*.log
 
 /dev/*
 

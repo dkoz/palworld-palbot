@@ -4,7 +4,7 @@ from gamercon_async import GameRCON, GameRCONBase64, ClientError, TimeoutError, 
 import time
 
 class RconUtility:
-    def __init__(self, servers, timeout=30, encoding_info_ttl=600):
+    def __init__(self, servers, timeout=30, encoding_info_ttl=50):
         self.servers = servers
         self.timeout = timeout
         self.memory_encoding = {}
