@@ -1,10 +1,10 @@
 import asyncio
 import base64
-from gamercon_async import GameRCON, GameRCONBase64, ClientError
+from gamercon_async import GameRCON, GameRCONBase64, ClientError, TimeoutError, InvalidPassword
 import time
 
 class RconUtility:
-    def __init__(self, servers, timeout=120, encoding_info_ttl=600):
+    def __init__(self, servers, timeout=30, encoding_info_ttl=600):
         self.servers = servers
         self.timeout = timeout
         self.memory_encoding = {}
@@ -22,10 +22,10 @@ class RconUtility:
             raise ValueError(f"Server '{server_name}' not found.")
 
         try:
-            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"]) as rcon:
-                response = await asyncio.wait_for(rcon.send("Info"), timeout=self.timeout)
+            async with GameRCON(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], self.timeout) as rcon:
+                response = await rcon.send("Info")
                 needs_base64 = self.base64_encoded(response)
-        except ClientError as e:
+        except (ClientError, TimeoutError, InvalidPassword) as e:
             print(f"Error connecting to server {server_name}: {e}")
             needs_base64 = False
 
@@ -49,12 +49,14 @@ class RconUtility:
             needs_base64 = await self.check_encoding(server_name)
             ProtocolClass = GameRCONBase64 if needs_base64 else GameRCON
 
-            async with ProtocolClass(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"]) as rcon:
-                response = await asyncio.wait_for(rcon.send(command), timeout=self.timeout)
+            async with ProtocolClass(server["RCON_HOST"], server["RCON_PORT"], server["RCON_PASS"], self.timeout) as rcon:
+                response = await rcon.send(command)
                 if needs_base64 and self.base64_encoded(response):
                     response = base64.b64decode(response).decode('utf-8')
                 return response
-        except ClientError as e:
+        except (ClientError, TimeoutError, InvalidPassword) as e:
             return f"Failed to execute command on server {server_name}: {e}"
-        except asyncio.TimeoutError as e:
+        except asyncio.TimeoutError:
             return f"Command execution on server {server_name} timed out."
+        except ConnectionResetError as e:
+            return f"Connection reset by peer: {e}"

@@ -37,7 +37,8 @@ class KitsCog(commands.Cog):
         for command_template in package["commands"]:
             command = command_template.format(steamid=steamid)
             asyncio.create_task(self.rcon_util.rcon_command(server, command))
-        
+            await asyncio.sleep(0.1)
+
         embed = nextcord.Embed(title=f"Package Delivery - {server}", color=nextcord.Color.green())
         embed.description = f"Delivering {kit_name} kit to {steamid}."
         await interaction.followup.send(embed=embed)
