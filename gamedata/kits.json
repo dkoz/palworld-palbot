@@ -1,0 +1,45 @@
+{
+    "Pal Starter Kit": {
+        "commands": [
+            "givepal {steamid} Kitsunebi 10",
+            "givepal {steamid} Penguin 10",
+            "givepal {steamid} Carbunclo 10",
+            "givepal {steamid} PinkCat 10"
+        ]
+    },
+    "Huge Egg Kit": {
+        "commands": [
+            "giveegg {steamid} PalEgg_Electricity_05",
+            "giveegg {steamid} PalEgg_Fire_05",
+            "giveegg {steamid} PalEgg_Water_05",
+            "giveegg {steamid} PalEgg_Dark_05",
+            "giveegg {steamid} PalEgg_Dragon_05",
+            "giveegg {steamid} PalEgg_Ice_05",
+            "giveegg {steamid} PalEgg_Leaf_05"
+        ]
+    },
+    "Handgun Kit": {
+        "commands": [
+            "give {steamid} HandGun_Default_2 1",
+            "give {steamid} HandgunBullet 250"
+        ]
+    },
+    "Starter Kit": {
+        "commands": [
+            "give {steamid} Head010_5 1",
+            "give {steamid} ClothArmor_2 1",
+            "give {steamid} WeakerBow 1",
+            "give {steamid} arrow 500",
+            "give {steamid} Glider_Old 1",
+            "give {steamid} GrapplingGun 1",
+            "give {steamid} Shield_01 1",
+            "give {steamid} PalSphere 500",
+            "give {steamid} axe_Tier_02 1",
+            "give {steamid} Pickaxe_Tier_02 1",
+            "give {steamid} Lantern 1",
+            "give {steamid} AutoMealPouch_Tier1 1",
+            "give {steamid} Salad 30"
+        ]
+    }
+}
+  
