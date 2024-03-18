@@ -1,0 +1,10 @@
+.*
+*~
+.git
+config.json
+.env
+data/*.json
+dev/
+assets/
+*.pyc
+*.db
