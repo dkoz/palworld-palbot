@@ -5,6 +5,7 @@ from nextcord.ext import commands
 from util.rconutility import RconUtility
 import util.constants as constants
 import asyncio
+import re
 
 class QueryCog(commands.Cog):
     def __init__(self, bot):
@@ -51,12 +52,15 @@ class QueryCog(commands.Cog):
                     status = await self.check_server_status(server_name)
                     player_count = await self.get_player_count(server_name) if status == "Online" else 0
                     players = await self.get_player_names(server_name) if status == "Online" else []
+                    version, description = await self.extract_server_info(server_name)
 
                     server_config = self.servers[server_name]
                     max_players = server_config.get('SERVER_SLOTS', 32)
 
-                    embed = nextcord.Embed(title=f"{server_name} Status", description=f"**Status:** {status}", 
+                    embed = nextcord.Embed(title=f"{server_name} Status", description=description, 
                                         color=nextcord.Color.green() if status == "Online" else nextcord.Color.red())
+                    embed.add_field(name="Status", value=status, inline=True)
+                    embed.add_field(name="Version", value=version, inline=True)
                     embed.add_field(name="Players", value=f"{player_count}/{max_players}", inline=False)
                     embed.add_field(name="Connection Info", value=f"```{server_config['RCON_HOST']}:{server_config['SERVER_PORT']}```", inline=False)
                     embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
@@ -65,7 +69,7 @@ class QueryCog(commands.Cog):
                     players_embed = nextcord.Embed(title=f"Players Online", color=nextcord.Color.blue())
                     
                     for chunk in players_chunks:
-                        players_list = '\n'.join(chunk) if chunk else "No players"
+                        players_list = '\n'.join(chunk) if chunk else "No players online."
                         players_embed.add_field(name="\u200b", value=players_list, inline=True)
 
                     message_key = f"{server_name}_{channel_id}"
@@ -135,6 +139,18 @@ class QueryCog(commands.Cog):
             if len(parts) >= 3:
                 players.append(parts[0])
         return players
+    
+    async def extract_server_info(self, server_name):
+        try:
+            response = await self.rcon_util.rcon_command(server_name, "Info")
+            match = re.search(r"Welcome to Pal Server\[v([\d.]+)\] (.+)", response)
+            if match:
+                version = match.group(1)
+                description = match.group(2)
+                return version, description
+            return None, None
+        except Exception:
+            return None, None
 
 def setup(bot):
     bot.add_cog(QueryCog(bot))
