@@ -2,6 +2,7 @@ import nextcord
 from nextcord.ext import commands
 from nextcord import Interaction, SlashOption, Embed
 import datetime
+import pytz
 from util import steam_protocol
 
 class Steam(commands.Cog):
@@ -41,14 +42,20 @@ class Steam(commands.Cog):
             embed.set_thumbnail(url=player.get('avatarfull'))
 
             if player.get('realname'):
-                embed.add_field(name="Real Name", value=player.get('realname'), inline=False)
+                embed.add_field(name="Name", value=player.get('realname'), inline=False)
             
             if player.get('gameextrainfo'):
                 embed.add_field(name="Playing", value=player.get('gameextrainfo'), inline=False)
 
             embed.add_field(name="SteamID64", value=f"```{player.get('steamid')}```", inline=False)
             
-            creation_date = datetime.datetime.utcfromtimestamp(player.get('timecreated')).strftime('%Y-%m-%d') if player.get('timecreated') else 'Not available'
+            utc_zone = pytz.utc
+            local_zone = pytz.timezone('UTC')
+            creation_timestamp = datetime.datetime.fromtimestamp(player.get('timecreated'), tz=utc_zone) if player.get('timecreated') else None
+            if creation_timestamp:
+                creation_date = creation_timestamp.astimezone(local_zone).strftime('%Y-%m-%d')
+            else:
+                creation_date = 'Not available'
             embed.add_field(name="Account Creation", value=creation_date, inline=False)
             
             if player.get('loccountrycode'):
