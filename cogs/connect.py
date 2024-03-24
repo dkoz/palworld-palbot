@@ -18,7 +18,7 @@ class ConnectCog(commands.Cog):
         with open(config_path) as config_file:
             config = json.load(config_file)
         return config["PALWORLD_SERVERS"]
-    
+
     async def run_command(self, server_name):
         try:
             response = await self.rcon_util.rcon_command(server_name, "ShowPlayers")
@@ -26,7 +26,7 @@ class ConnectCog(commands.Cog):
         except Exception as e:
             print(f"Error sending command to {server_name}: {e}")
             return ""
-        
+
     async def monitor_player_activity(self):
         while True:
             for server_name, server_info in self.servers.items():
@@ -52,10 +52,10 @@ class ConnectCog(commands.Cog):
 
     def extract_players(self, player_data):
         players = set()
-        lines = player_data.split('\n')[1:]
+        lines = player_data.split("\n")[1:]
         for line in lines:
             if line.strip():
-                parts = line.split(',')
+                parts = line.split(",")
                 if len(parts) == 3:
                     name, _, steamid = parts
                     players.add((name.strip(), steamid.strip()))
@@ -64,24 +64,32 @@ class ConnectCog(commands.Cog):
     async def announce_player_join(self, server_name, player):
         name, steamid = player
         if "CONNECTION_CHANNEL" in self.servers[server_name]:
-            announcement_channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
-            channel = self.bot.get_channel(announcement_channel_id)
+            channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
+            channel = self.bot.get_channel(channel_id)
             if channel:
                 now = datetime.datetime.now()
                 timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
-                embed = nextcord.Embed(title="Player Joined", description=f"Player joined {server_name}: {name} (SteamID: {steamid})", color=nextcord.Color.blurple())
+                embed = nextcord.Embed(
+                    title="Player Joined",
+                    description=f"Player joined {server_name}: {name} (SteamID: {steamid})",
+                    color=nextcord.Color.blurple(),
+                )
                 embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
 
     async def announce_player_leave(self, server_name, player):
         name, steamid = player
         if "CONNECTION_CHANNEL" in self.servers[server_name]:
-            announcement_channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
-            channel = self.bot.get_channel(announcement_channel_id)
+            channel_id = self.servers[server_name]["CONNECTION_CHANNEL"]
+            channel = self.bot.get_channel(channel_id)
             if channel:
                 now = datetime.datetime.now()
                 timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
-                embed = nextcord.Embed(title="Player Left", description=f"Player left {server_name}: {name} (SteamID: {steamid})", color=nextcord.Color.red())
+                embed = nextcord.Embed(
+                    title="Player Left",
+                    description=f"Player left {server_name}: {name} (SteamID: {steamid})",
+                    color=nextcord.Color.red(),
+                )
                 embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
 

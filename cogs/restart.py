@@ -33,11 +33,15 @@ class RestartCog(commands.Cog):
         now_local = now_utc.astimezone(self.timezone)
         for shutdown_time_str in self.shutdown_config.get("times", []):
             shutdown_time = datetime.strptime(shutdown_time_str, "%H:%M").time()
-            shutdown_datetime_local = datetime.now(self.timezone).replace(hour=shutdown_time.hour, minute=shutdown_time.minute, second=0, microsecond=0)
+            shutdown_datetime_local = datetime.now(self.timezone).replace(
+                hour=shutdown_time.hour,
+                minute=shutdown_time.minute,
+                second=0,
+                microsecond=0,
+            )
             if shutdown_datetime_local < now_local:
                 shutdown_datetime_local += timedelta(days=1)
             time_until_shutdown = (shutdown_datetime_local - now_local).total_seconds()
-            
 
             if 300 <= time_until_shutdown < 360:
                 await self.broadcast_warning("Server restart in 5 minutes")
@@ -52,7 +56,9 @@ class RestartCog(commands.Cog):
         for server_name in self.servers:
             try:
                 message_format = message.replace(" ", "\u001f")
-                await self.rcon_util.rcon_command(server_name, f"Broadcast {message_format}")
+                await self.rcon_util.rcon_command(
+                    server_name, f"Broadcast {message_format}"
+                )
                 print(f"Broadcasted to {server_name}: {message}")
             except Exception as e:
                 print(f"Error broadcasting to {server_name}: {e}")
@@ -82,7 +88,11 @@ class RestartCog(commands.Cog):
                 now = datetime.now(self.timezone)
                 timestamp = now.strftime("%m-%d-%Y %H:%M:%S")
                 timestamp_desc = now.strftime("%I:%M %p")
-                embed = nextcord.Embed(title="Server Restart", description=f"The {server_name} server has been restarted at {timestamp_desc}.", color=nextcord.Color.blurple())
+                embed = nextcord.Embed(
+                    title="Server Restart",
+                    description=f"The {server_name} server has been restarted at {timestamp_desc}.",
+                    color=nextcord.Color.blurple(),
+                )
                 embed.set_footer(text=f"Time: {timestamp}")
                 await channel.send(embed=embed)
             else:
