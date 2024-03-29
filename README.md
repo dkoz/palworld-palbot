@@ -18,6 +18,7 @@
  - **Palguard Integration**: Offers RCON integration for executing PalGuard commands, such as item and pal spawning. Features a customizable game database with a search function to easily spawn desired items or pals.
    - **Kits**: Effortlessly distribute custom kits with items, pals, and eggs to players across your Palworld servers.
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
+- **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
 
 ## Upcoming Features
  - **Economy**: Earn points in discord to redeem them for kits. When a kit is purchased it will send the items to the player in-game.

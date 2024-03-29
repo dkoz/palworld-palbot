@@ -5,5 +5,5 @@
 *.log
 
 /dev/*
-
 !gamedata/*.json
+/gamedata/kits.json

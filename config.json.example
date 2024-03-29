@@ -24,5 +24,17 @@
         "channel": 12345678
     },
     "STATUS_TRACKING": true,
-    "PALGUARD_ACTIVE": false
+    "PALGUARD_ACTIVE": false,
+    "ECONOMY_SETTINGS": {
+        "enabled": true,
+        "currency": "Points",
+        "invite_reward": 100,
+        "work_reward": [20, 50],
+        "work_timer": 360,
+        "work_description": [
+            "Your Pals butchered the invaders and earned {earned_points} {currency}!",
+            "Anubis stumbled upon {earned_points} {currency} in the hot tub!",
+            "You crafted some ammo and earned {earned_points} {currency}."
+        ]
+    }
 }
