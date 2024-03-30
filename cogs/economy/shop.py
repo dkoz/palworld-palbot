@@ -2,9 +2,54 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
+from nextcord.ui import Button, View
 from util.economy_system import get_points, set_points, get_steam_id
 from util.rconutility import RconUtility
 import asyncio
+import util.constants as constants
+
+class ShopView(View):
+    def __init__(self, shop_items, currency):
+        super().__init__()
+        self.shop_items = shop_items
+        self.currency = currency
+        self.current_page = 0
+
+    async def generate_shop_embed(self):
+        embed = nextcord.Embed(title="Shop Items", description="Welcome to the shop! Please ensure you're connected to the palworld server before making a purchase.", color=nextcord.Color.blue())
+        item_names = list(self.shop_items.keys())
+        start = self.current_page * 5
+        end = min(start + 5, len(item_names))
+
+        for item_name in item_names[start:end]:
+            item_info = self.shop_items[item_name]
+            embed.add_field(
+                name=item_name,
+                value=f"{item_info['description']}\n"
+                f"**Price:** {item_info['price']} {self.currency}",
+                inline=False,
+            )
+        embed.set_footer(
+            text=f"{constants.FOOTER_TEXT}: Page {self.current_page + 1}",
+            icon_url=constants.FOOTER_IMAGE,
+        )
+        return embed
+
+    @nextcord.ui.button(label="Previous", style=nextcord.ButtonStyle.blurple)
+    async def previous_button_callback(self, button, interaction):
+        if self.current_page > 0:
+            self.current_page -= 1
+            await self.update_shop_message(interaction)
+
+    @nextcord.ui.button(label="Next", style=nextcord.ButtonStyle.blurple)
+    async def next_button_callback(self, button, interaction):
+        if (self.current_page + 1) * 9 < len(self.shop_items):
+            self.current_page += 1
+            await self.update_shop_message(interaction)
+
+    async def update_shop_message(self, interaction):
+        embed = await self.generate_shop_embed()
+        await interaction.response.edit_message(embed=embed, view=self)
 
 class ShopCog(commands.Cog):
     def __init__(self, bot):
@@ -39,14 +84,9 @@ class ShopCog(commands.Cog):
 
     @shop.subcommand(name="menu", description="Displays available items in the shop.")
     async def menu(self, interaction: nextcord.Interaction):
-        embed = nextcord.Embed(title="Shop Items", color=nextcord.Color.blue())
-        for item_name, item_info in self.shop_items.items():
-            embed.add_field(
-                name=item_name,
-                value=f"{item_info['description']} \n **Price:** {item_info['price']} {self.currency}",
-                inline=False,
-            )
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        view = ShopView(self.shop_items, self.currency)
+        embed = await view.generate_shop_embed()
+        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
     @shop.subcommand(name="redeem", description="Redeem your points for a shop item.")
     async def redeem(
