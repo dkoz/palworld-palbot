@@ -63,7 +63,7 @@ class EconomyCog(commands.Cog):
         embed.add_field(
             name="Daily Cooldown", value=format_time(self.daily_timer), inline=False
         )
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
     # Leaderboard for Points
     @nextcord.slash_command(
@@ -177,12 +177,12 @@ class EconomyCog(commands.Cog):
             f"`/daily` - Claim your daily {currency}.\n"
             f"`/leaderboard` - Display the top {currency} leaderboard.\n"
             f"`/topinvites` - Display the top invite leaderboard.\n"
+            f"`/economyinfo` - Display economy information.\n"
             f"`/shop menu` - Displays available items in the shop.\n"
-            f"`/shop redeem` - Redeem your {currency} for a shop item.\n"
-            f"`/votereward` - Claim your vote reward.",
+            f"`/shop redeem` - Redeem your {currency} for a shop item.",
             inline=False,
         )
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
     # Set Steam ID
     @nextcord.slash_command(name="setsteam", description="Set your own Steam ID.")

@@ -16,7 +16,11 @@ class ShopView(View):
         self.current_page = 0
 
     async def generate_shop_embed(self):
-        embed = nextcord.Embed(title="Shop Items", description="Welcome to the shop! Please ensure you're connected to the palworld server before making a purchase.", color=nextcord.Color.blue())
+        embed = nextcord.Embed(
+            title="Shop Items",
+            description="Welcome to the shop! Please ensure you're connected to the palworld server before making a purchase.",
+            color=nextcord.Color.blue(),
+        )
         item_names = list(self.shop_items.keys())
         start = self.current_page * 5
         end = min(start + 5, len(item_names))
@@ -76,7 +80,11 @@ class ShopCog(commands.Cog):
         config_path = "gamedata"
         shop_items_path = os.path.join(config_path, "kits.json")
         with open(shop_items_path) as shop_items_file:
-            self.shop_items = json.load(shop_items_file)
+            all_items = json.load(shop_items_file)
+            # Filtering out items with a price of 0
+            self.shop_items = {
+                key: value for key, value in all_items.items() if value["price"] > 0
+            }
 
     @nextcord.slash_command(name="shop", description="Shop commands.")
     async def shop(self, _interaction: nextcord.Interaction):
@@ -120,6 +128,13 @@ class ShopCog(commands.Cog):
         item = self.shop_items.get(item_name)
         if not item:
             await interaction.followup.send("Item not found.", ephemeral=True)
+            return
+
+        # Added price check so that items with a price of 0 cannot be redeemed
+        if item["price"] <= 0:
+            await interaction.followup.send(
+                "This item cannot be redeemed.", ephemeral=True
+            )
             return
 
         if points < item["price"]:
