@@ -36,13 +36,13 @@ class HelpView(View):
             )
         return embed
 
-    @nextcord.ui.button(label="Previous", style=nextcord.ButtonStyle.grey)
+    @nextcord.ui.button(label="Previous", style=nextcord.ButtonStyle.blurple)
     async def previous_button_callback(self, button, interaction):
         if self.current_page > 0:
             self.current_page -= 1
             await self.update_help_message(interaction)
 
-    @nextcord.ui.button(label="Next", style=nextcord.ButtonStyle.grey)
+    @nextcord.ui.button(label="Next", style=nextcord.ButtonStyle.blurple)
     async def next_button_callback(self, button, interaction):
         if (self.current_page + 1) * 9 < len(
             self.bot.all_slash_commands

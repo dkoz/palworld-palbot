@@ -57,21 +57,19 @@ class PlayerInfoCog(commands.Cog):
 
         for line in player_data.split("\n")[1:]:
             if line.strip():
-                _, playeruid, steamid = line.split(",")[:3]
-                if not any(
-                    info.get("whitelist", False)
-                    for player, info in players.items()
-                    if info.get("playeruid") == playeruid
-                ):
-                    await self.kick_player(server_name, steamid, playeruid=playeruid)
+                _, _, steamid = line.split(",")[:3]
+                steamid = steamid.strip()
+                if steamid in players and not players[steamid].get("whitelist", False):
+                    await self.kick_player(server_name, steamid)
 
-    async def kick_player(
-        self, server_name, steamid, playeruid=None, reason="not being whitelisted"
-    ):
+    async def kick_player(self, server_name, steamid, reason="not being whitelisted"):
         try:
-            identifier = (
-                steamid if steamid and self.is_valid_steamid(steamid) else playeruid
-            )
+            if not steamid or not self.is_valid_steamid(steamid):
+                print(f"Invalid SteamID: {steamid}")
+                return
+
+            identifier = f"steam_{steamid}"
+
             command = f"KickPlayer {identifier}"
 
             result = await self.rcon_util.rcon_command(server_name, command)

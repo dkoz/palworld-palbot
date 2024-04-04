@@ -92,7 +92,7 @@ class PalconCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
-        response = await self.rcon_util.rcon_command(server, f"KickPlayer {steamid}")
+        response = await self.rcon_util.rcon_command(server, f"KickPlayer steam_{steamid}")
         embed = nextcord.Embed(
             title=f"KickPlayer Command - {server}", color=nextcord.Color.orange()
         )
@@ -175,9 +175,8 @@ class PalconCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
-        reason_format = reason.replace(" ", "\u001f")
         response = await self.rcon_util.rcon_command(
-            server, f"Shutdown {time} {reason_format}"
+            server, f"Shutdown {time} {reason}"
         )
         embed = nextcord.Embed(
             title=f"Shutdown - {server}", color=nextcord.Color.blue()
@@ -229,9 +228,8 @@ class PalconCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
-        message_format = message.replace(" ", "\u001f")
         response = await self.rcon_util.rcon_command(
-            server, f"Broadcast {message_format}"
+            server, f"Broadcast {message}"
         )
         embed = nextcord.Embed(
             title=f"Broadcast - {server}", color=nextcord.Color.blue()

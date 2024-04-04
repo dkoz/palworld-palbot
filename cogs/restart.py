@@ -50,14 +50,13 @@ class RestartCog(commands.Cog):
             elif 120 <= time_until_shutdown < 180:
                 await self.save_server_state()
             elif 60 <= time_until_shutdown < 120:
-                await self.initiate_shutdown("Shutdown 30 Server_restart_in_30_seconds")
+                await self.initiate_shutdown("Shutdown 30 Server restart in 30 seconds.")
 
     async def broadcast_warning(self, message):
         for server_name in self.servers:
             try:
-                message_format = message.replace(" ", "\u001f")
                 await self.rcon_util.rcon_command(
-                    server_name, f"Broadcast {message_format}"
+                    server_name, f"Broadcast {message}"
                 )
                 print(f"Broadcasted to {server_name}: {message}")
             except Exception as e:
