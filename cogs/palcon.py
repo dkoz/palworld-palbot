@@ -121,7 +121,7 @@ class PalconCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
-        response = await self.rcon_util.rcon_command(server, f"BanPlayer {steamid}")
+        response = await self.rcon_util.rcon_command(server, f"BanPlayer steam_{steamid}")
         embed = nextcord.Embed(
             title=f"BanPlayer Command - {server}", color=nextcord.Color.red()
         )
@@ -135,6 +135,35 @@ class PalconCog(commands.Cog):
         await interaction.followup.send(embed=embed)
 
     @banplayer.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
+    @palcon.subcommand(description="Unban a player from a server using their SteamID.")
+    async def unbanplayer(
+        self,
+        interaction: nextcord.Interaction,
+        steamid: str,
+        server: str = nextcord.SlashOption(
+            description="Select a server", autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        response = await self.rcon_util.rcon_command(server, f"UnBanPlayer steam_{steamid}")
+        embed = nextcord.Embed(
+            title=f"Unban Player Command - {server}", color=nextcord.Color.red()
+        )
+        embed.add_field(name="Server", value=server, inline=True)
+        embed.add_field(name="SteamID", value=steamid, inline=True)
+        embed.add_field(name="Response", value=response, inline=False)
+        embed.set_footer(
+            text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}",
+            icon_url=constants.FOOTER_IMAGE,
+        )
+        await interaction.followup.send(embed=embed)
+
+    @unbanplayer.on_autocomplete("server")
     async def on_autocomplete_rcon(
         self, interaction: nextcord.Interaction, current: str
     ):
