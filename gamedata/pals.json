@@ -229,10 +229,6 @@
             "id": "BOSS_DreamDemon"
         },
         {
-            "name": "Dark Mutant",
-            "id": "DarkMutant"
-        },
-        {
             "name": "Dark Mutant (Boss)",
             "id": "BOSS_DarkMutant"
         },
@@ -1259,6 +1255,14 @@
         {
             "name": "Zoe & Grizzbolt (Boss)",
             "id": "GYM_ElecPanda"
+        },
+        {
+            "name": "Bellanoir",
+            "id": "NightLady"
+        },
+        {
+            "name": "Bellanoir Libero",
+            "id": "NightLady_Dark"
         }
     ]
 }
