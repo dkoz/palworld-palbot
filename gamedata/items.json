@@ -3787,6 +3787,158 @@
         {
             "name": "Wool",
             "id": "Wool"
+        },
+        {
+            "name": "Bellanoir's Slab",
+            "id": "PalSummon"
+        },
+        {
+            "name": "Bellanoir's Slab",
+            "id": "PalSummon_NightLady"
+        },
+        {
+            "name": "Bellanoir Libero's Slab",
+            "id": "PalSummon_NightLady_Dark"
+        },
+        {
+            "name": "Bellanoir's Slab Fragment",
+            "id": "PalSummon_NightLady_Parts"
+        },
+        {
+            "name": "Bellanoir Libero's Slab Fragment",
+            "id": "PalSummon_NightLady_Dark_Parts"
+        },
+        {
+            "name": "Ancient Civilization Core",
+            "id": "AncientParts2"
+        },
+        {
+            "name": "Ring of Mercy",
+            "id": "Accessory_Nonkilling"
+        },
+        {
+            "name": "Low Quality Recovery Meds",
+            "id": "Potion_Low"
+        },
+        {
+            "name": "Recovery Meds",
+            "id": "Potion"
+        },
+        {
+            "name": "High Quality Recovery Meds",
+            "id": "Potion_High"
+        },
+        {
+            "name": "Cavern Mushroom",
+            "id": "CaveMushroom"
+        },
+        {
+            "name": "Ability Glasses",
+            "id": "Accessory_TalentChecker"
+        },
+        {
+            "name": "Life Lotus (S)",
+            "id": "Lotus_hp_01"
+        },
+        {
+            "name": "Stamina Lotus (S)",
+            "id": "Lotus_stamina_01"
+        },
+        {
+            "name": "Power Lotus (S)",
+            "id": "Lotus_attack_01"
+        },
+        {
+            "name": "Speed Lotus (S)",
+            "id": "Lotus_workspeed_01"
+        },
+        {
+            "name": "Carrying Lotus (S)",
+            "id": "Lotus_weight_01"
+        },
+        {
+            "name": "Dazzi Cloud",
+            "id": "PalItem_RaijinDaughter"
+        },
+        {
+            "name": "Life Lotus (L)",
+            "id": "Lotus_hp_02"
+        },
+        {
+            "name": "Stamina Lotus (L)",
+            "id": "Lotus_stamina_02"
+        },
+        {
+            "name": "Power Lotus (L)",
+            "id": "Lotus_attack_02"
+        },
+        {
+            "name": "Speed Lotus (L)",
+            "id": "Lotus_workspeed_02"
+        },
+        {
+            "name": "Carrying Lotus (L)",
+            "id": "Lotus_weight_02"
+        },
+        {
+            "name": "Training Manual (S)",
+            "id": "ExpBoost_01"
+        },
+        {
+            "name": "Training Manual (M)",
+            "id": "ExpBoost_02"
+        },
+        {
+            "name": "Training Manual (L)",
+            "id": "ExpBoost_03"
+        },
+        {
+            "name": "Training Manual (XL)",
+            "id": "ExpBoost_04"
+        },
+        {
+            "name": "Training Crystal",
+            "id": "LvUP_01"
+        },
+        {
+            "name": "Life Fruit",
+            "id": "Fruit_hp_01"
+        },
+        {
+            "name": "Power Fruit",
+            "id": "Fruit_attack_01"
+        },
+        {
+            "name": "Stout Fruit",
+            "id": "Fruit__defense_01"
+        },
+        {
+            "name": "Homeward Thundercloud",
+            "id": "Homeward"
+        },
+        {
+            "name": "Multiclimate Undershirt",
+            "id": "Accessory_HeatColdResist_1"
+        },
+        {
+            "name": "Multiclimate Undershirt +1",
+            "id": "Accessory_HeatColdResist_2"
+        },
+        {
+            "name": "Multiclimate Undershirt +2",
+            "id": "Accessory_HeatColdResist_3"
+        },
+        {
+            "name": "Bellanoir Libero (Ultra) Slab",
+            "id": "PalSummon_NightLady_Dark_2"
+        },
+        {
+            "name": "Bellanoir Libero (Ultra) Slab Fragment",
+            "id": "PalSummon_NightLady_Dark_Parts_2"
+        },
+        {
+            "name": "Witch's Crown (Ultra)",
+            "id": "HeadEquip001_purple"
         }
     ]
 }

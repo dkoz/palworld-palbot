@@ -37,14 +37,6 @@
             "id": "BOSS_BlueDragon"
         },
         {
-            "name": "Bad Catgirl",
-            "id": "BadCatgirl"
-        },
-        {
-            "name": "Bad Catgirl (Boss)",
-            "id": "BOSS_BadCatgirl"
-        },
-        {
             "name": "Beakon",
             "id": "ThunderBird"
         },
@@ -93,14 +85,6 @@
             "id": "BOSS_Manticore_Dark"
         },
         {
-            "name": "Blueberry Fairy",
-            "id": "BlueberryFairy"
-        },
-        {
-            "name": "Blueberry Fairy (Boss)",
-            "id": "BOSS_BlueberryFairy"
-        },
-        {
             "name": "Boltmane",
             "id": "ElecLion"
         },
@@ -131,14 +115,6 @@
         {
             "name": "Broncherry Aqua (Boss)",
             "id": "BOSS_SakuraSaurus_Water"
-        },
-        {
-            "name": "Brown Rabbit",
-            "id": "BrownRabbit"
-        },
-        {
-            "name": "Brown Rabbit (Boss)",
-            "id": "BOSS_BrownRabbit"
         },
         {
             "name": "Bushi",
@@ -457,14 +433,6 @@
             "id": "BOSS_SharkKid_Fire"
         },
         {
-            "name": "Golden Horse",
-            "id": "GoldenHorse"
-        },
-        {
-            "name": "Golden Horse (Boss)",
-            "id": "BOSS_GoldenHorse"
-        },
-        {
             "name": "Gorirat",
             "id": "Gorilla"
         },
@@ -495,14 +463,6 @@
         {
             "name": "Grizzbolt (Boss)",
             "id": "BOSS_ElecPanda"
-        },
-        {
-            "name": "Guardian Dog",
-            "id": "GuardianDog"
-        },
-        {
-            "name": "Guardian Dog (Boss)",
-            "id": "BOSS_GuardianDog"
         },
         {
             "name": "Gumoss",
@@ -1041,14 +1001,6 @@
             "id": "BOSS_WhiteMoth"
         },
         {
-            "name": "Sifu Dog",
-            "id": "SifuDog"
-        },
-        {
-            "name": "Sifu Dog (Boss)",
-            "id": "BOSS_SifuDog"
-        },
-        {
             "name": "Sparkit",
             "id": "ElecCat"
         },
@@ -1213,14 +1165,6 @@
             "id": "BOSS_WaterLizard"
         },
         {
-            "name": "Wing Golem",
-            "id": "WingGolem"
-        },
-        {
-            "name": "Wing Golem (Boss)",
-            "id": "BOSS_WingGolem"
-        },
-        {
             "name": "Wixen",
             "id": "FoxMage"
         },
@@ -1261,8 +1205,16 @@
             "id": "NightLady"
         },
         {
+            "name": "Bellanoir (Boss)",
+            "id": "BOSS_NightLady"
+        },
+        {
             "name": "Bellanoir Libero",
             "id": "NightLady_Dark"
+        },
+        {
+            "name": "Bellanoir Libero (Boss)",
+            "id": "BOSS_NightLady_Dark"
         }
     ]
 }
