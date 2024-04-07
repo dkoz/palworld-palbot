@@ -95,9 +95,11 @@ class EconomyCog(commands.Cog):
         points: int = nextcord.SlashOption(description="How many points to transfer"),
     ):
         user_id = str(interaction.user.id)
-        user_name, user_points = get_points(user_id)
+        user_name = interaction.user.display_name
+        user_name, user_points = get_points(user_id, user_name)
         recipient_id = str(recipient.id)
-        recipient_name, recipient_points = get_points(recipient_id)
+        recipient_name = recipient.display_name
+        recipient_name, recipient_points = get_points(recipient_id, recipient_name)
         if user_points < points:
             await interaction.response.send_message(
                 f"You do not have enough {self.currency} to transfer.", ephemeral=True
