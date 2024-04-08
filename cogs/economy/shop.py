@@ -30,7 +30,7 @@ class ShopView(View):
             embed.add_field(
                 name=item_name,
                 value=f"{item_info['description']}\n"
-                f"**Price:** {item_info['price']} {self.currency}",
+                      f"**Price:** {item_info['price']} {self.currency}",
                 inline=False,
             )
         embed.set_footer(
@@ -47,7 +47,7 @@ class ShopView(View):
 
     @nextcord.ui.button(label="Next", style=nextcord.ButtonStyle.blurple)
     async def next_button_callback(self, button, interaction):
-        if (self.current_page + 1) * 9 < len(self.shop_items):
+        if (self.current_page + 1) * 5 < len(self.shop_items):
             self.current_page += 1
             await self.update_shop_message(interaction)
 
