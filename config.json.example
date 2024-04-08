@@ -26,7 +26,7 @@
     "STATUS_TRACKING": true,
     "PALGUARD_ACTIVE": false,
     "ECONOMY_SETTINGS": {
-        "enabled": true,
+        "enabled": false,
         "currency": "Points",
         "invite_reward": 100,
         "work_reward": [20, 50],
@@ -35,6 +35,10 @@
             "Your Pals butchered the invaders and earned {earned_points} {currency}!",
             "Anubis stumbled upon {earned_points} {currency} in the hot tub!",
             "You crafted some ammo and earned {earned_points} {currency}."
-        ]
+        ],
+        "vote_enabled": false,
+        "vote_slug": "server_slug",
+        "vote_apikey": "api_key",
+        "vote_reward": 100
     }
 }

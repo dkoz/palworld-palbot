@@ -181,7 +181,8 @@ class EconomyCog(commands.Cog):
             f"`/topinvites` - Display the top invite leaderboard.\n"
             f"`/economyinfo` - Display economy information.\n"
             f"`/shop menu` - Displays available items in the shop.\n"
-            f"`/shop redeem` - Redeem your {currency} for a shop item.",
+            f"`/shop redeem` - Redeem your {currency} for a shop item."
+            f"`/claimreward` - Claim your reward for voting!\n",
             inline=False,
         )
         await interaction.response.send_message(embed=embed, ephemeral=True)
