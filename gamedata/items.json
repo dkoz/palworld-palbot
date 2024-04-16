@@ -413,6 +413,22 @@
             "id": "Blueprint_BowGun_5"
         },
         {
+            "name": "Musket Schematic 1",
+            "id": "Blueprint_Musket_2"
+        },
+        {
+            "name": "Musket Schematic 2",
+            "id": "Blueprint_Musket_3"
+        },
+        {
+            "name": "Musket Schematic 3",
+            "id": "Blueprint_Musket_4"
+        },
+        {
+            "name": "Musket Schematic 4",
+            "id": "Blueprint_Musket_5"
+        },
+        {
             "name": "Tundra Outfit Schematic 1",
             "id": "Blueprint_ClothArmorCold_2"
         },
@@ -3939,6 +3955,10 @@
         {
             "name": "Witch's Crown (Ultra)",
             "id": "HeadEquip001_purple"
+        },
+        {
+            "name": "Ancient Technical Manual",
+            "id": "AncientTechnologyBook_G1"
         }
     ]
 }
