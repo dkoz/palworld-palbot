@@ -296,6 +296,7 @@ def setup(bot):
                 cog.giveitem,
                 cog.giveexp,
                 cog.giveegg,
+                cog.giverelic,
             ]
         )
     else:
