@@ -252,6 +252,32 @@ class PalguardCog(commands.Cog):
     ):
         await self.autocomplete_server(interaction, current)
 
+    @palguard.subcommand(description="Give a Lifmunk Effigy relics to a player.")
+    async def giverelic(
+        self,
+        interaction: nextcord.Interaction,
+        steamid: str = nextcord.SlashOption(description="SteamID/UID of the player."),
+        amount: str = nextcord.SlashOption(description="Lifmunk Effigy relic amount"),
+        server: str = nextcord.SlashOption(
+            description="Select a server", autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        asyncio.create_task(
+            self.rcon_util.rcon_command(server, f"give_relic {steamid} {amount}")
+        )
+        embed = nextcord.Embed(
+            title=f"Palguard Relic - {server}", color=nextcord.Color.blurple()
+        )
+        embed.description = f"Giving {amount} Lifmunk Effigy relics to {steamid}."
+        await interaction.followup.send(embed=embed)
+        
+    @giverelic.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
 def setup(bot):
     config_path = "config.json"
     with open(config_path) as config_file:
