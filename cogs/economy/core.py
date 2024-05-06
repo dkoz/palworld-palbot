@@ -34,7 +34,23 @@ class EconomyCog(commands.Cog):
         )
         self.work_min, self.work_max = self.work_reward
         self.work_timer = self.economy_config.get("work_timer", 60)
+        self.daily_reward = self.economy_config.get("daily_reward", 100)
         self.daily_timer = self.economy_config.get("daily_timer", 86400)
+        
+    def get_bonus_percentage(self, user):
+        roles = [role.name for role in user.roles]
+        max_bonus = 0
+        for role in roles:
+            if role in self.economy_config.get("role_bonuses", {}):
+                role_bonus = self.economy_config["role_bonuses"][role]
+                if role_bonus > max_bonus:
+                    max_bonus = role_bonus
+        return max_bonus
+
+    async def apply_bonus(self, base_points, user):
+        bonus_percentage = self.get_bonus_percentage(user)
+        bonus_points = int(base_points * (bonus_percentage / 100.0))
+        return base_points + bonus_points
 
     # Economy Info
     @nextcord.slash_command(
@@ -219,7 +235,8 @@ class EconomyCog(commands.Cog):
             return
         user_name = interaction.user.display_name
         user_name, points = get_points(user_id, user_name)
-        earned_points = random.randint(self.work_min, self.work_max)
+        base_points = random.randint(self.work_min, self.work_max)
+        earned_points = await self.apply_bonus(base_points, interaction.user)
         new_points = points + earned_points
         set_points(user_id, user_name, new_points)
         desc_text = random.choice(self.work_descriptions).format(
@@ -257,13 +274,14 @@ class EconomyCog(commands.Cog):
 
         user_name = interaction.user.display_name
         user_name, points = get_points(user_id, user_name)
-        daily_points = 150
-        new_points = points + daily_points
+        base_points = self.daily_reward
+        earned_points = await self.apply_bonus(base_points, interaction.user)
+        new_points = points + earned_points
         set_points(user_id, user_name, new_points)
 
         embed = nextcord.Embed(
             title="Daily Reward",
-            description=f"Claimed {daily_points} {self.currency}.",
+            description=f"Claimed {earned_points} {self.currency}.",
             color=nextcord.Color.blurple(),
         )
         await interaction.response.send_message(embed=embed)

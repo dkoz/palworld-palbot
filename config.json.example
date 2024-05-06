@@ -31,11 +31,17 @@
         "invite_reward": 100,
         "work_reward": [20, 50],
         "work_timer": 360,
+        "daily_reward": 200,
+        "daily_timer": 86400,
         "work_description": [
             "Your Pals butchered the invaders and earned {earned_points} {currency}!",
             "Anubis stumbled upon {earned_points} {currency} in the hot tub!",
             "You crafted some ammo and earned {earned_points} {currency}."
         ],
+        "role_bonuses": {
+            "Server Booster": 20,
+            "Regular": 10
+        },
         "vote_enabled": false,
         "vote_slug": "server_slug",
         "vote_apikey": "api_key",
