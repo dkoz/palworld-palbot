@@ -34,6 +34,9 @@ class StatusTracker(commands.Cog):
                         type=nextcord.ActivityType.watching, name=status_message
                     )
                 )
+            except ConnectionResetError:
+                print("Connection was reset. Retrying in 30 seconds...")
+                await asyncio.sleep(30)
             except Exception as e:
                 print(f"Error updating status: {e}")
             await asyncio.sleep(60)
