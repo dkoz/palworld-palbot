@@ -1215,6 +1215,70 @@
         {
             "name": "Bellanoir Libero (Boss)",
             "id": "BOSS_NightLady_Dark"
+        },
+        {
+            "name": "Selyne",
+            "id": "MoonQueen"
+        },
+        {
+            "name": "Selyne (Boss)",
+            "id": "BOSS_MoonQueen"
+        },
+        {
+            "name": "Croajiro",
+            "id": "KendoFrog"
+        },
+        {
+            "name": "Lullu",
+            "id": "LeafPrincess"
+        },
+        {
+            "name": "Shroomer",
+            "id": "MushroomDragon"
+        },
+        {
+            "name": "Shroomer Noct",
+            "id": "MushroomDragon_Dark"
+        },
+        {
+            "name": "Kikit",
+            "id": "SmallArmadillo"
+        },
+        {
+            "name": "Sootseer",
+            "id": "CandleGhost"
+        },
+        {
+            "name": "Prixter",
+            "id": "ScorpionMan"
+        },
+        {
+            "name": "Knocklem",
+            "id": "WingGolem"
+        },
+        {
+            "name": "Yakumo",
+            "id": "GuardianDog"
+        },
+        {
+            "name": "Dogen",
+            "id": "SifuDog"
+        },
+        {
+            "name": "Dazemu",
+            "id": "FeatherOstrich"
+        },
+        {
+            "name": "Mimog",
+            "id": "MimicDog"
+        },
+        {
+            "name": "Xenovader",
+            "id": "DarkAlien"
+        },
+        {
+            "name": "Xenogard",
+            "id": "WhiteAlienDragon"
         }
     ]
 }
