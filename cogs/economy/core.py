@@ -86,17 +86,25 @@ class EconomyCog(commands.Cog):
         name="leaderboard", description="Display the top points leaderboard."
     )
     async def toppoints(self, interaction: nextcord.Interaction):
-        top_points = get_top_points()
-        embed = nextcord.Embed(
-            title=f"Top {self.currency}", color=nextcord.Color.blurple()
-        )
-        for i, (user_name, points) in enumerate(top_points, start=1):
-            embed.add_field(
-                name=f"{i}. {user_name}",
-                value=f"{points} {self.currency}",
-                inline=False,
+        try:
+            top_points = get_top_points()
+            embed = nextcord.Embed(
+                title=f"Top {self.currency}", color=nextcord.Color.blurple()
             )
-        await interaction.response.send_message(embed=embed)
+            for i, (user_name, points) in enumerate(top_points, start=1):
+                embed.add_field(
+                    name=f"{i}. {user_name}",
+                    value=f"{points} {self.currency}",
+                    inline=False,
+                )
+            if interaction.response.is_done():
+                await interaction.followup.send(embed=embed)
+            else:
+                await interaction.response.send_message(embed=embed)
+        except nextcord.errors.NotFound:
+            print("Interaction not found or expired.")
+        except Exception as e:
+            print(f"Unexpected error when handling leaderboard command: {e}")
 
     # Transfer Points
     @nextcord.slash_command(
