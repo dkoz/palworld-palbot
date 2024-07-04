@@ -29,20 +29,28 @@ __________        .__ ___.           __
 # Error Handling
 @bot.event
 async def on_application_command_error(interaction, error):
-    if isinstance(error, nextcord.NotFound):
-        await interaction.response.send_message("Interaction expired or not found.", ephemeral=True)
-    elif isinstance(error, nextcord.HTTPException):
-        await interaction.response.send_message("HTTP error occurred.", ephemeral=True)
-    elif isinstance(error, nextcord.Forbidden):
-        await interaction.response.send_message("You do not have permission to perform this action.", ephemeral=True)
-    elif isinstance(error, commands.CommandOnCooldown):
-        await interaction.response.send_message(f"Command is on cooldown. Please wait {error.retry_after:.2f} seconds.", ephemeral=True)
-    elif isinstance(error, commands.MissingPermissions):
-        await interaction.response.send_message("You are missing required permissions.", ephemeral=True)
-    elif isinstance(error, commands.MissingRequiredArgument):
-        await interaction.response.send_message("Missing a required argument.", ephemeral=True)
-    else:
-        await interaction.response.send_message(f"An error occurred: {str(error)}", ephemeral=True)
+    try:
+        if interaction.response.is_done():
+            return
+        
+        if isinstance(error, nextcord.NotFound):
+            await interaction.followup.send("Interaction expired or not found.", ephemeral=True)
+        elif isinstance(error, nextcord.HTTPException):
+            await interaction.followup.send("HTTP error occurred.", ephemeral=True)
+        elif isinstance(error, nextcord.Forbidden):
+            await interaction.followup.send("You do not have permission to perform this action.", ephemeral=True)
+        elif isinstance(error, commands.CommandOnCooldown):
+            await interaction.followup.send(f"Command is on cooldown. Please wait {error.retry_after:.2f} seconds.", ephemeral=True)
+        elif isinstance(error, commands.MissingPermissions):
+            await interaction.followup.send("You are missing required permissions.", ephemeral=True)
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await interaction.followup.send("Missing a required argument.", ephemeral=True)
+        else:
+            await interaction.followup.send(f"An error occurred: {str(error)}", ephemeral=True)
+    except nextcord.errors.NotFound:
+        print("Failed to send error message, interaction not found or expired.")
+    except Exception as e:
+        print(f"Unexpected error when handling command error: {e}")
 
 @bot.command()
 async def ping(ctx):
