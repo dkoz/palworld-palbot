@@ -17,23 +17,23 @@ class PalguardCog(commands.Cog):
 
     def load_config(self):
         config_path = "config.json"
-        with open(config_path) as config_file:
+        with open(config_path, "r", encoding="utf-8") as config_file:
             config = json.load(config_file)
             self.servers = config["PALWORLD_SERVERS"]
 
     def load_pals(self):
         pals_path = os.path.join("gamedata", "pals.json")
-        with open(pals_path) as pals_file:
+        with open(pals_path, "r", encoding="utf-8") as pals_file:
             self.pals = json.load(pals_file)["creatures"]
 
     def load_items(self):
         items_path = os.path.join("gamedata", "items.json")
-        with open(items_path) as items_file:
+        with open(items_path, "r", encoding="utf-8") as items_file:
             self.items = json.load(items_file)["items"]
 
     def load_eggs(self):
         eggs_path = os.path.join("gamedata", "eggs.json")
-        with open(eggs_path) as eggs_file:
+        with open(eggs_path, "r", encoding="utf-8") as eggs_file:
             self.eggs = json.load(eggs_file)["eggs"]
 
     async def autocomplete_server(
