@@ -9,28 +9,33 @@ class Steam(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @nextcord.slash_command(name="steam", description="Search up a steam profile URL.")
+    @nextcord.slash_command(name="steam", description="Search up a steam profile by URL, SteamID, or custom name.")
     async def steam(
         self,
         interaction: Interaction,
-        profile_url: str = SlashOption(description="The full URL to the Steam profile"),
+        identifier: str = SlashOption(description="The full URL to the Steam profile, SteamID64, or custom name"),
     ):
         await interaction.response.defer()
 
         try:
-            steamid64 = steam_protocol.extract_steamid64(profile_url)
-            if not steamid64:
-                vanity_url = steam_protocol.extract_vanity_url(profile_url)
-                if vanity_url:
-                    steamid64 = await steam_protocol.resolve_vanity_url(vanity_url)
-                    if not steamid64:
-                        await interaction.followup.send(
-                            "Could not resolve Steam profile URL."
-                        )
-                        return
-                else:
-                    await interaction.followup.send("Invalid Steam profile URL.")
-                    return
+            if identifier.isdigit() and len(identifier) == 17:
+                steamid64 = identifier
+            else:
+                steamid64 = steam_protocol.extract_steamid64(identifier)
+                if not steamid64:
+                    vanity_url = steam_protocol.extract_vanity_url(identifier)
+                    if vanity_url:
+                        steamid64 = await steam_protocol.resolve_vanity_url(vanity_url)
+                        if not steamid64:
+                            await interaction.followup.send(
+                                "Could not resolve Steam profile URL or custom name."
+                            )
+                            return
+                    else:
+                        steamid64 = await steam_protocol.resolve_vanity_url(identifier)
+                        if not steamid64:
+                            await interaction.followup.send("Invalid Steam profile URL, SteamID, or custom name.")
+                            return
 
             summary_data, bans_data = await steam_protocol.fetch_steam_profile(
                 steamid64
@@ -44,55 +49,31 @@ class Steam(commands.Cog):
         await self.display_steam_profile(interaction, summary_data, bans_data)
 
     async def display_steam_profile(self, interaction, summary_data, bans_data):
-        player = (
-            summary_data["response"]["players"][0]
-            if summary_data["response"]["players"]
-            else None
-        )
-        ban_info = bans_data["players"][0] if bans_data["players"] else None
-
-        if player and ban_info:
-            embed = Embed(
-                title=player.get("personaname"),
-                url=f"https://steamcommunity.com/profiles/{player.get('steamid')}",
-                color=0x1B2838,
-            )
-            embed.set_thumbnail(url=player.get("avatarfull"))
-
-            if player.get("realname"):
-                embed.add_field(name="Name", value=player.get("realname"), inline=False)
-
-            if player.get("gameextrainfo"):
-                embed.add_field(
-                    name="Playing", value=player.get("gameextrainfo"), inline=False
-                )
-
-            embed.add_field(
-                name="SteamID64", value=f"```{player.get('steamid')}```", inline=False
-            )
-
-            utc_zone = pytz.utc
-            local_zone = pytz.timezone("UTC")
-            creation_timestamp = (
-                datetime.datetime.fromtimestamp(player.get("timecreated"), tz=utc_zone)
-                if player.get("timecreated")
-                else None
-            )
-            if creation_timestamp:
-                creation_date = creation_timestamp.astimezone(local_zone).strftime(
-                    "%Y-%m-%d"
-                )
+        if summary_data and "response" in summary_data and "players" in summary_data["response"] and len(summary_data["response"]["players"]) > 0:
+            player = summary_data["response"]["players"][0]
+            ban_info = bans_data["players"][0] if "players" in bans_data else None
+            
+            if 'timecreated' in player:
+                account_creation_date = datetime.datetime.utcfromtimestamp(player['timecreated'])
+                account_age = (datetime.datetime.utcnow() - account_creation_date).days // 365
             else:
-                creation_date = "Not available"
-            embed.add_field(name="Account Creation", value=creation_date, inline=False)
+                account_creation_date = None
+                account_age = "Unknown"
 
-            if player.get("loccountrycode"):
-                embed.add_field(
-                    name="Country", value=player.get("loccountrycode"), inline=False
-                )
-
-            vac_banned = "Yes" if ban_info["VACBanned"] else "No"
-            embed.add_field(name="VAC Banned", value=vac_banned, inline=False)
+            embed = Embed(
+                title=player['personaname'],
+                url=f"https://steamcommunity.com/profiles/{player['steamid']}",
+                color=nextcord.Color.blue()
+            )
+            embed.set_thumbnail(url=player['avatarfull'])
+            embed.add_field(name="Profile Info", value=f"**Name:** {player.get('realname', 'Unknown')}\n**Country:** {player.get('loccountrycode', 'Unknown')}\n**Account Age:** {account_age} years", inline=True)
+            embed.add_field(name="SteamID", value=f"**SteamID64:** ```{player['steamid']}```", inline=True)
+            
+            if ban_info is not None:
+                ban_info_str = f"**VAC Banned:** {ban_info['VACBanned']}\n"
+                ban_info_str += f"**Bans:** {ban_info['NumberOfVACBans']} (Last: {ban_info['DaysSinceLastBan']} days ago)\n"
+                ban_info_str += f"**Trade Banned:** {ban_info['EconomyBan']}"
+                embed.add_field(name="Ban Info", value=ban_info_str, inline=True)
 
             await interaction.followup.send(embed=embed)
         else:
