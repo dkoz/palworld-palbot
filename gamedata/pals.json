@@ -1229,56 +1229,112 @@
             "id": "KendoFrog"
         },
         {
+            "name": "Croajiro (Boss)",
+            "id": "BOSS_KendoFrog"
+        },
+        {
             "name": "Lullu",
             "id": "LeafPrincess"
+        },
+        {
+            "name": "Lullu (Boss)",
+            "id": "BOSS_LeafPrincess"
         },
         {
             "name": "Shroomer",
             "id": "MushroomDragon"
         },
         {
+            "name": "Shroomer (Boss)",
+            "id": "BOSS_MushroomDragon"
+        },
+        {
             "name": "Shroomer Noct",
             "id": "MushroomDragon_Dark"
+        },
+        {
+            "name": "Shroomer Noct (Boss)",
+            "id": "BOSS_MushroomDragon_Dark"
         },
         {
             "name": "Kikit",
             "id": "SmallArmadillo"
         },
         {
+            "name": "Kikit (Boss)",
+            "id": "BOSS_SmallArmadillo"
+        },
+        {
             "name": "Sootseer",
             "id": "CandleGhost"
+        },
+        {
+            "name": "Sootseer (Boss)",
+            "id": "BOSS_CandleGhost"
         },
         {
             "name": "Prixter",
             "id": "ScorpionMan"
         },
         {
+            "name": "Prixter (Boss)",
+            "id": "BOSS_ScorpionMan"
+        },
+        {
             "name": "Knocklem",
             "id": "WingGolem"
+        },
+        {
+            "name": "Knocklem (Boss)",
+            "id": "BOSS_WingGolem"
         },
         {
             "name": "Yakumo",
             "id": "GuardianDog"
         },
         {
+            "name": "Yakumo (Boss)",
+            "id": "BOSS_GuardianDog"
+        },
+        {
             "name": "Dogen",
             "id": "SifuDog"
+        },
+        {
+            "name": "Dogen (Boss)",
+            "id": "BOSS_SifuDog"
         },
         {
             "name": "Dazemu",
             "id": "FeatherOstrich"
         },
         {
+            "name": "Dazemu (Boss)",
+            "id": "BOSS_FeatherOstrich"
+        },
+        {
             "name": "Mimog",
             "id": "MimicDog"
+        },
+        {
+            "name": "Mimog (Boss)",
+            "id": "BOSS_MimicDog"
         },
         {
             "name": "Xenovader",
             "id": "DarkAlien"
         },
         {
+            "name": "Xenovader (Boss)",
+            "id": "BOSS_DarkAlien"
+        },
+        {
             "name": "Xenogard",
             "id": "WhiteAlienDragon"
+        },
+        {
+            "name": "Xenogard (Boss)",
+            "id": "BOSS_WhiteAlienDragon"
         }
     ]
 }
