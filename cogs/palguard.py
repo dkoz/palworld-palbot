@@ -169,6 +169,47 @@ class PalguardCog(commands.Cog):
         self, interaction: nextcord.Interaction, current: str
     ):
         await self.autocomplete_itemid(interaction, current)
+        
+    @palguard.subcommand(description="Delete an item from a player.")
+    async def delitem(
+        self,
+        interaction: nextcord.Interaction,
+        steamid: str = nextcord.SlashOption(description="SteamID/UID of the player."),
+        itemid: str = nextcord.SlashOption(
+            description="The ID of the Item.", autocomplete=True
+        ),
+        amount: str = nextcord.SlashOption(description="Item amount"),
+        server: str = nextcord.SlashOption(
+            description="Select a server", autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        item_id = next(
+            (item["id"] for item in self.items if item["name"] == itemid), None
+        )
+        if not item_id:
+            await interaction.followup.send("Item ID not found.", ephemeral=True)
+            return
+        asyncio.create_task(
+            self.rcon_util.rcon_command(server, f"delitem {steamid} {item_id} {amount}")
+        )
+        embed = nextcord.Embed(
+            title=f"Palguard Item - {server}", color=nextcord.Color.blue()
+        )
+        embed.description = f"Deleting {itemid}x{amount} from {steamid}."
+        await interaction.followup.send(embed=embed)
+
+    @delitem.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
+    @delitem.on_autocomplete("itemid")
+    async def on_autocomplete_items(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_itemid(interaction, current)
 
     @palguard.subcommand(description="Give experience to a player.")
     async def giveexp(
