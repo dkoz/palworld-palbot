@@ -91,13 +91,10 @@ class EconomyManageCog(commands.Cog):
         interaction: nextcord.Interaction,
         user: nextcord.Member = nextcord.SlashOption(description="Select the user"),
         steam_id: str = nextcord.SlashOption(description="Enter the user's Steam ID"),
-        verification_code: str = nextcord.SlashOption(
-            description="Enter the verification code"
-        ),
     ):
         user_id = str(user.id)
         user_name = user.display_name
-        await link_steam_account(user_id, steam_id, verification_code)
+        await link_steam_account(user_id, steam_id)
 
         await update_discord_username(user_id, user_name)
 

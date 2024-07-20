@@ -57,6 +57,8 @@ class VoteRewards(commands.Cog):
             await self.claim_reward(steam_id)
             add_points(user_id, interaction.user.display_name, self.vote_reward)
             await interaction.response.send_message(f"Thank you for voting! Your reward of {self.vote_reward} {self.currency} has been claimed.", ephemeral=True)
+        elif vote_status == "2":
+            await interaction.response.send_message("You have already claimed your reward.", ephemeral=True)
         else:
             await interaction.response.send_message("You either haven't voted in the last 12 hours or already claimed your reward.", ephemeral=True)
     
@@ -81,6 +83,8 @@ class VoteRewards(commands.Cog):
                     await interaction.response.send_message(f"Thank you for voting! {kit_name} kit has been claimed.", ephemeral=True)
                 else:
                     await interaction.response.send_message("Invalid kit selected.", ephemeral=True)
+            elif vote_status == "2":
+                await interaction.response.send_message("You have already claimed your reward.", ephemeral=True)
             else:
                 await interaction.response.send_message("You either haven't voted in the last 12 hours or already claimed your reward.", ephemeral=True)
         except nextcord.errors.NotFound:
