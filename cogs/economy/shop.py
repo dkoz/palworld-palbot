@@ -29,8 +29,7 @@ class ShopView(View):
             item_info = self.shop_items[item_name]
             embed.add_field(
                 name=item_name,
-                value=f"{item_info['description']}\n"
-                      f"**Price:** {item_info['price']} {self.currency}",
+                value=f"{item_info['description']}\n**Price:** {item_info['price']} {self.currency}",
                 inline=False,
             )
         embed.set_footer(
@@ -81,10 +80,7 @@ class ShopCog(commands.Cog):
         shop_items_path = os.path.join(config_path, "kits.json")
         with open(shop_items_path) as shop_items_file:
             all_items = json.load(shop_items_file)
-            # Filtering out items with a price of 0
-            self.shop_items = {
-                key: value for key, value in all_items.items() if value["price"] > 0
-            }
+            self.shop_items = {key: value for key, value in all_items.items() if value["price"] > 0}
 
     @nextcord.slash_command(name="shop", description="Shop commands.")
     async def shop(self, _interaction: nextcord.Interaction):
@@ -100,28 +96,16 @@ class ShopCog(commands.Cog):
     async def redeem(
         self,
         interaction: nextcord.Interaction,
-        item_name: str = nextcord.SlashOption(
-            description="The name of the item to redeem.", autocomplete=True
-        ),
-        server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
-        ),
+        item_name: str = nextcord.SlashOption(description="The name of the item to redeem.", autocomplete=True),
+        server: str = nextcord.SlashOption(description="Select a server", autocomplete=True),
     ):
-        await interaction.response.defer()
+        await interaction.response.defer(ephemeral=True)
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
+        user_name, points = await get_points(user_id)
 
-        data = get_points(user_id, user_name)
-        if not data:
-            await interaction.followup.send(
-                "There was an error retrieving your data.", ephemeral=True
-            )
-            return
-
-        user_name, points = data
-        steam_id = get_steam_id(user_id)
-
-        if steam_id is None:
+        steam_id = await get_steam_id(user_id)
+        if not steam_id:
             await interaction.followup.send("No Steam ID linked.", ephemeral=True)
             return
 
@@ -130,22 +114,12 @@ class ShopCog(commands.Cog):
             await interaction.followup.send("Item not found.", ephemeral=True)
             return
 
-        # Added price check so that items with a price of 0 cannot be redeemed
-        if item["price"] <= 0:
-            await interaction.followup.send(
-                "This item cannot be redeemed.", ephemeral=True
-            )
-            return
-
         if points < item["price"]:
-            await interaction.followup.send(
-                f"You do not have enough {self.currency} to redeem this item.",
-                ephemeral=True,
-            )
+            await interaction.followup.send(f"You do not have enough {self.currency} to redeem this item.", ephemeral=True)
             return
 
         new_points = points - item["price"]
-        set_points(user_id, user_name, new_points)
+        await set_points(user_id, user_name, new_points)
 
         for command_template in item["commands"]:
             command = command_template.format(steamid=steam_id)
@@ -160,21 +134,13 @@ class ShopCog(commands.Cog):
         await interaction.followup.send(embed=embed, ephemeral=True)
 
     @redeem.on_autocomplete("server")
-    async def on_autocomplete_server(
-        self, interaction: nextcord.Interaction, current: str
-    ):
-        choices = [
-            server for server in self.servers if current.lower() in server.lower()
-        ][:25]
+    async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        choices = [server for server in self.servers if current.lower() in server.lower()][:25]
         await interaction.response.send_autocomplete(choices)
 
     @redeem.on_autocomplete("item_name")
-    async def on_autocomplete_shop_items(
-        self, interaction: nextcord.Interaction, current: str
-    ):
-        choices = [name for name in self.shop_items if current.lower() in name.lower()][
-            :25
-        ]
+    async def on_autocomplete_shop_items(self, interaction: nextcord.Interaction, current: str):
+        choices = [name for name in self.shop_items if current.lower() in name.lower()][:25]
         await interaction.response.send_autocomplete(choices)
 
 def setup(bot):
