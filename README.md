@@ -20,9 +20,5 @@
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
 - **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
 
-## Upcoming Features
- - **Economy**: Earn points in discord to redeem them for kits. When a kit is purchased it will send the items to the player in-game.
- - **Steam Auth**: This will allow you to authenticate your steam account with discord. This will be required to redeem points for rewards in-game. 
-
 ## Guides:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
