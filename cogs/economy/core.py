@@ -17,7 +17,7 @@ from datetime import datetime, timedelta
 class EconomyCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        init_db()
+        self.bot.loop.create_task(init_db())
         self.load_config()
         self.work_cooldown = {}
         self.daily_cooldown = {}
@@ -87,7 +87,7 @@ class EconomyCog(commands.Cog):
     )
     async def toppoints(self, interaction: nextcord.Interaction):
         try:
-            top_points = get_top_points()
+            top_points = await get_top_points()
             embed = nextcord.Embed(
                 title=f"Top {self.currency}", color=nextcord.Color.blurple()
             )
@@ -120,10 +120,10 @@ class EconomyCog(commands.Cog):
     ):
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
-        user_name, user_points = get_points(user_id, user_name)
+        user_name, user_points = await get_points(user_id, user_name)
         recipient_id = str(recipient.id)
         recipient_name = recipient.display_name
-        recipient_name, recipient_points = get_points(recipient_id, recipient_name)
+        recipient_name, recipient_points = await get_points(recipient_id, recipient_name)
         if user_points < points:
             await interaction.response.send_message(
                 f"You do not have enough {self.currency} to transfer.", ephemeral=True
@@ -131,8 +131,8 @@ class EconomyCog(commands.Cog):
             return
         new_user_points = user_points - points
         new_recipient_points = recipient_points + points
-        set_points(user_id, user_name, new_user_points)
-        set_points(recipient_id, recipient_name, new_recipient_points)
+        await set_points(user_id, user_name, new_user_points)
+        await set_points(recipient_id, recipient_name, new_recipient_points)
         embed = nextcord.Embed(
             title=f"{self.currency} Transfer",
             description=f"Transferred {points} {self.currency} to {recipient_name}.",
@@ -144,7 +144,7 @@ class EconomyCog(commands.Cog):
     async def balance(self, interaction: nextcord.Interaction):
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
-        user_name, points = get_points(user_id, user_name)
+        user_name, points = await get_points(user_id, user_name)
         embed = nextcord.Embed(
             title=f"Your {self.currency} Balance",
             description=f"You have {str(points)} {self.currency} in your account.",
@@ -156,8 +156,8 @@ class EconomyCog(commands.Cog):
     async def profile(self, interaction: nextcord.Interaction):
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
-        user_name, points = get_points(user_id, user_name)
-        steam_id = get_steam_id(user_id)
+        user_name, points = await get_points(user_id, user_name)
+        steam_id = await get_steam_id(user_id)
         embed = nextcord.Embed(
             title=f"{user_name}'s Profile", color=nextcord.Color.blurple()
         )
@@ -173,7 +173,7 @@ class EconomyCog(commands.Cog):
         name="topinvites", description="Display the top invite leaderboard."
     )
     async def inviteleaderboard(self, interaction: nextcord.Interaction):
-        top_invites = get_top_invites()
+        top_invites = await get_top_invites()
         embed = nextcord.Embed(title="Top Invites", color=nextcord.Color.blurple())
         if top_invites:
             for i, (user_name, invite_count) in enumerate(top_invites, start=1):
@@ -242,11 +242,11 @@ class EconomyCog(commands.Cog):
             )
             return
         user_name = interaction.user.display_name
-        user_name, points = get_points(user_id, user_name)
+        user_name, points = await get_points(user_id, user_name)
         base_points = random.randint(self.work_min, self.work_max)
         earned_points = await self.apply_bonus(base_points, interaction.user)
         new_points = points + earned_points
-        set_points(user_id, user_name, new_points)
+        await set_points(user_id, user_name, new_points)
         desc_text = random.choice(self.work_descriptions).format(
             earned_points=earned_points, currency=self.currency
         )
@@ -281,11 +281,11 @@ class EconomyCog(commands.Cog):
             return
 
         user_name = interaction.user.display_name
-        user_name, points = get_points(user_id, user_name)
+        user_name, points = await get_points(user_id, user_name)
         base_points = self.daily_reward
         earned_points = await self.apply_bonus(base_points, interaction.user)
         new_points = points + earned_points
-        set_points(user_id, user_name, new_points)
+        await set_points(user_id, user_name, new_points)
 
         embed = nextcord.Embed(
             title="Daily Reward",

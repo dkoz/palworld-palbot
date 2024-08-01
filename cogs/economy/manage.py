@@ -38,7 +38,7 @@ class EconomyManageCog(commands.Cog):
     ):
         user_id = str(user.id)
         user_name = user.display_name
-        add_points(user_id, user_name, points)
+        await add_points(user_id, user_name, points)
         emebd = nextcord.Embed(
             title=f"Added {self.currency}",
             description=f"Added {points} {self.currency} to {user_name}.",
@@ -54,7 +54,7 @@ class EconomyManageCog(commands.Cog):
     ):
         user_id = str(user.id)
         user_name = user.display_name
-        user_name, points = get_points(user_id, user_name)
+        user_name, points = await get_points(user_id, user_name)
 
         embed = nextcord.Embed(
             title=f"Check {self.currency}",
@@ -75,7 +75,7 @@ class EconomyManageCog(commands.Cog):
     ):
         user_id = str(user.id)
         user_name = user.display_name
-        set_points(user_id, user_name, points)
+        await set_points(user_id, user_name, points)
         embed = nextcord.Embed(
             title=f"Set {self.currency}",
             description=f"Set {user_name}'s {self.currency} to {points}.",
@@ -113,7 +113,7 @@ class EconomyManageCog(commands.Cog):
     ):
         user_id = str(user.id)
         user_name = user.display_name
-        user_name, current_points = get_points(user_id, user_name)
+        user_name, current_points = await get_points(user_id, user_name)
         if current_points < points:
             await interaction.response.send_message(
                 f"{user_name} does not have enough {self.currency} to remove.",
@@ -121,7 +121,7 @@ class EconomyManageCog(commands.Cog):
             )
             return
         new_points = current_points - points
-        set_points(user_id, user_name, new_points)
+        await set_points(user_id, user_name, new_points)
         embed = nextcord.Embed(
             title=f"Removed {self.currency}",
             description=f"Removed {points} {self.currency} from {user_name}.",

@@ -54,12 +54,12 @@ class InviteTrackerCog(commands.Cog):
                 print(
                     f"Member {member.display_name} joined using invite from {invite.inviter.display_name}."
                 )
-                add_points(
+                await add_points(
                     str(invite.inviter.id),
                     invite.inviter.display_name,
                     self.invite_payment,
                 )
-                add_invite(str(invite.inviter.id), invite.inviter.display_name)
+                await add_invite(str(invite.inviter.id), invite.inviter.display_name)
                 break
         self.invites[guild.id] = new_invites
 

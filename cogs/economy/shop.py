@@ -111,7 +111,7 @@ class ShopCog(commands.Cog):
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
 
-        data = get_points(user_id, user_name)
+        data = await get_points(user_id, user_name)
         if not data:
             await interaction.followup.send(
                 "There was an error retrieving your data.", ephemeral=True
@@ -119,7 +119,7 @@ class ShopCog(commands.Cog):
             return
 
         user_name, points = data
-        steam_id = get_steam_id(user_id)
+        steam_id = await get_steam_id(user_id)
 
         if steam_id is None:
             await interaction.followup.send("No Steam ID linked.", ephemeral=True)
@@ -145,7 +145,7 @@ class ShopCog(commands.Cog):
             return
 
         new_points = points - item["price"]
-        set_points(user_id, user_name, new_points)
+        await set_points(user_id, user_name, new_points)
 
         for command_template in item["commands"]:
             command = command_template.format(steamid=steam_id)

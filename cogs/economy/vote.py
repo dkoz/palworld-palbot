@@ -47,7 +47,7 @@ class VoteRewards(commands.Cog):
     @nextcord.slash_command(name="claimreward", description="Claim your vote reward.")
     async def votereward(self, interaction: nextcord.Interaction):
         user_id = str(interaction.user.id)
-        steam_id = get_steam_id(user_id)
+        steam_id = await get_steam_id(user_id)
         if steam_id is None:
             await interaction.response.send_message("Your Steam ID is not linked.", ephemeral=True)
             return
@@ -55,7 +55,7 @@ class VoteRewards(commands.Cog):
         vote_status = await self.vote_status(steam_id)
         if vote_status == "1":
             await self.claim_reward(steam_id)
-            add_points(user_id, interaction.user.display_name, self.vote_reward)
+            await add_points(user_id, interaction.user.display_name, self.vote_reward)
             await interaction.response.send_message(f"Thank you for voting! Your reward of {self.vote_reward} {self.currency} has been claimed.", ephemeral=True)
         elif vote_status == "2":
             await interaction.response.send_message("You have already claimed your reward.", ephemeral=True)
@@ -65,7 +65,7 @@ class VoteRewards(commands.Cog):
     @nextcord.slash_command(name="claimkit", description="Claim a kit as a vote reward.")
     async def claim_kit(self, interaction: nextcord.Interaction, kit_name: str = nextcord.SlashOption(description="Select a kit", autocomplete=True), server: str = nextcord.SlashOption(description="Select a server", autocomplete=True)):
         user_id = str(interaction.user.id)
-        steam_id = get_steam_id(user_id)
+        steam_id = await get_steam_id(user_id)
         if steam_id is None:
             await interaction.response.send_message("Your Steam ID is not linked.", ephemeral=True)
             return
