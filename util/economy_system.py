@@ -1,13 +1,23 @@
 # This is the economy system for Palbot.
-# Storage is done in a SQLite3 database.
+# Storage is done using aiosqlite.
 
 import aiosqlite
 import os
 
-DATABASE_PATH = os.path.join('data', 'economy.db')
+DATABASE_PATH = os.path.join('data', 'palbot.db')
 
 async def init_db():
     async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS servers (
+                guild_id TEXT NOT NULL,
+                server_name TEXT PRIMARY KEY,
+                server_host TEXT NOT NULL,
+                rcon_port INTEGER NOT NULL,
+                connection_port INTEGER NOT NULL,
+                admin_pass TEXT NOT NULL
+            )
+        ''')
         await db.execute('''
             CREATE TABLE IF NOT EXISTS user_points (
                 user_id TEXT PRIMARY KEY,
@@ -25,6 +35,27 @@ async def init_db():
             )
         ''')
         await db.commit()
+
+# Server Management
+async def add_server(guild_id, server_name, server_host, rcon_port, connection_port, admin_pass):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            INSERT INTO servers (guild_id, server_name, server_host, rcon_port, connection_port, admin_pass)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (guild_id, server_name, server_host, rcon_port, connection_port, admin_pass))
+        await db.commit()
+        
+async def remove_server(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute("DELETE FROM servers WHERE server_name = ?", (server_name,))
+        await db.commit()
+        return cursor.rowcount > 0
+    
+async def server_autocomplete():
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute("SELECT server_name FROM servers")
+        servers = await cursor.fetchall()
+        return [server[0] for server in servers]
 
 # Admin Functionality
 async def add_points(user_id, user_name, points):
