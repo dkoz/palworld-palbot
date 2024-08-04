@@ -27,4 +27,8 @@ class ServerConfigCog(commands.Cog):
         await interaction.response.send_autocomplete(choices)
         
 def setup(bot):
-    bot.add_cog(ServerConfigCog(bot))
+    cog = ServerConfigCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend([cog.addserver, cog.removeserver])
