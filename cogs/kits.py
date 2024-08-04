@@ -4,18 +4,17 @@ import nextcord
 from nextcord.ext import commands
 from util.rconutility import RconUtility
 import asyncio
+from util.database import get_server_details, server_autocomplete
 
 class KitsCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.load_config()
-        self.rcon_util = RconUtility(self.servers)
+        self.bot.loop.create_task(self.load_servers())
+        self.rcon_util = RconUtility()
+        self.servers = []
 
-    def load_config(self):
-        config_path = "config.json"
-        with open(config_path) as config_file:
-            config = json.load(config_file)
-            self.servers = config["PALWORLD_SERVERS"]
+    async def load_servers(self):
+        self.servers = await server_autocomplete()
 
     async def autocomplete_server(
         self, interaction: nextcord.Interaction, current: str
@@ -24,6 +23,17 @@ class KitsCog(commands.Cog):
             server for server in self.servers if current.lower() in server.lower()
         ]
         await interaction.response.send_autocomplete(choices)
+
+    async def get_server_info(self, server_name: str):
+        details = await get_server_details(server_name)
+        if details:
+            return {
+                "name": server_name,
+                "host": details[0],
+                "port": details[1],
+                "password": details[2]
+            }
+        return None
 
     @nextcord.slash_command(
         name="kit",
@@ -41,7 +51,7 @@ class KitsCog(commands.Cog):
             description="Select a server", autocomplete=True
         ),
     ):
-        await interaction.response.defer()
+        await interaction.response.defer(ephemeral=True)
 
         packages_path = os.path.join("gamedata", "kits.json")
         with open(packages_path) as packages_file:
@@ -52,9 +62,14 @@ class KitsCog(commands.Cog):
             await interaction.followup.send("Kit not found.", ephemeral=True)
             return
 
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
+
         for command_template in package["commands"]:
             command = command_template.format(steamid=steamid)
-            asyncio.create_task(self.rcon_util.rcon_command(server, command))
+            asyncio.create_task(self.rcon_util.rcon_command(server_info, command))
             await asyncio.sleep(1)
 
         embed = nextcord.Embed(

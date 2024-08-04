@@ -7,12 +7,12 @@ class ServerConfigCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @nextcord.slash_command(name="addserver", description="Add a new server configuration.")
+    @nextcord.slash_command(name="addserver", description="Add a new server configuration.", default_member_permissions=nextcord.Permissions(administrator=True))
     async def addserver(self, interaction: nextcord.Interaction):
         modal = AddServerModal()
         await interaction.response.send_modal(modal)
 
-    @nextcord.slash_command(name="removeserver", description="Remove an existing server configuration.")
+    @nextcord.slash_command(name="removeserver", description="Remove an existing server configuration.", default_member_permissions=nextcord.Permissions(administrator=True))
     async def removeserver(self, interaction: nextcord.Interaction, server_name: str):
         result = await remove_server(server_name)
         if result:
