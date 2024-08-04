@@ -34,6 +34,28 @@ async def init_db():
                 invite_count INTEGER NOT NULL DEFAULT 0
             )
         ''')
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS economy_settings (
+                setting_key TEXT PRIMARY KEY,
+                setting_value TEXT NOT NULL
+            )
+        ''')
+        # Settings for the economy system
+        default_settings = {
+            "currency_name": "Points",
+            "invite_reward": "10",
+            "work_reward_min": "20",
+            "work_reward_max": "50",
+            "work_timer": "360",
+            "daily_reward": "200",
+            "daily_timer": "86400"
+        }
+        for key, value in default_settings.items():
+            await db.execute('''
+                INSERT INTO economy_settings (setting_key, setting_value)
+                VALUES (?, ?)
+                ON CONFLICT(setting_key) DO NOTHING;
+            ''', (key, value))
         await db.commit()
 
 # Server Management
@@ -56,6 +78,12 @@ async def server_autocomplete():
         cursor = await db.execute("SELECT server_name FROM servers")
         servers = await cursor.fetchall()
         return [server[0] for server in servers]
+    
+async def get_server_details(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT server_host, rcon_port, admin_pass FROM servers WHERE server_name = ?', (server_name,))
+        result = await cursor.fetchone()
+        return result
 
 # Admin Functionality
 async def add_points(user_id, user_name, points):
@@ -150,3 +178,28 @@ async def update_discord_username(user_id, user_name):
             UPDATE user_points SET user_name = ? WHERE user_id = ?
         ''', (user_name, user_id))
         await db.commit()
+
+# Economy Settings
+async def update_economy_setting(key, value):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            INSERT INTO economy_settings (setting_key, setting_value)
+            VALUES (?, ?)
+            ON CONFLICT(setting_key) DO UPDATE SET setting_value = excluded.setting_value
+        ''', (key, value))
+        await db.commit()
+        
+async def get_economy_setting(key):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT setting_value FROM economy_settings WHERE setting_key = ?', (key,))
+        result = await cursor.fetchone()
+        return result[0] if result else None
+
+async def reset_economy_settings():
+    await update_economy_setting("currency_name", "Points")
+    await update_economy_setting("invite_reward", "10")
+    await update_economy_setting("work_reward_min", "20")
+    await update_economy_setting("work_reward_max", "50")
+    await update_economy_setting("work_timer", "360")
+    await update_economy_setting("daily_reward", "200")
+    await update_economy_setting("daily_timer", "86400")
