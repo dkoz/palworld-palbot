@@ -55,3 +55,20 @@ class EconomySettingsModal(ui.Modal):
             await interaction.response.send_message("Economy settings updated successfully.", ephemeral=True)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+    
+class TimerSettingsModal(ui.Modal):
+    def __init__(self):
+        super().__init__(title="Timer Settings")
+        self.work_timer = ui.TextInput(label="Work Timer (seconds)", placeholder="360")
+        self.daily_timer = ui.TextInput(label="Daily Timer (seconds)", placeholder="86400")
+
+        self.add_item(self.work_timer)
+        self.add_item(self.daily_timer)
+
+    async def callback(self, interaction: Interaction):
+        try:
+            await update_economy_setting("work_timer", self.work_timer.value)
+            await update_economy_setting("daily_timer", self.daily_timer.value)
+            await interaction.response.send_message("Timer settings updated successfully.", ephemeral=True)
+        except Exception as e:
+            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)

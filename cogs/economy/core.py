@@ -1,4 +1,4 @@
-from nextcord.ext import commands
+from nextcord.ext import commands, tasks
 import nextcord
 from util.database import (
     init_db,
@@ -19,6 +19,7 @@ class EconomyCog(commands.Cog):
         self.bot = bot
         self.bot.loop.create_task(init_db())
         self.bot.loop.create_task(self.load_config())
+        self.refresh_settings.start()
         self.work_cooldown = {}
         self.daily_cooldown = {}
         self.economy_config = {}
@@ -34,7 +35,14 @@ class EconomyCog(commands.Cog):
         self.daily_reward = int(await get_economy_setting("daily_reward") or 100)
         self.daily_timer = int(await get_economy_setting("daily_timer") or 86400)
         self.economy_config["role_bonuses"] = await get_economy_setting("role_bonuses") or {}
+    
+    # Need to reload the settings because of memory caching
+    @tasks.loop(minutes=1)
+    async def refresh_settings(self):
+        await self.load_config()
+        print("Refreshed economy settings.")
 
+    # Just realized this doesn't work because I removed the config.json file
     def get_bonus_percentage(self, user):
         roles = [role.name for role in user.roles]
         max_bonus = 0
