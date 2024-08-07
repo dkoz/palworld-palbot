@@ -1,7 +1,13 @@
 import asyncio
 import nextcord
 from nextcord.ext import commands
-from utils.database import get_server_details, server_autocomplete, add_server_event_channel, get_event_channel
+from utils.database import (
+    get_server_details,
+    server_autocomplete,
+    add_event_channel,
+    remove_event_channel,
+    get_event_channel,   
+)
 from utils.rconutility import RconUtility
 import datetime
 
@@ -128,13 +134,27 @@ class ConnectCog(commands.Cog):
     @nextcord.slash_command(description="Set a channel to log server events.")
     async def eventlogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
-        success = await add_server_event_channel(server, channel.id)
+        success = await add_event_channel(server, channel.id)
         if success:
             await interaction.followup.send(f"Event logging channel set for {server}.", ephemeral=True)
         else:
             await interaction.followup.send(f"Failed to set event logging channel for {server}.", ephemeral=True)
 
     @eventlogs.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+
+    # Did not test this yet. lol
+    @nextcord.slash_command(description="Remove a channel from logging server events.")
+    async def removeeventlogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        success = await remove_event_channel(server)
+        if success:
+            await interaction.followup.send(f"Event logging channel removed for {server}.", ephemeral=True)
+        else:
+            await interaction.followup.send(f"Failed to remove event logging channel for {server}.", ephemeral=True)
+            
+    @removeeventlogs.on_autocomplete("server")
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 

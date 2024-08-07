@@ -211,7 +211,7 @@ async def reset_economy_settings():
     await update_economy_setting("daily_timer", "86400")
     
 # Server Events
-async def add_server_event_channel(server_name, channel_id):
+async def add_event_channel(server_name, channel_id):
     async with aiosqlite.connect(DATABASE_PATH) as db:
         await db.execute('''
             INSERT INTO server_events (server_name, channel_id)
@@ -220,6 +220,12 @@ async def add_server_event_channel(server_name, channel_id):
         ''', (server_name, channel_id))
         await db.commit()
         return True
+
+async def remove_event_channel(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute("DELETE FROM server_events WHERE server_name = ?", (server_name,))
+        await db.commit()
+        return cursor.rowcount > 0
 
 async def get_event_channel(server_name):
     async with aiosqlite.connect(DATABASE_PATH) as db:
