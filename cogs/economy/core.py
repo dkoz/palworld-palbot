@@ -40,7 +40,7 @@ class EconomyCog(commands.Cog):
     @tasks.loop(minutes=1)
     async def refresh_settings(self):
         await self.load_config()
-        print("Refreshed economy settings.")
+        #print("Refreshed economy settings.")
 
     # Just realized this doesn't work because I removed the config.json file
     def get_bonus_percentage(self, user):

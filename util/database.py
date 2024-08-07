@@ -40,6 +40,12 @@ async def init_db():
                 setting_value TEXT NOT NULL
             )
         ''')
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS server_events (
+                server_name TEXT PRIMARY KEY,
+                channel_id INTEGER NOT NULL
+            )
+        ''')
         # Settings for the economy system
         default_settings = {
             "currency_name": "Points",
@@ -203,3 +209,20 @@ async def reset_economy_settings():
     await update_economy_setting("work_timer", "360")
     await update_economy_setting("daily_reward", "200")
     await update_economy_setting("daily_timer", "86400")
+    
+# Server Events
+async def add_server_event_channel(server_name, channel_id):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            INSERT INTO server_events (server_name, channel_id)
+            VALUES (?, ?)
+            ON CONFLICT(server_name) DO UPDATE SET channel_id = excluded.channel_id;
+        ''', (server_name, channel_id))
+        await db.commit()
+        return True
+
+async def get_event_channel(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT channel_id FROM server_events WHERE server_name = ?', (server_name,))
+        result = await cursor.fetchone()
+        return result[0] if result else None
