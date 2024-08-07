@@ -1,8 +1,8 @@
 import asyncio
 import nextcord
 from nextcord.ext import commands
-from util.database import get_server_details, server_autocomplete, add_server_event_channel, get_event_channel
-from util.rconutility import RconUtility
+from utils.database import get_server_details, server_autocomplete, add_server_event_channel, get_event_channel
+from utils.rconutility import RconUtility
 import datetime
 
 class ConnectCog(commands.Cog):

@@ -1,6 +1,6 @@
 import nextcord
 from nextcord.ext import commands
-from util.database import (
+from utils.database import (
     add_points,
     get_points,
     set_points,
@@ -8,7 +8,7 @@ from util.database import (
     update_discord_username,
     get_economy_setting,
 )
-from util.modals import EconomySettingsModal, TimerSettingsModal
+from utils.modals import EconomySettingsModal, TimerSettingsModal
 
 class EconomyManageCog(commands.Cog):
     def __init__(self, bot):

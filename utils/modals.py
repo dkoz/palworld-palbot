@@ -1,6 +1,6 @@
 import nextcord
 from nextcord import ui, Interaction
-from util.database import add_server, update_economy_setting
+from utils.database import add_server, update_economy_setting
 
 class AddServerModal(ui.Modal):
     def __init__(self):

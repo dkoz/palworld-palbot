@@ -1,9 +1,9 @@
 import nextcord
 from nextcord.ext import commands
-from util.rconutility import RconUtility
-import util.constants as constants
+from utils.rconutility import RconUtility
+import utils.constants as constants
 import datetime
-from util.database import get_server_details, server_autocomplete
+from utils.database import get_server_details, server_autocomplete
 
 class PalconCog(commands.Cog):
     def __init__(self, bot):

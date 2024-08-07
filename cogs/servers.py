@@ -1,7 +1,7 @@
 import nextcord
 from nextcord.ext import commands
-from util.modals import AddServerModal
-from util.database import remove_server, server_autocomplete
+from utils.modals import AddServerModal
+from utils.database import remove_server, server_autocomplete
 
 class ServerConfigCog(commands.Cog):
     def __init__(self, bot):

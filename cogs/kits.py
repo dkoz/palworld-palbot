@@ -2,9 +2,9 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
-from util.rconutility import RconUtility
+from utils.rconutility import RconUtility
 import asyncio
-from util.database import get_server_details, server_autocomplete
+from utils.database import get_server_details, server_autocomplete
 
 class KitsCog(commands.Cog):
     def __init__(self, bot):

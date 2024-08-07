@@ -1,6 +1,6 @@
 from nextcord.ext import commands, tasks
 import nextcord
-from util.database import (
+from utils.database import (
     init_db,
     get_points,
     set_points,

@@ -1,18 +1,18 @@
 import nextcord
 from nextcord.ext import commands
 from nextcord.ui import Button, View
-from util.database import (
+from utils.database import (
     get_points,
     set_points,
     get_steam_id,
     get_economy_setting,
     server_autocomplete,
 )
-from util.rconutility import RconUtility
+from utils.rconutility import RconUtility
 import asyncio
 import os
 import json
-import util.constants as constants
+import utils.constants as constants
 
 class ShopView(View):
     def __init__(self, shop_items, currency):

@@ -1,6 +1,6 @@
 import nextcord
 from nextcord.ext import commands
-from util.database import add_points, add_invite, get_economy_setting
+from utils.database import add_points, add_invite, get_economy_setting
 
 class InviteTrackerCog(commands.Cog):
     def __init__(self, bot):
