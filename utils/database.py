@@ -46,6 +46,14 @@ async def init_db():
                 channel_id INTEGER NOT NULL
             )
         ''')
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS server_queries (
+                server_name TEXT PRIMARY KEY,
+                channel_id INTEGER NOT NULL,
+                status_message_id INTEGER,
+                players_message_id INTEGER
+            )
+        ''')
         # Settings for the economy system
         default_settings = {
             "currency_name": "Points",
@@ -232,3 +240,20 @@ async def get_event_channel(server_name):
         cursor = await db.execute('SELECT channel_id FROM server_events WHERE server_name = ?', (server_name,))
         result = await cursor.fetchone()
         return result[0] if result else None
+    
+# Server Query
+async def add_query_channel(server_name, channel_id, status_message_id, players_message_id):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            INSERT INTO server_queries (server_name, channel_id, status_message_id, players_message_id)
+            VALUES (?, ?, ?, ?)
+            ON CONFLICT(server_name) DO UPDATE SET channel_id = excluded.channel_id, status_message_id = excluded.status_message_id, players_message_id = excluded.players_message_id;
+        ''', (server_name, channel_id, status_message_id, players_message_id))
+        await db.commit()
+        return True
+
+async def get_query_channel(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT channel_id, status_message_id, players_message_id FROM server_queries WHERE server_name = ?', (server_name,))
+        result = await cursor.fetchone()
+        return result if result else (None, None, None)
