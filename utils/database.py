@@ -99,6 +99,12 @@ async def get_server_details(server_name):
         result = await cursor.fetchone()
         return result
 
+async def get_connection_port(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT connection_port FROM servers WHERE server_name = ?', (server_name,))
+        result = await cursor.fetchone()
+        return result[0] if result else None
+
 # Admin Functionality
 async def add_points(user_id, user_name, points):
     async with aiosqlite.connect(DATABASE_PATH) as db:

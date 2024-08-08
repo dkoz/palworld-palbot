@@ -3,6 +3,7 @@ import nextcord
 from nextcord.ext import commands
 from utils.database import (
     get_server_details,
+    get_connection_port,
     server_autocomplete,
     add_query_channel,
     get_query_channel
@@ -27,11 +28,12 @@ class QueryCog(commands.Cog):
         while True:
             for server_name in self.servers:
                 server_info = await get_server_details(server_name)
-                if server_info and len(server_info) == 3:
-                    await self.server_status_check(server_name, server_info)
+                connection_port = await get_connection_port(server_name)
+                if server_info and connection_port:
+                    await self.server_status_check(server_name, server_info, connection_port)
             await asyncio.sleep(60)
 
-    async def server_status_check(self, server_name, server_info):
+    async def server_status_check(self, server_name, server_info, connection_port):
         server_dict = {
             'name': server_name,
             'host': server_info[0],
@@ -77,7 +79,7 @@ class QueryCog(commands.Cog):
                     )
                     embed.add_field(
                         name="Connection Info",
-                        value=f"```{server_dict['host']}:{server_dict['port']}```",
+                        value=f"```{server_dict['host']}:{connection_port}```",
                         inline=False,
                     )
                     embed.set_footer(
