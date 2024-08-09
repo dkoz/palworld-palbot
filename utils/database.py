@@ -54,6 +54,13 @@ async def init_db():
                 players_message_id INTEGER
             )
         ''')
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS players (
+                steamid TEXT PRIMARY KEY,
+                name TEXT NOT NULL,
+                playeruid TEXT NOT NULL
+            )
+        ''')
         # Settings for the economy system
         default_settings = {
             "currency_name": "Points",
@@ -269,3 +276,35 @@ async def get_query_channel(server_name):
         cursor = await db.execute('SELECT channel_id, status_message_id, players_message_id FROM server_queries WHERE server_name = ?', (server_name,))
         result = await cursor.fetchone()
         return result if result else (None, None, None)
+    
+# Player Logging
+async def insert_player_data(steamid, name, playeruid):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            INSERT INTO players (steamid, name, playeruid)
+            VALUES (?, ?, ?)
+            ON CONFLICT(steamid) DO UPDATE SET
+            name=excluded.name, playeruid=excluded.playeruid
+        ''', (steamid, name, playeruid))
+        await db.commit()
+
+async def get_player_steamids(current: str):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute("SELECT steamid FROM players WHERE steamid LIKE ?", (f'%{current}%',))
+        steamids = await cursor.fetchall()
+        return [row[0] for row in steamids]
+
+async def get_player_names(current: str):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute("SELECT name FROM players WHERE name LIKE ?", (f'%{current}%',))
+        names = await cursor.fetchall()
+        return [row[0] for row in names]
+
+async def get_player_profile(identifier: str):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('''
+            SELECT steamid, name, playeruid 
+            FROM players 
+            WHERE steamid = ? OR name = ?
+        ''', (identifier, identifier))
+        return await cursor.fetchone()
