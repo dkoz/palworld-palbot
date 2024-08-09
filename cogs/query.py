@@ -6,6 +6,7 @@ from utils.database import (
     get_connection_port,
     server_autocomplete,
     add_query_channel,
+    remove_query_channel,
     get_query_channel
 )
 from utils.rconutility import RconUtility
@@ -182,7 +183,11 @@ class QueryCog(commands.Cog):
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(description="Set a channel to post server query updates.")
+    @nextcord.slash_command(description="Group of commands for managing server query logs.", default_member_permissions=nextcord.Permissions(administrator=True))
+    async def query(self, interaction: nextcord.Interaction):
+        pass
+
+    @query.subcommand(name="add", description="Set a channel to post server query updates.")
     async def querylogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await add_query_channel(server, channel.id, None, None)
@@ -192,6 +197,19 @@ class QueryCog(commands.Cog):
             await interaction.followup.send(f"Failed to set query updates channel for {server}.", ephemeral=True)
 
     @querylogs.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+        
+    @query.subcommand(name="remove", description="Remove a channel from posting server query updates.")
+    async def removequerylogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        success = await remove_query_channel(server)
+        if success:
+            await interaction.followup.send(f"Query updates channel removed for {server}.", ephemeral=True)
+        else:
+            await interaction.followup.send(f"Failed to remove query updates channel for {server}.", ephemeral=True)
+
+    @removequerylogs.on_autocomplete("server")
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 

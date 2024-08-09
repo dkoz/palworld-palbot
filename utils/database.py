@@ -258,6 +258,12 @@ async def add_query_channel(server_name, channel_id, status_message_id, players_
         await db.commit()
         return True
 
+async def remove_query_channel(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute("DELETE FROM server_queries WHERE server_name = ?", (server_name,))
+        await db.commit()
+        return cursor.rowcount > 0
+
 async def get_query_channel(server_name):
     async with aiosqlite.connect(DATABASE_PATH) as db:
         cursor = await db.execute('SELECT channel_id, status_message_id, players_message_id FROM server_queries WHERE server_name = ?', (server_name,))
