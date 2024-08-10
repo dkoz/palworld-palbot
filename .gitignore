@@ -7,4 +7,3 @@
 /dev/*
 /cogs/palgame/*
 !gamedata/*.json
-/gamedata/kits.json
