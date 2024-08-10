@@ -1,21 +1,16 @@
 import nextcord
 from nextcord.ext import commands
-from util.economy_system import add_points, add_invite
-import json
+from utils.database import add_points, add_invite, get_economy_setting
 
 class InviteTrackerCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.invites = {}
-        self.load_config()
+        self.bot.loop.create_task(self.load_config())
         bot.loop.create_task(self.setup_invites())
 
-    def load_config(self):
-        config_path = "config.json"
-        with open(config_path) as config_file:
-            self.economy_config = json.load(config_file)
-        self.economy_config = self.economy_config.get("ECONOMY_SETTINGS", {})
-        self.invite_payment = self.economy_config.get("invite_reward", 10)
+    async def load_config(self):
+        self.invite_payment = int(await get_economy_setting("invite_reward") or 10)
 
     async def setup_invites(self):
         await self.bot.wait_until_ready()
@@ -35,11 +30,12 @@ class InviteTrackerCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_invite_create(self, invite):
-        self.invites[invite.guild.id][invite.code] = invite
+        if invite.guild.id in self.invites:
+            self.invites[invite.guild.id][invite.code] = invite
 
     @commands.Cog.listener()
     async def on_invite_delete(self, invite):
-        if invite.code in self.invites[invite.guild.id]:
+        if invite.guild.id in self.invites and invite.code in self.invites[invite.guild.id]:
             del self.invites[invite.guild.id][invite.code]
 
     @commands.Cog.listener()
@@ -64,12 +60,4 @@ class InviteTrackerCog(commands.Cog):
         self.invites[guild.id] = new_invites
 
 def setup(bot):
-    config_path = "config.json"
-    with open(config_path) as config_file:
-        config = json.load(config_file)
-
-    economy_settings = config.get("ECONOMY_SETTINGS", {})
-    if not economy_settings.get("enabled", False):
-        return
-
     bot.add_cog(InviteTrackerCog(bot))

@@ -1,10 +1,10 @@
-import json
 import nextcord
 from nextcord.ext import commands
 from nextcord.ui import View
-from util.rconutility import RconUtility
-import util.constants as constants
+from utils.rconutility import RconUtility
+import utils.constants as constants
 import datetime
+from utils.database import get_server_details, server_autocomplete
 
 class PlayerListView(View):
     def __init__(self, server, player_data):
@@ -62,14 +62,12 @@ class PlayerListView(View):
 class PlayerListCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.load_config()
-        self.rcon_util = RconUtility(self.servers)
+        self.bot.loop.create_task(self.load_servers())
+        self.rcon_util = RconUtility()
+        self.servers = []
 
-    def load_config(self):
-        config_path = "config.json"
-        with open(config_path) as config_file:
-            config = json.load(config_file)
-            self.servers = config["PALWORLD_SERVERS"]
+    async def load_servers(self):
+        self.servers = await server_autocomplete()
 
     async def autocomplete_server(
         self, interaction: nextcord.Interaction, current: str
@@ -78,6 +76,17 @@ class PlayerListCog(commands.Cog):
             server for server in self.servers if current.lower() in server.lower()
         ]
         await interaction.response.send_autocomplete(choices)
+
+    async def get_server_info(self, server_name: str):
+        details = await get_server_details(server_name)
+        if details:
+            return {
+                "name": server_name,
+                "host": details[0],
+                "port": details[1],
+                "password": details[2]
+            }
+        return None
 
     @nextcord.slash_command(name="players",description="Display the player list in an interactive embed.", default_member_permissions=nextcord.Permissions(administrator=True))
     async def playerslist(
@@ -88,7 +97,17 @@ class PlayerListCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
-        response = await self.rcon_util.rcon_command(server, "ShowPlayers")
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            embed = nextcord.Embed(
+                title="Error",
+                description=f"Server {server} not found.",
+                color=nextcord.Color.red()
+            )
+            await interaction.followup.send(embed=embed, ephemeral=True)
+            return
+
+        response = await self.rcon_util.rcon_command(server_info, "ShowPlayers")
 
         if response:
             player_data = response.split('\n')[1:]

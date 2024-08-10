@@ -1,6 +1,6 @@
 import nextcord
 from nextcord.ext import commands
-import settings
+import utils.settings as settings
 import os
 import importlib.util
 

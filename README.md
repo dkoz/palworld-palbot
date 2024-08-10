@@ -11,14 +11,13 @@
 ## Features:
  - **RCON Integration:** Seamlessly control your server using RCON commands.
  - **Server Query:** Retrieve real-time information about your server's status, including player count and connection info.
- - **Whitelist Management:** Easily manage your server's whitelist and create a database of players SteamID, PlayUID, and other information for secure access control.
- - **Player Logging:** Keep track of player activity by logging join and leave events on your server.
- - **Scheduled Restarts:** Automate server reboots at set intervals for updates and maintenance, enhancing stability while minimizing disruption to players. This requires implementing a watchdog mechanism to detect when the server stops and automatically restarts it, similar to capabilities found in game panels or batch scripts.
+ - **Player Management:** Creates a database of players SteamID, PlayerUID, and Name.
+ - **Event Logs:** Keep track of player activity by logging join and leave events on your server.
  - **Status Tracking:** Enable the status tracker to monitor the collective number of players on all your servers.
  - **Palguard Integration**: Offers RCON integration for executing PalGuard commands, such as item and pal spawning. Features a customizable game database with a search function to easily spawn desired items or pals.
    - **Kits**: Effortlessly distribute custom kits with items, pals, and eggs to players across your Palworld servers.
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
-- **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
+ - **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
 
 ## Guides:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.

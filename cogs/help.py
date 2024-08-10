@@ -1,7 +1,7 @@
 import nextcord
 from nextcord.ext import commands
 from nextcord.ui import Button, View
-import util.constants as constants
+import utils.constants as constants
 
 class HelpView(View):
     def __init__(self, bot):

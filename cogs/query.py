@@ -1,69 +1,66 @@
-import json
-import os
+import asyncio
 import nextcord
 from nextcord.ext import commands
-from util.rconutility import RconUtility
-import util.constants as constants
-import asyncio
+from utils.database import (
+    get_server_details,
+    get_connection_port,
+    server_autocomplete,
+    add_query_channel,
+    remove_query_channel,
+    get_query_channel
+)
+from utils.rconutility import RconUtility
+import utils.constants as constants
 import re
+import datetime
 
 class QueryCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.servers = {}
-        self.message_ids = {}
-        self.load_config()
-        self.load_message_ids()
-        self.rcon_util = RconUtility(self.servers)
-        self.create_task()
+        self.rcon_util = RconUtility()
+        self.servers = []
+        self.bot.loop.create_task(self.load_servers())
+        self.bot.loop.create_task(self.monitor_server_status())
 
-    def load_config(self):
-        config_path = "config.json"
-        with open(config_path) as config_file:
-            config = json.load(config_file)
-        self.servers = config["PALWORLD_SERVERS"]
+    async def load_servers(self):
+        self.servers = await server_autocomplete()
 
-    def load_message_ids(self):
-        ids_path = os.path.join("data", "server_status.json")
-        if os.path.exists(ids_path):
-            with open(ids_path) as ids_file:
-                self.message_ids = json.load(ids_file)
+    async def monitor_server_status(self):
+        while True:
+            for server_name in self.servers:
+                server_info = await get_server_details(server_name)
+                connection_port = await get_connection_port(server_name)
+                if server_info and connection_port:
+                    await self.server_status_check(server_name, server_info, connection_port)
+            await asyncio.sleep(60)
 
-    def save_message_ids(self):
-        with open(os.path.join("data", "server_status.json"), "w") as file:
-            json.dump(self.message_ids, file, indent=4)
-
-    def create_task(self):
-        for server_name in self.servers:
-            self.bot.loop.create_task(self.server_status_check(server_name))
-
-    # Split player list into chunks
-    def split_players(self, lst, chunk_size):
-        for i in range(0, len(lst), chunk_size):
-            yield lst[i : i + chunk_size]
-
-    async def server_status_check(self, server_name):
-        await self.bot.wait_until_ready()
-        while not self.bot.is_closed():
-            try:
-                channel_id = self.servers[server_name].get("QUERY_CHANNEL")
+    async def server_status_check(self, server_name, server_info, connection_port):
+        server_dict = {
+            'name': server_name,
+            'host': server_info[0],
+            'port': server_info[1],
+            'password': server_info[2]
+        }
+        try:
+            channel_info = await get_query_channel(server_name)
+            if channel_info:
+                channel_id, status_message_id, players_message_id = channel_info
                 channel = self.bot.get_channel(channel_id)
                 if channel:
-                    status = await self.check_server_status(server_name)
+                    status, response = await self.check_server_status(server_dict)
                     player_count = (
-                        await self.get_player_count(server_name)
+                        await self.get_player_count(server_dict)
                         if status == "Online"
                         else 0
                     )
                     players = (
-                        await self.get_player_names(server_name)
+                        await self.get_player_names(server_dict)
                         if status == "Online"
                         else []
                     )
-                    version, description = await self.extract_server_info(server_name)
+                    version, description = await self.extract_server_info(response)
 
-                    server_config = self.servers[server_name]
-                    max_players = server_config.get("SERVER_SLOTS", 32)
+                    max_players = 32  # Default max players
 
                     embed = nextcord.Embed(
                         title=f"{server_name} Status",
@@ -83,7 +80,7 @@ class QueryCog(commands.Cog):
                     )
                     embed.add_field(
                         name="Connection Info",
-                        value=f"```{server_config['RCON_HOST']}:{server_config['SERVER_PORT']}```",
+                        value=f"```{server_dict['host']}:{connection_port}```",
                         inline=False,
                     )
                     embed.set_footer(
@@ -103,65 +100,59 @@ class QueryCog(commands.Cog):
                             name="\u200b", value=players_list, inline=True
                         )
 
-                    message_key = f"{server_name}_{channel_id}"
-                    message_id = self.message_ids.get(message_key)
-                    if message_id:
+                    if status_message_id:
                         try:
-                            message = await channel.fetch_message(message_id)
+                            message = await channel.fetch_message(status_message_id)
                             await message.edit(embed=embed)
                         except nextcord.NotFound:
                             message = await channel.send(embed=embed)
-                            self.message_ids[message_key] = message.id
+                            status_message_id = message.id
                     else:
                         message = await channel.send(embed=embed)
-                        self.message_ids[message_key] = message.id
+                        status_message_id = message.id
 
-                    player_message_key = f"{server_name}_{channel_id}_players"
-                    player_message_id = self.message_ids.get(player_message_key)
-                    if player_message_id:
+                    if players_message_id:
                         try:
-                            player_message = await channel.fetch_message(
-                                player_message_id
-                            )
+                            player_message = await channel.fetch_message(players_message_id)
                             await player_message.edit(embed=players_embed)
                         except nextcord.NotFound:
                             player_message = await channel.send(embed=players_embed)
-                            self.message_ids[player_message_key] = player_message.id
+                            players_message_id = player_message.id
                     else:
                         player_message = await channel.send(embed=players_embed)
-                        self.message_ids[player_message_key] = player_message.id
+                        players_message_id = player_message.id
 
-                    self.save_message_ids()
-            except Exception as e:
-                print(f"An error occurred: {e}")
-            await asyncio.sleep(60)
+                    await add_query_channel(server_name, channel_id, status_message_id, players_message_id)
 
-    async def check_server_status(self, server_name):
+        except Exception as e:
+            print(f"Error sending command to {server_name}: {e}")
+
+    def split_players(self, lst, chunk_size):
+        for i in range(0, len(lst), chunk_size):
+            yield lst[i : i + chunk_size]
+
+    async def check_server_status(self, server_dict):
         try:
-            response = await self.rcon_util.rcon_command(server_name, "Info")
+            response = await self.rcon_util.rcon_command(server_dict, "Info")
             if "Welcome to Pal Server" in response:
-                return "Online"
+                return "Online", response
             else:
-                return "Offline"
+                return "Offline", ""
         except Exception:
-            return "Offline"
+            return "Offline", ""
 
-    async def get_player_count(self, server_name):
+    async def get_player_count(self, server_dict):
         try:
-            players_output = await self.rcon_util.rcon_command(
-                server_name, "ShowPlayers"
-            )
+            players_output = await self.rcon_util.rcon_command(server_dict, "ShowPlayers")
             if players_output:
                 return len(self.parse_players(players_output))
             return 0
         except Exception:
             return 0
 
-    async def get_player_names(self, server_name):
+    async def get_player_names(self, server_dict):
         try:
-            players_output = await self.rcon_util.rcon_command(
-                server_name, "ShowPlayers"
-            )
+            players_output = await self.rcon_util.rcon_command(server_dict, "ShowPlayers")
             if players_output:
                 return self.parse_players(players_output)
             return []
@@ -177,9 +168,8 @@ class QueryCog(commands.Cog):
                 players.append(parts[0])
         return players
 
-    async def extract_server_info(self, server_name):
+    async def extract_server_info(self, response):
         try:
-            response = await self.rcon_util.rcon_command(server_name, "Info")
             match = re.search(r"Welcome to Pal Server\[v([\d.]+)\] (.+)", response)
             if match:
                 version = match.group(1)
@@ -188,6 +178,40 @@ class QueryCog(commands.Cog):
             return None, None
         except Exception:
             return None, None
+
+    async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        choices = [server for server in self.servers if current.lower() in server.lower()]
+        await interaction.response.send_autocomplete(choices)
+
+    @nextcord.slash_command(description="Group of commands for managing server query logs.", default_member_permissions=nextcord.Permissions(administrator=True))
+    async def query(self, interaction: nextcord.Interaction):
+        pass
+
+    @query.subcommand(name="add", description="Set a channel to post server query updates.")
+    async def querylogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        success = await add_query_channel(server, channel.id, None, None)
+        if success:
+            await interaction.followup.send(f"Query updates channel set for {server}.", ephemeral=True)
+        else:
+            await interaction.followup.send(f"Failed to set query updates channel for {server}.", ephemeral=True)
+
+    @querylogs.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
+        
+    @query.subcommand(name="remove", description="Remove a channel from posting server query updates.")
+    async def removequerylogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+        await interaction.response.defer(ephemeral=True)
+        success = await remove_query_channel(server)
+        if success:
+            await interaction.followup.send(f"Query updates channel removed for {server}.", ephemeral=True)
+        else:
+            await interaction.followup.send(f"Failed to remove query updates channel for {server}.", ephemeral=True)
+
+    @removequerylogs.on_autocomplete("server")
+    async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
+        await self.autocomplete_server(interaction, current)
 
 def setup(bot):
     bot.add_cog(QueryCog(bot))

@@ -10,39 +10,34 @@ from gamercon_async import (
 import time
 
 class RconUtility:
-    def __init__(self, servers, timeout=30, encoding_info_ttl=50):
-        self.servers = servers
+    def __init__(self, timeout=30, encoding_info_ttl=50):
         self.timeout = timeout
         self.memory_encoding = {}
         self.encoding_info_ttl = encoding_info_ttl
 
-    async def check_encoding(self, server_name):
+    async def check_encoding(self, server_info):
         current_time = time.time()
-        encoding_info = self.memory_encoding.get(server_name)
+        encoding_info = self.memory_encoding.get(server_info["name"])
 
         if encoding_info and (
             current_time - encoding_info["timestamp"] < self.encoding_info_ttl
         ):
             return encoding_info["needs_base64"]
 
-        server = self.servers.get(server_name)
-        if not server:
-            raise ValueError(f"Server '{server_name}' not found.")
-
         try:
             async with GameRCON(
-                server["RCON_HOST"],
-                server["RCON_PORT"],
-                server["RCON_PASS"],
+                server_info["host"],
+                server_info["port"],
+                server_info["password"],
                 self.timeout,
             ) as rcon:
                 response = await rcon.send("Info")
                 needs_base64 = self.base64_encoded(response)
         except (ClientError, TimeoutError, InvalidPassword) as e:
-            print(f"Error connecting to server {server_name}: {e}")
+            print(f"Error connecting to server {server_info['name']}: {e}")
             needs_base64 = False
 
-        self.memory_encoding[server_name] = {
+        self.memory_encoding[server_info["name"]] = {
             "needs_base64": needs_base64,
             "timestamp": current_time,
         }
@@ -56,19 +51,15 @@ class RconUtility:
         except Exception:
             return False
 
-    async def rcon_command(self, server_name, command):
-        server = self.servers.get(server_name)
-        if not server:
-            return "Server not found."
-
+    async def rcon_command(self, server_info, command):
         try:
-            needs_base64 = await self.check_encoding(server_name)
+            needs_base64 = await self.check_encoding(server_info)
             ProtocolClass = GameRCONBase64 if needs_base64 else GameRCON
 
             async with ProtocolClass(
-                server["RCON_HOST"],
-                server["RCON_PORT"],
-                server["RCON_PASS"],
+                server_info["host"],
+                server_info["port"],
+                server_info["password"],
                 self.timeout,
             ) as rcon:
                 response = await rcon.send(command)
@@ -76,8 +67,8 @@ class RconUtility:
                     response = base64.b64decode(response).decode("utf-8")
                 return response
         except (ClientError, TimeoutError, InvalidPassword) as e:
-            return f"Failed to execute command on server {server_name}: {e}"
+            return f"Failed to execute command on server {server_info['name']}: {e}"
         except asyncio.TimeoutError:
-            return f"Command execution on server {server_name} timed out."
+            return f"Command execution on server {server_info['name']} timed out."
         except ConnectionResetError as e:
             return f"Connection reset by peer: {e}"

@@ -3,7 +3,7 @@ from nextcord.ext import commands
 from nextcord import Interaction, SlashOption, Embed
 import datetime
 import pytz
-from util import steam_protocol
+from utils import steam_protocol
 
 class Steam(commands.Cog):
     def __init__(self, bot):

@@ -1,12 +1,19 @@
-import json
-import os
 import nextcord
 from nextcord.ext import commands
 from nextcord.ui import Button, View
-from util.economy_system import get_points, set_points, get_steam_id
-from util.rconutility import RconUtility
+from utils.database import (
+    get_points,
+    set_points,
+    get_steam_id,
+    get_economy_setting,
+    get_server_details,
+    server_autocomplete,
+)
+from utils.rconutility import RconUtility
+from utils.kitutility import load_shop_items
 import asyncio
-import util.constants as constants
+import utils.constants as constants
+import json
 
 class ShopView(View):
     def __init__(self, shop_items, currency):
@@ -18,7 +25,7 @@ class ShopView(View):
     async def generate_shop_embed(self):
         embed = nextcord.Embed(
             title="Shop Items",
-            description="Welcome to the shop! Please ensure you're connected to the palworld server before making a purchase.",
+            description="Welcome to the shop! Please ensure you're connected to the Palworld server before making a purchase.",
             color=nextcord.Color.blue(),
         )
         item_names = list(self.shop_items.keys())
@@ -58,33 +65,37 @@ class ShopView(View):
 class ShopCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.load_shop_items()
-        self.load_config()
-        self.load_economy()
-        self.rcon_util = RconUtility(self.servers)
+        self.bot.loop.create_task(self.load_config())
+        self.bot.loop.create_task(self.load_economy())
+        self.bot.loop.create_task(self.reload_cache())
+        self.rcon_util = RconUtility()
+        self.servers = []
+        
+    async def reload_cache(self):
+        while True:
+            await self.load_shop_items()
+            await asyncio.sleep(30)
 
-    def load_config(self):
-        config_path = "config.json"
-        with open(config_path) as config_file:
-            config = json.load(config_file)
-            self.servers = config["PALWORLD_SERVERS"]
+    async def load_config(self):
+        self.servers = await server_autocomplete()
 
-    def load_economy(self):
-        config_path = "config.json"
-        with open(config_path) as config_file:
-            self.economy_config = json.load(config_file)
-        self.economy_config = self.economy_config.get("ECONOMY_SETTINGS", {})
-        self.currency = self.economy_config.get("currency", "points")
+    async def load_economy(self):
+        self.currency = await get_economy_setting("currency_name") or "points"
+        self.shop_items = await load_shop_items()
 
-    def load_shop_items(self):
-        config_path = "gamedata"
-        shop_items_path = os.path.join(config_path, "kits.json")
-        with open(shop_items_path) as shop_items_file:
-            all_items = json.load(shop_items_file)
-            # Filtering out items with a price of 0
-            self.shop_items = {
-                key: value for key, value in all_items.items() if value["price"] > 0
+    async def load_shop_items(self):
+        self.shop_items = await load_shop_items()
+
+    async def get_server_info(self, server_name: str):
+        details = await get_server_details(server_name)
+        if details:
+            return {
+                "name": server_name,
+                "host": details[0],
+                "port": details[1],
+                "password": details[2]
             }
+        return None
 
     @nextcord.slash_command(name="shop", description="Shop commands.")
     async def shop(self, _interaction: nextcord.Interaction):
@@ -107,7 +118,7 @@ class ShopCog(commands.Cog):
             description="Select a server", autocomplete=True
         ),
     ):
-        await interaction.response.defer()
+        await interaction.response.defer(ephemeral=True)
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
 
@@ -130,13 +141,6 @@ class ShopCog(commands.Cog):
             await interaction.followup.send("Item not found.", ephemeral=True)
             return
 
-        # Added price check so that items with a price of 0 cannot be redeemed
-        if item["price"] <= 0:
-            await interaction.followup.send(
-                "This item cannot be redeemed.", ephemeral=True
-            )
-            return
-
         if points < item["price"]:
             await interaction.followup.send(
                 f"You do not have enough {self.currency} to redeem this item.",
@@ -147,10 +151,19 @@ class ShopCog(commands.Cog):
         new_points = points - item["price"]
         await set_points(user_id, user_name, new_points)
 
-        for command_template in item["commands"]:
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
+
+        for command_template in json.loads(item["commands"]):
             command = command_template.format(steamid=steam_id)
-            asyncio.create_task(self.rcon_util.rcon_command(server, command))
-            await asyncio.sleep(1)
+            try:
+                asyncio.create_task(self.rcon_util.rcon_command(server_info, command))
+                await asyncio.sleep(1)
+            except Exception as e:
+                await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
+                return
 
         embed = nextcord.Embed(
             title=f"Redeemed {item_name}",
@@ -178,12 +191,4 @@ class ShopCog(commands.Cog):
         await interaction.response.send_autocomplete(choices)
 
 def setup(bot):
-    config_path = "config.json"
-    with open(config_path) as config_file:
-        config = json.load(config_file)
-
-    economy_settings = config.get("ECONOMY_SETTINGS", {})
-    if not economy_settings.get("enabled", False):
-        return
-
     bot.add_cog(ShopCog(bot))

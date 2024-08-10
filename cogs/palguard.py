@@ -2,24 +2,22 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
-from util.rconutility import RconUtility
+from utils.rconutility import RconUtility
 import asyncio
+from utils.database import get_server_details, server_autocomplete
 
 class PalguardCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.load_config()
+        self.bot.loop.create_task(self.load_servers())
+        self.rcon_util = RconUtility()
+        self.servers = []
         self.load_pals()
         self.load_items()
         self.load_eggs()
-        self.rcon_util = RconUtility(self.servers)
-        self.timeout = 30
 
-    def load_config(self):
-        config_path = "config.json"
-        with open(config_path, "r", encoding="utf-8") as config_file:
-            config = json.load(config_file)
-            self.servers = config["PALWORLD_SERVERS"]
+    async def load_servers(self):
+        self.servers = await server_autocomplete()
 
     def load_pals(self):
         pals_path = os.path.join("gamedata", "pals.json")
@@ -66,11 +64,22 @@ class PalguardCog(commands.Cog):
         ][:25]
         await interaction.response.send_autocomplete(choices)
 
+    async def get_server_info(self, server_name: str):
+        details = await get_server_details(server_name)
+        if details:
+            return {
+                "name": server_name,
+                "host": details[0],
+                "port": details[1],
+                "password": details[2]
+            }
+        return None
+
     @nextcord.slash_command(
         default_member_permissions=nextcord.Permissions(administrator=True)
     )
     async def palguard(self, _interaction: nextcord.Interaction):
-        pass
+        await self.load_servers()
 
     @palguard.subcommand(name="reload", description="Reload server configuration.")
     async def reloadcfg(
@@ -81,7 +90,11 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
-        response = await self.rcon_util.rcon_command(server, "reloadcfg")
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
+        response = await self.rcon_util.rcon_command(server_info, "reloadcfg")
         await interaction.followup.send(f"**Response:** {response}")
 
     @reloadcfg.on_autocomplete("server")
@@ -104,12 +117,16 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
         pal_id = next((pal["id"] for pal in self.pals if pal["name"] == palid), None)
         if not pal_id:
             await interaction.followup.send("Pal ID not found.", ephemeral=True)
             return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server, f"givepal {steamid} {pal_id} {level}")
+            self.rcon_util.rcon_command(server_info, f"givepal {steamid} {pal_id} {level}")
         )
         embed = nextcord.Embed(
             title=f"Palguard Pal - {server}", color=nextcord.Color.blue()
@@ -143,6 +160,10 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
         item_id = next(
             (item["id"] for item in self.items if item["name"] == itemid), None
         )
@@ -150,7 +171,7 @@ class PalguardCog(commands.Cog):
             await interaction.followup.send("Item ID not found.", ephemeral=True)
             return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server, f"give {steamid} {item_id} {amount}")
+            self.rcon_util.rcon_command(server_info, f"give {steamid} {item_id} {amount}")
         )
         embed = nextcord.Embed(
             title=f"Palguard Item - {server}", color=nextcord.Color.blue()
@@ -184,6 +205,10 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
         item_id = next(
             (item["id"] for item in self.items if item["name"] == itemid), None
         )
@@ -191,7 +216,7 @@ class PalguardCog(commands.Cog):
             await interaction.followup.send("Item ID not found.", ephemeral=True)
             return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server, f"delitem {steamid} {item_id} {amount}")
+            self.rcon_util.rcon_command(server_info, f"delitem {steamid} {item_id} {amount}")
         )
         embed = nextcord.Embed(
             title=f"Palguard Item - {server}", color=nextcord.Color.blue()
@@ -222,8 +247,12 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server, f"give_exp {steamid} {amount}")
+            self.rcon_util.rcon_command(server_info, f"give_exp {steamid} {amount}")
         )
         embed = nextcord.Embed(
             title=f"Palguard Experience - {server}", color=nextcord.Color.blue()
@@ -250,12 +279,16 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
         egg_id = next((egg["id"] for egg in self.eggs if egg["name"] == eggid), None)
         if not egg_id:
             await interaction.followup.send("Egg ID not found.", ephemeral=True)
             return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server, f"giveegg {steamid} {egg_id}")
+            self.rcon_util.rcon_command(server_info, f"giveegg {steamid} {egg_id}")
         )
         embed = nextcord.Embed(
             title=f"Palguard Egg - {server}", color=nextcord.Color.blue()
@@ -284,7 +317,11 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
-        response = await self.rcon_util.rcon_command(server, "getrconcmds")
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
+        response = await self.rcon_util.rcon_command(server_info, "getrconcmds")
         await interaction.followup.send(f"{response}")
 
     @palguardhelp.on_autocomplete("server")
@@ -304,8 +341,12 @@ class PalguardCog(commands.Cog):
         ),
     ):
         await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server, f"give_relic {steamid} {amount}")
+            self.rcon_util.rcon_command(server_info, f"give_relic {steamid} {amount}")
         )
         embed = nextcord.Embed(
             title=f"Palguard Relic - {server}", color=nextcord.Color.blurple()
@@ -320,25 +361,20 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
 def setup(bot):
-    config_path = "config.json"
-    with open(config_path) as config_file:
-        config = json.load(config_file)
-
-    if config.get("PALGUARD_ACTIVE", False):
-        cog = PalguardCog(bot)
-        bot.add_cog(cog)
-        if not hasattr(bot, "all_slash_commands"):
-            bot.all_slash_commands = []
-        bot.all_slash_commands.extend(
-            [
-                cog.palguard,
-                cog.reloadcfg,
-                cog.givepal,
-                cog.giveitem,
-                cog.giveexp,
-                cog.giveegg,
-                cog.giverelic,
-            ]
-        )
-    else:
-        print("Palguard disabled by default. Please enable it in config.json")
+    cog = PalguardCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.palguard,
+            cog.reloadcfg,
+            cog.givepal,
+            cog.giveitem,
+            cog.delitem,
+            cog.giveexp,
+            cog.giveegg,
+            cog.palguardhelp,
+            cog.giverelic,
+        ]
+    )
