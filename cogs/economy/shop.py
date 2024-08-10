@@ -67,14 +67,23 @@ class ShopCog(commands.Cog):
         self.bot = bot
         self.bot.loop.create_task(self.load_config())
         self.bot.loop.create_task(self.load_economy())
+        self.bot.loop.create_task(self.reload_cache())
         self.rcon_util = RconUtility()
         self.servers = []
+        
+    async def reload_cache(self):
+        while True:
+            await self.load_shop_items()
+            await asyncio.sleep(30)
 
     async def load_config(self):
         self.servers = await server_autocomplete()
 
     async def load_economy(self):
         self.currency = await get_economy_setting("currency_name") or "points"
+        self.shop_items = await load_shop_items()
+
+    async def load_shop_items(self):
         self.shop_items = await load_shop_items()
 
     async def get_server_info(self, server_name: str):
