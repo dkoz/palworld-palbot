@@ -71,7 +71,7 @@ class PalguardCog(commands.Cog):
                 "name": server_name,
                 "host": details[0],
                 "port": details[1],
-                "password": details[2]
+                "password": details[2],
             }
         return None
 
@@ -92,7 +92,9 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         response = await self.rcon_util.rcon_command(server_info, "reloadcfg")
         await interaction.followup.send(f"**Response:** {response}")
@@ -119,14 +121,18 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         pal_id = next((pal["id"] for pal in self.pals if pal["name"] == palid), None)
         if not pal_id:
             await interaction.followup.send("Pal ID not found.", ephemeral=True)
             return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server_info, f"givepal {steamid} {pal_id} {level}")
+            self.rcon_util.rcon_command(
+                server_info, f"givepal {steamid} {pal_id} {level}"
+            )
         )
         embed = nextcord.Embed(
             title=f"Palguard Pal - {server}", color=nextcord.Color.blue()
@@ -162,7 +168,9 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         item_id = next(
             (item["id"] for item in self.items if item["name"] == itemid), None
@@ -171,7 +179,9 @@ class PalguardCog(commands.Cog):
             await interaction.followup.send("Item ID not found.", ephemeral=True)
             return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server_info, f"give {steamid} {item_id} {amount}")
+            self.rcon_util.rcon_command(
+                server_info, f"give {steamid} {item_id} {amount}"
+            )
         )
         embed = nextcord.Embed(
             title=f"Palguard Item - {server}", color=nextcord.Color.blue()
@@ -190,7 +200,7 @@ class PalguardCog(commands.Cog):
         self, interaction: nextcord.Interaction, current: str
     ):
         await self.autocomplete_itemid(interaction, current)
-        
+
     @palguard.subcommand(description="Delete an item from a player.")
     async def delitem(
         self,
@@ -207,7 +217,9 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         item_id = next(
             (item["id"] for item in self.items if item["name"] == itemid), None
@@ -216,7 +228,9 @@ class PalguardCog(commands.Cog):
             await interaction.followup.send("Item ID not found.", ephemeral=True)
             return
         asyncio.create_task(
-            self.rcon_util.rcon_command(server_info, f"delitem {steamid} {item_id} {amount}")
+            self.rcon_util.rcon_command(
+                server_info, f"delitem {steamid} {item_id} {amount}"
+            )
         )
         embed = nextcord.Embed(
             title=f"Palguard Item - {server}", color=nextcord.Color.blue()
@@ -249,7 +263,9 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         asyncio.create_task(
             self.rcon_util.rcon_command(server_info, f"give_exp {steamid} {amount}")
@@ -281,7 +297,9 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         egg_id = next((egg["id"] for egg in self.eggs if egg["name"] == eggid), None)
         if not egg_id:
@@ -319,7 +337,9 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         response = await self.rcon_util.rcon_command(server_info, "getrconcmds")
         await interaction.followup.send(f"{response}")
@@ -343,7 +363,9 @@ class PalguardCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
             return
         asyncio.create_task(
             self.rcon_util.rcon_command(server_info, f"give_relic {steamid} {amount}")
@@ -353,8 +375,100 @@ class PalguardCog(commands.Cog):
         )
         embed.description = f"Giving {amount} Lifmunk Effigy relics to {steamid}."
         await interaction.followup.send(embed=embed)
-        
+
     @giverelic.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
+    # Palguard Whitelist Functions
+    @nextcord.slash_command(name="whitelist", description="Whitelist commands")
+    async def whitelist(self, interaction: nextcord.Interaction):
+        pass
+
+    @whitelist.subcommand(name="add", description="Add a player to the whitelist")
+    async def whitelistadd(
+        self,
+        interaction: nextcord.Interaction,
+        steamid: str = nextcord.SlashOption(description="SteamID of the player."),
+        server: str = nextcord.SlashOption(
+            description="Select a server", autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
+            return
+        asyncio.create_task(
+            self.rcon_util.rcon_command(server_info, f"whitelist_add {steamid}")
+        )
+        embed = nextcord.Embed(
+            title=f"Whitelist Add - {server}", color=nextcord.Color.green()
+        )
+        embed.description = f"Adding {steamid} to the whitelist."
+        await interaction.followup.send(embed=embed)
+
+    @whitelistadd.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
+    @whitelist.subcommand(name="remove", description="Remove a player from the whitelist")
+    async def whitelistremove(
+        self,
+        interaction: nextcord.Interaction,
+        steamid: str = nextcord.SlashOption(description="SteamID of the player."),
+        server: str = nextcord.SlashOption(
+            description="Select a server", autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
+            return
+        asyncio.create_task(
+            self.rcon_util.rcon_command(server_info, f"whitelist_remove {steamid}")
+        )
+        embed = nextcord.Embed(
+            title=f"Whitelist Remove - {server}", color=nextcord.Color.red()
+        )
+        embed.description = f"Removing {steamid} from the whitelist."
+        await interaction.followup.send(embed=embed)
+        
+    @whitelistremove.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+        
+    # whitelist_get
+    @whitelist.subcommand(name="get", description="Get the whitelist")
+    async def whitelistget(
+        self,
+        interaction: nextcord.Interaction,
+        server: str = nextcord.SlashOption(
+            description="Select a server", autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(
+                f"Server {server} not found.", ephemeral=True
+            )
+            return
+        response = await self.rcon_util.rcon_command(server_info, "whitelist_get")
+        await interaction.followup.send(f"**Whitelist:**\n{response}")
+        
+    @whitelistget.on_autocomplete("server")
     async def on_autocomplete_rcon(
         self, interaction: nextcord.Interaction, current: str
     ):
@@ -376,5 +490,9 @@ def setup(bot):
             cog.giveegg,
             cog.palguardhelp,
             cog.giverelic,
+            cog.whitelist,
+            cog.whitelistadd,
+            cog.whitelistremove,
+            cog.whitelistget,
         ]
     )

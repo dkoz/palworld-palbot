@@ -131,7 +131,7 @@ class ConnectCog(commands.Cog):
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(description="Set a channel to log server events.")
+    @nextcord.slash_command(name="eventlogs", description="Set a channel to log server events.", default_member_permissions=nextcord.Permissions(administrator=True))
     async def eventlogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await add_event_channel(server, channel.id)
@@ -145,7 +145,7 @@ class ConnectCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     # Did not test this yet. lol
-    @nextcord.slash_command(description="Remove a channel from logging server events.")
+    @nextcord.slash_command(name="removelogs", description="Remove a channel from logging server events.", default_member_permissions=nextcord.Permissions(administrator=True))
     async def removeeventlogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await remove_event_channel(server)
@@ -159,4 +159,13 @@ class ConnectCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
 def setup(bot):
-    bot.add_cog(ConnectCog(bot))
+    cog = ConnectCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.eventlogs,
+            cog.removeeventlogs
+        ]
+    )

@@ -140,4 +140,14 @@ class PlayerInfoCog(commands.Cog):
         await interaction.response.send_autocomplete(choices[:25])
 
 def setup(bot):
-    bot.add_cog(PlayerInfoCog(bot))
+    cog = PlayerInfoCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.userdb,
+            cog.search,
+            cog.searchname,
+        ]
+    )

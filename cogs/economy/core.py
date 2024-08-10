@@ -40,7 +40,7 @@ class EconomyCog(commands.Cog):
     @tasks.loop(minutes=1)
     async def refresh_settings(self):
         await self.load_config()
-        #print("Refreshed economy settings.")
+        # print("Refreshed economy settings.")
 
     # Just realized this doesn't work because I removed the config.json file
     def get_bonus_percentage(self, user):
@@ -167,7 +167,11 @@ class EconomyCog(commands.Cog):
         try:
             embed = nextcord.Embed(title="Economy Help",
                                    color=nextcord.Color.blurple())
-            embed.add_field(name="Commands", value=f"/setsteam - Set your own Steam ID.\n/transfer - Transfer {self.currency} to another user.\n/balance - Check your own {self.currency}.\n/profile - Check your profile.\n/work - Earn {self.currency} by working.\n/daily - Claim your daily {self.currency}.\n/leaderboard - Display the top {self.currency} leaderboard.\n/topinvites - Display the top invite leaderboard.\n/economyinfo - Display economy information.\n/shop menu - Displays available items in the shop.\n/shop redeem - Redeem your {self.currency} for a shop item.\n/claimreward - Claim your reward for voting!", inline=False)
+            embed.add_field(
+                name="Commands",
+                value=f"/setsteam - Set your own Steam ID.\n/transfer - Transfer {self.currency} to another user.\n/balance - Check your own {self.currency}.\n/profile - Check your profile.\n/work - Earn {self.currency} by working.\n/daily - Claim your daily {self.currency}.\n/leaderboard - Display the top {self.currency} leaderboard.\n/topinvites - Display the top invite leaderboard.\n/economyinfo - Display economy information.\n/shop menu - Displays available items in the shop.\n/shop redeem - Redeem your {self.currency} for a shop item.\n/claimreward - Claim your reward for voting!",
+                inline=False,
+            )
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)

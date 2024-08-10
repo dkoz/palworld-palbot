@@ -214,4 +214,13 @@ class QueryCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
 def setup(bot):
-    bot.add_cog(QueryCog(bot))
+    cog = QueryCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.querylogs,
+            cog.removequerylogs
+        ]
+    )

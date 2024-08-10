@@ -135,4 +135,15 @@ class KitsCog(commands.Cog):
             await interaction.followup.send(f"An error occurred while uploading kits: {e}", ephemeral=True)
 
 def setup(bot):
-    bot.add_cog(KitsCog(bot))
+    cog = KitsCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.givekit,
+            cog.manage_kits,
+            cog.delete_kit,
+            cog.uploadkits
+        ]
+    )
