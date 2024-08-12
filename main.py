@@ -3,11 +3,16 @@ from nextcord.ext import commands
 import utils.settings as settings
 import os
 import importlib.util
+from utils.translations import translator
+import logging
+
+logging.basicConfig(filename=os.path.join('logs', 'bot.log'), level=logging.INFO)
 
 intents = nextcord.Intents.all()
 bot = commands.Bot(
     command_prefix=settings.bot_prefix, intents=intents, help_command=None
 )
+translator.set_language(settings.bot_language)
 
 @bot.event
 async def on_ready():

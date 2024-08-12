@@ -13,6 +13,8 @@ from utils.rconutility import RconUtility
 import utils.constants as constants
 import re
 import datetime
+import logging
+from utils.translations import t
 
 class QueryCog(commands.Cog):
     def __init__(self, bot):
@@ -60,10 +62,8 @@ class QueryCog(commands.Cog):
                     )
                     version, description = await self.extract_server_info(response)
 
-                    max_players = 32  # Default max players
-
                     embed = nextcord.Embed(
-                        title=f"{server_name} Status",
+                        title=t("QueryCog", "status.title").format(server=server_name),
                         description=description,
                         color=(
                             nextcord.Color.green()
@@ -71,15 +71,15 @@ class QueryCog(commands.Cog):
                             else nextcord.Color.red()
                         ),
                     )
-                    embed.add_field(name="Status", value=status, inline=True)
-                    embed.add_field(name="Version", value=version, inline=True)
+                    embed.add_field(name=t("QueryCog", "status.status"), value=status, inline=True)
+                    embed.add_field(name=t("QueryCog", "status.version"), value=version, inline=True)
                     embed.add_field(
-                        name="Players",
-                        value=f"{player_count}/{max_players}",
+                        name=t("QueryCog", "status.players"),
+                        value=f"{player_count} online",
                         inline=False,
                     )
                     embed.add_field(
-                        name="Connection Info",
+                        name=t("QueryCog", "status.connection_info"),
                         value=f"```{server_dict['host']}:{connection_port}```",
                         inline=False,
                     )
@@ -89,12 +89,12 @@ class QueryCog(commands.Cog):
 
                     players_chunks = list(self.split_players(players, 11))
                     players_embed = nextcord.Embed(
-                        title=f"Players Online", color=nextcord.Color.blue()
+                        title=t("QueryCog", "status.players_online"), color=nextcord.Color.blue()
                     )
 
                     for chunk in players_chunks:
                         players_list = (
-                            "\n".join(chunk) if chunk else "No players online."
+                            "\n".join(chunk) if chunk else t("QueryCog", "status.no_players_online")
                         )
                         players_embed.add_field(
                             name="\u200b", value=players_list, inline=True
@@ -125,7 +125,7 @@ class QueryCog(commands.Cog):
                     await add_query_channel(server_name, channel_id, status_message_id, players_message_id)
 
         except Exception as e:
-            print(f"Error sending command to {server_name}: {e}")
+            logging.error(f"Query: Error sending command to {server_name}: {e}")
 
     def split_players(self, lst, chunk_size):
         for i in range(0, len(lst), chunk_size):
@@ -183,31 +183,31 @@ class QueryCog(commands.Cog):
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(description="Group of commands for managing server query logs.", default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(description=t("QueryCog", "query.description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def query(self, interaction: nextcord.Interaction):
         pass
 
-    @query.subcommand(name="add", description="Set a channel to post server query updates.")
-    async def querylogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+    @query.subcommand(name="add", description=t("QueryCog", "query.add.description"))
+    async def querylogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description=t("QueryCog", "query.add.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await add_query_channel(server, channel.id, None, None)
         if success:
-            await interaction.followup.send(f"Query updates channel set for {server}.", ephemeral=True)
+            await interaction.followup.send(t("QueryCog", "query.add.success").format(server=server), ephemeral=True)
         else:
-            await interaction.followup.send(f"Failed to set query updates channel for {server}.", ephemeral=True)
+            await interaction.followup.send(t("QueryCog", "query.add.failed").format(server=server), ephemeral=True)
 
     @querylogs.on_autocomplete("server")
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
         
-    @query.subcommand(name="remove", description="Remove a channel from posting server query updates.")
-    async def removequerylogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+    @query.subcommand(name="remove", description=t("QueryCog", "query.remove.description"))
+    async def removequerylogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("QueryCog", "query.remove.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await remove_query_channel(server)
         if success:
-            await interaction.followup.send(f"Query updates channel removed for {server}.", ephemeral=True)
+            await interaction.followup.send(t("QueryCog", "query.remove.success").format(server=server), ephemeral=True)
         else:
-            await interaction.followup.send(f"Failed to remove query updates channel for {server}.", ephemeral=True)
+            await interaction.followup.send(t("QueryCog", "query.remove.failed").format(server=server), ephemeral=True)
 
     @removequerylogs.on_autocomplete("server")
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):

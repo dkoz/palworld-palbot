@@ -2,6 +2,7 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
+from utils.translations import t
 
 class GamedataCog(commands.Cog):
     def __init__(self, bot):
@@ -37,22 +38,22 @@ class GamedataCog(commands.Cog):
     async def search(self, _interaction: nextcord.Interaction):
         pass
 
-    @search.subcommand(description="Search for a pal by name.")
+    @search.subcommand(description=t("GamedataCog", "search.pal.description"))
     async def pal(
         self,
         interaction: nextcord.Interaction,
         name: str = nextcord.SlashOption(
-            description="Name of the pal to search for", autocomplete=True),
+            description=t("GamedataCog", "search.pal.name_description"), autocomplete=True),
     ):
         await interaction.response.defer(ephemeral=True)
         pal = next((pal for pal in self.pals if pal["name"] == name), None)
         if pal:
             embed = nextcord.Embed(
                 title=pal['name'], color=nextcord.Color.blue())
-            embed.description = f"Spawn Code: `{pal['id']}`"
+            embed.description = t("GamedataCog", "search.pal.spawn_code").format(id=pal['id'])
             await interaction.followup.send(embed=embed)
         else:
-            await interaction.followup.send("Pal not found.", ephemeral=True)
+            await interaction.followup.send(t("GamedataCog", "search.pal.not_found"), ephemeral=True)
 
     @pal.on_autocomplete("name")
     async def autocomplete_pal_name(
@@ -60,12 +61,12 @@ class GamedataCog(commands.Cog):
     ):
         await self.autocomplete_pal(interaction, current)
 
-    @search.subcommand(description="Search for an item by name.")
+    @search.subcommand(description=t("GamedataCog", "search.item.description"))
     async def item(
         self,
         interaction: nextcord.Interaction,
         name: str = nextcord.SlashOption(
-            description="Name of the item to search for", autocomplete=True),
+            description=t("GamedataCog", "search.item.name_description"), autocomplete=True),
     ):
         await interaction.response.defer(ephemeral=True)
         item = next(
@@ -73,10 +74,10 @@ class GamedataCog(commands.Cog):
         if item:
             embed = nextcord.Embed(
                 title=item['name'], color=nextcord.Color.green())
-            embed.description = f"Spawn Code: `{item['id']}`"
+            embed.description = t("GamedataCog", "search.item.spawn_code").format(id=item['id'])
             await interaction.followup.send(embed=embed)
         else:
-            await interaction.followup.send("Item not found.", ephemeral=True)
+            await interaction.followup.send(t("GamedataCog", "search.item.not_found"), ephemeral=True)
 
     @item.on_autocomplete("name")
     async def autocomplete_item_name(

@@ -13,6 +13,8 @@ from utils.database import (
     get_player_names,
     get_player_profile
 )
+import logging
+from utils.translations import t
 
 class PlayerInfoCog(commands.Cog):
     def __init__(self, bot):
@@ -31,10 +33,10 @@ class PlayerInfoCog(commands.Cog):
             if response:
                 return response
             else:
-                print(f"No response from ShowPlayers command for {server_info['name']}.")
+                logging.error(f"No response from ShowPlayers command for {server_info['name']}.")
                 return None
         except Exception as e:
-            print(f"Exception sending ShowPlayers command for {server_info['name']}: {e}")
+            logging.error(f"Error sending command to {server_info['name']}: {e}")
             return None
 
     async def update_players(self):
@@ -67,36 +69,36 @@ class PlayerInfoCog(commands.Cog):
         return bool(re.match(r"^7656119[0-9]{10}$", steamid))
 
     @nextcord.slash_command(
-        description="Search the user database.",
+        description=t("PlayerInfoCog", "userdb.description"),
         default_member_permissions=nextcord.Permissions(administrator=True),
     )
     async def userdb(self, interaction: nextcord.Interaction):
         pass
 
-    @userdb.subcommand(name="steam", description="Find player by SteamID")
+    @userdb.subcommand(name="steam", description=t("PlayerInfoCog", "userdb.search_by_steamid"))
     async def search(
         self,
         interaction: nextcord.Interaction,
         steamid: str = nextcord.SlashOption(
-            description="Enter SteamID", autocomplete=True
+            description=t("PlayerInfoCog", "userdb.enter_steamid"), autocomplete=True
         ),
     ):
         player_info = await get_player_profile(steamid)
         if player_info:
             steamid, name, playeruid = player_info
             embed = nextcord.Embed(
-                title="Player Information", color=nextcord.Color.blue()
+                title=t("PlayerInfoCog", "userdb.player_info_title"), color=nextcord.Color.blue()
             )
-            embed.add_field(name="Name", value=f"```{name}```", inline=False)
-            embed.add_field(name="Player UID", value=f"```{playeruid}```", inline=False)
-            embed.add_field(name="SteamID", value=f"```{steamid}```", inline=False)
+            embed.add_field(name=t("PlayerInfoCog", "userdb.name"), value=f"```{name}```", inline=False)
+            embed.add_field(name=t("PlayerInfoCog", "userdb.player_uid"), value=f"```{playeruid}```", inline=False)
+            embed.add_field(name=t("PlayerInfoCog", "userdb.steamid"), value=f"```{steamid}```", inline=False)
             embed.set_footer(
                 text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE
             )
             await interaction.response.send_message(embed=embed)
         else:
             await interaction.response.send_message(
-                f"No player found with SteamID {steamid}", ephemeral=True
+                t("PlayerInfoCog", "userdb.no_player_found").format(steamid=steamid), ephemeral=True
             )
 
     @search.on_autocomplete("steamid")
@@ -106,30 +108,30 @@ class PlayerInfoCog(commands.Cog):
         choices = await get_player_steamids(current)
         await interaction.response.send_autocomplete(choices[:25])
 
-    @userdb.subcommand(name="name", description="Find player by name")
+    @userdb.subcommand(name="name", description=t("PlayerInfoCog", "userdb.search_by_name"))
     async def searchname(
         self,
         interaction: nextcord.Interaction,
         name: str = nextcord.SlashOption(
-            description="Enter player name", autocomplete=True
+            description=t("PlayerInfoCog", "userdb.enter_name"), autocomplete=True
         ),
     ):
         player_info = await get_player_profile(name)
         if player_info:
             steamid, name, playeruid = player_info
             embed = nextcord.Embed(
-                title="Player Information", color=nextcord.Color.blue()
+                title=t("PlayerInfoCog", "userdb.player_info_title"), color=nextcord.Color.blue()
             )
-            embed.add_field(name="Name", value=f"```{name}```", inline=False)
-            embed.add_field(name="Player UID", value=f"```{playeruid}```", inline=False)
-            embed.add_field(name="SteamID", value=f"```{steamid}```", inline=False)
+            embed.add_field(name=t("PlayerInfoCog", "userdb.name"), value=f"```{name}```", inline=False)
+            embed.add_field(name=t("PlayerInfoCog", "userdb.player_uid"), value=f"```{playeruid}```", inline=False)
+            embed.add_field(name=t("PlayerInfoCog", "userdb.steamid"), value=f"```{steamid}```", inline=False)
             embed.set_footer(
                 text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE
             )
             await interaction.response.send_message(embed=embed)
         else:
             await interaction.response.send_message(
-                f"No player found with name '{name}'", ephemeral=True
+                t("PlayerInfoCog", "userdb.player_not_found").format(name=name), ephemeral=True
             )
 
     @searchname.on_autocomplete("name")

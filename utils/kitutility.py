@@ -1,6 +1,7 @@
 import nextcord
 import aiosqlite
 import os
+from utils.translations import t
 
 DATABASE_PATH = os.path.join('data', 'kits.db')
 
@@ -58,10 +59,10 @@ async def load_shop_items():
 class KitModal(nextcord.ui.Modal):
     def __init__(self, title, kit_name="", commands="", description="", price="0"):
         super().__init__(title=title)
-        self.add_item(nextcord.ui.TextInput(label="Kit Name", default_value=kit_name))
-        self.add_item(nextcord.ui.TextInput(label="Commands (JSON list)", default_value=commands, style=nextcord.TextInputStyle.paragraph))
-        self.add_item(nextcord.ui.TextInput(label="Description", default_value=description))
-        self.add_item(nextcord.ui.TextInput(label="Price", default_value=price))
+        self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.kit_name_label"), default_value=kit_name))
+        self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.commands_label"), default_value=commands, style=nextcord.TextInputStyle.paragraph))
+        self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.description_label"), default_value=description))
+        self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.price_label"), default_value=price))
 
     async def callback(self, interaction: nextcord.Interaction):
         kit_name = self.children[0].value
@@ -70,4 +71,4 @@ class KitModal(nextcord.ui.Modal):
         price = self.children[3].value
 
         await save_kit(kit_name, commands, description, price)
-        await interaction.response.send_message(f"Kit '{kit_name}' has been saved.", ephemeral=True)
+        await interaction.response.send_message(t("Modals", "kitmodal.success_message").format(kit_name=kit_name), ephemeral=True)

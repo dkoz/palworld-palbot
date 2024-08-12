@@ -12,6 +12,7 @@ from utils.kitutility import (
 )
 import json
 import asyncio
+from utils.translations import t
 
 class KitsCog(commands.Cog):
     def __init__(self, bot):
@@ -39,20 +40,20 @@ class KitsCog(commands.Cog):
             }
         return None
 
-    @nextcord.slash_command(name="kit", description="Give a kit to a player.", default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="kit", description=t("KitsCog", "givekit.description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def givekit(self, interaction: nextcord.Interaction, steamid: str, kit_name: str, server: str):
         await interaction.response.defer(ephemeral=True)
         
         kit = await get_kit(kit_name)
         if not kit:
-            await interaction.followup.send("Kit not found.", ephemeral=True)
+            await interaction.followup.send(t("KitsCog", "givekit.kit_not_found"), ephemeral=True)
             return
         
         commands, description, price = kit
 
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("KitsCog", "givekit.server_not_found").format(server=server), ephemeral=True)
             return
 
         for command_template in json.loads(commands):
@@ -61,13 +62,13 @@ class KitsCog(commands.Cog):
                 asyncio.create_task(self.rcon_util.rcon_command(server_info, command))
                 await asyncio.sleep(1)
             except Exception as e:
-                await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
+                await interaction.followup.send(t("KitsCog", "givekit.error_executing_command").format(command=command, error=e), ephemeral=True)
                 return
 
         embed = nextcord.Embed(
-            title=f"Package Delivery - {server}",
+            title=t("KitsCog", "givekit.package_delivery_title").format(server=server),
             color=nextcord.Color.green(),
-            description=f"Delivering {kit_name} kit to {steamid}."
+            description=t("KitsCog", "givekit.package_delivery_description").format(kit_name=kit_name, steamid=steamid)
         )
         await interaction.followup.send(embed=embed)
 
@@ -80,7 +81,7 @@ class KitsCog(commands.Cog):
         choices = await autocomplete_kits(current)
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(name="managekits", description="Add or update a kit.", default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="managekits", description=t("KitsCog", "manage_kits.description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def manage_kits(self, interaction: nextcord.Interaction, kit_name: str = ""):
         try:
             kit = await get_kit(kit_name)
@@ -89,34 +90,34 @@ class KitsCog(commands.Cog):
             description = kit[1] if kit else ""
             price = str(kit[2]) if kit else "0"
             
-            modal = KitModal("Manage Kit", kit_name, commands, description, price)
+            modal = KitModal(t("Modals", "kitmodal.title"), kit_name, commands, description, price)
             await interaction.response.send_modal(modal)
         except Exception as e:
-            await interaction.response.send_message(f"Error loading kit details: {e}", ephemeral=True)
+            await interaction.response.send_message(t("KitsCog", "manage_kits.error_loading_kit").format(error=e), ephemeral=True)
             
     @manage_kits.on_autocomplete("kit_name")
     async def on_autocomplete_kits(self, interaction: nextcord.Interaction, current: str):
         choices = await autocomplete_kits(current)
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(name="deletekit", description="Delete a kit.", default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="deletekit", description=t("KitsCog", "delete_kit.description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def delete_kit(self, interaction: nextcord.Interaction, kit_name: str):
         await interaction.response.defer(ephemeral=True)
         
         await delete_kit(kit_name)
-        await interaction.followup.send(f"Kit '{kit_name}' has been deleted.", ephemeral=True)
+        await interaction.followup.send(t("KitsCog", "delete_kit.success").format(kit_name=kit_name), ephemeral=True)
 
     @delete_kit.on_autocomplete("kit_name")
     async def on_autocomplete_kits(self, interaction: nextcord.Interaction, current: str):
         choices = await autocomplete_kits(current)
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(name="uploadkits", description="Upload kits from a JSON file to the database.", default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="uploadkits", description=t("KitsCog", "uploadkits.description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def uploadkits(self, interaction: nextcord.Interaction, json_file: nextcord.Attachment):
         await interaction.response.defer(ephemeral=True)
 
         if not json_file.filename.endswith('.json'):
-            await interaction.followup.send("Please upload a valid JSON file.", ephemeral=True)
+            await interaction.followup.send(t("KitsCog", "uploadkits.invalid_file"), ephemeral=True)
             return
 
         try:
@@ -130,9 +131,9 @@ class KitsCog(commands.Cog):
 
                 await save_kit(kit_name, commands, description, price)
 
-            await interaction.followup.send("Kits uploaded successfully.", ephemeral=True)
+            await interaction.followup.send(t("KitsCog", "uploadkits.success"), ephemeral=True)
         except Exception as e:
-            await interaction.followup.send(f"An error occurred while uploading kits: {e}", ephemeral=True)
+            await interaction.followup.send(t("KitsCog", "uploadkits.error").format(error=e), ephemeral=True)
 
 def setup(bot):
     cog = KitsCog(bot)

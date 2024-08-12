@@ -1,0 +1,446 @@
+{
+    "Modals": {
+        "addserver": {
+            "title": "Agregar Nuevo Servidor",
+            "server_name": {
+                "label": "Nombre del Servidor",
+                "placeholder": "Ingresa un nombre único para el servidor"
+            },
+            "server_host": {
+                "label": "Host del Servidor",
+                "placeholder": "Ingresa la IP o dirección del host del servidor"
+            },
+            "rcon_port": {
+                "label": "Puerto RCON",
+                "placeholder": "Ingresa el puerto RCON"
+            },
+            "connection_port": {
+                "label": "Puerto de Conexión",
+                "placeholder": "Ingresa el puerto de conexión"
+            },
+            "admin_pass": {
+                "label": "Contraseña de Administrador",
+                "placeholder": "Ingresa la contraseña de administrador"
+            },
+            "success": "Servidor '{server_name}' agregado exitosamente."
+        },
+        "economysettings": {
+            "title": "Configuración de la Economía",
+            "currency_name": {
+                "label": "Nombre de la Moneda",
+                "placeholder": "Puntos"
+            },
+            "invite_reward": {
+                "label": "Recompensa por Invitación",
+                "placeholder": "10"
+            },
+            "work_reward_min": {
+                "label": "Recompensa Mínima por Trabajo",
+                "placeholder": "20"
+            },
+            "work_reward_max": {
+                "label": "Recompensa Máxima por Trabajo",
+                "placeholder": "50"
+            },
+            "daily_reward": {
+                "label": "Recompensa Diaria",
+                "placeholder": "200"
+            },
+            "success": "Configuración de la economía actualizada exitosamente.",
+            "error": "Error inesperado: {error}"
+        },
+        "timersettings": {
+            "title": "Configuración de Temporizadores",
+            "work_timer": {
+                "label": "Temporizador de Trabajo (segundos)",
+                "placeholder": "360"
+            },
+            "daily_timer": {
+                "label": "Temporizador Diario (segundos)",
+                "placeholder": "86400"
+            },
+            "success": "Configuración de temporizadores actualizada exitosamente.",
+            "error": "Error inesperado: {error}"
+        },
+        "kitmodal": {
+            "title": "Gestionar Kit",
+            "kit_name_label": "Nombre del Kit",
+            "commands_label": "Comandos (lista JSON)",
+            "description_label": "Descripción",
+            "price_label": "Precio",
+            "success_message": "El kit '{kit_name}' ha sido guardado."
+        }
+    },
+    "PalconCog": {
+        "command": {
+            "description": "Enviar un comando remoto a tu servidor de Palworld.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "response": "**Respuesta:** {response}",
+            "server_description": "Selecciona un servidor"
+        },
+        "showplayers": {
+            "description": "Mostrar la lista actual de jugadores en un servidor.",
+            "title": "Lista de Jugadores: {server}"
+        },
+        "kickplayer": {
+            "description": "Expulsar a un jugador de un servidor usando su SteamID.",
+            "title": "Comando KickPlayer - {server}"
+        },
+        "banplayer": {
+            "description": "Prohibir a un jugador de un servidor usando su SteamID.",
+            "title": "Comando BanPlayer - {server}"
+        },
+        "unbanplayer": {
+            "description": "Desbloquear a un jugador de un servidor usando su SteamID.",
+            "title": "Comando Desbloquear Jugador - {server}"
+        },
+        "info": {
+            "description": "Mostrar información sobre el servidor.",
+            "title": "Info - {server}"
+        },
+        "shutdown": {
+            "description": "Apagar el servidor.",
+            "title": "Apagar - {server}",
+            "time_description": "Tiempo para el apagado",
+            "reason_description": "Razón para el apagado"
+        },
+        "save": {
+            "description": "Guardar el servidor.",
+            "title": "Guardar - {server}"
+        },
+        "broadcast": {
+            "description": "Transmitir un mensaje al servidor.",
+            "title": "Transmitir - {server}"
+        }
+    },
+    "StatusTracker": {
+        "status": {
+            "activity": "{total_players} jugadores"
+        }
+    },
+    "ServerConfig":{
+        "addserver": {
+            "description": "Agregar un servidor al bot."
+        },
+        "removeserver": {
+            "description": "Eliminar un servidor del bot.",
+            "success": "Servidor '{server_name}' eliminado exitosamente.",
+            "failed": "No se pudo eliminar el servidor. Puede que no exista."
+        }
+    },
+    "QueryCog": {
+        "status": {
+            "title": "Estado de {server}",
+            "status": "Estado",
+            "version": "Versión",
+            "players": "Jugadores",
+            "connection_info": "Información de Conexión",
+            "players_online": "Jugadores en Línea",
+            "no_players_online": "No hay jugadores en línea."
+        },
+        "query": {
+            "description": "Grupo de comandos para gestionar registros de consulta del servidor.",
+            "add": {
+                "description": "Establecer un canal para publicar actualizaciones de consulta del servidor.",
+                "server_description": "Selecciona un servidor.",
+                "success": "Canal de actualizaciones de consulta establecido para {server}.",
+                "failed": "No se pudo establecer el canal de actualizaciones de consulta para {server}."
+            },
+            "remove": {
+                "description": "Eliminar un canal de la publicación de actualizaciones de consulta del servidor.",
+                "server_description": "Selecciona un servidor.",
+                "success": "Canal de actualizaciones de consulta eliminado para {server}.",
+                "failed": "No se pudo eliminar el canal de actualizaciones de consulta para {server}."
+            }
+        }
+    },
+    "PlayerInfoCog": {
+        "userdb": {
+            "description": "Buscar en la base de datos de usuarios.",
+            "search_by_steamid": "Buscar jugador por SteamID",
+            "search_by_name": "Buscar jugador por nombre",
+            "enter_steamid": "Ingresa SteamID",
+            "enter_name": "Ingresa el nombre del jugador",
+            "player_info_title": "Información del Jugador",
+            "name": "Nombre",
+            "player_uid": "UID del Jugador",
+            "steamid": "SteamID",
+            "no_player_found": "No se encontró jugador con SteamID {steamid}",
+            "player_not_found": "No se encontró jugador con el nombre '{name}'"
+        }
+    },
+    "PlayerListCog": {
+        "playerslist": {
+            "command_description": "Mostrar la lista de jugadores en un embed interactivo.",
+            "server_description": "Selecciona un servidor",
+            "title": "Lista de Jugadores: {server}",
+            "description": "Aquí están los jugadores actualmente en línea:",
+            "names": "Nombres",
+            "uids": "UIDs del Jugador",
+            "steamids": "SteamIDs",
+            "no_data": "Sin datos",
+            "empty_title": "Lista de Jugadores: Vacía",
+            "no_players_online": "No hay jugadores en línea actualmente."
+        },
+        "button": {
+            "previous": "Anterior",
+            "next": "Siguiente"
+        },
+        "error": {
+            "title": "Error",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "failed_to_retrieve": "No se pudo recuperar los datos de los jugadores."
+        }
+    },
+    "ConnectCog": {
+        "unknown_player": "Jugador Desconocido",
+        "player_join": {
+            "title": "Jugador Conectado",
+            "description": "Jugador conectado a {server}: {player_name} (SteamID: {steamid})"
+        },
+        "player_leave": {
+            "title": "Jugador Desconectado",
+            "description": "Jugador desconectado de {server}: {player_name} (SteamID: {steamid})"
+        },
+        "footer_time": "Hora: {timestamp}",
+        "eventlogs": {
+            "description": "Establecer un canal para registrar eventos del servidor.",
+            "server_description": "Selecciona un servidor.",
+            "success": "Canal de registro de eventos establecido para {server}.",
+            "failed": "No se pudo establecer el canal de registro de eventos para {server}."
+        },
+        "removelogs": {
+            "description": "Eliminar un canal del registro de eventos del servidor.",
+            "server_description": "Selecciona un servidor.",
+            "success": "Canal de registro de eventos eliminado para {server}.",
+            "failed": "No se pudo eliminar el canal de registro de eventos para {server}."
+        }
+    },
+    "GamedataCog": {
+        "search": {
+            "pal": {
+                "description": "Buscar un pal por nombre.",
+                "name_description": "Nombre del pal a buscar",
+                "spawn_code": "Código de Aparición: `{id}`",
+                "not_found": "Pal no encontrado."
+            },
+            "item": {
+                "description": "Buscar un objeto por nombre.",
+                "name_description": "Nombre del objeto a buscar",
+                "spawn_code": "Código de Aparición: `{id}`",
+                "not_found": "Objeto no encontrado."
+            }
+        }
+    },
+    "KitsCog": {
+        "givekit": {
+            "description": "Dar un kit a un jugador.",
+            "kit_not_found": "Kit no encontrado.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "error_executing_command": "Error al ejecutar el comando '{command}': {error}",
+            "package_delivery_title": "Entrega de Paquete - {server}",
+            "package_delivery_description": "Entregando el kit {kit_name} a {steamid}."
+        },
+        "manage_kits": {
+            "description": "Agregar o actualizar un kit.",
+            "modal_title": "Gestionar Kit",
+            "error_loading_kit": "Error al cargar los detalles del kit: {error}"
+        },
+        "delete_kit": {
+            "description": "Eliminar un kit.",
+            "success": "Kit '{kit_name}' ha sido eliminado."
+        },
+        "uploadkits": {
+            "description": "Subir kits desde un archivo JSON a la base de datos.",
+            "invalid_file": "Por favor sube un archivo JSON válido.",
+            "success": "Kits subidos exitosamente.",
+            "error": "Ocurrió un error al subir los kits: {error}"
+        }
+    },
+    "PalguardCog": {
+        "reloadcfg": {
+            "description": "Recargar la configuración del servidor.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "response": "**Respuesta:** {response}"
+        },
+        "givepal": {
+            "description": "Dar un Pal a un jugador.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "pal_not_found": "ID de Pal no encontrado.",
+            "response": "Dando {palid} a {steamid}.",
+            "title": "Palguard Pal - {server}"
+        },
+        "giveitem": {
+            "description": "Dar un objeto a un jugador.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "item_not_found": "ID de Objeto no encontrado.",
+            "response": "Dando {itemid} a {steamid}.",
+            "title": "Palguard Objeto - {server}"
+        },
+        "delitem": {
+            "description": "Eliminar un objeto de un jugador.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "item_not_found": "ID de Objeto no encontrado.",
+            "response": "Eliminando {itemid}x{amount} de {steamid}.",
+            "title": "Palguard Objeto - {server}"
+        },
+        "giveexp": {
+            "description": "Dar experiencia a un jugador.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "response": "Dando {amount} de experiencia a {steamid}.",
+            "title": "Palguard Experiencia - {server}"
+        },
+        "giveegg": {
+            "description": "Dar un huevo a un jugador.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "egg_not_found": "ID de Huevo no encontrado.",
+            "response": "Dando {eggid} a {steamid}.",
+            "title": "Palguard Huevo - {server}"
+        },
+        "palguardhelp": {
+            "description": "Lista de comandos de Palguard.",
+            "server_not_found": "Servidor {server} no encontrado."
+        },
+        "giverelic": {
+            "description": "Dar una reliquia Lifmunk Effigy a un jugador.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "response": "Dando {amount} reliquias Lifmunk Effigy a {steamid}.",
+            "title": "Palguard Reliquia - {server}"
+        },
+        "whitelistadd": {
+            "description": "Agregar un jugador a la lista blanca.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "response": "Agregando {steamid} a la lista blanca.",
+            "title": "Agregar a Lista Blanca - {server}"
+        },
+        "whitelistremove": {
+            "description": "Eliminar a un jugador de la lista blanca.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "response": "Eliminando {steamid} de la lista blanca.",
+            "title": "Eliminar de Lista Blanca - {server}"
+        },
+        "whitelistget": {
+            "description": "Obtener la lista blanca.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "whitelist": "**Lista Blanca:**"
+        }
+    },
+    "EconomyCog": {
+        "economyinfo": {
+            "description": "Mostrar información de la economía.",
+            "title": "Información de la Economía",
+            "currency": "Moneda",
+            "work_reward": "Recompensa por Trabajo",
+            "work_cooldown": "Tiempo de Espera para Trabajar",
+            "daily_cooldown": "Tiempo de Espera Diario"
+        },
+        "leaderboard": {
+            "description": "Mostrar la tabla de clasificación de puntos.",
+            "title": "Top {currency}"
+        },
+        "transfer": {
+            "description": "Transferir puntos a otro usuario.",
+            "title": "Transferencia de {currency}",
+            "insufficient_funds": "No tienes suficientes {currency} para transferir."
+        },
+        "balance": {
+            "description": "Verifica tus propios puntos.",
+            "title": "Tu Saldo de {currency}"
+        },
+        "profile": {
+            "description": "Verifica tu perfil.",
+            "title": "Perfil de {user_name}",
+            "discord_username": "Nombre de Usuario de Discord",
+            "currency": "{currency}",
+            "steam_id": "Steam ID"
+        },
+        "topinvites": {
+            "description": "Mostrar la tabla de clasificación de invitaciones.",
+            "title": "Top Invitaciones",
+            "no_data": "No hay datos de invitaciones disponibles."
+        },
+        "economyhelp": {
+            "description": "Mostrar ayuda para los comandos de economía.",
+            "title": "Ayuda de la Economía",
+            "commands": "Comandos"
+        },
+        "setsteam": {
+            "description": "Establecer tu propio Steam ID.",
+            "linked": "Cuenta de Steam {steam_id} vinculada a tu cuenta."
+        },
+        "work": {
+            "description": "Gana puntos trabajando.",
+            "title": "Trabajo",
+            "cooldown_message": "Estás trabajando demasiado rápido. Por favor, toma un descanso."
+        },
+        "daily": {
+            "description": "Reclama tus puntos diarios.",
+            "title": "Recompensa Diaria",
+            "claimed": "Reclamados {earned_points} {currency}.",
+            "cooldown_message": "Ya has reclamado tus puntos diarios. Por favor, espera {remaining_time}."
+        }
+    },
+    "EconomyManageCog": {
+        "economyset": {
+            "description": "Gestión de la economía.",
+            "addpoints": {
+                "description": "Agregar puntos a un usuario.",
+                "title": "Agregado {currency}",
+                "message": "Agregado {points} {currency} a {user_name}."
+            },
+            "checkpoints": {
+                "description": "Verifica los puntos de un usuario.",
+                "title": "Verificar {currency}",
+                "message": "{user_name} tiene {points} {currency}."
+            },
+            "setpoints": {
+                "description": "Establecer los puntos de un usuario.",
+                "title": "Establecer {currency}",
+                "message": "Establecido {currency} de {user_name} en {points}."
+            },
+            "forcesteam": {
+                "description": "Forzar la vinculación de la cuenta de Steam de un usuario.",
+                "message": "Cuenta de Steam {steam_id} vinculada a {user_name}."
+            },
+            "removepoints": {
+                "description": "Eliminar puntos de un usuario.",
+                "title": "Eliminado {currency}",
+                "message": "Eliminado {points} {currency} de {user_name}.",
+                "insufficient_funds": "{user_name} no tiene suficientes {currency} para eliminar."
+            },
+            "help": {
+                "description": "Mostrar ayuda para los comandos de gestión de economía.",
+                "title": "Ayuda para la Gestión de Economía",
+                "commands": "`/economyset addpoints` - Agregar puntos a un usuario.\n`/economyset checkpoints` - Verificar puntos de un usuario.\n`/economyset setpoints` - Establecer puntos de un usuario.\n`/economyset removepoints` - Eliminar puntos de un usuario.\n`/economyset forcesteam` - Forzar la vinculación de la cuenta de Steam de un usuario."
+            },
+            "settings": {
+                "description": "Editar la configuración de la economía"
+            },
+            "timers": {
+                "description": "Editar los temporizadores de la economía"
+            }
+        }
+    },
+    "ShopCog": {
+        "shop": {
+            "description": "Comandos de la tienda.",
+            "menu": {
+                "description": "Muestra los artículos disponibles en la tienda.",
+                "title": "Artículos de la Tienda",
+                "message": "¡Bienvenido a la tienda! Asegúrate de estar conectado al servidor de Palworld antes de realizar una compra.",
+                "price_label": "Precio"
+            },
+            "redeem": {
+                "description": "Canjea tus puntos por un artículo de la tienda.",
+                "item_description": "El nombre del artículo a canjear.",
+                "server_description": "Selecciona un servidor.",
+                "error_retrieve_data": "Hubo un error al recuperar tus datos.",
+                "error_no_steamid": "No hay Steam ID vinculado.",
+                "error_item_not_found": "Artículo no encontrado.",
+                "error_not_enough_points": "No tienes suficientes {currency} para canjear este artículo.",
+                "success_title": "Canjeado {item_name}",
+                "success_description": "Canjeado exitosamente {item_name} por {item_price} {currency} en el servidor {server}. Ahora te quedan {remaining_points} {currency}."
+            }
+        }
+    }
+}

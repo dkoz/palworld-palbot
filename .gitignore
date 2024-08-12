@@ -7,3 +7,4 @@
 /dev/*
 /cogs/palgame/*
 !gamedata/*.json
+!i18n/*.json

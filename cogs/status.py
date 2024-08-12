@@ -3,6 +3,7 @@ from nextcord.ext import commands
 import nextcord
 from utils.database import get_server_details, server_autocomplete
 from utils.rconutility import RconUtility
+from utils.translations import t
 
 class StatusTracker(commands.Cog):
     def __init__(self, bot):
@@ -20,7 +21,7 @@ class StatusTracker(commands.Cog):
         while not self.bot.is_closed():
             try:
                 total_players = await self.get_total_players()
-                status_message = f"{total_players} players"
+                status_message = t("StatusTracker", "status.activity").format(total_players=total_players)
                 await self.bot.change_presence(
                     activity=nextcord.Activity(
                         type=nextcord.ActivityType.watching, name=status_message

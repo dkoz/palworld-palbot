@@ -10,6 +10,7 @@ from utils.database import (
 )
 from utils.rconutility import RconUtility
 import datetime
+from utils.translations import t
 
 class ConnectCog(commands.Cog):
     def __init__(self, bot):
@@ -60,12 +61,12 @@ class ConnectCog(commands.Cog):
             left_players = last_seen - new_players
 
             for steamid in joined_players:
-                player_name = next((name for name, sid in new_player_data if sid == steamid), "Unknown Player")
+                player_name = next((name for name, sid in new_player_data if sid == steamid), t("ConnectCog", "unknown_player"))
                 self.player_names[steamid] = player_name
                 await self.announce_player_join(server_name, player_name, steamid)
 
             for steamid in left_players:
-                player_name = self.player_names.get(steamid, "Unknown Player")
+                player_name = self.player_names.get(steamid, t("ConnectCog", "unknown_player"))
                 await self.announce_player_leave(server_name, player_name, steamid)
 
             self.last_seen_players[server_name] = new_players
@@ -92,11 +93,11 @@ class ConnectCog(commands.Cog):
                     now = datetime.datetime.now()
                     timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
                     embed = nextcord.Embed(
-                        title="Player Joined",
-                        description=f"Player joined {server_name}: {player_name} (SteamID: {steamid})",
+                        title=t("ConnectCog", "player_join.title"),
+                        description=t("ConnectCog", "player_join.description").format(server=server_name, player_name=player_name, steamid=steamid),
                         color=nextcord.Color.blurple(),
                     )
-                    embed.set_footer(text=f"Time: {timestamp}")
+                    embed.set_footer(text=t("ConnectCog", "footer_time").format(timestamp=timestamp))
                     await channel.send(embed=embed)
                 else:
                     print(f"Channel with ID {channel_id} not found for server {server_name}")
@@ -114,11 +115,11 @@ class ConnectCog(commands.Cog):
                     now = datetime.datetime.now()
                     timestamp = now.strftime("%m-%d-%Y at %I:%M:%S %p")
                     embed = nextcord.Embed(
-                        title="Player Left",
-                        description=f"Player left {server_name}: {player_name} (SteamID: {steamid})",
+                        title=t("ConnectCog", "player_leave.title"),
+                        description=t("ConnectCog", "player_leave.description").format(server=server_name, player_name=player_name, steamid=steamid),
                         color=nextcord.Color.red(),
                     )
-                    embed.set_footer(text=f"Time: {timestamp}")
+                    embed.set_footer(text=t("ConnectCog", "footer_time").format(timestamp=timestamp))
                     await channel.send(embed=embed)
                 else:
                     print(f"Channel with ID {channel_id} not found for server {server_name}")
@@ -131,28 +132,27 @@ class ConnectCog(commands.Cog):
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(name="eventlogs", description="Set a channel to log server events.", default_member_permissions=nextcord.Permissions(administrator=True))
-    async def eventlogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+    @nextcord.slash_command(name="eventlogs", description=t("ConnectCog", "eventlogs.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    async def eventlogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description=t("ConnectCog", "eventlogs.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await add_event_channel(server, channel.id)
         if success:
-            await interaction.followup.send(f"Event logging channel set for {server}.", ephemeral=True)
+            await interaction.followup.send(t("ConnectCog", "eventlogs.success").format(server=server), ephemeral=True)
         else:
-            await interaction.followup.send(f"Failed to set event logging channel for {server}.", ephemeral=True)
+            await interaction.followup.send(t("ConnectCog", "eventlogs.failed").format(server=server), ephemeral=True)
 
     @eventlogs.on_autocomplete("server")
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    # Did not test this yet. lol
-    @nextcord.slash_command(name="removelogs", description="Remove a channel from logging server events.", default_member_permissions=nextcord.Permissions(administrator=True))
-    async def removeeventlogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description="Select a server.", autocomplete=True)):
+    @nextcord.slash_command(name="removelogs", description=t("ConnectCog", "removelogs.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    async def removeeventlogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("ConnectCog", "removelogs.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await remove_event_channel(server)
         if success:
-            await interaction.followup.send(f"Event logging channel removed for {server}.", ephemeral=True)
+            await interaction.followup.send(t("ConnectCog", "removelogs.success").format(server=server), ephemeral=True)
         else:
-            await interaction.followup.send(f"Failed to remove event logging channel for {server}.", ephemeral=True)
+            await interaction.followup.send(t("ConnectCog", "removelogs.failed").format(server=server), ephemeral=True)
             
     @removeeventlogs.on_autocomplete("server")
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):

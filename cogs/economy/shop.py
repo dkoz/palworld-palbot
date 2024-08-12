@@ -14,6 +14,7 @@ from utils.kitutility import load_shop_items
 import asyncio
 import utils.constants as constants
 import json
+from utils.translations import t
 
 class ShopView(View):
     def __init__(self, shop_items, currency):
@@ -24,8 +25,8 @@ class ShopView(View):
 
     async def generate_shop_embed(self):
         embed = nextcord.Embed(
-            title="Shop Items",
-            description="Welcome to the shop! Please ensure you're connected to the Palworld server before making a purchase.",
+            title=t("ShopCog", "shop.menu.title"),
+            description=t("ShopCog", "shop.menu.message"),
             color=nextcord.Color.blue(),
         )
         item_names = list(self.shop_items.keys())
@@ -37,7 +38,7 @@ class ShopView(View):
             embed.add_field(
                 name=item_name,
                 value=f"{item_info['description']}\n"
-                      f"**Price:** {item_info['price']} {self.currency}",
+                      f"**{t('ShopCog', 'shop.menu.price_label')}:** {item_info['price']} {self.currency}",
                 inline=False,
             )
         embed.set_footer(
@@ -97,25 +98,25 @@ class ShopCog(commands.Cog):
             }
         return None
 
-    @nextcord.slash_command(name="shop", description="Shop commands.")
+    @nextcord.slash_command(name="shop", description=t("ShopCog", "shop.description"))
     async def shop(self, _interaction: nextcord.Interaction):
         pass
 
-    @shop.subcommand(name="menu", description="Displays available items in the shop.")
+    @shop.subcommand(name="menu", description=t("ShopCog", "shop.menu.description"))
     async def menu(self, interaction: nextcord.Interaction):
         view = ShopView(self.shop_items, self.currency)
         embed = await view.generate_shop_embed()
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    @shop.subcommand(name="redeem", description="Redeem your points for a shop item.")
+    @shop.subcommand(name="redeem", description=t("ShopCog", "shop.redeem.description"))
     async def redeem(
         self,
         interaction: nextcord.Interaction,
         item_name: str = nextcord.SlashOption(
-            description="The name of the item to redeem.", autocomplete=True
+            description=t("ShopCog", "shop.redeem.item_description"), autocomplete=True
         ),
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("ShopCog", "shop.redeem.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
@@ -125,7 +126,7 @@ class ShopCog(commands.Cog):
         data = await get_points(user_id, user_name)
         if not data:
             await interaction.followup.send(
-                "There was an error retrieving your data.", ephemeral=True
+                t("ShopCog", "shop.redeem.error_retrieve_data"), ephemeral=True
             )
             return
 
@@ -133,17 +134,17 @@ class ShopCog(commands.Cog):
         steam_id = await get_steam_id(user_id)
 
         if steam_id is None:
-            await interaction.followup.send("No Steam ID linked.", ephemeral=True)
+            await interaction.followup.send(t("ShopCog", "shop.redeem.error_no_steamid"), ephemeral=True)
             return
 
         item = self.shop_items.get(item_name)
         if not item:
-            await interaction.followup.send("Item not found.", ephemeral=True)
+            await interaction.followup.send(t("ShopCog", "shop.redeem.error_item_not_found"), ephemeral=True)
             return
 
         if points < item["price"]:
             await interaction.followup.send(
-                f"You do not have enough {self.currency} to redeem this item.",
+                t("ShopCog", "shop.redeem.error_not_enough_points").format(currency=self.currency),
                 ephemeral=True,
             )
             return
@@ -166,8 +167,10 @@ class ShopCog(commands.Cog):
                 return
 
         embed = nextcord.Embed(
-            title=f"Redeemed {item_name}",
-            description=f"Successfully redeemed {item_name} for {item['price']} {self.currency} on server {server}. You now have {new_points} {self.currency} left.",
+            title=t("ShopCog", "shop.redeem.success_title").format(item_name=item_name),
+            description=t("ShopCog", "shop.redeem.success_description").format(
+                item_name=item_name, item_price=item['price'], currency=self.currency, server=server, remaining_points=new_points
+            ),
             color=nextcord.Color.green(),
         )
         await interaction.followup.send(embed=embed, ephemeral=True)

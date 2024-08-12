@@ -4,6 +4,7 @@ from utils.rconutility import RconUtility
 import utils.constants as constants
 import datetime
 from utils.database import get_server_details, server_autocomplete
+from utils.translations import t
 
 class PalconCog(commands.Cog):
     def __init__(self, bot):
@@ -36,23 +37,23 @@ class PalconCog(commands.Cog):
     async def palcon(self, interaction: nextcord.Interaction):
         await self.load_servers()
 
-    @palcon.subcommand(description="Send a remote command to your Palworld server.")
+    @palcon.subcommand(description=t("PalconCog", "command.description"))
     async def command(
         self,
         interaction: nextcord.Interaction,
         command: str,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(server_info, command)
         embed = nextcord.Embed(title=server, color=nextcord.Color.green())
-        embed.description = f"**Response:** {response}"
+        embed.description = t("PalconCog", "command.response").format(response=response)
         embed.set_footer(
             text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}",
             icon_url=constants.FOOTER_IMAGE,
@@ -63,24 +64,24 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Show the current player list for a server.")
+    @palcon.subcommand(description=t("PalconCog", "showplayers.description"))
     async def showplayers(
         self,
         interaction: nextcord.Interaction,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(server_info, "ShowPlayers")
         embed = nextcord.Embed(
-            title=f"Player List: {server}", color=nextcord.Color.red()
+            title=t("PalconCog", "showplayers.title").format(server=server), color=nextcord.Color.red()
         )
-        embed.description = f"{response}"
+        embed.description = response
         embed.set_footer(
             text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}",
             icon_url=constants.FOOTER_IMAGE,
@@ -91,23 +92,23 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Kick a player from a server using their SteamID.")
+    @palcon.subcommand(description=t("PalconCog", "kickplayer.description"))
     async def kickplayer(
         self,
         interaction: nextcord.Interaction,
         steamid: str,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(server_info, f"KickPlayer steam_{steamid}")
         embed = nextcord.Embed(
-            title=f"KickPlayer Command - {server}", color=nextcord.Color.orange()
+            title=t("PalconCog", "kickplayer.title").format(server=server), color=nextcord.Color.orange()
         )
         embed.add_field(name="Server", value=server, inline=True)
         embed.add_field(name="SteamID", value=steamid, inline=True)
@@ -122,23 +123,23 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Ban a player from a server using their SteamID.")
+    @palcon.subcommand(description=t("PalconCog", "banplayer.description"))
     async def banplayer(
         self,
         interaction: nextcord.Interaction,
         steamid: str,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(server_info, f"BanPlayer steam_{steamid}")
         embed = nextcord.Embed(
-            title=f"BanPlayer Command - {server}", color=nextcord.Color.red()
+            title=t("PalconCog", "banplayer.title").format(server=server), color=nextcord.Color.red()
         )
         embed.add_field(name="Server", value=server, inline=True)
         embed.add_field(name="SteamID", value=steamid, inline=True)
@@ -153,23 +154,23 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Unban a player from a server using their SteamID.")
+    @palcon.subcommand(description=t("PalconCog", "unbanplayer.description"))
     async def unbanplayer(
         self,
         interaction: nextcord.Interaction,
         steamid: str,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(server_info, f"UnBanPlayer steam_{steamid}")
         embed = nextcord.Embed(
-            title=f"Unban Player Command - {server}", color=nextcord.Color.red()
+            title=t("PalconCog", "unbanplayer.title").format(server=server), color=nextcord.Color.red()
         )
         embed.add_field(name="Server", value=server, inline=True)
         embed.add_field(name="SteamID", value=steamid, inline=True)
@@ -184,22 +185,22 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Show information about the server.")
+    @palcon.subcommand(description=t("PalconCog", "info.description"))
     async def info(
         self,
         interaction: nextcord.Interaction,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(server_info, f"Info")
-        embed = nextcord.Embed(title=f"Info - {server}", color=nextcord.Color.blue())
-        embed.description = f"**Response:** {response}"
+        embed = nextcord.Embed(title=t("PalconCog", "info.title").format(server=server), color=nextcord.Color.blue())
+        embed.description = t("PalconCog", "command.response").format(response=response)
         embed.set_footer(
             text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}",
             icon_url=constants.FOOTER_IMAGE,
@@ -210,28 +211,28 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Shutdown the server.")
+    @palcon.subcommand(description=t("PalconCog", "shutdown.description"))
     async def shutdown(
         self,
         interaction: nextcord.Interaction,
-        time: str = nextcord.SlashOption(description="Time for the shutdown"),
-        reason: str = nextcord.SlashOption(description="Reason for the shutdown"),
+        time: str = nextcord.SlashOption(description=t("PalconCog", "shutdown.time_description")),
+        reason: str = nextcord.SlashOption(description=t("PalconCog", "shutdown.reason_description")),
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(
             server_info, f"Shutdown {time} {reason}"
         )
         embed = nextcord.Embed(
-            title=f"Shutdown - {server}", color=nextcord.Color.blue()
+            title=t("PalconCog", "shutdown.title").format(server=server), color=nextcord.Color.blue()
         )
-        embed.description = f"**Response:** {response}"
+        embed.description = t("PalconCog", "command.response").format(response=response)
         embed.set_footer(
             text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}",
             icon_url=constants.FOOTER_IMAGE,
@@ -242,22 +243,22 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Save the server.")
+    @palcon.subcommand(description=t("PalconCog", "save.description"))
     async def save(
         self,
         interaction: nextcord.Interaction,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(server_info, f"Save")
-        embed = nextcord.Embed(title=f"Save - {server}", color=nextcord.Color.blue())
-        embed.description = f"**Response:** {response}"
+        embed = nextcord.Embed(title=t("PalconCog", "save.title").format(server=server), color=nextcord.Color.blue())
+        embed.description = t("PalconCog", "command.response").format(response=response)
         embed.set_footer(
             text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}",
             icon_url=constants.FOOTER_IMAGE,
@@ -268,27 +269,27 @@ class PalconCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @palcon.subcommand(description="Broadcast a message to the server.")
+    @palcon.subcommand(description=t("PalconCog", "broadcast.description"))
     async def broadcast(
         self,
         interaction: nextcord.Interaction,
         message: str,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PalconCog", "command.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
         response = await self.rcon_util.rcon_command(
             server_info, f"Broadcast {message}"
         )
         embed = nextcord.Embed(
-            title=f"Broadcast - {server}", color=nextcord.Color.blue()
+            title=t("PalconCog", "broadcast.title").format(server=server), color=nextcord.Color.blue()
         )
-        embed.description = f"**Response:** {response}"
+        embed.description = t("PalconCog", "command.response").format(response=response)
         embed.set_footer(
             text=f"{constants.FOOTER_TEXT} • {datetime.datetime.now().strftime('%m-%d at %I:%M %p')}",
             icon_url=constants.FOOTER_IMAGE,

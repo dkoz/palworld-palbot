@@ -5,6 +5,7 @@ from utils.rconutility import RconUtility
 import utils.constants as constants
 import datetime
 from utils.database import get_server_details, server_autocomplete
+from utils.translations import t
 
 class PlayerListView(View):
     def __init__(self, server, player_data):
@@ -15,8 +16,8 @@ class PlayerListView(View):
 
     async def generate_player_embed(self):
         embed = nextcord.Embed(
-            title=f"Player List: {self.server}",
-            description="Here are the players currently online:",
+            title=t("PlayerListCog", "playerslist.title").format(server=self.server),
+            description=t("PlayerListCog", "playerslist.description"),
             color=nextcord.Color.green(),
         )
         embed.set_footer(
@@ -39,20 +40,20 @@ class PlayerListView(View):
                 uids += f"{playeruid}\n"
                 steamids += f"{steamid}\n"
 
-        embed.add_field(name="Names", value=names or "No data", inline=True)
-        embed.add_field(name="Player UIDs", value=uids or "No data", inline=True)
-        embed.add_field(name="SteamIDs", value=steamids or "No data", inline=True)
+        embed.add_field(name=t("PlayerListCog", "playerslist.names"), value=names or t("PlayerListCog", "playerslist.no_data"), inline=True)
+        embed.add_field(name=t("PlayerListCog", "playerslist.uids"), value=uids or t("PlayerListCog", "playerslist.no_data"), inline=True)
+        embed.add_field(name=t("PlayerListCog", "playerslist.steamids"), value=steamids or t("PlayerListCog", "playerslist.no_data"), inline=True)
 
         return embed
 
-    @nextcord.ui.button(label="Previous", style=nextcord.ButtonStyle.blurple)
+    @nextcord.ui.button(label=t("PlayerListCog", "button.previous"), style=nextcord.ButtonStyle.blurple)
     async def previous_button_callback(self, button, interaction):
         if self.current_page > 0:
             self.current_page -= 1
             embed = await self.generate_player_embed()
             await interaction.response.edit_message(embed=embed, view=self)
 
-    @nextcord.ui.button(label="Next", style=nextcord.ButtonStyle.blurple)
+    @nextcord.ui.button(label=t("PlayerListCog", "button.next"), style=nextcord.ButtonStyle.blurple)
     async def next_button_callback(self, button, interaction):
         if (self.current_page + 1) * 10 < len(self.player_data):
             self.current_page += 1
@@ -88,20 +89,20 @@ class PlayerListCog(commands.Cog):
             }
         return None
 
-    @nextcord.slash_command(name="players",description="Display the player list in an interactive embed.", default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="players", description=t("PlayerListCog", "playerslist.command_description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def playerslist(
         self,
         interaction: nextcord.Interaction,
         server: str = nextcord.SlashOption(
-            description="Select a server", autocomplete=True
+            description=t("PlayerListCog", "playerslist.server_description"), autocomplete=True
         ),
     ):
         await interaction.response.defer(ephemeral=True)
         server_info = await self.get_server_info(server)
         if not server_info:
             embed = nextcord.Embed(
-                title="Error",
-                description=f"Server {server} not found.",
+                title=t("PlayerListCog", "error.title"),
+                description=t("PlayerListCog", "error.server_not_found").format(server=server),
                 color=nextcord.Color.red()
             )
             await interaction.followup.send(embed=embed, ephemeral=True)
@@ -117,15 +118,15 @@ class PlayerListCog(commands.Cog):
                 await interaction.followup.send(embed=embed, view=view, ephemeral=True)
             else:
                 embed = nextcord.Embed(
-                    title="Player List: Empty",
-                    description="No players are currently online.",
+                    title=t("PlayerListCog", "playerslist.empty_title"),
+                    description=t("PlayerListCog", "playerslist.no_players_online"),
                     color=nextcord.Color.red()
                 )
                 await interaction.followup.send(embed=embed, ephemeral=True)
         else:
             embed = nextcord.Embed(
-                title="Error",
-                description="Failed to retrieve player data.",
+                title=t("PlayerListCog", "error.title"),
+                description=t("PlayerListCog", "error.failed_to_retrieve"),
                 color=nextcord.Color.red()
             )
             await interaction.followup.send(embed=embed, ephemeral=True)

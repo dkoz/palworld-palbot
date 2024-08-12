@@ -9,6 +9,7 @@ from utils.database import (
     get_economy_setting,
 )
 from utils.modals import EconomySettingsModal, TimerSettingsModal
+from utils.translations import t
 
 class EconomyManageCog(commands.Cog):
     def __init__(self, bot):
@@ -20,13 +21,13 @@ class EconomyManageCog(commands.Cog):
 
     @nextcord.slash_command(
         name="economyset",
-        description="Economy management.",
+        description=t("EconomyManageCog", "economyset.description"),
         default_member_permissions=nextcord.Permissions(administrator=True),
     )
     async def economyset(self, _interaction: nextcord.Interaction):
         pass
 
-    @economyset.subcommand(name="addpoints", description="Add points to a user.")
+    @economyset.subcommand(name="addpoints", description=t("EconomyManageCog", "economyset.addpoints.description"))
     async def addpoints(
         self,
         interaction: nextcord.Interaction,
@@ -38,15 +39,15 @@ class EconomyManageCog(commands.Cog):
             user_name = user.display_name
             await add_points(user_id, user_name, points)
             embed = nextcord.Embed(
-                title=f"Added {self.currency}",
-                description=f"Added {points} {self.currency} to {user_name}.",
+                title=t("EconomyManageCog", "economyset.addpoints.title").format(currency=self.currency),
+                description=t("EconomyManageCog", "economyset.addpoints.message").format(points=points, currency=self.currency, user_name=user_name),
                 color=nextcord.Color.blurple(),
             )
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
 
-    @economyset.subcommand(name="checkpoints", description="Check a user's points.")
+    @economyset.subcommand(name="checkpoints", description=t("EconomyManageCog", "economyset.checkpoints.description"))
     async def checkpoints(
         self,
         interaction: nextcord.Interaction,
@@ -57,15 +58,15 @@ class EconomyManageCog(commands.Cog):
             user_name = user.display_name
             user_name, points = await get_points(user_id, user_name)
             embed = nextcord.Embed(
-                title=f"Check {self.currency}",
-                description=f"{user_name} has {points} {self.currency}.",
+                title=t("EconomyManageCog", "economyset.checkpoints.title").format(currency=self.currency),
+                description=t("EconomyManageCog", "economyset.checkpoints.message").format(user_name=user_name, points=points, currency=self.currency),
                 color=nextcord.Color.blurple(),
             )
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
 
-    @economyset.subcommand(name="setpoints", description="Set a user's points.")
+    @economyset.subcommand(name="setpoints", description=t("EconomyManageCog", "economyset.setpoints.description"))
     async def setpoints(
         self,
         interaction: nextcord.Interaction,
@@ -77,8 +78,8 @@ class EconomyManageCog(commands.Cog):
             user_name = user.display_name
             await set_points(user_id, user_name, points)
             embed = nextcord.Embed(
-                title=f"Set {self.currency}",
-                description=f"Set {user_name}'s {self.currency} to {points}.",
+                title=t("EconomyManageCog", "economyset.setpoints.title").format(currency=self.currency),
+                description=t("EconomyManageCog", "economyset.setpoints.message").format(user_name=user_name, points=points, currency=self.currency),
                 color=nextcord.Color.blurple(),
             )
             await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -86,7 +87,7 @@ class EconomyManageCog(commands.Cog):
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
 
     @economyset.subcommand(
-        name="forcesteam", description="Force link a user's Steam account."
+        name="forcesteam", description=t("EconomyManageCog", "economyset.forcesteam.description")
     )
     async def force_steam(
         self,
@@ -100,13 +101,14 @@ class EconomyManageCog(commands.Cog):
             await link_steam_account(user_id, steam_id)
             await update_discord_username(user_id, user_name)
             await interaction.response.send_message(
-                f"Linked Steam account {steam_id} to {user.display_name}.", ephemeral=True
+                t("EconomyManageCog", "economyset.forcesteam.message").format(steam_id=steam_id, user_name=user.display_name),
+                ephemeral=True
             )
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
 
     @economyset.subcommand(
-        name="removepoints", description="Remove points from a user."
+        name="removepoints", description=t("EconomyManageCog", "economyset.removepoints.description")
     )
     async def removepoints(
         self,
@@ -120,15 +122,15 @@ class EconomyManageCog(commands.Cog):
             user_name, current_points = await get_points(user_id, user_name)
             if current_points < points:
                 await interaction.response.send_message(
-                    f"{user_name} does not have enough {self.currency} to remove.",
+                    t("EconomyManageCog", "economyset.removepoints.insufficient_funds").format(user_name=user_name, currency=self.currency),
                     ephemeral=True,
                 )
                 return
             new_points = current_points - points
             await set_points(user_id, user_name, new_points)
             embed = nextcord.Embed(
-                title=f"Removed {self.currency}",
-                description=f"Removed {points} {self.currency} from {user_name}.",
+                title=t("EconomyManageCog", "economyset.removepoints.title").format(currency=self.currency),
+                description=t("EconomyManageCog", "economyset.removepoints.message").format(points=points, currency=self.currency, user_name=user_name),
                 color=nextcord.Color.blurple(),
             )
             await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -136,20 +138,17 @@ class EconomyManageCog(commands.Cog):
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
 
     @economyset.subcommand(
-        name="help", description="Display help for the economy management commands."
+        name="help", description=t("EconomyManageCog", "economyset.help.description")
     )
     async def help(self, interaction: nextcord.Interaction):
         try:
             embed = nextcord.Embed(
-                title="Economy Management Help", color=nextcord.Color.blurple()
+                title=t("EconomyManageCog", "economyset.help.title"),
+                color=nextcord.Color.blurple()
             )
             embed.add_field(
                 name="Commands",
-                value="`/economyset addpoints` - Add points to a user.\n"
-                "`/economyset checkpoints` - Check a user's points.\n"
-                "`/economyset setpoints` - Set a user's points.\n"
-                "`/economyset removepoints` - Remove points from a user.\n"
-                "`/economyset forcesteam` - Force link a user's Steam account.",
+                value=t("EconomyManageCog", "economyset.help.commands"),
                 inline=False,
             )
             await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -157,7 +156,7 @@ class EconomyManageCog(commands.Cog):
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
         
     @economyset.subcommand(
-        name="settings", description="Edit the economy settings"
+        name="settings", description=t("EconomyManageCog", "economyset.settings.description")
     )
     async def economy_settings(self, interaction: nextcord.Interaction):
         try:
@@ -168,7 +167,7 @@ class EconomyManageCog(commands.Cog):
             
     # Timer settings
     @economyset.subcommand(
-        name="timers", description="Edit the economy timers"
+        name="timers", description=t("EconomyManageCog", "economyset.timers.description")
     )
     async def timer_settings(self, interaction: nextcord.Interaction):
         try:
