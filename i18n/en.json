@@ -118,7 +118,7 @@
             "activity": "{total_players} players"
         }
     },
-    "ServerConfig":{
+    "ServerConfig": {
         "addserver": {
             "description": "Add a server to the bot."
         },
@@ -341,11 +341,13 @@
         "transfer": {
             "description": "Transfer points to another user.",
             "title": "{currency} Transfer",
-            "insufficient_funds": "You do not have enough {currency} to transfer."
+            "insufficient_funds": "You do not have enough {currency} to transfer.",
+            "transfer_success": "Transferred {points} {currency} to {recipient_name}."
         },
         "balance": {
             "description": "Check your own points.",
-            "title": "Your {currency} Balance"
+            "title": "Your {currency} Balance",
+            "bank": "You have {points} {currency} in your account."
         },
         "profile": {
             "description": "Check your profile.",

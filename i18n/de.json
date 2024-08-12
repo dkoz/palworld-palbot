@@ -341,11 +341,13 @@
         "transfer": {
             "description": "Übertrage Punkte an einen anderen Benutzer.",
             "title": "{currency} Übertragung",
-            "insufficient_funds": "Du hast nicht genügend {currency}, um zu übertragen."
+            "insufficient_funds": "Du hast nicht genügend {currency}, um zu übertragen.",
+            "transfer_success": "{points} {currency} wurden an {recipient_name} übertragen."
         },
         "balance": {
             "description": "Überprüfe deine eigenen Punkte.",
-            "title": "Dein {currency} Guthaben"
+            "title": "Dein {currency} Guthaben",
+            "bank": "Du hast {points} {currency} auf deinem Konto."
         },
         "profile": {
             "description": "Überprüfe dein Profil.",

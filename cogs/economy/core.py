@@ -109,7 +109,7 @@ class EconomyCog(commands.Cog):
             await set_points(user_id, user_name, new_user_points)
             await set_points(recipient_id, recipient_name, new_recipient_points)
             embed = nextcord.Embed(
-                title=t("EconomyCog", "transfer.title").format(currency=self.currency), description=t("EconomyCog", "transfer.description").format(points=points, currency=self.currency, recipient_name=recipient_name), color=nextcord.Color.blurple())
+                title=t("EconomyCog", "transfer.title").format(currency=self.currency), description=t("EconomyCog", "transfer.transfer_success").format(points=points, currency=self.currency, recipient_name=recipient_name), color=nextcord.Color.blurple())
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
@@ -121,7 +121,7 @@ class EconomyCog(commands.Cog):
             user_name = interaction.user.display_name
             user_name, points = await get_points(user_id, user_name)
             embed = nextcord.Embed(
-                title=t("EconomyCog", "balance.title").format(currency=self.currency), description=t("EconomyCog", "balance.description").format(points=points, currency=self.currency), color=nextcord.Color.blurple())
+                title=t("EconomyCog", "balance.title").format(currency=self.currency), description=t("EconomyCog", "balance.bank").format(points=points, currency=self.currency), color=nextcord.Color.blurple())
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
