@@ -1,6 +1,7 @@
 import os
 import json
 import utils.settings as settings
+import logging
 
 class Translator:
     def __init__(self, language="en"):
@@ -13,7 +14,7 @@ class Translator:
             with open(os.path.join('i18n', f"{self.language}.json"), "r", encoding="utf-8") as f:
                 self.translations = json.load(f)
         except FileNotFoundError:
-            print(f"No translation file found for language: {self.language}. Using default English.")
+            logging.error(f"No translation file found for language: {self.language}. Using default English.")
     
     def translate(self, cog, key):
         keys = key.split('.')

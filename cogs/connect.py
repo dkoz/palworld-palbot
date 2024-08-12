@@ -11,6 +11,7 @@ from utils.database import (
 from utils.rconutility import RconUtility
 import datetime
 from utils.translations import t
+import logging
 
 class ConnectCog(commands.Cog):
     def __init__(self, bot):
@@ -46,7 +47,7 @@ class ConnectCog(commands.Cog):
             response = await self.rcon_util.rcon_command(server_dict, "ShowPlayers")
             return response
         except Exception as e:
-            print(f"Error sending command to {server_name}: {e}")
+            logging.error(f"Error sending command to {server_name}: {e}")
             return ""
 
     # Major pain in my ass
@@ -71,7 +72,7 @@ class ConnectCog(commands.Cog):
 
             self.last_seen_players[server_name] = new_players
         except Exception as e:
-            print(f"Error announcing player changes for {server_name}: {e}")
+            logging.error(f"Error announcing player changes for {server_name}: {e}")
 
     def extract_players(self, player_data):
         players = set()
@@ -100,11 +101,11 @@ class ConnectCog(commands.Cog):
                     embed.set_footer(text=t("ConnectCog", "footer_time").format(timestamp=timestamp))
                     await channel.send(embed=embed)
                 else:
-                    print(f"Channel with ID {channel_id} not found for server {server_name}")
+                    logging.error(f"Channel with ID {channel_id} not found for server {server_name}")
             else:
-                print(f"No event channel set for server {server_name}")
+                logging.error(f"No event channel set for server {server_name}")
         except Exception as e:
-            print(f"Error announcing player join for {server_name}: {e}")
+            logging.error(f"Error announcing player join for {server_name}: {e}")
 
     async def announce_player_leave(self, server_name, player_name, steamid):
         try:
@@ -122,11 +123,11 @@ class ConnectCog(commands.Cog):
                     embed.set_footer(text=t("ConnectCog", "footer_time").format(timestamp=timestamp))
                     await channel.send(embed=embed)
                 else:
-                    print(f"Channel with ID {channel_id} not found for server {server_name}")
+                    logging.error(f"Channel with ID {channel_id} not found for server {server_name}")
             else:
-                print(f"No event channel set for server {server_name}")
+                logging.error(f"No event channel set for server {server_name}")
         except Exception as e:
-            print(f"Error announcing player leave for {server_name}: {e}")
+            logging.error(f"Error announcing player leave for {server_name}: {e}")
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
         choices = [server for server in self.servers if current.lower() in server.lower()]

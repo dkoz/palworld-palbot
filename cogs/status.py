@@ -4,6 +4,7 @@ import nextcord
 from utils.database import get_server_details, server_autocomplete
 from utils.rconutility import RconUtility
 from utils.translations import t
+import logging
 
 class StatusTracker(commands.Cog):
     def __init__(self, bot):
@@ -28,10 +29,10 @@ class StatusTracker(commands.Cog):
                     )
                 )
             except ConnectionResetError:
-                print("Connection was reset. Retrying in 30 seconds...")
+                logging.error("Connection was reset. Retrying in 30 seconds...")
                 await asyncio.sleep(30)
             except Exception as e:
-                print(f"Error updating status: {e}")
+                logging.error(f"Error updating status: {e}")
             await asyncio.sleep(60)
 
     async def get_total_players(self):
@@ -52,7 +53,7 @@ class StatusTracker(commands.Cog):
                     players = self.parse_players(players_output)
                     total_players += len(players)
             except Exception as e:
-                print(f"Failed to get player count for server '{server_name}': {e}")
+                logging.error(f"Failed to get player count for server '{server_name}': {e}")
         return total_players
 
     def parse_players(self, players_output):

@@ -8,6 +8,7 @@ from gamercon_async import (
     InvalidPassword,
 )
 import time
+import logging
 
 class RconUtility:
     def __init__(self, timeout=30, encoding_info_ttl=50):
@@ -34,7 +35,7 @@ class RconUtility:
                 response = await rcon.send("Info")
                 needs_base64 = self.base64_encoded(response)
         except (ClientError, TimeoutError, InvalidPassword) as e:
-            print(f"Error connecting to server {server_info['name']}: {e}")
+            logging.error(f"Error connecting to server {server_info['name']}: {e}")
             needs_base64 = False
 
         self.memory_encoding[server_info["name"]] = {

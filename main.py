@@ -53,9 +53,9 @@ async def on_application_command_error(interaction, error):
         else:
             await interaction.followup.send(f"An error occurred: {str(error)}", ephemeral=True)
     except nextcord.errors.NotFound:
-        print("Failed to send error message, interaction not found or expired.")
+        logging.error("Failed to send error message, interaction not found or expired.")
     except Exception as e:
-        print(f"Unexpected error when handling command error: {e}")
+        logging.error(f"Unexpected error when handling command error: {e}")
 
 @bot.command()
 async def ping(ctx):
