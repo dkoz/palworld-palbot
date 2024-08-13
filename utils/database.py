@@ -69,7 +69,12 @@ async def init_db():
             "work_reward_max": "50",
             "work_timer": "360",
             "daily_reward": "200",
-            "daily_timer": "86400"
+            "daily_timer": "86400",
+            "work_description": '["Your Pals butchered the invaders and earned {earned_points} {currency}!", "Anubis stumbled upon {earned_points} {currency} in the hot tub!"]',
+            "role_bonuses": '{"Server Booster": 10, "Supporter": 5}',
+            "vote_slug": "",
+            "vote_apikey": "",
+            "vote_reward": "100"
         }
         for key, value in default_settings.items():
             await db.execute('''

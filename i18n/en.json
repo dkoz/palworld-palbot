@@ -49,6 +49,31 @@
             "success": "Economy settings updated successfully.",
             "error": "Unexpected error: {error}"
         },
+        "etceconomysettings": {
+            "title": "Economy Settings",
+            "work_description": {
+                "label": "Work Description",
+                "placeholder": "['You worked and earned {earned_points} {currency}!']"
+            },
+            "role_bonuses": {
+                "label": "Role Names",
+                "placeholder": "{'Server Booster': 10, 'Supporter': 5}"
+            },
+            "vote_slug": {
+                "label": "Vote Slug",
+                "placeholder": "servername-123456"
+            },
+            "vote_apikey": {
+                "label": "Vote API Key",
+                "placeholder": "1234567890"
+            },
+            "vote_reward": {
+                "label": "Vote Reward",
+                "placeholder": "100"
+            },
+            "success": "Economy settings updated successfully.",
+            "error": "Unexpected error: {error}"
+        },
         "timersettings": {
             "title": "Timer Settings",
             "work_timer": {
@@ -420,6 +445,9 @@
             },
             "timers": {
                 "description": "Edit the economy timers"
+            },
+            "etc": {
+                "description": "Edit additional economy settings"
             }
         }
     },

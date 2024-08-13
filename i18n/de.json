@@ -49,6 +49,31 @@
             "success": "Wirtschaftseinstellungen erfolgreich aktualisiert.",
             "error": "Unerwarteter Fehler: {error}"
         },
+        "etceconomysettings": {
+            "title": "Wirtschaftseinstellungen",
+            "work_description": {
+                "label": "Arbeitsbeschreibung",
+                "placeholder": "['Du hast gearbeitet und {earned_points} {currency} verdient!']"
+            },
+            "role_bonuses": {
+                "label": "Rollen Namen",
+                "placeholder": "{'Server Booster': 10, 'Supporter': 5}"
+            },
+            "vote_slug": {
+                "label": "Vote-Slug",
+                "placeholder": "servername-123456"
+            },
+            "vote_apikey": {
+                "label": "Vote-API-Schlüssel",
+                "placeholder": "1234567890"
+            },
+            "vote_reward": {
+                "label": "Belohnung für Abstimmung",
+                "placeholder": "100"
+            },
+            "success": "Wirtschaftseinstellungen erfolgreich aktualisiert.",
+            "error": "Unerwarteter Fehler: {error}"
+        },
         "timersettings": {
             "title": "Timer-Einstellungen",
             "work_timer": {
@@ -420,6 +445,9 @@
             },
             "timers": {
                 "description": "Bearbeite die Wirtschaftstimer"
+            },
+            "etc": {
+                "description": "Zusätzliche Wirtschaftseinstellungen bearbeiten"
             }
         }
     },

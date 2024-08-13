@@ -8,7 +8,11 @@ from utils.database import (
     update_discord_username,
     get_economy_setting,
 )
-from utils.modals import EconomySettingsModal, TimerSettingsModal
+from utils.modals import (
+    EconomySettingsModal,
+    TimerSettingsModal,
+    EtcEconomySettingsModal
+)
 from utils.translations import t
 
 class EconomyManageCog(commands.Cog):
@@ -172,6 +176,16 @@ class EconomyManageCog(commands.Cog):
     async def timer_settings(self, interaction: nextcord.Interaction):
         try:
             modal = TimerSettingsModal()
+            await interaction.response.send_modal(modal)
+        except Exception as e:
+            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+
+    @economyset.subcommand(
+        name="misc", description=t("EconomyManageCog", "economyset.etc.description")
+    )
+    async def etc_settings(self, interaction: nextcord.Interaction):
+        try:
+            modal = EtcEconomySettingsModal()
             await interaction.response.send_modal(modal)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)

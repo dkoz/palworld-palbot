@@ -14,6 +14,7 @@ from utils.database import (
 from utils.translations import t
 import random
 from datetime import datetime, timedelta
+import json
 
 class EconomyCog(commands.Cog):
     def __init__(self, bot):
@@ -31,11 +32,13 @@ class EconomyCog(commands.Cog):
         work_reward_max = await get_economy_setting("work_reward_max") or "10"
         self.work_min = int(work_reward_min)
         self.work_max = int(work_reward_max)
-        self.work_descriptions = await get_economy_setting("work_description") or ["You worked and earned {earned_points} {currency}."]
+        work_descriptions_str = await get_economy_setting("work_description") or '["You worked and earned {earned_points} {currency}."]'
+        self.work_descriptions = json.loads(work_descriptions_str)
         self.work_timer = int(await get_economy_setting("work_timer") or 60)
         self.daily_reward = int(await get_economy_setting("daily_reward") or 100)
         self.daily_timer = int(await get_economy_setting("daily_timer") or 86400)
-        self.economy_config["role_bonuses"] = await get_economy_setting("role_bonuses") or {}
+        role_bonuses_str = await get_economy_setting("role_bonuses") or '{"Server Booster": 10, "Supporter": 5}'
+        self.economy_config["role_bonuses"] = json.loads(role_bonuses_str)
     
     # Need to reload the settings because of memory caching
     @tasks.loop(minutes=1)

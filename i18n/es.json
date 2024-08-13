@@ -49,6 +49,31 @@
             "success": "Configuración de la economía actualizada exitosamente.",
             "error": "Error inesperado: {error}"
         },
+        "etceconomysettings": {
+            "title": "Configuraciones de Economía",
+            "work_description": {
+                "label": "Descripción del Trabajo",
+                "placeholder": "['Has trabajado y ganado {earned_points} {currency}!']"
+            },
+            "role_bonuses": {
+                "label": "Nombres de Roles",
+                "placeholder": "{'Server Booster': 10, 'Supporter': 5}"
+            },
+            "vote_slug": {
+                "label": "Identificador de Voto",
+                "placeholder": "servername-123456"
+            },
+            "vote_apikey": {
+                "label": "Clave API de Voto",
+                "placeholder": "1234567890"
+            },
+            "vote_reward": {
+                "label": "Recompensa por Votar",
+                "placeholder": "100"
+            },
+            "success": "Configuraciones de economía actualizadas con éxito.",
+            "error": "Error inesperado: {error}"
+        },
         "timersettings": {
             "title": "Configuración de Temporizadores",
             "work_timer": {
@@ -420,6 +445,9 @@
             },
             "timers": {
                 "description": "Editar los temporizadores de la economía"
+            },
+            "etc": {
+                "description": "Editar configuraciones adicionales de economía"
             }
         }
     },
