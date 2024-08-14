@@ -384,7 +384,11 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     # Palguard Whitelist Functions
-    @nextcord.slash_command(name="whitelist", description=t("PalguardCog", "whitelist.description"))
+    @nextcord.slash_command(
+        name="whitelist",
+        description=t("PalguardCog", "whitelist.description"),
+        default_member_permissions=nextcord.Permissions(administrator=True)
+    )
     async def whitelist(self, interaction: nextcord.Interaction):
         pass
 
@@ -443,13 +447,13 @@ class PalguardCog(commands.Cog):
         )
         embed.description = t("PalguardCog", "whitelistremove.description").format(steamid=steamid)
         await interaction.followup.send(embed=embed)
-        
+
     @whitelistremove.on_autocomplete("server")
     async def on_autocomplete_rcon(
         self, interaction: nextcord.Interaction, current: str
     ):
         await self.autocomplete_server(interaction, current)
-        
+
     # whitelist_get
     @whitelist.subcommand(name="get", description=t("PalguardCog", "whitelistget.description"))
     async def whitelistget(
@@ -468,7 +472,7 @@ class PalguardCog(commands.Cog):
             return
         response = await self.rcon_util.rcon_command(server_info, "whitelist_get")
         await interaction.followup.send(f"{t('PalguardCog', 'whitelistget.whitelist')}\n{response}")
-        
+
     @whitelistget.on_autocomplete("server")
     async def on_autocomplete_rcon(
         self, interaction: nextcord.Interaction, current: str
