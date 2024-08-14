@@ -22,6 +22,9 @@ async def on_ready():
     print(f"Connected to {len(bot.guilds)} servers with {len(bot.users)} users.")
     print(f"Invite link: {nextcord.utils.oauth_url(bot.user.id)}")
     print(f"{bot.user} is ready! Created by koz")
+    
+    await settings.check_whitelist(bot)
+    
     activity = nextcord.Activity(
         type=nextcord.ActivityType.playing, name=settings.bot_activity
     )
