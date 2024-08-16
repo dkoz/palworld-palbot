@@ -26,7 +26,7 @@ class KitsCog(commands.Cog):
         self.servers = await server_autocomplete()
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
-        choices = [server for server in self.servers if current.lower() in server.lower()]
+        choices = [server for server in self.servers if current.lower() in server.lower()][:25]
         await interaction.response.send_autocomplete(choices)
 
     async def get_server_info(self, server_name: str):
@@ -98,7 +98,7 @@ class KitsCog(commands.Cog):
     @manage_kits.on_autocomplete("kit_name")
     async def on_autocomplete_kits(self, interaction: nextcord.Interaction, current: str):
         choices = await autocomplete_kits(current)
-        await interaction.response.send_autocomplete(choices)
+        await interaction.response.send_autocomplete(choices[:25])
 
     @nextcord.slash_command(name="deletekit", description=t("KitsCog", "delete_kit.description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def delete_kit(self, interaction: nextcord.Interaction, kit_name: str):
@@ -110,7 +110,7 @@ class KitsCog(commands.Cog):
     @delete_kit.on_autocomplete("kit_name")
     async def on_autocomplete_kits(self, interaction: nextcord.Interaction, current: str):
         choices = await autocomplete_kits(current)
-        await interaction.response.send_autocomplete(choices)
+        await interaction.response.send_autocomplete(choices[:25])
 
     @nextcord.slash_command(name="uploadkits", description=t("KitsCog", "uploadkits.description"), default_member_permissions=nextcord.Permissions(administrator=True))
     async def uploadkits(self, interaction: nextcord.Interaction, json_file: nextcord.Attachment):

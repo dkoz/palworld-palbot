@@ -106,7 +106,7 @@ class PalconCog(commands.Cog):
         if not server_info:
             await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
-        response = await self.rcon_util.rcon_command(server_info, f"KickPlayer steam_{steamid}")
+        response = await self.rcon_util.rcon_command(server_info, f"KickPlayer {steamid}")
         embed = nextcord.Embed(
             title=t("PalconCog", "kickplayer.title").format(server=server), color=nextcord.Color.orange()
         )
@@ -137,7 +137,7 @@ class PalconCog(commands.Cog):
         if not server_info:
             await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
-        response = await self.rcon_util.rcon_command(server_info, f"BanPlayer steam_{steamid}")
+        response = await self.rcon_util.rcon_command(server_info, f"BanPlayer {steamid}")
         embed = nextcord.Embed(
             title=t("PalconCog", "banplayer.title").format(server=server), color=nextcord.Color.red()
         )
@@ -168,7 +168,7 @@ class PalconCog(commands.Cog):
         if not server_info:
             await interaction.followup.send(t("PalconCog", "command.server_not_found").format(server=server), ephemeral=True)
             return
-        response = await self.rcon_util.rcon_command(server_info, f"UnBanPlayer steam_{steamid}")
+        response = await self.rcon_util.rcon_command(server_info, f"UnBanPlayer {steamid}")
         embed = nextcord.Embed(
             title=t("PalconCog", "unbanplayer.title").format(server=server), color=nextcord.Color.red()
         )
