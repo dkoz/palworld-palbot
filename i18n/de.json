@@ -448,6 +448,9 @@
             },
             "etc": {
                 "description": "Zusätzliche Wirtschaftseinstellungen bearbeiten"
+            },
+            "vote": {
+                "description": "Bearbeite die Abstimmungseinstellungen"
             }
         }
     },
@@ -471,6 +474,15 @@
                 "success_title": "Eingelöst {item_name}",
                 "success_description": "Erfolgreich {item_name} für {item_price} {currency} auf Server {server} eingelöst. Du hast jetzt noch {remaining_points} {currency} übrig."
             }
+        }
+    },
+    "VoteCog": {
+        "vote": {
+            "description": "Reclama tu recompensa por votar.",
+            "invalid_steam": "Tu Steam ID no está vinculada.",
+            "vote_success": "¡Gracias por votar! Tu recompensa de {self.vote_reward} {self.currency} ha sido reclamada.",
+            "vote_claimed": "Ya has reclamado tu recompensa.",
+            "vote_error": "O no has votado en las últimas 12 horas o ya reclamaste tu recompensa."
         }
     }
 }

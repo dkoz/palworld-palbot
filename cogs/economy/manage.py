@@ -11,7 +11,8 @@ from utils.database import (
 from utils.modals import (
     EconomySettingsModal,
     TimerSettingsModal,
-    EtcEconomySettingsModal
+    EtcEconomySettingsModal,
+    VoteSettingsModal
 )
 from utils.translations import t
 
@@ -186,6 +187,16 @@ class EconomyManageCog(commands.Cog):
     async def etc_settings(self, interaction: nextcord.Interaction):
         try:
             modal = EtcEconomySettingsModal()
+            await interaction.response.send_modal(modal)
+        except Exception as e:
+            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+
+    @economyset.subcommand(
+        name="vote", description=t("EconomyManageCog", "economyset.vote.description")
+    )
+    async def vote_settings(self, interaction: nextcord.Interaction):
+        try:
+            modal = VoteSettingsModal()
             await interaction.response.send_modal(modal)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)

@@ -448,6 +448,9 @@
             },
             "etc": {
                 "description": "Editar configuraciones adicionales de economía"
+            },
+            "vote": {
+                "description": "Editar la configuración de votaciones"
             }
         }
     },
@@ -471,6 +474,15 @@
                 "success_title": "Canjeado {item_name}",
                 "success_description": "Canjeado exitosamente {item_name} por {item_price} {currency} en el servidor {server}. Ahora te quedan {remaining_points} {currency}."
             }
+        }
+    },
+    "VoteCog": {
+        "vote": {
+            "description": "Reclamar recompensa por votar.",
+            "invalid_steam": "Tu Steam ID no está vinculada.",
+            "vote_success": "¡Gracias por votar! Tu recompensa de {self.vote_reward} {self.currency} ha sido reclamada.",
+            "vote_claimed": "Ya has reclamado tu recompensa.",
+            "vote_error": "O no has votado en las últimas 12 horas o ya reclamaste tu recompensa."
         }
     }
 }

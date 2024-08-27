@@ -6,6 +6,7 @@ from utils.database import (
     add_points,
     get_economy_setting
 )
+from utils.translations import t
 
 class VoteRewards(commands.Cog):
     def __init__(self, bot):
@@ -34,23 +35,23 @@ class VoteRewards(commands.Cog):
             async with session.post(url) as response:
                 return await response.text()
 
-    @nextcord.slash_command(name="claimreward", description="Claim your vote reward.")
+    @nextcord.slash_command(name="claimreward", description=t("VoteCog", "vote.description"))
     async def votereward(self, interaction: nextcord.Interaction):
         user_id = str(interaction.user.id)
         steam_id = await get_steam_id(user_id)
         if steam_id is None:
-            await interaction.response.send_message("Your Steam ID is not linked.", ephemeral=True)
+            await interaction.response.send_message(t("VoteCog", "vote.invalid_steam"), ephemeral=True)
             return
         
         vote_status = await self.vote_status(steam_id)
         if vote_status == "1":
             await self.claim_reward(steam_id)
             await add_points(user_id, interaction.user.display_name, self.vote_reward)
-            await interaction.response.send_message(f"Thank you for voting! Your reward of {self.vote_reward} {self.currency} has been claimed.", ephemeral=True)
+            await interaction.response.send_message(t("VoteCog", "vote.success"), ephemeral=True)
         elif vote_status == "2":
-            await interaction.response.send_message("You have already claimed your reward.", ephemeral=True)
+            await interaction.response.send_message(t("VoteCog", "vote.vote_claimed"), ephemeral=True)
         else:
-            await interaction.response.send_message("You either haven't voted in the last 12 hours or already claimed your reward.", ephemeral=True)
+            await interaction.response.send_message(t("VoteCog", "vote.vote_error"), ephemeral=True)
 
 def setup(bot):
     bot.add_cog(VoteRewards(bot))

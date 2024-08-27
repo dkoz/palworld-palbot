@@ -144,6 +144,29 @@ class EtcEconomySettingsModal(ui.Modal):
             placeholder=t("Modals", "etceconomysettings.role_bonuses.placeholder"),
             style=nextcord.TextInputStyle.paragraph
         )
+
+        self.add_item(self.work_description)
+        self.add_item(self.role_bonuses)
+
+    async def callback(self, interaction: Interaction):
+        try:
+            await update_economy_setting("work_description", self.work_description.value)
+            await update_economy_setting("role_bonuses", self.role_bonuses.value)
+
+            await interaction.response.send_message(
+                t("Modals", "etceconomysettings.success"),
+                ephemeral=True
+            )
+        except Exception as e:
+            await interaction.response.send_message(
+                t("Modals", "etceconomysettings.error").format(error=e),
+                ephemeral=True
+            )
+
+class VoteSettingsModal(ui.Modal):
+    def __init__(self):
+        super().__init__(title=t("Modals", "votesettings.title"))
+        
         self.vote_slug = ui.TextInput(
             label=t("Modals", "etceconomysettings.vote_slug.label"),
             placeholder=t("Modals", "etceconomysettings.vote_slug.placeholder"),
@@ -160,16 +183,12 @@ class EtcEconomySettingsModal(ui.Modal):
             required=False
         )
 
-        self.add_item(self.work_description)
-        self.add_item(self.role_bonuses)
         self.add_item(self.vote_slug)
         self.add_item(self.vote_apikey)
         self.add_item(self.vote_reward)
 
     async def callback(self, interaction: Interaction):
         try:
-            await update_economy_setting("work_description", self.work_description.value)
-            await update_economy_setting("role_bonuses", self.role_bonuses.value)
             await update_economy_setting("vote_slug", self.vote_slug.value)
             await update_economy_setting("vote_apikey", self.vote_apikey.value)
             await update_economy_setting("vote_reward", self.vote_reward.value)

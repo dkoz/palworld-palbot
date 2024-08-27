@@ -448,6 +448,9 @@
             },
             "etc": {
                 "description": "Edit additional economy settings"
+            },
+            "vote": {
+                "description": "Edit the vote settings"
             }
         }
     },
@@ -471,6 +474,15 @@
                 "success_title": "Redeemed {item_name}",
                 "success_description": "Successfully redeemed {item_name} for {item_price} {currency} on server {server}. You now have {remaining_points} {currency} left."
             }
+        }
+    },
+    "VoteCog": {
+        "vote": {
+            "description": "Claim reward for voting.",
+            "invalid_steam": "Your Steam ID is not linked.",
+            "vote_success": "Thank you for voting! Your reward of {self.vote_reward} {self.currency} has been claimed.",
+            "vote_claimed": "You have already claimed your reward.",
+            "vote_error": "You either haven't voted in the last 12 hours or already claimed your reward."
         }
     }
 }
