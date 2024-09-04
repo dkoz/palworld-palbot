@@ -15,6 +15,7 @@ from utils.modals import (
     VoteSettingsModal
 )
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class EconomyManageCog(commands.Cog):
     def __init__(self, bot):
@@ -33,6 +34,7 @@ class EconomyManageCog(commands.Cog):
         pass
 
     @economyset.subcommand(name="addpoints", description=t("EconomyManageCog", "economyset.addpoints.description"))
+    @restrict_command()
     async def addpoints(
         self,
         interaction: nextcord.Interaction,
@@ -53,6 +55,7 @@ class EconomyManageCog(commands.Cog):
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
 
     @economyset.subcommand(name="checkpoints", description=t("EconomyManageCog", "economyset.checkpoints.description"))
+    @restrict_command()
     async def checkpoints(
         self,
         interaction: nextcord.Interaction,
@@ -72,6 +75,7 @@ class EconomyManageCog(commands.Cog):
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
 
     @economyset.subcommand(name="setpoints", description=t("EconomyManageCog", "economyset.setpoints.description"))
+    @restrict_command()
     async def setpoints(
         self,
         interaction: nextcord.Interaction,
@@ -94,6 +98,7 @@ class EconomyManageCog(commands.Cog):
     @economyset.subcommand(
         name="forcesteam", description=t("EconomyManageCog", "economyset.forcesteam.description")
     )
+    @restrict_command()
     async def force_steam(
         self,
         interaction: nextcord.Interaction,
@@ -115,6 +120,7 @@ class EconomyManageCog(commands.Cog):
     @economyset.subcommand(
         name="removepoints", description=t("EconomyManageCog", "economyset.removepoints.description")
     )
+    @restrict_command()
     async def removepoints(
         self,
         interaction: nextcord.Interaction,
@@ -145,6 +151,7 @@ class EconomyManageCog(commands.Cog):
     @economyset.subcommand(
         name="help", description=t("EconomyManageCog", "economyset.help.description")
     )
+    @restrict_command()
     async def help(self, interaction: nextcord.Interaction):
         try:
             embed = nextcord.Embed(
@@ -163,6 +170,7 @@ class EconomyManageCog(commands.Cog):
     @economyset.subcommand(
         name="settings", description=t("EconomyManageCog", "economyset.settings.description")
     )
+    @restrict_command()
     async def economy_settings(self, interaction: nextcord.Interaction):
         try:
             modal = EconomySettingsModal()
@@ -174,6 +182,7 @@ class EconomyManageCog(commands.Cog):
     @economyset.subcommand(
         name="timers", description=t("EconomyManageCog", "economyset.timers.description")
     )
+    @restrict_command()
     async def timer_settings(self, interaction: nextcord.Interaction):
         try:
             modal = TimerSettingsModal()
@@ -184,6 +193,7 @@ class EconomyManageCog(commands.Cog):
     @economyset.subcommand(
         name="misc", description=t("EconomyManageCog", "economyset.etc.description")
     )
+    @restrict_command()
     async def etc_settings(self, interaction: nextcord.Interaction):
         try:
             modal = EtcEconomySettingsModal()
@@ -194,6 +204,7 @@ class EconomyManageCog(commands.Cog):
     @economyset.subcommand(
         name="vote", description=t("EconomyManageCog", "economyset.vote.description")
     )
+    @restrict_command()
     async def vote_settings(self, interaction: nextcord.Interaction):
         try:
             modal = VoteSettingsModal()

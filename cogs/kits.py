@@ -13,6 +13,7 @@ from utils.kitutility import (
 import json
 import asyncio
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class KitsCog(commands.Cog):
     def __init__(self, bot):
@@ -41,6 +42,7 @@ class KitsCog(commands.Cog):
         return None
 
     @nextcord.slash_command(name="kit", description=t("KitsCog", "givekit.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @restrict_command()
     async def givekit(self, interaction: nextcord.Interaction, steamid: str, kit_name: str, server: str):
         await interaction.response.defer(ephemeral=True)
         
@@ -82,6 +84,7 @@ class KitsCog(commands.Cog):
         await interaction.response.send_autocomplete(choices)
 
     @nextcord.slash_command(name="managekits", description=t("KitsCog", "manage_kits.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @restrict_command()
     async def manage_kits(self, interaction: nextcord.Interaction, kit_name: str = ""):
         try:
             kit = await get_kit(kit_name)
@@ -101,6 +104,7 @@ class KitsCog(commands.Cog):
         await interaction.response.send_autocomplete(choices[:25])
 
     @nextcord.slash_command(name="deletekit", description=t("KitsCog", "delete_kit.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @restrict_command()
     async def delete_kit(self, interaction: nextcord.Interaction, kit_name: str):
         await interaction.response.defer(ephemeral=True)
         
@@ -113,6 +117,7 @@ class KitsCog(commands.Cog):
         await interaction.response.send_autocomplete(choices[:25])
 
     @nextcord.slash_command(name="uploadkits", description=t("KitsCog", "uploadkits.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @restrict_command()
     async def uploadkits(self, interaction: nextcord.Interaction, json_file: nextcord.Attachment):
         await interaction.response.defer(ephemeral=True)
 

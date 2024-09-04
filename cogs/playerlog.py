@@ -15,6 +15,7 @@ from utils.database import (
 )
 import logging
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class PlayerInfoCog(commands.Cog):
     def __init__(self, bot):
@@ -76,6 +77,7 @@ class PlayerInfoCog(commands.Cog):
         pass
 
     @userdb.subcommand(name="steam", description=t("PlayerInfoCog", "userdb.search_by_steamid"))
+    @restrict_command()
     async def search(
         self,
         interaction: nextcord.Interaction,
@@ -109,6 +111,7 @@ class PlayerInfoCog(commands.Cog):
         await interaction.response.send_autocomplete(choices[:25])
 
     @userdb.subcommand(name="name", description=t("PlayerInfoCog", "userdb.search_by_name"))
+    @restrict_command()
     async def searchname(
         self,
         interaction: nextcord.Interaction,

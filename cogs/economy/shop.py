@@ -15,6 +15,7 @@ import asyncio
 import utils.constants as constants
 import json
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class ShopView(View):
     def __init__(self, shop_items, currency, cog, selected_server):
@@ -133,6 +134,9 @@ class ShopCog(commands.Cog):
 
     @shop.on_autocomplete("server")
     async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return[]
+        
         choices = [server for server in self.servers if current.lower() in server.lower()][:25]
         await interaction.response.send_autocomplete(choices)
 

@@ -1,6 +1,8 @@
 import nextcord
 import logging
 from nextcord.ext import commands
+from nextcord import Interaction
+from functools import wraps
 
 async def handle_errors(interaction, error):
     try:
@@ -25,3 +27,15 @@ async def handle_errors(interaction, error):
         logging.error("Failed to send error message, interaction not found or expired.")
     except Exception as e:
         logging.error(f"Unexpected error when handling command error: {e}")
+
+def restrict_command():
+    def decorator(func):
+        @wraps(func)
+        async def wrapper(*args, **kwargs):
+            interaction: Interaction = args[1]
+            if not interaction.guild:
+                await interaction.response.send_message("This command cannot be used in DMs.", ephemeral=True)
+                return
+            return await func(*args, **kwargs)
+        return wrapper
+    return decorator  

@@ -6,6 +6,7 @@ import utils.constants as constants
 import datetime
 from utils.database import get_server_details, server_autocomplete
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class PlayerListView(View):
     def __init__(self, server, player_data):
@@ -90,6 +91,7 @@ class PlayerListCog(commands.Cog):
         return None
 
     @nextcord.slash_command(name="players", description=t("PlayerListCog", "playerslist.command_description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @restrict_command()
     async def playerslist(
         self,
         interaction: nextcord.Interaction,

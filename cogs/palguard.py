@@ -6,6 +6,7 @@ from utils.rconutility import RconUtility
 import asyncio
 from utils.database import get_server_details, server_autocomplete
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class PalguardCog(commands.Cog):
     def __init__(self, bot):
@@ -38,6 +39,9 @@ class PalguardCog(commands.Cog):
     async def autocomplete_server(
         self, interaction: nextcord.Interaction, current: str
     ):
+        if interaction.guild is None:
+            return[]
+        
         choices = [
             server for server in self.servers if current.lower() in server.lower()
         ]
@@ -83,6 +87,7 @@ class PalguardCog(commands.Cog):
         await self.load_servers()
 
     @palguard.subcommand(name="reload", description=t("PalguardCog", "reloadcfg.description"))
+    @restrict_command()
     async def reloadcfg(
         self,
         interaction: nextcord.Interaction,
@@ -107,6 +112,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palguard.subcommand(description=t("PalguardCog", "givepal.description"))
+    @restrict_command()
     async def givepal(
         self,
         interaction: nextcord.Interaction,
@@ -154,6 +160,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_palid(interaction, current)
 
     @palguard.subcommand(description=t("PalguardCog", "giveitem.description"))
+    @restrict_command()
     async def giveitem(
         self,
         interaction: nextcord.Interaction,
@@ -203,6 +210,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_itemid(interaction, current)
 
     @palguard.subcommand(description=t("PalguardCog", "delitem.description"))
+    @restrict_command()
     async def delitem(
         self,
         interaction: nextcord.Interaction,
@@ -252,6 +260,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_itemid(interaction, current)
 
     @palguard.subcommand(description=t("PalguardCog", "giveexp.description"))
+    @restrict_command()
     async def giveexp(
         self,
         interaction: nextcord.Interaction,
@@ -284,6 +293,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palguard.subcommand(description=t("PalguardCog", "giveegg.description"))
+    @restrict_command()
     async def giveegg(
         self,
         interaction: nextcord.Interaction,
@@ -328,6 +338,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_eggid(interaction, current)
 
     @palguard.subcommand(name="help", description=t("PalguardCog", "palguardhelp.description"))
+    @restrict_command()
     async def palguardhelp(
         self,
         interaction: nextcord.Interaction,
@@ -352,6 +363,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palguard.subcommand(description=t("PalguardCog", "giverelic.description"))
+    @restrict_command()
     async def giverelic(
         self,
         interaction: nextcord.Interaction,
@@ -393,6 +405,7 @@ class PalguardCog(commands.Cog):
         pass
 
     @whitelist.subcommand(name="add", description=t("PalguardCog", "whitelistadd.description"))
+    @restrict_command()
     async def whitelistadd(
         self,
         interaction: nextcord.Interaction,
@@ -424,6 +437,7 @@ class PalguardCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @whitelist.subcommand(name="remove", description=t("PalguardCog", "whitelistremove.description"))
+    @restrict_command()
     async def whitelistremove(
         self,
         interaction: nextcord.Interaction,
@@ -456,6 +470,7 @@ class PalguardCog(commands.Cog):
 
     # whitelist_get
     @whitelist.subcommand(name="get", description=t("PalguardCog", "whitelistget.description"))
+    @restrict_command()
     async def whitelistget(
         self,
         interaction: nextcord.Interaction,

@@ -5,6 +5,7 @@ import utils.constants as constants
 import datetime
 from utils.database import get_server_details, server_autocomplete
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class PalconCog(commands.Cog):
     def __init__(self, bot):
@@ -17,6 +18,9 @@ class PalconCog(commands.Cog):
         self.servers = await server_autocomplete()
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return[]
+        
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
@@ -38,6 +42,7 @@ class PalconCog(commands.Cog):
         await self.load_servers()
 
     @palcon.subcommand(description=t("PalconCog", "command.description"))
+    @restrict_command()
     async def command(
         self,
         interaction: nextcord.Interaction,
@@ -65,6 +70,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "showplayers.description"))
+    @restrict_command()
     async def showplayers(
         self,
         interaction: nextcord.Interaction,
@@ -93,6 +99,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "kickplayer.description"))
+    @restrict_command()
     async def kickplayer(
         self,
         interaction: nextcord.Interaction,
@@ -124,6 +131,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "banplayer.description"))
+    @restrict_command()
     async def banplayer(
         self,
         interaction: nextcord.Interaction,
@@ -155,6 +163,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "unbanplayer.description"))
+    @restrict_command()
     async def unbanplayer(
         self,
         interaction: nextcord.Interaction,
@@ -186,6 +195,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "info.description"))
+    @restrict_command()
     async def info(
         self,
         interaction: nextcord.Interaction,
@@ -212,6 +222,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "shutdown.description"))
+    @restrict_command()
     async def shutdown(
         self,
         interaction: nextcord.Interaction,
@@ -244,6 +255,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "save.description"))
+    @restrict_command()
     async def save(
         self,
         interaction: nextcord.Interaction,
@@ -270,6 +282,7 @@ class PalconCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @palcon.subcommand(description=t("PalconCog", "broadcast.description"))
+    @restrict_command()
     async def broadcast(
         self,
         interaction: nextcord.Interaction,

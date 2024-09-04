@@ -15,6 +15,7 @@ import re
 import datetime
 import logging
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class QueryCog(commands.Cog):
     def __init__(self, bot):
@@ -180,6 +181,9 @@ class QueryCog(commands.Cog):
             return None, None
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return []
+        
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
@@ -188,6 +192,7 @@ class QueryCog(commands.Cog):
         pass
 
     @query.subcommand(name="add", description=t("QueryCog", "query.add.description"))
+    @restrict_command()
     async def querylogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description=t("QueryCog", "query.add.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await add_query_channel(server, channel.id, None, None)
@@ -201,6 +206,7 @@ class QueryCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
         
     @query.subcommand(name="remove", description=t("QueryCog", "query.remove.description"))
+    @restrict_command()
     async def removequerylogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("QueryCog", "query.remove.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await remove_query_channel(server)

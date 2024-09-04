@@ -12,6 +12,7 @@ from utils.rconutility import RconUtility
 import datetime
 from utils.translations import t
 import logging
+from utils.errorhandling import restrict_command
 
 class ConnectCog(commands.Cog):
     def __init__(self, bot):
@@ -130,10 +131,14 @@ class ConnectCog(commands.Cog):
             logging.error(f"Error announcing player leave for {server_name}: {e}")
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return
+        
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
     @nextcord.slash_command(name="eventlogs", description=t("ConnectCog", "eventlogs.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @restrict_command()
     async def eventlogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description=t("ConnectCog", "eventlogs.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await add_event_channel(server, channel.id)
@@ -147,6 +152,7 @@ class ConnectCog(commands.Cog):
         await self.autocomplete_server(interaction, current)
 
     @nextcord.slash_command(name="removelogs", description=t("ConnectCog", "removelogs.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @restrict_command()
     async def removeeventlogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("ConnectCog", "removelogs.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
         success = await remove_event_channel(server)
