@@ -2,6 +2,7 @@
 FOOTER_IMAGE = "https://palbot.gg/images/rexavatar.png"
 FOOTER_TEXT = "Powered by Palbot"
 TITLE_URL = "https://github.com/dkoz/palworld-palbot"
+PALBOT_VERSION = "v0.3.2"
 PALBOT_ART = r"""
 __________        .__ ___.           __   
 \______   \_____  |  |\_ |__   _____/  |_ 

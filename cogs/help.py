@@ -70,9 +70,11 @@ class HelpCog(commands.Cog):
     # Please do not remove the about me section. I've spent a lot of time on this bot and I would appreciate it if you left it in.
     @nextcord.slash_command(description="Information about the Palworld bot.")
     async def about(self, interaction: nextcord.Interaction):
-
+        
+        title_name = f"Palworld Palbot {constants.PALBOT_VERSION}"
+        
         embed = nextcord.Embed(
-            title="Palworld Bot", color=nextcord.Color.blue(), url=constants.TITLE_URL
+            title=title_name, color=nextcord.Color.blue(), url=constants.TITLE_URL
         )
         embed.set_footer(text=constants.FOOTER_TEXT, icon_url=constants.FOOTER_IMAGE)
         embed.add_field(
