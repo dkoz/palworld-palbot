@@ -61,6 +61,16 @@ async def init_db():
                 playeruid TEXT NOT NULL
             )
         ''')
+        # Palgame tables
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS user_pals (
+                user_id TEXT NOT NULL,
+                pal_name TEXT NOT NULL,
+                experience INTEGER DEFAULT 0,
+                level INTEGER DEFAULT 1,
+                PRIMARY KEY (user_id, pal_name)
+            )
+        ''')
         # Settings for the economy system
         default_settings = {
             "currency_name": "Points",
