@@ -6,6 +6,5 @@
 
 /dev/*
 /venv/*
-/cogs/palgame/battle.py
 !gamedata/*.json
 !i18n/*.json
