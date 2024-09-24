@@ -7,6 +7,7 @@ from utils.database import (
     get_economy_setting
 )
 from utils.translations import t
+from utils.errorhandling import restrict_command
 
 class VoteRewards(commands.Cog):
     def __init__(self, bot):
@@ -36,6 +37,7 @@ class VoteRewards(commands.Cog):
                 return await response.text()
 
     @nextcord.slash_command(name="claimreward", description=t("VoteCog", "vote.description"))
+    @restrict_command()
     async def votereward(self, interaction: nextcord.Interaction):
         user_id = str(interaction.user.id)
         steam_id = await get_steam_id(user_id)

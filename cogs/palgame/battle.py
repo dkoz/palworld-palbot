@@ -10,6 +10,7 @@ from utils.palgame import (
 )
 from utils.database import add_points
 import random
+from utils.errorhandling import restrict_command
 
 class BattleCog(commands.Cog):
     def __init__(self, bot):
@@ -30,19 +31,20 @@ class BattleCog(commands.Cog):
         description="Engage your Pal in a battle to earn experience!",
         default_member_permissions=nextcord.Permissions(send_messages=True),
     )
+    @restrict_command()
     async def battle(
         self,
         interaction: nextcord.Interaction,
         pal_name: str = nextcord.SlashOption(description="Choose your Pal", autocomplete=True)
     ):
-        await interaction.response.defer(ephemeral=True)
+        await interaction.response.defer()
 
         user_id = str(interaction.user.id)
         user_pals = await get_pals(user_id)
         user_pal = next((pal for pal in user_pals if pal[0] == pal_name), None)
         if not user_pal:
             embed = nextcord.Embed(title="Error", description="Pal not found.", color=nextcord.Color.red())
-            await interaction.followup.send(embed=embed, ephemeral=True)
+            await interaction.followup.send(embed=embed)
             return
 
         pal_data = next((pal for pal in self.pals if pal['Name'] == pal_name), None)
@@ -59,7 +61,7 @@ class BattleCog(commands.Cog):
         embed.add_field(name=f"{pal_name} Stats", value=self.format_stats(pal_data, user_pal_stats[0]), inline=False)
         embed.add_field(name=f"{opponent_pal['Name']} Stats", value=self.format_stats(opponent_pal), inline=False)
         embed.set_thumbnail(url=opponent_pal['WikiImage'])
-        await interaction.followup.send(embed=embed, view=view, ephemeral=True)
+        await interaction.followup.send(embed=embed, view=view)
 
     def format_stats(self, pal, level=1):
         stats = pal['Stats']
@@ -82,7 +84,7 @@ class BattleCog(commands.Cog):
 
     async def skill_callback(self, interaction, user, opponent_pal, skill, pal_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina):
         if user_stamina <= 0:
-            await interaction.response.send_message(f"{pal_data['Name']} is too exhausted to use {skill['Name']}! You need to rest.", ephemeral=True)
+            await interaction.response.send_message(f"{pal_data['Name']} is too exhausted to use {skill['Name']}! You need to rest.")
             return
 
         damage = self.calculate_damage(skill['Power'], 'Melee', user_pal=pal_data, opponent_pal=opponent_pal)

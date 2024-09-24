@@ -12,6 +12,7 @@ from utils.database import (
     get_economy_setting,
 )
 from utils.translations import t
+from utils.errorhandling import restrict_command
 import random
 from datetime import datetime, timedelta
 import json
@@ -63,6 +64,7 @@ class EconomyCog(commands.Cog):
         return base_points + bonus_points
 
     @nextcord.slash_command(name="economyinfo", description=t("EconomyCog", "economyinfo.description"))
+    @restrict_command()
     async def economyinfo(self, interaction: nextcord.Interaction):
         def format_time(seconds):
             if seconds < 3600:
@@ -80,9 +82,10 @@ class EconomyCog(commands.Cog):
             self.work_timer), inline=False)
         embed.add_field(name=t("EconomyCog", "economyinfo.daily_cooldown"), value=format_time(
             self.daily_timer), inline=False)
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        await interaction.response.send_message(embed=embed)
 
     @nextcord.slash_command(name="leaderboard", description=t("EconomyCog", "leaderboard.description"))
+    @restrict_command()
     async def toppoints(self, interaction: nextcord.Interaction):
         try:
             top_points = await get_top_points()
@@ -93,9 +96,10 @@ class EconomyCog(commands.Cog):
                     name=f"{i}. {user_name}", value=f"{points} {self.currency}", inline=False)
             await interaction.response.send_message(embed=embed)
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="transfer", description=t("EconomyCog", "transfer.description"))
+    @restrict_command()
     async def transferpoints(self, interaction: nextcord.Interaction, recipient: nextcord.Member, points: int):
         try:
             user_id = str(interaction.user.id)
@@ -105,7 +109,7 @@ class EconomyCog(commands.Cog):
             recipient_name = recipient.display_name
             recipient_name, recipient_points = await get_points(recipient_id, recipient_name)
             if user_points < points:
-                await interaction.response.send_message(t("EconomyCog", "transfer.insufficient_funds").format(currency=self.currency), ephemeral=True)
+                await interaction.response.send_message(t("EconomyCog", "transfer.insufficient_funds").format(currency=self.currency))
                 return
             new_user_points = user_points - points
             new_recipient_points = recipient_points + points
@@ -113,11 +117,12 @@ class EconomyCog(commands.Cog):
             await set_points(recipient_id, recipient_name, new_recipient_points)
             embed = nextcord.Embed(
                 title=t("EconomyCog", "transfer.title").format(currency=self.currency), description=t("EconomyCog", "transfer.transfer_success").format(points=points, currency=self.currency, recipient_name=recipient_name), color=nextcord.Color.blurple())
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="balance", description=t("EconomyCog", "balance.description"))
+    @restrict_command()
     async def balance(self, interaction: nextcord.Interaction):
         try:
             user_id = str(interaction.user.id)
@@ -125,11 +130,12 @@ class EconomyCog(commands.Cog):
             user_name, points = await get_points(user_id, user_name)
             embed = nextcord.Embed(
                 title=t("EconomyCog", "balance.title").format(currency=self.currency), description=t("EconomyCog", "balance.bank").format(points=points, currency=self.currency), color=nextcord.Color.blurple())
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="profile", description=t("EconomyCog", "profile.description"))
+    @restrict_command()
     async def profile(self, interaction: nextcord.Interaction):
         try:
             user_id = str(interaction.user.id)
@@ -148,9 +154,10 @@ class EconomyCog(commands.Cog):
                                 value=f"||{steam_id}||", inline=False)
             await interaction.response.send_message(embed=embed)
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="topinvites", description=t("EconomyCog", "topinvites.description"))
+    @restrict_command()
     async def inviteleaderboard(self, interaction: nextcord.Interaction):
         try:
             top_invites = await get_top_invites()
@@ -164,9 +171,10 @@ class EconomyCog(commands.Cog):
                 embed.description = t("EconomyCog", "topinvites.no_data")
             await interaction.response.send_message(embed=embed)
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="economyhelp", description=t("EconomyCog", "economyhelp.description"))
+    @restrict_command()
     async def economyhelp(self, interaction: nextcord.Interaction):
         try:
             embed = nextcord.Embed(title=t("EconomyCog", "economyhelp.title"),
@@ -176,11 +184,12 @@ class EconomyCog(commands.Cog):
                 value=f"/setsteam - Set your own Steam ID.\n/transfer - Transfer {self.currency} to another user.\n/balance - Check your own {self.currency}.\n/profile - Check your profile.\n/work - Earn {self.currency} by working.\n/daily - Claim your daily {self.currency}.\n/leaderboard - Display the top {self.currency} leaderboard.\n/topinvites - Display the top invite leaderboard.\n/economyinfo - Display economy information.\n/shop menu - Displays available items in the shop.\n/shop redeem - Redeem your {self.currency} for a shop item.\n/claimreward - Claim your reward for voting!",
                 inline=False,
             )
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="setsteam", description=t("EconomyCog", "setsteam.description"))
+    @restrict_command()
     async def set_steam(self, interaction: nextcord.Interaction, steam_id: str):
         try:
             user_id = str(interaction.user.id)
@@ -188,17 +197,18 @@ class EconomyCog(commands.Cog):
             verification_code = "verified"
             await link_steam_account(user_id, steam_id, verification_code)
             await update_discord_username(user_id, user_name)
-            await interaction.response.send_message(t("EconomyCog", "setsteam.linked").format(steam_id=steam_id), ephemeral=True)
+            await interaction.response.send_message(t("EconomyCog", "setsteam.linked").format(steam_id=steam_id))
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="work", description=t("EconomyCog", "work.description"))
+    @restrict_command()
     async def work(self, interaction: nextcord.Interaction):
         try:
             user_id = str(interaction.user.id)
             now = datetime.now()
             if user_id in self.work_cooldown and now < self.work_cooldown[user_id] + timedelta(seconds=self.work_timer):
-                await interaction.response.send_message(t("EconomyCog", "work.cooldown_message"), ephemeral=True)
+                await interaction.response.send_message(t("EconomyCog", "work.cooldown_message"))
                 return
             user_name = interaction.user.display_name
             user_name, points = await get_points(user_id, user_name)
@@ -210,12 +220,13 @@ class EconomyCog(commands.Cog):
                 earned_points=earned_points, currency=self.currency)
             embed = nextcord.Embed(
                 title=t("EconomyCog", "work.title"), description=desc_text, color=nextcord.Color.blurple())
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
             self.work_cooldown[user_id] = now
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="daily", description=t("EconomyCog", "daily.description"))
+    @restrict_command()
     async def daily(self, interaction: nextcord.Interaction):
         try:
             user_id = str(interaction.user.id)
@@ -227,7 +238,7 @@ class EconomyCog(commands.Cog):
                 hours, remainder = divmod(time_diff.total_seconds(), 3600)
                 minutes = divmod(remainder, 60)[0]
                 remaining_time = "{}h {}m".format(int(hours), int(minutes))
-                await interaction.response.send_message(t("EconomyCog", "daily.cooldown_message").format(remaining_time=remaining_time), ephemeral=True)
+                await interaction.response.send_message(t("EconomyCog", "daily.cooldown_message").format(remaining_time=remaining_time))
                 return
             user_name = interaction.user.display_name
             user_name, points = await get_points(user_id, user_name)
@@ -237,10 +248,10 @@ class EconomyCog(commands.Cog):
             await set_points(user_id, user_name, new_points)
             embed = nextcord.Embed(
                 title=t("EconomyCog", "daily.title"), description=t("EconomyCog", "daily.claimed").format(earned_points=earned_points, currency=self.currency), color=nextcord.Color.blurple())
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
             self.daily_cooldown[user_id] = now
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
+            await interaction.response.send_message(f"Unexpected error: {e}")
 
 def setup(bot):
     bot.add_cog(EconomyCog(bot))

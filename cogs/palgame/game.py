@@ -11,6 +11,7 @@ from utils.palgame import (
     check_pal
 )
 from utils.database import add_points
+from utils.errorhandling import restrict_command
 
 class PalGameCog(commands.Cog):
     def __init__(self, bot):
@@ -37,6 +38,7 @@ class PalGameCog(commands.Cog):
         return await check_pal(user_id, pal_name)
 
     @nextcord.slash_command(name="catch", description="Catch a random Pal!")
+    @restrict_command()
     async def catch(self, interaction: Interaction):
         user_id = str(interaction.user.id)
         cooldown_period = 180
@@ -44,7 +46,7 @@ class PalGameCog(commands.Cog):
         remaining_time = self.check_cooldown(user_id, cooldown_period)
         if remaining_time is not None:
             remaining_seconds = int(remaining_time)
-            await interaction.response.send_message(f"You just caught a pal! Please wait {remaining_seconds} seconds before catching another.", ephemeral=True)
+            await interaction.response.send_message(f"You just caught a pal! Please wait {remaining_seconds} seconds before catching another.")
             return
 
         self.update_cooldown(user_id)
@@ -60,14 +62,14 @@ class PalGameCog(commands.Cog):
                 description=f"You already have {pal_name}, but you earned {points_awarded} points!", 
                 color=nextcord.Color.red()
             )
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(embed=embed)
             return
 
         view = self.create_catch_view(random_pal, interaction.user)
         embed = nextcord.Embed(title="A wild Pal appeared!")
         embed.add_field(name=random_pal['Name'], value=random_pal['Description'], inline=False)
         embed.set_thumbnail(url=random_pal['WikiImage'])
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        await interaction.response.send_message(embed=embed, view=view)
 
     def create_catch_view(self, pal, user):
         view = View()
@@ -109,16 +111,17 @@ class PalGameCog(commands.Cog):
         return view
 
     @nextcord.slash_command(name="mypals", description="Show all your Pals.")
+    @restrict_command()
     async def mypals(self, interaction: Interaction):
         user_pals = await get_pals(str(interaction.user.id))
         if not user_pals:
-            await interaction.response.send_message("You don't have any Pals yet! Use /catch to get some.", ephemeral=True)
+            await interaction.response.send_message("You don't have any Pals yet! Use /catch to get some.")
             return
 
         embed = nextcord.Embed(title="Your Pals", description="Here are all the Pals you've caught:")
         for pal in user_pals:
             embed.add_field(name=pal[0], value=f"Level: {pal[1]}, Experience: {pal[2]}", inline=False)
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        await interaction.response.send_message(embed=embed)
 
 def setup(bot):
     bot.add_cog(PalGameCog(bot))

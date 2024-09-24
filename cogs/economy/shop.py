@@ -127,6 +127,7 @@ class ShopCog(commands.Cog):
         return None
 
     @nextcord.slash_command(name="shop", description=t("ShopCog", "shop.description"))
+    @restrict_command()
     async def shop(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("ShopCog", "shop.server_description"), autocomplete=True)):
         view = ShopView(self.shop_items, self.currency, self, server)
         embed = await view.generate_shop_embed()
