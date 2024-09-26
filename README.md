@@ -22,3 +22,4 @@
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
  - **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
  - **Localization Support**: Translate your server's features and messages into multiple languages, allowing players to enjoy a localized experience. This feature supports community-contributed translations, ensuring that the language used is both accurate and culturally relevant.
+ - **Pal Game:** A system where players catch and battle Pals, unlocking stronger abilities, growing their collection, and earning currency.
