@@ -124,4 +124,14 @@ class PalGameCog(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
 def setup(bot):
-    bot.add_cog(PalGameCog(bot))
+    cog = PalGameCog(bot)
+    bot.add_cog(cog)
+    
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.catch,
+            cog.mypals,
+        ]
+    )

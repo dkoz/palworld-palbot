@@ -145,4 +145,13 @@ class BattleCog(commands.Cog):
         await self.pal_autocomplete(interaction, current)
 
 def setup(bot):
-    bot.add_cog(BattleCog(bot))
+    cog = BattleCog(bot)
+    bot.add_cog(cog)
+    
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.battle,
+        ]
+    )
