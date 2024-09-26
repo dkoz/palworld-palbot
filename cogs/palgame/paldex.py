@@ -2,6 +2,7 @@ import json
 import os
 import nextcord
 from nextcord.ext import commands
+from utils.errorhandling import restrict_command
 
 class PaldexCog(commands.Cog):
     def __init__(self, bot):
@@ -20,6 +21,7 @@ class PaldexCog(commands.Cog):
         await interaction.response.send_autocomplete(choices)
 
     @nextcord.slash_command(description="Search for a Pal in the Paldex")
+    @restrict_command()
     async def paldex(
         self,
         interaction: nextcord.Interaction,
@@ -40,7 +42,7 @@ class PaldexCog(commands.Cog):
             embed.add_field(name="Attack", value=f"Melee: {stats['Attack']['Melee']}\nRanged: {stats['Attack']['Ranged']}", inline=True)
             embed.add_field(name="Rarity", value=pal["Rarity"], inline=True)
             
-            skills = "\n".join([f"**{skill['Name']}**: {skill['Description']}" for skill in pal["Skills"]])
+            skills = "\n".join([f"**{skill['Name']}** (*Level: {skill['Level']}*)\n{skill['Description']}" for skill in pal["Skills"]])
             embed.add_field(name="Skills", value=skills, inline=False)
 
             await interaction.followup.send(embed=embed)
