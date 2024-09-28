@@ -115,12 +115,14 @@ class PalGameCog(commands.Cog):
     async def mypals(self, interaction: Interaction):
         user_pals = await get_pals(str(interaction.user.id))
         if not user_pals:
-            await interaction.response.send_message("You don't have any Pals yet! Use /catch to get some.")
+            await interaction.response.send_message("You don't have any Pals yet! Use `/catch` to get some.")
             return
 
-        embed = nextcord.Embed(title="Your Pals", description="Here are all the Pals you've caught:")
+        user_pals = sorted(user_pals, key=lambda pal: pal[1], reverse=True)
+
+        embed = nextcord.Embed(title="Your Pals", description="Here are all the Pals you've caught!")
         for pal in user_pals:
-            embed.add_field(name=pal[0], value=f"Level: {pal[1]}, Experience: {pal[2]}", inline=False)
+            embed.add_field(name=f"{pal[0]} (Level {pal[1]})", value=f"Experience: {pal[2]}", inline=False)
         await interaction.response.send_message(embed=embed)
 
 def setup(bot):

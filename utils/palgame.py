@@ -27,13 +27,31 @@ async def get_pals(user_id):
         return pals
     
 async def level_up(user_id, pal_name):
+    # reworked leveling system...
     async with aiosqlite.connect(DATABASE_PATH) as db:
-        await db.execute('''
-            UPDATE user_pals
-            SET level = level + 1, experience = 0
-            WHERE user_id = ? AND pal_name = ? AND experience >= 1000;
+        cursor = await db.execute('''
+            SELECT level, experience FROM user_pals
+            WHERE user_id = ? AND pal_name = ?;
         ''', (user_id, pal_name))
-        await db.commit()
+        pal = await cursor.fetchone()
+
+        if pal:
+            level = pal[0]
+            experience = pal[1]
+            
+            required_experience = 1000 + (level - 1) * 200
+
+            while experience >= required_experience:
+                level += 1
+                experience -= required_experience
+                required_experience = 1000 + (level - 1) * 200
+
+            await db.execute('''
+                UPDATE user_pals
+                SET level = ?, experience = ?
+                WHERE user_id = ? AND pal_name = ?;
+            ''', (level, experience, user_id, pal_name))
+            await db.commit()
 
 async def get_stats(user_id, pal_name):
     async with aiosqlite.connect(DATABASE_PATH) as db:

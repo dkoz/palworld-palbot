@@ -23,8 +23,9 @@ class BattleCog(commands.Cog):
 
     async def pal_autocomplete(self, interaction: nextcord.Interaction, current: str):
         user_pals = await get_pals(str(interaction.user.id))
-        choices = [pal[0] for pal in user_pals if current.lower() in pal[0].lower()]
-        await interaction.response.send_autocomplete(choices)
+        top_pals = sorted(user_pals, key=lambda pal: pal[1], reverse=True)[:5]
+        choices = [pal[0] for pal in top_pals if current.lower() in pal[0].lower()]
+        await interaction.response.send_autocomplete(choices=choices)
 
     @nextcord.slash_command(
         name="battle",
@@ -96,7 +97,9 @@ class BattleCog(commands.Cog):
         if opponent_hp <= 0:
             result_text += f"\n{opponent_pal['Name']} has been defeated!"
 
-            experience_gained = 50
+            base_experience = 50
+            rarity_multiplier = opponent_pal.get('Rarity', 1)
+            experience_gained = base_experience * rarity_multiplier
             new_experience = experience + experience_gained
             result_text += f"\n{pal_data['Name']} gained {experience_gained} experience points."
 
@@ -109,7 +112,8 @@ class BattleCog(commands.Cog):
 
             await add_experience(str(interaction.user.id), pal_data['Name'], experience_gained)
 
-            points_awarded = random.randint(10, 20)
+            base_points = random.randint(10, 20)
+            points_awarded = int(base_points * rarity_multiplier)
             await add_points(str(interaction.user.id), user.name, points_awarded)
             result_text += f"\nYou earned {points_awarded} points for winning the battle!"
 
