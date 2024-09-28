@@ -92,8 +92,6 @@ def setup(bot):
         bot.all_slash_commands = []
     bot.all_slash_commands.extend(
         [
-            cog.search,
-            cog.pal,
-            cog.item,
+            cog.search
         ]
     )

@@ -502,17 +502,6 @@ def setup(bot):
     bot.all_slash_commands.extend(
         [
             cog.palguard,
-            cog.reloadcfg,
-            cog.givepal,
-            cog.giveitem,
-            cog.delitem,
-            cog.giveexp,
-            cog.giveegg,
-            cog.palguardhelp,
-            cog.giverelic,
-            cog.whitelist,
-            cog.whitelistadd,
-            cog.whitelistremove,
-            cog.whitelistget,
+            cog.whitelist
         ]
     )

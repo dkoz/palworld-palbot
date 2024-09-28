@@ -2,6 +2,7 @@ import nextcord
 from nextcord.ext import commands
 from nextcord.ui import Button, View
 import utils.constants as constants
+import logging
 
 class HelpView(View):
     def __init__(self, bot):
@@ -20,17 +21,22 @@ class HelpView(View):
             icon_url=constants.FOOTER_IMAGE,
         )
 
-        commands = (
-            self.bot.all_slash_commands
-            if hasattr(self.bot, "all_slash_commands")
-            else []
-        )
-        start = self.current_page * 9
-        end = min(start + 9, len(commands))
+        commands_with_paths = []
 
-        for command in commands[start:end]:
+        for cmd in self.bot.all_slash_commands:
+            if hasattr(cmd, 'children') and cmd.children:
+                for subcmd in cmd.children.values():
+                    commands_with_paths.append((f"{cmd.name} {subcmd.name}", subcmd))
+            elif not hasattr(cmd, 'children') or not cmd.children:
+                commands_with_paths.append((cmd.name, cmd))
+
+        commands_with_paths.sort(key=lambda x: x[0])
+        start = self.current_page * 9
+        end = min(start + 9, len(commands_with_paths))
+
+        for cmd_path, command in commands_with_paths[start:end]:
             embed.add_field(
-                name=f"`/{command.name}`",
+                name=f"/{cmd_path}",
                 value=command.description or "No description",
                 inline=True,
             )
@@ -63,9 +69,14 @@ class HelpCog(commands.Cog):
 
     @nextcord.slash_command(description="Shows a list of available commands.")
     async def help(self, interaction: nextcord.Interaction):
-        view = HelpView(self.bot)
-        embed = await view.generate_help_embed()
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        try:
+            await interaction.response.defer(ephemeral=True)
+            view = HelpView(self.bot)
+            embed = await view.generate_help_embed()
+            await interaction.followup.send(embed=embed, view=view)
+        except Exception as e:
+            await interaction.followup.send(f"Error in help command: {e}")
+            logging.error(f"Error in help command: {e}")
 
     # Please do not remove the about me section. I've spent a lot of time on this bot and I would appreciate it if you left it in.
     @nextcord.slash_command(description="Information about the Palworld bot.")

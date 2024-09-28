@@ -226,7 +226,6 @@ def setup(bot):
         bot.all_slash_commands = []
     bot.all_slash_commands.extend(
         [
-            cog.querylogs,
-            cog.removequerylogs
+            cog.query
         ]
     )

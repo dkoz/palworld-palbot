@@ -151,8 +151,6 @@ def setup(bot):
         bot.all_slash_commands = []
     bot.all_slash_commands.extend(
         [
-            cog.userdb,
-            cog.search,
-            cog.searchname,
+            cog.userdb
         ]
     )

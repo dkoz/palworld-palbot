@@ -320,14 +320,6 @@ def setup(bot):
         bot.all_slash_commands = []
     bot.all_slash_commands.extend(
         [
-            cog.command,
-            cog.showplayers,
-            cog.kickplayer,
-            cog.banplayer,
-            cog.unbanplayer,
-            cog.info,
-            cog.shutdown,
-            cog.save,
-            cog.broadcast,
+            cog.palcon,
         ]
     )
