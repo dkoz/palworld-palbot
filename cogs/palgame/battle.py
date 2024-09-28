@@ -94,23 +94,45 @@ class BattleCog(commands.Cog):
 
         result_text = f"{pal_data['Name']} used {skill['Name']}! It dealt {damage} damage. {opponent_pal['Name']} has {opponent_hp} HP left."
 
+    async def skill_callback(self, interaction, user, opponent_pal, skill, pal_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina):
+        if user_stamina <= 0:
+            await interaction.response.send_message(f"{pal_data['Name']} is too exhausted to use {skill['Name']}! You need to rest.")
+            return
+
+        damage = self.calculate_damage(skill['Power'], 'Melee', user_pal=pal_data, opponent_pal=opponent_pal)
+        opponent_hp -= damage
+        user_stamina -= 10
+
+        result_text = f"{pal_data['Name']} used {skill['Name']}! It dealt {damage} damage. {opponent_pal['Name']} has {opponent_hp} HP left."
+
+        new_experience = experience
+
         if opponent_hp <= 0:
             result_text += f"\n{opponent_pal['Name']} has been defeated!"
 
             base_experience = 50
             rarity_multiplier = opponent_pal.get('Rarity', 1)
             experience_gained = base_experience * rarity_multiplier
-            new_experience = experience + experience_gained
+            new_experience += experience_gained
             result_text += f"\n{pal_data['Name']} gained {experience_gained} experience points."
 
+            required_experience = 1000 + (level - 1) * 200
+
             leveled_up = False
-            if new_experience >= 1000:
-                await level_up(str(interaction.user.id), pal_data['Name'])
-                new_experience -= 1000
-                result_text += f"\n{pal_data['Name']} leveled up!"
+            while new_experience >= required_experience:
+                level += 1
+                new_experience -= required_experience
+                required_experience = 1000 + (level - 1) * 200
                 leveled_up = True
 
             await add_experience(str(interaction.user.id), pal_data['Name'], experience_gained)
+            if leveled_up:
+                await level_up(str(interaction.user.id), pal_data['Name'])
+
+            if leveled_up:
+                result_text += f"\n{pal_data['Name']} leveled up to Level {level}!"
+            else:
+                result_text += f"\n{pal_data['Name']} is still at Level {level}."
 
             base_points = random.randint(10, 20)
             points_awarded = int(base_points * rarity_multiplier)
@@ -135,7 +157,7 @@ class BattleCog(commands.Cog):
             return
 
         embed = nextcord.Embed(title="Battle Update", description=result_text, color=nextcord.Color.orange())
-        view = self.create_battle_view(pal_data, user, opponent_pal, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina)
+        view = self.create_battle_view(pal_data, user, opponent_pal, level, new_experience, user_hp, opponent_hp, user_stamina, opponent_stamina)
         await interaction.response.edit_message(embed=embed, view=view)
 
     def calculate_damage(self, skill_power, attack_type, user_pal, opponent_pal):

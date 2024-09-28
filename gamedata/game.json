@@ -12180,7 +12180,64 @@
             "EnemyReceiveDamageRate": 1.0
         },
         "Rarity": 4,
-        "Skills": []
+        "Skills": [
+            {
+                "Name": "Sand Blast",
+                "Type": "Ground",
+                "Level": 1,
+                "Power": 40,
+                "Cooldown": 4,
+                "Description": "Hurls sticky mud at an enemy."
+            },
+            {
+                "Name": "Aqua Gun",
+                "Type": "Water",
+                "Level": 7,
+                "Power": 40,
+                "Cooldown": 4,
+                "Description": "Hurls a ball of water straight at an enemy."
+            },
+            {
+                "Name": "Stone Blast",
+                "Type": "Ground",
+                "Level": 15,
+                "Power": 55,
+                "Cooldown": 10,
+                "Description": "Fires a barrage of stones forward."
+            },
+            {
+                "Name": "Bubble Blast",
+                "Type": "Water",
+                "Level": 22,
+                "Power": 65,
+                "Cooldown": 13,
+                "Description": "Fires numerous bubbles that slowly pursue an enemy."
+            },
+            {
+                "Name": "Aqua Burst",
+                "Type": "Water",
+                "Level": 30,
+                "Power": 100,
+                "Cooldown": 30,
+                "Description": "Creates a giant ball of water and hurls it at an enemy."
+            },
+            {
+                "Name": "Rock Lance",
+                "Type": "Ground",
+                "Level": 40,
+                "Power": 150,
+                "Cooldown": 55,
+                "Description": "Generates a sharp rock spear under an enemy."
+            },
+            {
+                "Name": "Hydro Laser",
+                "Type": "Water",
+                "Level": 50,
+                "Power": 150,
+                "Cooldown": 55,
+                "Description": "Shoots pressurized water at extreme velocities, sweeping over a wide area in front of it."
+            }
+        ]
     },
     {
         "Name": "Flambelle",
