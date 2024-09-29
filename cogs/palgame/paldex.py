@@ -15,9 +15,7 @@ class PaldexCog(commands.Cog):
             self.game_data = json.load(game_data_file)
 
     async def autocomplete_pal(self, interaction: nextcord.Interaction, current: str):
-        choices = [
-            pal["Name"] for pal in self.game_data if current.lower() in pal["Name"].lower()
-        ][:10]
+        choices = [pal["Name"] for pal in self.game_data if current.lower() in pal["Name"].lower()][:10]
         await interaction.response.send_autocomplete(choices)
 
     @nextcord.slash_command(description="Search for a Pal in the Paldex")
@@ -50,9 +48,10 @@ class PaldexCog(commands.Cog):
             await interaction.followup.send("Pal not found.")
 
     @paldex.on_autocomplete("name")
-    async def autocomplete_pal_name(
-        self, interaction: nextcord.Interaction, current: str
-    ):
+    async def autocomplete_pal_name(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return[]
+        
         await self.autocomplete_pal(interaction, current)
 
 def setup(bot):

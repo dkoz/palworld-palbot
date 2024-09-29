@@ -23,8 +23,12 @@ class BattleCog(commands.Cog):
 
     async def pal_autocomplete(self, interaction: nextcord.Interaction, current: str):
         user_pals = await get_pals(str(interaction.user.id))
-        top_pals = sorted(user_pals, key=lambda pal: pal[1], reverse=True)[:5]
-        choices = [pal[0] for pal in top_pals if current.lower() in pal[0].lower()]
+        if current:
+            choices = [pal[0] for pal in user_pals if current.lower() in pal[0].lower()]
+        else:
+            top_pals = sorted(user_pals, key=lambda pal: pal[1], reverse=True)[:5]
+            choices = [pal[0] for pal in top_pals]
+
         await interaction.response.send_autocomplete(choices=choices)
 
     @nextcord.slash_command(
@@ -157,6 +161,9 @@ class BattleCog(commands.Cog):
 
     @battle.on_autocomplete("pal_name")
     async def on_autocomplete_pal(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return[]
+        
         await self.pal_autocomplete(interaction, current)
 
 def setup(bot):

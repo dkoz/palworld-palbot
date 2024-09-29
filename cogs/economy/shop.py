@@ -126,20 +126,24 @@ class ShopCog(commands.Cog):
                 "password": details[2]
             }
         return None
+    
+    @nextcord.slash_command(description=t("ShopCog", "shop.description"))
+    async def shop(self, _interaction: nextcord.Interaction):
+        pass
 
-    @nextcord.slash_command(name="shop", description=t("ShopCog", "shop.description"))
+    @shop.subcommand(name="menu", description=t("ShopCog", "shop.description"))
     @restrict_command()
-    async def shop(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("ShopCog", "shop.server_description"), autocomplete=True)):
+    async def menu(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("ShopCog", "shop.server_description"), autocomplete=True)):
         view = ShopView(self.shop_items, self.currency, self, server)
         embed = await view.generate_shop_embed()
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    @shop.on_autocomplete("server")
+    @menu.on_autocomplete("server")
     async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
         if interaction.guild is None:
             return[]
         
-        choices = [server for server in self.servers if current.lower() in server.lower()][:25]
+        choices = [server for server in self.servers if current.lower() in server.lower()][:10]
         await interaction.response.send_autocomplete(choices)
 
     async def purchase_item(self, interaction: nextcord.Interaction, item_name: str, server: str):
@@ -200,6 +204,91 @@ class ShopCog(commands.Cog):
         logging.info(f"User {user_name} (ID: {user_id}) purchased {item_name} for {item['price']} {self.currency} on server {server}. Remaining points: {new_points}")
         
         await interaction.followup.send(embed=embed, ephemeral=True)
+        
+    @shop.subcommand(name="redeem", description=t("ShopCog", "shop.redeem.description"))
+    @restrict_command()
+    async def redeem(
+        self,
+        interaction: nextcord.Interaction,
+        item_name: str = nextcord.SlashOption(
+            description=t("ShopCog", "shop.redeem.item_description"), autocomplete=True
+        ),
+        server: str = nextcord.SlashOption(
+            description=t("ShopCog", "shop.redeem.server_description"), autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        user_id = str(interaction.user.id)
+        user_name = interaction.user.display_name
+
+        data = await get_points(user_id, user_name)
+        if not data:
+            await interaction.followup.send(
+                t("ShopCog", "shop.redeem.error_retrieve_data"), ephemeral=True
+            )
+            return
+
+        user_name, points = data
+        steam_id = await get_steam_id(user_id)
+
+        if steam_id is None:
+            await interaction.followup.send(t("ShopCog", "shop.redeem.error_no_steamid"), ephemeral=True)
+            return
+
+        item = self.shop_items.get(item_name)
+        if not item:
+            await interaction.followup.send(t("ShopCog", "shop.redeem.error_item_not_found"), ephemeral=True)
+            return
+
+        if points < item["price"]:
+            await interaction.followup.send(
+                t("ShopCog", "shop.redeem.error_not_enough_points").format(currency=self.currency),
+                ephemeral=True,
+            )
+            return
+
+        new_points = points - item["price"]
+        await set_points(user_id, user_name, new_points)
+
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            return
+
+        for command_template in json.loads(item["commands"]):
+            command = command_template.format(steamid=steam_id)
+            try:
+                await self.rcon_util.rcon_command(server_info, command)
+                await asyncio.sleep(1)
+            except Exception as e:
+                await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
+                return
+
+        embed = nextcord.Embed(
+            title=t("ShopCog", "shop.redeem.success_title").format(item_name=item_name),
+            description=t("ShopCog", "shop.redeem.success_description").format(
+                item_name=item_name, item_price=item['price'], currency=self.currency, server=server, remaining_points=new_points
+            ),
+            color=nextcord.Color.green(),
+        )
+        await interaction.followup.send(embed=embed, ephemeral=True)
+
+    @redeem.on_autocomplete("server")
+    async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return[]
+        
+        choices = [server for server in self.servers if current.lower() in server.lower()][:10]
+        await interaction.response.send_autocomplete(choices)
+
+    @redeem.on_autocomplete("item_name")
+    async def on_autocomplete_shop_items(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return[]
+        
+        choices = [name for name in self.shop_items if current.lower() in name.lower()][:10]
+        await interaction.response.send_autocomplete(choices)
+
 
 def setup(bot):
     bot.add_cog(ShopCog(bot))

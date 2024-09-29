@@ -42,6 +42,12 @@ async def autocomplete_kits(current: str):
         kits = await cursor.fetchall()
     return [kit[0] for kit in kits]
 
+async def fetch_all_kits():
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT name, commands, description, price FROM kits')
+        kits = await cursor.fetchall()
+    return kits
+
 async def load_shop_items():
     shop_items = {}
     async with aiosqlite.connect(DATABASE_PATH) as db:
