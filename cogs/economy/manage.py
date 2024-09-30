@@ -29,6 +29,7 @@ class EconomyManageCog(commands.Cog):
         name="economyset",
         description=t("EconomyManageCog", "economyset.description"),
         default_member_permissions=nextcord.Permissions(administrator=True),
+        dm_permission=False
     )
     async def economyset(self, _interaction: nextcord.Interaction):
         pass

@@ -9,13 +9,13 @@ class ServerConfigCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @nextcord.slash_command(name="addserver", description=t("ServerConfig", "addserver.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="addserver", description=t("ServerConfig", "addserver.description"), default_member_permissions=nextcord.Permissions(administrator=True), dm_permission=False)
     @restrict_command()
     async def addserver(self, interaction: nextcord.Interaction):
         modal = AddServerModal()
         await interaction.response.send_modal(modal)
 
-    @nextcord.slash_command(name="removeserver", description=t("ServerConfig", "removeserver.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="removeserver", description=t("ServerConfig", "removeserver.description"), default_member_permissions=nextcord.Permissions(administrator=True), dm_permission=False)
     @restrict_command()
     async def removeserver(self, interaction: nextcord.Interaction, server_name: str):
         result = await remove_server(server_name)

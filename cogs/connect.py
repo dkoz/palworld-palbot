@@ -137,7 +137,7 @@ class ConnectCog(commands.Cog):
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(name="eventlogs", description=t("ConnectCog", "eventlogs.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="eventlogs", description=t("ConnectCog", "eventlogs.description"), default_member_permissions=nextcord.Permissions(administrator=True), dm_permission=False)
     @restrict_command()
     async def eventlogs(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel, server: str = nextcord.SlashOption(description=t("ConnectCog", "eventlogs.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)
@@ -151,7 +151,7 @@ class ConnectCog(commands.Cog):
     async def on_autocomplete_rcon(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
 
-    @nextcord.slash_command(name="removelogs", description=t("ConnectCog", "removelogs.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(name="removelogs", description=t("ConnectCog", "removelogs.description"), default_member_permissions=nextcord.Permissions(administrator=True), dm_permission=False)
     @restrict_command()
     async def removeeventlogs(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("ConnectCog", "removelogs.server_description"), autocomplete=True)):
         await interaction.response.defer(ephemeral=True)

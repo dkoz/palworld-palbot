@@ -187,7 +187,7 @@ class QueryCog(commands.Cog):
         choices = [server for server in self.servers if current.lower() in server.lower()]
         await interaction.response.send_autocomplete(choices)
 
-    @nextcord.slash_command(description=t("QueryCog", "query.description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(description=t("QueryCog", "query.description"), default_member_permissions=nextcord.Permissions(administrator=True), dm_permission=False)
     async def query(self, interaction: nextcord.Interaction):
         pass
 

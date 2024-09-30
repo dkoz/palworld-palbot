@@ -90,7 +90,12 @@ class PlayerListCog(commands.Cog):
             }
         return None
 
-    @nextcord.slash_command(name="players", description=t("PlayerListCog", "playerslist.command_description"), default_member_permissions=nextcord.Permissions(administrator=True))
+    @nextcord.slash_command(
+        name="players",
+        description=t("PlayerListCog", "playerslist.command_description"),
+        default_member_permissions=nextcord.Permissions(administrator=True),
+        dm_permission=False
+    )
     @restrict_command()
     async def playerslist(
         self,

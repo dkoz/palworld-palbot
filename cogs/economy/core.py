@@ -188,7 +188,7 @@ class EconomyCog(commands.Cog):
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}")
 
-    @nextcord.slash_command(name="setsteam", description=t("EconomyCog", "setsteam.description"))
+    @nextcord.slash_command(name="setsteam", description=t("EconomyCog", "setsteam.description"), dm_permission=False)
     @restrict_command()
     async def set_steam(self, interaction: nextcord.Interaction, steam_id: str):
         try:

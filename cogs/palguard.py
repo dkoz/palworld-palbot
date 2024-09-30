@@ -81,7 +81,8 @@ class PalguardCog(commands.Cog):
         return None
 
     @nextcord.slash_command(
-        default_member_permissions=nextcord.Permissions(administrator=True)
+        default_member_permissions=nextcord.Permissions(administrator=True),
+        dm_permission=False
     )
     async def palguard(self, _interaction: nextcord.Interaction):
         await self.load_servers()
@@ -399,7 +400,8 @@ class PalguardCog(commands.Cog):
     @nextcord.slash_command(
         name="whitelist",
         description=t("PalguardCog", "whitelist.description"),
-        default_member_permissions=nextcord.Permissions(administrator=True)
+        default_member_permissions=nextcord.Permissions(administrator=True),
+        dm_permission=False
     )
     async def whitelist(self, interaction: nextcord.Interaction):
         pass

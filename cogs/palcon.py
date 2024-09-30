@@ -36,7 +36,8 @@ class PalconCog(commands.Cog):
         return None
 
     @nextcord.slash_command(
-        default_member_permissions=nextcord.Permissions(administrator=True)
+        default_member_permissions=nextcord.Permissions(administrator=True),
+        dm_permission=False
     )
     async def palcon(self, interaction: nextcord.Interaction):
         await self.load_servers()

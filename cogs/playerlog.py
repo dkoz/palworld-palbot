@@ -72,6 +72,7 @@ class PlayerInfoCog(commands.Cog):
     @nextcord.slash_command(
         description=t("PlayerInfoCog", "userdb.description"),
         default_member_permissions=nextcord.Permissions(administrator=True),
+        dm_permission=False
     )
     async def userdb(self, interaction: nextcord.Interaction):
         pass

@@ -127,7 +127,7 @@ class ShopCog(commands.Cog):
             }
         return None
     
-    @nextcord.slash_command(description=t("ShopCog", "shop.description"))
+    @nextcord.slash_command(description=t("ShopCog", "shop.description"), dm_permission=False)
     async def shop(self, _interaction: nextcord.Interaction):
         pass
 
