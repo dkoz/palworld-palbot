@@ -3,11 +3,10 @@ from nextcord.ext import commands
 import utils.settings as settings
 import os
 from utils.translations import translator
-from utils.errorhandling import handle_errors
+from utils.errorhandling import handle_errors, setup_logging
 import utils.constants as constants
-import logging
 
-logging.basicConfig(filename=os.path.join('logs', 'bot.log'), level=logging.INFO)
+setup_logging()
 
 intents = nextcord.Intents.all()
 bot = commands.Bot(
