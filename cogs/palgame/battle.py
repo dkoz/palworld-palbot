@@ -99,6 +99,8 @@ class BattleCog(commands.Cog):
 
         damage = self.calculate_damage(skill['Power'], 'Melee', user_pal=pal_data, opponent_pal=opponent_pal)
         opponent_hp -= damage
+        if opponent_hp < 0:
+            opponent_hp = 0
         user_stamina -= 10
 
         result_text = f"{pal_data['Name']} used {skill['Name']}! It dealt {damage} damage. {opponent_pal['Name']} has {opponent_hp} HP left."
@@ -144,6 +146,8 @@ class BattleCog(commands.Cog):
         opponent_skill = random.choice(opponent_pal['Skills'])
         opponent_damage = self.calculate_damage(opponent_skill['Power'], 'Melee', user_pal=opponent_pal, opponent_pal=pal_data)
         user_hp -= opponent_damage
+        if user_hp < 0:
+            user_hp = 0
         opponent_stamina -= 10
 
         result_text += f"\n\n{opponent_pal['Name']} used {opponent_skill['Name']}! It dealt {opponent_damage} damage. {pal_data['Name']} has {user_hp} HP left."

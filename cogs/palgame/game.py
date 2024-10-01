@@ -40,7 +40,7 @@ class PalGameCog(commands.Cog):
     @restrict_command()
     async def catch(self, interaction: Interaction):
         user_id = str(interaction.user.id)
-        cooldown_period = 120
+        cooldown_period = 90
 
         remaining_time = self.check_cooldown(user_id, cooldown_period)
         if remaining_time is not None:
