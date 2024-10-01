@@ -3,6 +3,8 @@ from nextcord.ext import commands
 from nextcord import Interaction
 import random
 import time
+import json
+import os
 from utils.palgame import (
     get_pals,
     add_experience,
@@ -15,6 +17,11 @@ class AdventureCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.cooldowns = {}
+        self.pals = self.load_pals()
+
+    def load_pals(self):
+        with open(os.path.join('gamedata', 'game.json'), 'r') as file:
+            return json.load(file)
 
     def check_cooldown(self, user_id):
         if user_id in self.cooldowns:
@@ -42,6 +49,12 @@ class AdventureCog(commands.Cog):
 
         await interaction.response.send_autocomplete(choices=choices[:10])
 
+    def get_pal_image(self, pal_name):
+        for pal in self.pals:
+            if pal['Name'] == pal_name:
+                return pal.get('WikiImage')
+        return None
+
     @nextcord.slash_command(name="adventure", description="Send one of your Pals on an adventure!")
     @restrict_command()
     async def adventure(
@@ -66,6 +79,8 @@ class AdventureCog(commands.Cog):
             await interaction.response.send_message("You don't have this Pal! Please select one of your own Pals.", ephemeral=True)
             return
 
+        pal_image = self.get_pal_image(pal_name)
+
         self.update_cooldown(user_id)
 
         currency_earned = random.randint(50, 200)
@@ -85,6 +100,9 @@ class AdventureCog(commands.Cog):
             description=description,
             color=nextcord.Color.green()
         )
+        if pal_image:
+            embed.set_thumbnail(url=pal_image)
+
         await interaction.response.send_message(embed=embed)
 
     @adventure.on_autocomplete("pal_name")
