@@ -192,14 +192,15 @@ class EconomyCog(commands.Cog):
     @restrict_command()
     async def set_steam(self, interaction: nextcord.Interaction, steam_id: str):
         try:
+            await interaction.response.defer(ephemeral=True)
             user_id = str(interaction.user.id)
             user_name = interaction.user.display_name
             verification_code = "verified"
             await link_steam_account(user_id, steam_id, verification_code)
             await update_discord_username(user_id, user_name)
-            await interaction.response.send_message(t("EconomyCog", "setsteam.linked").format(steam_id=steam_id))
+            await interaction.followup.send(t("EconomyCog", "setsteam.linked").format(steam_id=steam_id))
         except Exception as e:
-            await interaction.response.send_message(f"Unexpected error: {e}")
+            await interaction.followup.send(f"Unexpected error: {e}")
 
     @nextcord.slash_command(name="work", description=t("EconomyCog", "work.description"))
     @restrict_command()
