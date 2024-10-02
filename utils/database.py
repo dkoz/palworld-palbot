@@ -129,6 +129,8 @@ async def get_connection_port(server_name):
 
 # Admin Functionality
 async def add_points(user_id, user_name, points):
+    if points < 0:
+        raise ValueError("Points to add cannot be negative.")
     async with aiosqlite.connect(DATABASE_PATH) as db:
         await db.execute('''
             INSERT INTO user_points (user_id, user_name, points)
@@ -138,6 +140,8 @@ async def add_points(user_id, user_name, points):
         await db.commit()
 
 async def set_points(user_id, user_name, points):
+    if points < 0:
+        points = 0
     async with aiosqlite.connect(DATABASE_PATH) as db:
         await db.execute('''
             INSERT INTO user_points (user_id, user_name, points)

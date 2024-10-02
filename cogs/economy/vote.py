@@ -49,7 +49,7 @@ class VoteRewards(commands.Cog):
         if vote_status == "1":
             await self.claim_reward(steam_id)
             await add_points(user_id, interaction.user.display_name, self.vote_reward)
-            await interaction.response.send_message(t("VoteCog", "vote.success"), ephemeral=True)
+            await interaction.response.send_message(t("VoteCog", "vote.vote_success"), ephemeral=True)
         elif vote_status == "2":
             await interaction.response.send_message(t("VoteCog", "vote.vote_claimed"), ephemeral=True)
         else:

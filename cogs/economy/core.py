@@ -102,6 +102,14 @@ class EconomyCog(commands.Cog):
     @restrict_command()
     async def transferpoints(self, interaction: nextcord.Interaction, recipient: nextcord.Member, points: int):
         try:
+            if recipient.id == interaction.user.id:
+                await interaction.response.send_message(t("EconomyCog", "transfer.transfer_error"))
+                return
+
+            if points <= 0:
+                await interaction.response.send_message(t("EconomyCog", "transfer.invalid_amount"))
+                return
+
             user_id = str(interaction.user.id)
             user_name = interaction.user.display_name
             user_name, user_points = await get_points(user_id, user_name)
@@ -116,7 +124,10 @@ class EconomyCog(commands.Cog):
             await set_points(user_id, user_name, new_user_points)
             await set_points(recipient_id, recipient_name, new_recipient_points)
             embed = nextcord.Embed(
-                title=t("EconomyCog", "transfer.title").format(currency=self.currency), description=t("EconomyCog", "transfer.transfer_success").format(points=points, currency=self.currency, recipient_name=recipient_name), color=nextcord.Color.blurple())
+                title=t("EconomyCog", "transfer.title").format(currency=self.currency),
+                description=t("EconomyCog", "transfer.transfer_success").format(points=points, currency=self.currency, recipient_name=recipient_name),
+                color=nextcord.Color.blurple()
+            )
             await interaction.response.send_message(embed=embed)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}")

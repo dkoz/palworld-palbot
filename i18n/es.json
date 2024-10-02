@@ -367,7 +367,9 @@
             "description": "Transferir puntos a otro usuario.",
             "title": "Transferencia de {currency}",
             "insufficient_funds": "No tienes suficientes {currency} para transferir.",
-            "transfer_success": "Has transferido {points} {currency} a {recipient_name}."
+            "transfer_success": "Has transferido {points} {currency} a {recipient_name}.",
+            "transfer_error": "No puedes transferir puntos a ti mismo.",
+            "invalid_amount": "Cantidad inválida. Por favor ingresa un número mayor que 0."
         },
         "balance": {
             "description": "Verifica tus propios puntos.",
