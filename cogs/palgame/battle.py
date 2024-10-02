@@ -1,6 +1,7 @@
 import json
 import os
 import nextcord
+import time
 from nextcord.ext import commands
 from utils.palgame import (
     get_pals,
@@ -16,10 +17,21 @@ class BattleCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.pals = self.load_pals()
+        self.cooldowns = {}
 
     def load_pals(self):
         with open(os.path.join('gamedata', 'game.json'), 'r') as file:
             return json.load(file)
+
+    def check_cooldown(self, user_id, cooldown_period):
+        if user_id in self.cooldowns:
+            time_elapsed = time.time() - self.cooldowns[user_id]
+            if time_elapsed < cooldown_period:
+                return cooldown_period - time_elapsed
+        return None
+
+    def update_cooldown(self, user_id):
+        self.cooldowns[user_id] = time.time()
 
     async def pal_autocomplete(self, interaction: nextcord.Interaction, current: str):
         user_pals = await get_pals(str(interaction.user.id))
@@ -47,9 +59,19 @@ class BattleCog(commands.Cog):
         interaction: nextcord.Interaction,
         pal_name: str = nextcord.SlashOption(description="Choose your Pal", autocomplete=True)
     ):
+        user_id = str(interaction.user.id)
+        cooldown_period = 90
+
+        remaining_time = self.check_cooldown(user_id, cooldown_period)
+        if remaining_time is not None:
+            remaining_seconds = int(remaining_time)
+            await interaction.response.send_message(f"You are on cooldown! Please wait {remaining_seconds} seconds before starting another battle.")
+            return
+
+        self.update_cooldown(user_id)
+
         await interaction.response.defer()
 
-        user_id = str(interaction.user.id)
         user_pals = await get_pals(user_id)
         user_pal = next((pal for pal in user_pals if pal[0] == pal_name), None)
         if not user_pal:
@@ -82,7 +104,7 @@ class BattleCog(commands.Cog):
                 f"Stamina: {stats['Stamina'] + (level * 5)}")
 
     def create_battle_view(self, pal_data, user, opponent_pal, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina):
-        view = nextcord.ui.View()
+        view = nextcord.ui.View(timeout=300)   
 
         for skill in pal_data['Skills']:
             if level >= skill['Level']:
@@ -93,6 +115,9 @@ class BattleCog(commands.Cog):
         return view
 
     async def skill_callback(self, interaction, user, opponent_pal, skill, pal_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina):
+        if interaction.response.is_done():
+            return
+        
         if user_stamina <= 0:
             await interaction.response.send_message(f"{pal_data['Name']} is too exhausted to use {skill['Name']}! You need to rest.")
             return
