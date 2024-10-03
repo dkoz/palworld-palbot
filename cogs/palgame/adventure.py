@@ -18,6 +18,7 @@ class AdventureCog(commands.Cog):
         self.bot = bot
         self.cooldowns = {}
         self.pals = self.load_pals()
+        self.COOLDOWN_PERIOD = 5 * 60
 
     def load_pals(self):
         with open(os.path.join('gamedata', 'game.json'), 'r') as file:
@@ -26,9 +27,8 @@ class AdventureCog(commands.Cog):
     def check_cooldown(self, user_id):
         if user_id in self.cooldowns:
             time_elapsed = time.time() - self.cooldowns[user_id]
-            cooldown_period = 6 * 60 * 60
-            if time_elapsed < cooldown_period:
-                return cooldown_period - time_elapsed
+            if time_elapsed < self.COOLDOWN_PERIOD:
+                return self.COOLDOWN_PERIOD - time_elapsed
         return None
 
     def update_cooldown(self, user_id):
@@ -66,10 +66,10 @@ class AdventureCog(commands.Cog):
 
         remaining_time = self.check_cooldown(user_id)
         if remaining_time is not None:
-            remaining_hours = int(remaining_time // 3600)
-            remaining_minutes = int((remaining_time % 3600) // 60)
+            remaining_minutes = int(remaining_time // 60)
+            remaining_seconds = int(remaining_time % 60)
             await interaction.response.send_message(
-                f"Your Pal is still recovering from their last adventure! Please wait {remaining_hours} hours and {remaining_minutes} minutes.",
+                f"Your Pal is still recovering from their last adventure! Please wait {remaining_minutes} minutes and {remaining_seconds} seconds.",
                 ephemeral=True
             )
             return
