@@ -82,24 +82,35 @@ class AdventureCog(commands.Cog):
         pal_image = self.get_pal_image(pal_name)
 
         self.update_cooldown(user_id)
+        adventure_success = random.random() < 0.85
 
-        currency_earned = random.randint(50, 200)
-        experience_gained = random.randint(100, 500)
-        await add_experience(user_id, pal_name, experience_gained)
+        if adventure_success:
+            currency_earned = random.randint(50, 200)
+            experience_gained = random.randint(100, 500)
+            await add_experience(user_id, pal_name, experience_gained)
+            leveled_up = await level_up(user_id, pal_name)
+            await add_points(user_id, interaction.user.name, currency_earned)
 
-        leveled_up = await level_up(user_id, pal_name)
+            description = f"Your Pal {pal_name} returned from an adventure and earned {currency_earned} coins and gained {experience_gained} experience!"
+            if leveled_up:
+                description += f"\n🎉 {pal_name} leveled up!"
+            embed = nextcord.Embed(
+                title="Adventure Successful!",
+                description=description,
+                color=nextcord.Color.green()
+            )
+        else:
+            broken_item = "Broken Sphere"
+            currency_earned = random.randint(5, 20)
+            await add_points(user_id, interaction.user.name, currency_earned)
+            
+            description = f"Your Pal {pal_name} failed the adventure and returned with a {broken_item} and {currency_earned} coins."
+            embed = nextcord.Embed(
+                title="Adventure Failed!",
+                description=description,
+                color=nextcord.Color.red()
+            )
 
-        await add_points(user_id, interaction.user.name, currency_earned)
-
-        description = f"Your Pal {pal_name} returned from an adventure and earned {currency_earned} coins and gained {experience_gained} experience!"
-        if leveled_up:
-            description += f"\n🎉 {pal_name} leveled up!"
-
-        embed = nextcord.Embed(
-            title="Adventure Successful!",
-            description=description,
-            color=nextcord.Color.green()
-        )
         if pal_image:
             embed.set_thumbnail(url=pal_image)
 
@@ -113,12 +124,12 @@ class AdventureCog(commands.Cog):
         await self.autocomplete_pals(interaction, current)
 
 def setup(bot):
-    bot.add_cog(AdventureCog(bot))
-
+    cog = AdventureCog(bot)
+    bot.add_cog(cog)
     if not hasattr(bot, "all_slash_commands"):
         bot.all_slash_commands = []
     bot.all_slash_commands.extend(
         [
-            AdventureCog.adventure
+            cog.adventure
         ]
     )

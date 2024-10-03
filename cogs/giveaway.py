@@ -62,7 +62,7 @@ class GiveawayCog(commands.Cog):
         interaction: nextcord.Interaction,
         prize: str,
         duration: int,
-        channel: nextcord.abc.GuildChannel = nextcord.SlashOption(
+        channel: nextcord.TextChannel = nextcord.SlashOption(
             description="Select the channel for the giveaway", 
             required=True
         ),

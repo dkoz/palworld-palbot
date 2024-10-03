@@ -3,6 +3,7 @@ from nextcord.ext import commands
 from nextcord import Interaction, ButtonStyle
 from nextcord.ui import Button, View
 import json
+import os
 from utils.palgame import get_pals
 from utils.errorhandling import restrict_command
 
@@ -51,7 +52,7 @@ class PalboxCog(commands.Cog):
         self.pals = self.load_pals()
 
     def load_pals(self):
-        with open('gamedata/game.json', 'r') as file:
+        with open(os.path.join('gamedata', 'game.json'), 'r') as file:
             data = json.load(file)
         return data
 
@@ -70,8 +71,7 @@ class PalboxCog(commands.Cog):
             embed = await view.generate_pal_embed()
             await interaction.followup.send(embed=embed, view=view)
         except Exception as e:
-            await interaction.followup.send(f"Error with `palbox` command: {e}")
-            
+            await interaction.followup.send(f"Error with `palbox` command: {e}")       
 
 def setup(bot):
     cog = PalboxCog(bot)

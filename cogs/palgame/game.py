@@ -5,6 +5,7 @@ from nextcord.ui import Button, View
 import random
 import json
 import time
+import os
 from utils.palgame import (
     add_pal,
     check_pal
@@ -19,7 +20,7 @@ class PalGameCog(commands.Cog):
         self.cooldowns = {}
 
     def load_pals(self):
-        with open('gamedata/game.json', 'r') as file:
+        with open(os.path.join('gamedata', 'game.json'), 'r') as file:
             data = json.load(file)
         return data
 

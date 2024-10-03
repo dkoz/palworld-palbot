@@ -36,7 +36,7 @@ class HelpView(View):
 
         for cmd_path, command in commands_with_paths[start:end]:
             embed.add_field(
-                name=f"/{cmd_path}",
+                name=f"`/{cmd_path}`",
                 value=command.description or "No description",
                 inline=True,
             )
