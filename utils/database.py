@@ -1,4 +1,4 @@
-# This is the economy system for Palbot.
+# This is the database system for Palbot.
 # Storage is done using aiosqlite.
 
 import aiosqlite
