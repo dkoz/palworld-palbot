@@ -28,6 +28,10 @@ async def on_ready():
     )
     await bot.change_presence(activity=activity)
 
+@bot.event
+async def on_guild_join(guild):
+    await settings.check_whitelist(bot)
+
 # Error Handling
 @bot.event
 async def on_application_command_error(interaction, error):
