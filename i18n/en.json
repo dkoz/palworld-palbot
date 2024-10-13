@@ -283,6 +283,15 @@
         }
     },
     "PalguardCog": {
+        "description": {
+            "userid": "The ID of the user to give the item to.",
+            "amount": "The amount of the item.",
+            "server": "Select a server.",
+            "itemid": "Select an item to give.",
+            "palid": "Select a Pal to give.",
+            "level": "Level of the Pal.",
+            "eggid": "Select an egg to give."
+        },
         "reloadcfg": {
             "description": "Reload server configuration.",
             "server_not_found": "Server {server} not found.",

@@ -283,6 +283,15 @@
         }
     },
     "PalguardCog": {
+        "description": {
+            "userid": "O ID do usuário para dar o item.",
+            "amount": "A quantidade do item.",
+            "server": "Selecione um servidor.",
+            "itemid": "Selecione um item para dar.",
+            "palid": "Selecione um Pal para dar.",
+            "level": "Nível do Pal.",
+            "eggid": "Selecione um ovo para dar."
+        },
         "reloadcfg": {
             "description": "Recarregar a configuração do servidor.",
             "server_not_found": "Servidor {server} não encontrado.",
