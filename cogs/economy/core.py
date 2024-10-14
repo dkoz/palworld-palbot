@@ -222,6 +222,7 @@ class EconomyCog(commands.Cog):
             if user_id in self.work_cooldown and now < self.work_cooldown[user_id] + timedelta(seconds=self.work_timer):
                 await interaction.response.send_message(t("EconomyCog", "work.cooldown_message"))
                 return
+            self.work_cooldown[user_id] = now
             user_name = interaction.user.display_name
             user_name, points = await get_points(user_id, user_name)
             base_points = random.randint(self.work_min, self.work_max)
@@ -233,7 +234,6 @@ class EconomyCog(commands.Cog):
             embed = nextcord.Embed(
                 title=t("EconomyCog", "work.title"), description=desc_text, color=nextcord.Color.blurple())
             await interaction.response.send_message(embed=embed)
-            self.work_cooldown[user_id] = now
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}")
 
@@ -252,6 +252,7 @@ class EconomyCog(commands.Cog):
                 remaining_time = "{}h {}m".format(int(hours), int(minutes))
                 await interaction.response.send_message(t("EconomyCog", "daily.cooldown_message").format(remaining_time=remaining_time))
                 return
+            self.daily_cooldown[user_id] = now
             user_name = interaction.user.display_name
             user_name, points = await get_points(user_id, user_name)
             base_points = self.daily_reward
@@ -261,7 +262,6 @@ class EconomyCog(commands.Cog):
             embed = nextcord.Embed(
                 title=t("EconomyCog", "daily.title"), description=t("EconomyCog", "daily.claimed").format(earned_points=earned_points, currency=self.currency), color=nextcord.Color.blurple())
             await interaction.response.send_message(embed=embed)
-            self.daily_cooldown[user_id] = now
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}")
 
