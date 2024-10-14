@@ -9,7 +9,12 @@ from utils.database import (
     get_top_invites,
     link_steam_account,
     update_discord_username,
-    get_economy_setting,
+    get_economy_setting
+)
+from utils.database import (
+    get_cooldown,
+    set_cooldown,
+    clear_expired_cooldowns
 )
 from utils.translations import t
 from utils.errorhandling import restrict_command
@@ -46,6 +51,10 @@ class EconomyCog(commands.Cog):
     async def refresh_settings(self):
         await self.load_config()
         # print("Refreshed economy settings.")
+        
+    @tasks.loop(hours=1)
+    async def clear_old_cooldowns(self):
+        await clear_expired_cooldowns()
 
     # Just realized this doesn't work because I removed the config.json file
     def get_bonus_percentage(self, user):
@@ -219,10 +228,20 @@ class EconomyCog(commands.Cog):
         try:
             user_id = str(interaction.user.id)
             now = datetime.now()
-            if user_id in self.work_cooldown and now < self.work_cooldown[user_id] + timedelta(seconds=self.work_timer):
-                await interaction.response.send_message(t("EconomyCog", "work.cooldown_message"))
+
+            expires_at = await get_cooldown(user_id, "work")
+            if expires_at and now < datetime.fromisoformat(expires_at):
+                next_claim_time = datetime.fromisoformat(expires_at)
+                time_diff = next_claim_time - now
+                hours, remainder = divmod(time_diff.total_seconds(), 3600)
+                minutes = divmod(remainder, 60)[0]
+                remaining_time = "{}h {}m".format(int(hours), int(minutes))
+                await interaction.response.send_message(t("EconomyCog", "work.cooldown_message").format(remaining_time=remaining_time))
                 return
-            self.work_cooldown[user_id] = now
+
+            expires_at = now + timedelta(seconds=self.work_timer)
+            await set_cooldown(user_id, "work", expires_at)
+
             user_name = interaction.user.display_name
             user_name, points = await get_points(user_id, user_name)
             base_points = random.randint(self.work_min, self.work_max)
@@ -243,16 +262,20 @@ class EconomyCog(commands.Cog):
         try:
             user_id = str(interaction.user.id)
             now = datetime.now()
-            if user_id in self.daily_cooldown and now < self.daily_cooldown[user_id] + timedelta(seconds=self.daily_timer):
-                next_claim_time = self.daily_cooldown[user_id] + \
-                    timedelta(seconds=self.daily_timer)
+
+            expires_at = await get_cooldown(user_id, "daily")
+            if expires_at and now < datetime.fromisoformat(expires_at):
+                next_claim_time = datetime.fromisoformat(expires_at)
                 time_diff = next_claim_time - now
                 hours, remainder = divmod(time_diff.total_seconds(), 3600)
                 minutes = divmod(remainder, 60)[0]
                 remaining_time = "{}h {}m".format(int(hours), int(minutes))
                 await interaction.response.send_message(t("EconomyCog", "daily.cooldown_message").format(remaining_time=remaining_time))
                 return
-            self.daily_cooldown[user_id] = now
+
+            expires_at = now + timedelta(seconds=self.daily_timer)
+            await set_cooldown(user_id, "daily", expires_at)
+
             user_name = interaction.user.display_name
             user_name, points = await get_points(user_id, user_name)
             base_points = self.daily_reward

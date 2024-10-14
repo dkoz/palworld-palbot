@@ -409,7 +409,7 @@
         "work": {
             "description": "Gana puntos trabajando.",
             "title": "Trabajo",
-            "cooldown_message": "Estás trabajando demasiado rápido. Por favor, toma un descanso."
+            "cooldown_message": "Por favor, espera {remaining_time} antes de trabajar de nuevo."
         },
         "daily": {
             "description": "Reclama tus puntos diarios.",

@@ -409,7 +409,7 @@
         "work": {
             "description": "Earn points by working.",
             "title": "Work",
-            "cooldown_message": "You're working too fast. Please take a break."
+            "cooldown_message": "You're working too fast. Please wait {remaining_time}."
         },
         "daily": {
             "description": "Claim your daily points.",

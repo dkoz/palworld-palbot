@@ -61,6 +61,14 @@ async def init_db():
                 playeruid TEXT NOT NULL
             )
         ''')
+        await db.execute('''
+            CREATE TABLE IF NOT EXISTS cooldowns (
+                user_id TEXT NOT NULL,
+                command TEXT NOT NULL,
+                expires_at TIMESTAMP NOT NULL,
+                PRIMARY KEY (user_id, command)
+            ) 
+        ''')
         # Palgame tables
         await db.execute('''
             CREATE TABLE IF NOT EXISTS user_pals (
@@ -327,3 +335,25 @@ async def get_player_profile(identifier: str):
             WHERE steamid = ? OR name = ?
         ''', (identifier, identifier))
         return await cursor.fetchone()
+
+# Cooldown tracking for economy commands
+# Will implement to Pal Game later on.
+async def set_cooldown(user_id, command, expires_at):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            INSERT INTO cooldowns (user_id, command, expires_at)
+            VALUES (?, ?, ?)
+            ON CONFLICT(user_id, command) DO UPDATE SET expires_at = excluded.expires_at;
+        ''', (user_id, command, expires_at))
+        await db.commit()
+
+async def get_cooldown(user_id, command):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT expires_at FROM cooldowns WHERE user_id = ? AND command = ?', (user_id, command))
+        result = await cursor.fetchone()
+        return result[0] if result else None
+
+async def clear_expired_cooldowns():
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute("DELETE FROM cooldowns WHERE expires_at < datetime('now')")
+        await db.commit()

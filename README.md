@@ -6,10 +6,7 @@
 
  Invite the official [Palbot](https://discord.com/api/oauth2/authorize?client_id=1197954327642378352&permissions=8&scope=bot%20applications.commands) to your server today! Please note that the official version of Palbot does not have all the same features as the self-hosted version.
 
- Support the development on [Patreon](https://www.patreon.com/palbotinn).
-
-## Installation:
- Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
+ Support the development on [Patreon](https://www.patreon.com/palbotinn) and visit our [Website](https://palbot.gg).
 
 ## Features:
  - **RCON Integration:** Seamlessly control your server using RCON commands.
@@ -17,9 +14,12 @@
  - **Player Management:** Creates a database of players SteamID, PlayerUID, and Name.
  - **Event Logs:** Keep track of player activity by logging join and leave events on your server.
  - **Status Tracking:** Enable the status tracker to monitor the collective number of players on all your servers.
+ - **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
  - **Palguard Integration**: Offers RCON integration for executing PalGuard commands, such as item and pal spawning. Features a customizable game database with a search function to easily spawn desired items or pals.
    - **Kits**: Effortlessly distribute custom kits with items, pals, and eggs to players across your Palworld servers.
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
- - **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
  - **Localization Support**: Translate your server's features and messages into multiple languages, allowing players to enjoy a localized experience. This feature supports community-contributed translations, ensuring that the language used is both accurate and culturally relevant.
  - **Pal Game:** A system where players catch and battle Pals, unlocking stronger abilities, growing their collection, and earning currency.
+
+ ## Installation:
+ Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
