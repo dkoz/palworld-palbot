@@ -301,34 +301,34 @@
             "description": "Give a Pal to a player.",
             "server_not_found": "Server {server} not found.",
             "pal_not_found": "Pal ID not found.",
-            "response": "Giving {palid} to {steamid}.",
+            "response": "Giving {palid} to {steamid}.\nPalcon: {response}",
             "title": "Palguard Pal - {server}"
         },
         "giveitem": {
             "description": "Give an item to a player.",
             "server_not_found": "Server {server} not found.",
             "item_not_found": "Item ID not found.",
-            "response": "Giving {itemid} to {steamid}.",
+            "response": "Giving {itemid} to {steamid}.\nPalcon: {response}",
             "title": "Palguard Item - {server}"
         },
         "delitem": {
             "description": "Delete an item from a player.",
             "server_not_found": "Server {server} not found.",
             "item_not_found": "Item ID not found.",
-            "response": "Deleting {itemid}x{amount} from {steamid}.",
+            "response": "Deleting {itemid}x{amount} from {steamid}.\nPalcon: {response}",
             "title": "Palguard Item - {server}"
         },
         "giveexp": {
             "description": "Give experience to a player.",
             "server_not_found": "Server {server} not found.",
-            "response": "Giving {amount} experience to {steamid}.",
+            "response": "Giving {amount} experience to {steamid}.\nPalcon: {response}",
             "title": "Palguard Experience - {server}"
         },
         "giveegg": {
             "description": "Give an egg to a player.",
             "server_not_found": "Server {server} not found.",
             "egg_not_found": "Egg ID not found.",
-            "response": "Giving {eggid} to {steamid}.",
+            "response": "Giving {eggid} to {steamid}.\nPalcon: {response}",
             "title": "Palguard Egg - {server}"
         },
         "palguardhelp": {
@@ -338,7 +338,7 @@
         "giverelic": {
             "description": "Give a Lifmunk Effigy relic to a player.",
             "server_not_found": "Server {server} not found.",
-            "response": "Giving {amount} Lifmunk Effigy relics to {steamid}.",
+            "response": "Giving {amount} Lifmunk Effigy relics to {steamid}.\nPalcon: {response}",
             "title": "Palguard Relic - {server}"
         },
         "whitelistadd": {

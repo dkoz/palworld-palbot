@@ -137,7 +137,7 @@ class PalguardCog(commands.Cog):
         if not pal_id:
             await interaction.followup.send(t("PalguardCog", "givepal.pal_not_found"), ephemeral=True)
             return
-        asyncio.create_task(
+        response = await asyncio.create_task(
             self.rcon_util.rcon_command(
                 server_info, f"givepal {steamid} {pal_id} {level}"
             )
@@ -145,7 +145,7 @@ class PalguardCog(commands.Cog):
         embed = nextcord.Embed(
             title=t("PalguardCog", "givepal.title").format(server=server), color=nextcord.Color.blue()
         )
-        embed.description = t("PalguardCog", "givepal.response").format(palid=palid, steamid=steamid)
+        embed.description = t("PalguardCog", "givepal.response").format(response=response, palid=palid, steamid=steamid)
         await interaction.followup.send(embed=embed)
 
     @givepal.on_autocomplete("server")
@@ -187,7 +187,7 @@ class PalguardCog(commands.Cog):
         if not item_id:
             await interaction.followup.send(t("PalguardCog", "giveitem.item_not_found"), ephemeral=True)
             return
-        asyncio.create_task(
+        response = await asyncio.create_task(
             self.rcon_util.rcon_command(
                 server_info, f"give {steamid} {item_id} {amount}"
             )
@@ -195,7 +195,7 @@ class PalguardCog(commands.Cog):
         embed = nextcord.Embed(
             title=t("PalguardCog", "giveitem.title").format(server=server), color=nextcord.Color.blue()
         )
-        embed.description = t("PalguardCog", "giveitem.response").format(itemid=itemid, steamid=steamid)
+        embed.description = t("PalguardCog", "giveitem.response").format(response=response, itemid=itemid, steamid=steamid)
         await interaction.followup.send(embed=embed)
 
     @giveitem.on_autocomplete("server")
@@ -237,7 +237,7 @@ class PalguardCog(commands.Cog):
         if not item_id:
             await interaction.followup.send(t("PalguardCog", "delitem.item_not_found"), ephemeral=True)
             return
-        asyncio.create_task(
+        response = await asyncio.create_task(
             self.rcon_util.rcon_command(
                 server_info, f"delitem {steamid} {item_id} {amount}"
             )
@@ -245,7 +245,7 @@ class PalguardCog(commands.Cog):
         embed = nextcord.Embed(
             title=t("PalguardCog", "delitem.title").format(server=server), color=nextcord.Color.blue()
         )
-        embed.description = t("PalguardCog", "delitem.response").format(itemid=itemid, amount=amount, steamid=steamid)
+        embed.description = t("PalguardCog", "delitem.response").format(response=response, itemid=itemid, amount=amount, steamid=steamid)
         await interaction.followup.send(embed=embed)
 
     @delitem.on_autocomplete("server")
@@ -278,13 +278,13 @@ class PalguardCog(commands.Cog):
                 t("PalguardCog", "giveexp.server_not_found").format(server=server), ephemeral=True
             )
             return
-        asyncio.create_task(
+        response = await asyncio.create_task(
             self.rcon_util.rcon_command(server_info, f"give_exp {steamid} {amount}")
         )
         embed = nextcord.Embed(
             title=t("PalguardCog", "giveexp.title").format(server=server), color=nextcord.Color.blue()
         )
-        embed.description = t("PalguardCog", "giveexp.response").format(amount=amount, steamid=steamid)
+        embed.description = t("PalguardCog", "giveexp.response").format(response=response, amount=amount, steamid=steamid)
         await interaction.followup.send(embed=embed)
 
     @giveexp.on_autocomplete("server")
@@ -317,13 +317,13 @@ class PalguardCog(commands.Cog):
         if not egg_id:
             await interaction.followup.send(t("PalguardCog", "giveegg.egg_not_found"), ephemeral=True)
             return
-        asyncio.create_task(
+        response = await asyncio.create_task(
             self.rcon_util.rcon_command(server_info, f"giveegg {steamid} {egg_id}")
         )
         embed = nextcord.Embed(
             title=t("PalguardCog", "giveegg.title").format(server=server), color=nextcord.Color.blue()
         )
-        embed.description = t("PalguardCog", "giveegg.response").format(eggid=eggid, steamid=steamid)
+        embed.description = t("PalguardCog", "giveegg.response").format(response=response, eggid=eggid, steamid=steamid)
         await interaction.followup.send(embed=embed)
 
     @giveegg.on_autocomplete("server")
@@ -381,13 +381,13 @@ class PalguardCog(commands.Cog):
                 t("PalguardCog", "giverelic.server_not_found").format(server=server), ephemeral=True
             )
             return
-        asyncio.create_task(
+        response = await asyncio.create_task(
             self.rcon_util.rcon_command(server_info, f"give_relic {steamid} {amount}")
         )
         embed = nextcord.Embed(
             title=t("PalguardCog", "giverelic.title").format(server=server), color=nextcord.Color.blurple()
         )
-        embed.description = t("PalguardCog", "giverelic.response").format(amount=amount, steamid=steamid)
+        embed.description = t("PalguardCog", "giverelic.response").format(response=response, amount=amount, steamid=steamid)
         await interaction.followup.send(embed=embed)
 
     @giverelic.on_autocomplete("server")

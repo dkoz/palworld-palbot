@@ -301,34 +301,34 @@
             "description": "Dar um Pal a um jogador.",
             "server_not_found": "Servidor {server} não encontrado.",
             "pal_not_found": "ID do Pal não encontrado.",
-            "response": "Dando {palid} a {steamid}.",
+            "response": "Dando {palid} a {steamid}.\nPalcon: {response}",
             "title": "Palguard Pal - {server}"
         },
         "giveitem": {
             "description": "Dar um item a um jogador.",
             "server_not_found": "Servidor {server} não encontrado.",
             "item_not_found": "ID do item não encontrado.",
-            "response": "Dando {itemid} a {steamid}.",
+            "response": "Dando {itemid} a {steamid}.\nPalcon: {response}",
             "title": "Palguard Item - {server}"
         },
         "delitem": {
             "description": "Excluir um item de um jogador.",
             "server_not_found": "Servidor {server} não encontrado.",
             "item_not_found": "ID do item não encontrado.",
-            "response": "Deletando {itemid}x{amount} de {steamid}.",
+            "response": "Deletando {itemid}x{amount} de {steamid}.\nPalcon: {response}",
             "title": "Palguard Item - {server}"
         },
         "giveexp": {
             "description": "Dar experiência a um jogador.",
             "server_not_found": "Servidor {server} não encontrado.",
-            "response": "Dando {amount} experiência a {steamid}.",
+            "response": "Dando {amount} experiência a {steamid}.\nPalcon: {response}",
             "title": "Palguard Experiência - {server}"
         },
         "giveegg": {
             "description": "Dar um ovo a um jogador.",
             "server_not_found": "Servidor {server} não encontrado.",
             "egg_not_found": "ID do ovo não encontrado.",
-            "response": "Dando {eggid} a {steamid}.",
+            "response": "Dando {eggid} a {steamid}.\nPalcon: {response}",
             "title": "Palguard Ovo - {server}"
         },
         "palguardhelp": {
@@ -338,7 +338,7 @@
         "giverelic": {
             "description": "Dar uma relíquia da Efígie Lifmunk a um jogador.",
             "server_not_found": "Servidor {server} não encontrado.",
-            "response": "Dando {amount} relíquias da Efígie Lifmunk a {steamid}.",
+            "response": "Dando {amount} relíquias da Efígie Lifmunk a {steamid}.\nPalcon: {response}",
             "title": "Palguard Relíquia - {server}"
         },
         "whitelistadd": {
