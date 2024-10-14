@@ -135,6 +135,7 @@ class KitsCog(commands.Cog):
         await interaction.response.defer(ephemeral=True)
         
         await delete_kit(kit_name)
+        await self.bot.get_cog('ShopCog').load_shop_items()
         await interaction.followup.send(t("KitsCog", "delete_kit.success").format(kit_name=kit_name), ephemeral=True)
 
     @delete_kit.on_autocomplete("kit_name")
@@ -169,6 +170,8 @@ class KitsCog(commands.Cog):
                 price = kit_data.get('price', 0)
 
                 await save_kit(kit_name, commands, description, price)
+                
+            await self.bot.get_cog('ShopCog').load_shop_items()
 
             await interaction.followup.send(t("KitsCog", "uploadkits.success"), ephemeral=True)
         except Exception as e:

@@ -77,4 +77,7 @@ class KitModal(nextcord.ui.Modal):
         price = self.children[3].value
 
         await save_kit(kit_name, commands, description, price)
+        
+        await interaction.client.get_cog('ShopCog').load_shop_items()
+        
         await interaction.response.send_message(t("Modals", "kitmodal.success_message").format(kit_name=kit_name), ephemeral=True)
