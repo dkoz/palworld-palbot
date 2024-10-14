@@ -483,7 +483,8 @@
                 "error_item_not_found": "Artikel nicht gefunden.",
                 "error_not_enough_points": "Du hast nicht genügend {currency}, um diesen Artikel einzulösen.",
                 "success_title": "Eingelöst {item_name}",
-                "success_description": "Erfolgreich {item_name} für {item_price} {currency} auf Server {server} eingelöst. Du hast jetzt noch {remaining_points} {currency} übrig."
+                "success_description": "Erfolgreich {item_name} für {item_price} {currency} auf Server {server} eingelöst. Du hast jetzt noch {remaining_points} {currency} übrig.",
+                "error_user_not_found": "Benutzer {user_name} konnte auf dem Server nicht gefunden werden. Ihre Punkte wurden zurückerstattet."
             }
         }
     },

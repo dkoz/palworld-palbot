@@ -465,7 +465,7 @@
             }
         }
     },
-"ShopCog": {
+    "ShopCog": {
         "shop": {
             "description": "Comandos da loja.",
             "menu": {
@@ -483,7 +483,8 @@
                 "error_item_not_found": "Item não encontrado.",
                 "error_not_enough_points": "Você não tem {currency} suficiente para trocar por este item.",
                 "success_title": "{item_name} resgatado",
-                "success_description": "{item_name} resgatado com sucesso por {item_price} {currency} no servidor {server}. Você agora tem {remaining_points} {currency} restantes."
+                "success_description": "{item_name} resgatado com sucesso por {item_price} {currency} no servidor {server}. Você agora tem {remaining_points} {currency} restantes.",
+                "error_user_not_found": "Não foi possível encontrar o usuário {user_name} no servidor. Seus pontos foram reembolsados."
             }
         }
     },

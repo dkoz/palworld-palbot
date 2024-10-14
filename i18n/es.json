@@ -483,7 +483,8 @@
                 "error_item_not_found": "Artículo no encontrado.",
                 "error_not_enough_points": "No tienes suficientes {currency} para canjear este artículo.",
                 "success_title": "Canjeado {item_name}",
-                "success_description": "Canjeado exitosamente {item_name} por {item_price} {currency} en el servidor {server}. Ahora te quedan {remaining_points} {currency}."
+                "success_description": "Canjeado exitosamente {item_name} por {item_price} {currency} en el servidor {server}. Ahora te quedan {remaining_points} {currency}.",
+                "error_user_not_found": "No se pudo encontrar al usuario {user_name} en el servidor. Se han reembolsado tus puntos."
             }
         }
     },

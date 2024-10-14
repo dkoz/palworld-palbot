@@ -187,16 +187,27 @@ class ShopCog(commands.Cog):
         for command_template in json.loads(item["commands"]):
             command = command_template.format(steamid=steam_id)
             try:
-                await self.rcon_util.rcon_command(server_info, command)
+                response = await self.rcon_util.rcon_command(server_info, command)
+
+                if "Failed to parse UID" in response:
+                    await set_points(user_id, user_name, points)
+                    await interaction.followup.send(
+                        t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
+                        ephemeral=True
+                    )
+                    logging.error(f"Failed to parse UID for user {user_name} (ID: {user_id}) while purchasing {item_name}. Points refunded.")
+                    return
+
                 await asyncio.sleep(1)
+
             except Exception as e:
-                await interaction.followup.send(f"Error executing command: {e}", ephemeral=True)
+                await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
                 return
 
         embed = nextcord.Embed(
             title=t("ShopCog", "shop.redeem.success_title").format(item_name=item_name),
             description=t("ShopCog", "shop.redeem.success_description").format(
-                item_name=item_name, item_price=item['price'], server=server, currency=self.currency, remaining_points=new_points
+                item_name=item_name, item_price=item['price'], currency=self.currency, server=server, remaining_points=new_points
             ),
             color=nextcord.Color.green(),
         )
@@ -258,8 +269,19 @@ class ShopCog(commands.Cog):
         for command_template in json.loads(item["commands"]):
             command = command_template.format(steamid=steam_id)
             try:
-                await self.rcon_util.rcon_command(server_info, command)
+                response = await self.rcon_util.rcon_command(server_info, command)
+
+                if "Failed to parse UID" in response:
+                    await set_points(user_id, user_name, points)
+                    await interaction.followup.send(
+                        t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
+                        ephemeral=True
+                    )
+                    logging.error(f"Failed to parse UID for user {user_name} (ID: {user_id}) while redeeming {item_name}. Points refunded.")
+                    return
+
                 await asyncio.sleep(1)
+
             except Exception as e:
                 await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
                 return
@@ -271,6 +293,9 @@ class ShopCog(commands.Cog):
             ),
             color=nextcord.Color.green(),
         )
+        
+        logging.info(f"User {user_name} (ID: {user_id}) redeemed {item_name} for {item['price']} {self.currency} on server {server}. Remaining points: {new_points}")
+        
         await interaction.followup.send(embed=embed, ephemeral=True)
 
     @redeem.on_autocomplete("server")
