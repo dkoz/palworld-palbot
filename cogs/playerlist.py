@@ -149,4 +149,8 @@ def setup(bot):
     bot.add_cog(cog)
     if not hasattr(bot, "all_slash_commands"):
         bot.all_slash_commands = []
-    bot.all_slash_commands.append(cog.playerslist)
+    bot.all_slash_commands.extend(
+        [
+            cog.playerslist
+        ]
+    )

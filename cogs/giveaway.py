@@ -121,4 +121,9 @@ class GiveawayCog(commands.Cog):
             print(f"Error ending giveaway: {e}")
 
 def setup(bot):
-    bot.add_cog(GiveawayCog(bot))
+    cog = GiveawayCog(bot)
+    bot.add_cog(cog)
+    
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.append(cog.giveaway)

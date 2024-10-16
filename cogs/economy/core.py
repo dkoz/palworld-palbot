@@ -28,6 +28,7 @@ class EconomyCog(commands.Cog):
         self.bot.loop.create_task(init_db())
         self.bot.loop.create_task(self.load_config())
         self.refresh_settings.start()
+        self.clear_old_cooldowns.start()
         self.work_cooldown = {}
         self.daily_cooldown = {}
         self.economy_config = {}

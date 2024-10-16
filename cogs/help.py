@@ -16,13 +16,8 @@ class HelpView(View):
             description="List of all available commands.",
             color=nextcord.Color.blue(),
         )
-        embed.set_footer(
-            text=f"{constants.FOOTER_TEXT}: Page {self.current_page + 1}",
-            icon_url=constants.FOOTER_IMAGE,
-        )
-
+        
         commands_with_paths = []
-
         for cmd in self.bot.all_slash_commands:
             if hasattr(cmd, 'children') and cmd.children:
                 for subcmd in cmd.children.values():
@@ -31,6 +26,13 @@ class HelpView(View):
                 commands_with_paths.append((cmd.name, cmd))
 
         commands_with_paths.sort(key=lambda x: x[0])
+        total_pages = (len(commands_with_paths) - 1) // 9 + 1
+        
+        embed.set_footer(
+            text=f"{constants.FOOTER_TEXT}: Page {self.current_page + 1}/{total_pages}",
+            icon_url=constants.FOOTER_IMAGE,
+        )
+
         start = self.current_page * 9
         end = min(start + 9, len(commands_with_paths))
 
@@ -50,11 +52,15 @@ class HelpView(View):
 
     @nextcord.ui.button(label="Next", style=nextcord.ButtonStyle.blurple)
     async def next_button_callback(self, button, interaction):
-        if (self.current_page + 1) * 9 < len(
-            self.bot.all_slash_commands
-            if hasattr(self.bot, "all_slash_commands")
-            else []
-        ):
+        commands_with_paths = []
+        for cmd in self.bot.all_slash_commands:
+            if hasattr(cmd, 'children') and cmd.children:
+                for subcmd in cmd.children.values():
+                    commands_with_paths.append((f"{cmd.name} {subcmd.name}", subcmd))
+            elif not hasattr(cmd, 'children') or not cmd.children:
+                commands_with_paths.append((cmd.name, cmd))
+
+        if (self.current_page + 1) * 9 < len(commands_with_paths):
             self.current_page += 1
             await self.update_help_message(interaction)
 
@@ -129,4 +135,13 @@ class HelpCog(commands.Cog):
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
 def setup(bot):
-    bot.add_cog(HelpCog(bot))
+    cog = HelpCog(bot)
+    bot.add_cog(cog)
+    if not hasattr(bot, "all_slash_commands"):
+        bot.all_slash_commands = []
+    bot.all_slash_commands.extend(
+        [
+            cog.help,
+            cog.about,
+        ]
+    )
