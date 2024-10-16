@@ -78,6 +78,10 @@ class PalGameCog(commands.Cog):
         butcher_button = Button(style=ButtonStyle.red, label="Butcher")
 
         async def catch_callback(interaction: Interaction):
+            if interaction.user.id != user.id:
+                await interaction.response.send_message("You can't interact with this button.", ephemeral=True)
+                return
+
             if await self.user_has_pal(str(user.id), pal['Name']):
                 embed = nextcord.Embed(
                     title="Already Caught!", 
@@ -95,6 +99,10 @@ class PalGameCog(commands.Cog):
             await interaction.response.edit_message(embed=embed, view=None)
 
         async def butcher_callback(interaction: Interaction):
+            if interaction.user.id != user.id:
+                await interaction.response.send_message("You can't interact with this button.", ephemeral=True)
+                return
+
             points_awarded = random.randint(10, 50)
             await add_points(str(user.id), user.name, points_awarded)
             embed = nextcord.Embed(

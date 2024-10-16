@@ -115,6 +115,10 @@ class BattleCog(commands.Cog):
         return view
 
     async def skill_callback(self, interaction, user, opponent_pal, skill, pal_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina):
+        if interaction.user.id != user.id:
+            await interaction.response.send_message("You can't interact with this button.", ephemeral=True)
+            return
+        
         if interaction.response.is_done():
             return
         
