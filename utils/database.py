@@ -128,6 +128,21 @@ async def get_server_details(server_name):
         cursor = await db.execute('SELECT server_host, rcon_port, admin_pass FROM servers WHERE server_name = ?', (server_name,))
         result = await cursor.fetchone()
         return result
+    
+async def edit_server_details(server_name):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT server_host, rcon_port, connection_port, admin_pass FROM servers WHERE server_name = ?', (server_name,))
+        result = await cursor.fetchone()
+        return result
+    
+async def update_server_details(old_server_name, new_server_name, server_host, rcon_port, connection_port, admin_pass):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            UPDATE servers 
+            SET server_name = ?, server_host = ?, rcon_port = ?, connection_port = ?, admin_pass = ? 
+            WHERE server_name = ?
+        ''', (new_server_name, server_host, rcon_port, connection_port, admin_pass, old_server_name))
+        await db.commit()
 
 async def get_connection_port(server_name):
     async with aiosqlite.connect(DATABASE_PATH) as db:

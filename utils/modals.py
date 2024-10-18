@@ -165,7 +165,7 @@ class EtcEconomySettingsModal(ui.Modal):
 
 class VoteSettingsModal(ui.Modal):
     def __init__(self):
-        super().__init__(title=t("Modals", "votesettings.title"))
+        super().__init__(title=t("Modals", "etceconomysettings.title"))
         
         self.vote_slug = ui.TextInput(
             label=t("Modals", "etceconomysettings.vote_slug.label"),
