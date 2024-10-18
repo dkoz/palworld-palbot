@@ -151,6 +151,11 @@
             "description": "Entferne einen Server vom Bot.",
             "success": "Server '{server_name}' erfolgreich entfernt.",
             "failed": "Fehler beim Entfernen des Servers. Er könnte nicht existieren."
+        },
+        "editserver": {
+            "description": "Bearbeite die Serverkonfiguration.",
+            "notfound": "Server '{server_name}' nicht gefunden.",
+            "success": "Server '{server_name}' erfolgreich bearbeitet."
         }
     },
     "QueryCog": {

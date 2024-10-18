@@ -56,7 +56,7 @@ class ServerConfigCog(commands.Cog):
         try:
             server_details = await edit_server_details(server_name)
             if not server_details:
-                await interaction.response.send_message(t("ServerConfig", "editserver.notfound"), ephemeral=True)
+                await interaction.response.send_message(t("ServerConfig", "editserver.notfound").format(server_name=server_name), ephemeral=True)
                 return
 
             server_host, rcon_port, connection_port, admin_pass = server_details
@@ -80,7 +80,7 @@ class ServerConfigCog(commands.Cog):
 
                 await self.refresh_servers()
 
-                await interaction.response.send_message("Server details updated and cache refreshed.", ephemeral=True)
+                await interaction.response.send_message(t("ServerConfig", "editserver.success").format(server_name=server_name), ephemeral=True)
 
             modal.callback = modal_callback
             await interaction.response.send_modal(modal)

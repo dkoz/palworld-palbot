@@ -151,6 +151,11 @@
             "description": "Remove a server from the bot.",
             "success": "Server '{server_name}' removed successfully.",
             "failed": "Failed to remove server. It may not exist."
+        },
+        "editserver": {
+            "description": "Edit a server's details.",
+            "notfound": "Server '{server_name}' not found.",
+            "success": "Server '{server_name}' updated successfully."
         }
     },
     "QueryCog": {
