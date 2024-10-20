@@ -8,18 +8,22 @@
 
  Support the development on [Patreon](https://www.patreon.com/palbotinn) and visit our [Website](https://palbot.gg).
 
+ > [!IMPORTANT]  
+ > Due to personal reasons, I won't be able to keep maintaining the bot for much longer. I'll still fix any bugs that pop up, but I won’t be adding new features or continuing work on Pal Game for the time being.
+
 ## Features:
+ - **Server Management:** Easily add, edit, and delete servers directly through the bot, enabling RCON, server queries, and other functionalities to operate smoothly.
  - **RCON Integration:** Seamlessly control your server using RCON commands.
  - **Server Query:** Retrieve real-time information about your server's status, including player count and connection info.
  - **Player Management:** Creates a database of players SteamID, PlayerUID, and Name.
  - **Event Logs:** Keep track of player activity by logging join and leave events on your server.
  - **Status Tracking:** Enable the status tracker to monitor the collective number of players on all your servers.
+ - **Pal Game:** A system where players catch and battle Pals, unlocking stronger abilities, growing their collection, and earning currency.
  - **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
  - **Palguard Integration**: Offers RCON integration for executing PalGuard commands, such as item and pal spawning. Features a customizable game database with a search function to easily spawn desired items or pals.
    - **Kits**: Effortlessly distribute custom kits with items, pals, and eggs to players across your Palworld servers.
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
  - **Localization Support**: Translate your server's features and messages into multiple languages, allowing players to enjoy a localized experience. This feature supports community-contributed translations, ensuring that the language used is both accurate and culturally relevant.
- - **Pal Game:** A system where players catch and battle Pals, unlocking stronger abilities, growing their collection, and earning currency.
 
  ## Installation:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
