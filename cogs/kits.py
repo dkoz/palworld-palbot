@@ -3,7 +3,6 @@ from nextcord.ext import commands
 from utils.rconutility import RconUtility
 from utils.database import get_server_details, server_autocomplete
 from utils.kitutility import (
-    init_kitdb,
     get_kit,
     autocomplete_kits,
     save_kit,
@@ -20,7 +19,6 @@ from utils.errorhandling import restrict_command
 class KitsCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.bot.loop.create_task(init_kitdb())
         self.bot.loop.create_task(self.load_servers())
         self.rcon_util = RconUtility()
         self.servers = []

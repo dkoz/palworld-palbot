@@ -3,6 +3,7 @@
 *.env
 *.db
 *.log
+*.vs/
 
 /dev/*
 /venv/*

@@ -11,6 +11,7 @@ bot_activity = os.getenv("BOT_ACTIVITY", "Palworld")
 steam_api_key = os.getenv("STEAM_API_KEY", "No key found")
 bot_language = os.getenv("BOT_LANGUAGE", "en")
 whitelist_check = os.getenv('GUILD_WHITELIST')
+connection_string = os.getenv('BOT_POSTGRESQL_STRING_CONNECTION','') 
 
 # Logic for the guild whitelist.
 async def check_whitelist(bot):

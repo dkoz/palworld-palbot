@@ -1,65 +1,148 @@
 import nextcord
 import aiosqlite
 import os
+import psycopg2
 from utils.translations import t
+from utils.database import CONFIG_PG, IsPostgreSQL
 
 DATABASE_PATH = os.path.join('data', 'kits.db')
 
-async def init_kitdb():
-    async with aiosqlite.connect(DATABASE_PATH) as db:
-        await db.execute('''
-            CREATE TABLE IF NOT EXISTS kits (
-                name TEXT PRIMARY KEY,
-                commands TEXT,
-                description TEXT,
-                price INTEGER
-            )
-        ''')
-        await db.commit()
+
 
 async def get_kit(kit_name):
-    async with aiosqlite.connect(DATABASE_PATH) as db:
-        cursor = await db.execute('SELECT commands, description, price FROM kits WHERE name = ?', (kit_name,))
-        return await cursor.fetchone()
+    if IsPostgreSQL:
+        conn = psycopg2.connect(**CONFIG_PG)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute('SELECT commands, description, price FROM kits WHERE name = %s', (kit_name,))
+                return cursor.fetchone()
+        except psycopg2.Error as e:
+            print(f"Error fetching kit: {e}")
+            return None
+        finally:
+            conn.close()
+    else:
+        async with aiosqlite.connect(DATABASE_PATH) as db:
+            cursor = await db.execute('SELECT commands, description, price FROM kits WHERE name = ?', (kit_name,))
+            return await cursor.fetchone()
+
+
 
 async def save_kit(kit_name, commands, description, price):
-    async with aiosqlite.connect(DATABASE_PATH) as db:
-        await db.execute('''
-            INSERT INTO kits (name, commands, description, price)
-            VALUES (?, ?, ?, ?)
-            ON CONFLICT(name) DO UPDATE SET commands=excluded.commands, description=excluded.description, price=excluded.price
-        ''', (kit_name, commands, description, int(price)))
-        await db.commit()
+    if IsPostgreSQL:
+        conn = psycopg2.connect(**CONFIG_PG)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(''' 
+                    INSERT INTO kits (name, commands, description, price)
+                    VALUES (%s, %s, %s, %s)
+                    ON CONFLICT(name) DO UPDATE SET commands=excluded.commands, description=excluded.description, price=excluded.price
+                ''', (kit_name, commands, description, int(price)))
+                conn.commit()
+        except psycopg2.Error as e:
+            print(f"Error saving kit: {e}")
+        finally:
+            conn.close()
+    else:
+        async with aiosqlite.connect(DATABASE_PATH) as db:
+            await db.execute(''' 
+                INSERT INTO kits (name, commands, description, price)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT(name) DO UPDATE SET commands=excluded.commands, description=excluded.description, price=excluded.price
+            ''', (kit_name, commands, description, int(price)))
+            await db.commit()
+
+
 
 async def delete_kit(kit_name):
-    async with aiosqlite.connect(DATABASE_PATH) as db:
-        await db.execute('DELETE FROM kits WHERE name = ?', (kit_name,))
-        await db.commit()
+    if IsPostgreSQL:
+        conn = psycopg2.connect(**CONFIG_PG)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute('DELETE FROM kits WHERE name = %s', (kit_name,))
+                conn.commit()
+        except psycopg2.Error as e:
+            print(f"Error deleting kit: {e}")
+        finally:
+            conn.close()
+    else:
+        async with aiosqlite.connect(DATABASE_PATH) as db:
+            await db.execute('DELETE FROM kits WHERE name = ?', (kit_name,))
+            await db.commit()
+
+
 
 async def autocomplete_kits(current: str):
-    async with aiosqlite.connect(DATABASE_PATH) as db:
-        cursor = await db.execute('SELECT name FROM kits WHERE name LIKE ?', (f'%{current}%',))
-        kits = await cursor.fetchall()
-    return [kit[0] for kit in kits]
+    if IsPostgreSQL:
+        conn = psycopg2.connect(**CONFIG_PG)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute('SELECT name FROM kits WHERE name LIKE %s', (f'%{current}%',))
+                kits = cursor.fetchall()
+            return [kit[0] for kit in kits]
+        except psycopg2.Error as e:
+            print(f"Error autocompleting kits: {e}")
+            return []
+        finally:
+            conn.close()
+    else:
+        async with aiosqlite.connect(DATABASE_PATH) as db:
+            cursor = await db.execute('SELECT name FROM kits WHERE name LIKE ?', (f'%{current}%',))
+            kits = await cursor.fetchall()
+        return [kit[0] for kit in kits]
+
+
+
 
 async def fetch_all_kits():
-    async with aiosqlite.connect(DATABASE_PATH) as db:
-        cursor = await db.execute('SELECT name, commands, description, price FROM kits')
-        kits = await cursor.fetchall()
-    return kits
+    if IsPostgreSQL:
+        conn = psycopg2.connect(**CONFIG_PG)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute('SELECT name, commands, description, price FROM kits')
+                kits = cursor.fetchall()
+            return kits
+        except psycopg2.Error as e:
+            print(f"Error fetching all kits: {e}")
+            return []
+        finally:
+            conn.close()
+    else:
+        async with aiosqlite.connect(DATABASE_PATH) as db:
+            cursor = await db.execute('SELECT name, commands, description, price FROM kits')
+            kits = await cursor.fetchall()
+        return kits
 
 async def load_shop_items():
     shop_items = {}
-    async with aiosqlite.connect(DATABASE_PATH) as db:
-        cursor = await db.execute('SELECT name, description, price FROM kits WHERE price > 0')
-        kits = await cursor.fetchall()
-        for kit in kits:
-            commands, description, price = await get_kit(kit[0])
-            shop_items[kit[0]] = {
-                "commands": commands,
-                "description": description,
-                "price": price
-            }
+    if IsPostgreSQL:
+        conn = psycopg2.connect(**CONFIG_PG)
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute('SELECT name, description, price FROM kits WHERE price > 0')
+                kits = cursor.fetchall()
+                for kit in kits:
+                    commands, description, price = await get_kit(kit[0])
+                    shop_items[kit[0]] = {
+                        "commands": commands,
+                        "description": description,
+                        "price": price
+                    }
+        except psycopg2.Error as e:
+            print(f"Error loading shop items: {e}")
+        finally:
+            conn.close()
+    else:
+        async with aiosqlite.connect(DATABASE_PATH) as db:
+            cursor = await db.execute('SELECT name, description, price FROM kits WHERE price > 0')
+            kits = await cursor.fetchall()
+            for kit in kits:
+                commands, description, price = await get_kit(kit[0])
+                shop_items[kit[0]] = {
+                    "commands": commands,
+                    "description": description,
+                    "price": price
+                }
     return shop_items
 
 class KitModal(nextcord.ui.Modal):
