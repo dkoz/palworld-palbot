@@ -10,7 +10,7 @@ from utils.database import (
     server_autocomplete,
 )
 from utils.rconutility import RconUtility
-from utils.kitutility import load_shop_items
+from utils.kitutility import init_kitdb,load_shop_items
 import asyncio
 import utils.constants as constants
 import json
@@ -18,8 +18,8 @@ from utils.translations import t
 from utils.errorhandling import restrict_command
 import logging
 
-class ShopView(View):
-    def __init__(self, shop_items, currency, cog, selected_server):
+class ShopView(View):    
+    def __init__(self, shop_items, currency, cog, selected_server):        
         super().__init__(timeout=None)
         self.shop_items = shop_items
         self.currency = currency
@@ -95,7 +95,8 @@ class ShopView(View):
 class ShopCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.bot.loop.create_task(self.load_config())
+        self.bot.loop.create_task(init_kitdb())
+        self.bot.loop.create_task(self.load_config())        
         self.bot.loop.create_task(self.load_economy())
         self.bot.loop.create_task(self.reload_cache())
         self.rcon_util = RconUtility()
