@@ -285,6 +285,7 @@ async def init_db():
                     ON CONFLICT(setting_key) DO NOTHING;
                 ''', (key, value))
             await db.commit()
+            print("SqlLite database Complete")
 
 
 
