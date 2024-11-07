@@ -4,6 +4,7 @@
 *.db
 *.log
 
+/.vs/*
 /dev/*
 /venv/*
 !gamedata/*.json
