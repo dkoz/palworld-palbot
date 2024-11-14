@@ -1,7 +1,7 @@
 import nextcord
 from nextcord.ext import commands
 from nextcord.ui import Button, View
-from nextcord.ext.commands import has_permissions
+from nextcord.ext.commands import has_permissions, CommandInvokeError
 import utils.constants as constants
 import json
 import os
@@ -130,16 +130,16 @@ class TicketSystem(commands.Cog):
             
     @tickets.command(name="role")
     @has_permissions(manage_channels=True)
-    async def add_ticket_roles(self, ctx, *role_ids: int):
+    async def add_ticket_roles(self, ctx, *roles: nextcord.Role):
         if 'ticket_roles' not in self.data:
             self.data['ticket_roles'] = []
 
-        for role_id in role_ids:
-            if role_id not in self.data['ticket_roles']:
-                self.data['ticket_roles'].append(role_id)
+        for role in roles:
+            if role.id not in self.data['ticket_roles']:
+                self.data['ticket_roles'].append(role.id)
 
         self.save_config()
-        role_mentions = " ".join([f"<@&{role_id}>" for role_id in role_ids])
+        role_mentions = " ".join([role.mention for role in roles])
         await ctx.send(f"Roles {role_mentions} added to ticket access.")
 
     @tickets.command(name="channel")
@@ -250,12 +250,17 @@ class TicketSystem(commands.Cog):
         self.data['buttons'] = [button for button in self.data['buttons'] if button['message_id'] != thread.last_message_id]
         self.save_config()
 
-    @tickets.error
-    @setup_ticket.error
-    @setup_log.error
-    async def tickets_error(self, ctx, error):
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You don't have permission to use this command.")
+        elif isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("Please provide the required arguments.")
+        elif isinstance(error, CommandInvokeError):
+            original = getattr(error, "original", error)
+            await ctx.send(f"An error occurred: {original}")
+        else:
+            await ctx.send(f"An error occurred: {error}")
 
 def setup(bot):
     bot.add_cog(TicketSystem(bot))
