@@ -127,6 +127,13 @@ class ShopCog(commands.Cog):
             }
         return None
     
+    async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return []
+        server_names = await server_autocomplete()
+        choices = [server for server in server_names if current.lower() in server.lower()][:25]
+        await interaction.response.send_autocomplete(choices)
+    
     @nextcord.slash_command(description=t("ShopCog", "shop.description"), dm_permission=False)
     async def shop(self, _interaction: nextcord.Interaction):
         pass
@@ -140,11 +147,7 @@ class ShopCog(commands.Cog):
 
     @menu.on_autocomplete("server")
     async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
-        if interaction.guild is None:
-            return[]
-        
-        choices = [server for server in self.servers if current.lower() in server.lower()][:10]
-        await interaction.response.send_autocomplete(choices)
+        await self.autocomplete_server(interaction, current)
 
     async def purchase_item(self, interaction: nextcord.Interaction, item_name: str, server: str):
         user_id = str(interaction.user.id)
@@ -300,11 +303,7 @@ class ShopCog(commands.Cog):
 
     @redeem.on_autocomplete("server")
     async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
-        if interaction.guild is None:
-            return[]
-        
-        choices = [server for server in self.servers if current.lower() in server.lower()][:10]
-        await interaction.response.send_autocomplete(choices)
+        await self.autocomplete_server(interaction, current)
 
     @redeem.on_autocomplete("item_name")
     async def on_autocomplete_shop_items(self, interaction: nextcord.Interaction, current: str):

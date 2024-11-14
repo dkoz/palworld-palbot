@@ -71,12 +71,11 @@ class PlayerListCog(commands.Cog):
     async def load_servers(self):
         self.servers = await server_autocomplete()
 
-    async def autocomplete_server(
-        self, interaction: nextcord.Interaction, current: str
-    ):
-        choices = [
-            server for server in self.servers if current.lower() in server.lower()
-        ]
+    async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return []
+        server_names = await server_autocomplete()
+        choices = [server for server in server_names if current.lower() in server.lower()][:25]
         await interaction.response.send_autocomplete(choices)
 
     async def get_server_info(self, server_name: str):

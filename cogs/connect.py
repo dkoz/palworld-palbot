@@ -132,9 +132,9 @@ class ConnectCog(commands.Cog):
 
     async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
         if interaction.guild is None:
-            return
-        
-        choices = [server for server in self.servers if current.lower() in server.lower()]
+            return []
+        server_names = await server_autocomplete()
+        choices = [server for server in server_names if current.lower() in server.lower()][:25]
         await interaction.response.send_autocomplete(choices)
 
     @nextcord.slash_command(name="eventlogs", description=t("ConnectCog", "eventlogs.description"), default_member_permissions=nextcord.Permissions(administrator=True), dm_permission=False)

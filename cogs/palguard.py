@@ -36,15 +36,11 @@ class PalguardCog(commands.Cog):
         with open(eggs_path, "r", encoding="utf-8") as eggs_file:
             self.eggs = json.load(eggs_file)["eggs"]
 
-    async def autocomplete_server(
-        self, interaction: nextcord.Interaction, current: str
-    ):
+    async def autocomplete_server(self, interaction: nextcord.Interaction, current: str):
         if interaction.guild is None:
-            return[]
-        
-        choices = [
-            server for server in self.servers if current.lower() in server.lower()
-        ]
+            return []
+        server_names = await server_autocomplete()
+        choices = [server for server in server_names if current.lower() in server.lower()][:25]
         await interaction.response.send_autocomplete(choices)
 
     async def autocomplete_palid(self, interaction: nextcord.Interaction, current: str):
