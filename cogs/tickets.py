@@ -64,7 +64,8 @@ class TicketSystem(commands.Cog):
                 f"`{prefix}tickets logchannel` - Set the log channel\n"
                 f"`{prefix}tickets addcategory` - Add a new ticket category\n"
                 f"`{prefix}tickets removecategory` - Remove a ticket category\n"
-                f"`{prefix}tickets transcript` - Toggle DM on close and transcript generation."
+                f"`{prefix}tickets transcript` - Toggle DM on close and transcript generation.\n"
+                f"`{prefix}tickets role` - Add a role to the ticket system\n",
         )
         embed.set_footer(text="Still in testing...", icon_url=constants.FOOTER_IMAGE)
         await ctx.send(embed=embed)
@@ -126,14 +127,46 @@ class TicketSystem(commands.Cog):
                     'categories': self.data['categories']
                 }]
                 self.save_config()
+            
+    @tickets.command(name="role")
+    @has_permissions(manage_channels=True)
+    async def add_ticket_roles(self, ctx, *role_ids: int):
+        if 'ticket_roles' not in self.data:
+            self.data['ticket_roles'] = []
+
+        for role_id in role_ids:
+            if role_id not in self.data['ticket_roles']:
+                self.data['ticket_roles'].append(role_id)
+
+        self.save_config()
+        role_mentions = " ".join([f"<@&{role_id}>" for role_id in role_ids])
+        await ctx.send(f"Roles {role_mentions} added to ticket access.")
 
     @tickets.command(name="channel")
     @has_permissions(manage_channels=True)
     async def setup_ticket(self, ctx, channel: nextcord.TextChannel):
         self.data['ticket_channel_id'] = channel.id
+
+        if 'ticket_roles' in self.data and self.data['ticket_roles']:
+            overwrites = {
+                ctx.guild.default_role: nextcord.PermissionOverwrite(view_channel=False)
+            }
+            for role_id in self.data['ticket_roles']:
+                role = ctx.guild.get_role(role_id)
+                if role:
+                    overwrites[role] = nextcord.PermissionOverwrite(
+                        view_channel=True,
+                        send_messages=True,
+                        manage_threads=True
+                    )
+
+            await channel.edit(overwrites=overwrites)
+            await ctx.send(f"Ticket system set up in {channel.mention} with role-based access and Manage Threads permission.")
+        else:
+            await ctx.send(f"Ticket system set up in {channel.mention}.")
+
         self.save_config()
         await self.update_ticket_message(ctx)
-        await ctx.send(f"Ticket system set up in {channel.mention}")
 
     @tickets.command(name="logchannel")
     @has_permissions(manage_channels=True)
