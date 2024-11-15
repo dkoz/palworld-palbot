@@ -65,7 +65,45 @@ class TicketSystem(commands.Cog):
                 f"`{prefix}tickets addcategory` - Add a new ticket category\n"
                 f"`{prefix}tickets removecategory` - Remove a ticket category\n"
                 f"`{prefix}tickets transcript` - Toggle DM on close and transcript generation.\n"
-                f"`{prefix}tickets role` - Add a role to the ticket system\n",
+                f"`{prefix}tickets role` - Add a role to the ticket system\n"
+                f"`{prefix}tickets setup` - Setup guide for the ticket system",
+        )
+        embed.set_footer(text="Still in testing...", icon_url=constants.FOOTER_IMAGE)
+        await ctx.send(embed=embed)
+        
+    # setup guide embed
+    @tickets.command(name="setup")
+    @has_permissions(manage_channels=True)
+    async def setup(self, ctx):
+        embed = nextcord.Embed(
+            title="Ticket System Setup Guide",
+            description="Follow the steps below to set up the ticket system.",
+            color=nextcord.Color.orange()
+        )
+        embed.add_field(
+            name="Step 1: Create a Ticket Channel",
+            value="Create a new text channel where users can create tickets. Use the `[p]tickets channel` command to set this channel.",
+            inline=False
+        )
+        embed.add_field(
+            name="Step 2: Set Log Channel (Optional)",
+            value="Set a log channel to log ticket creations and closures. Use the `[p]tickets logchannel` command to set this channel.",
+            inline=False
+        )
+        embed.add_field(
+            name="Step 3: Add Ticket Categories",
+            value="Add ticket categories using the `[p]tickets addcategory` command. Users can create tickets in these categories.",
+            inline=False
+        )
+        embed.add_field(
+            name="Step 4: Add Ticket Roles",
+            value="Add roles that can access the ticket system using the `[p]tickets role` command.",
+            inline=False
+        )
+        embed.add_field(
+            name="Step 5: Toggle DM on Close and Transcript Generation",
+            value="Toggle DM on close and transcript generation using the `[p]tickets transcript <true/false> <true/false>` command.",
+            inline=False
         )
         embed.set_footer(text="Still in testing...", icon_url=constants.FOOTER_IMAGE)
         await ctx.send(embed=embed)
