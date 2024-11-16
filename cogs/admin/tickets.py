@@ -254,7 +254,18 @@ class TicketSystem(commands.Cog):
             view.add_item(close_button)
             embed = nextcord.Embed(title="Your Ticket", description="Support will be with you shortly. Click the button to close this ticket.")
             embed.add_field(name="Explain your issue", value="Provide details about your issue to help us assist you.", inline=False)
-            await thread.send(member.mention, embed=embed, view=view)
+
+            role_mentions = ''
+            if 'ticket_roles' in self.data:
+                role_mentions = ' '.join(
+                    [
+                        interaction.guild.get_role(role_id).mention
+                        for role_id in self.data['ticket_roles']
+                        if interaction.guild.get_role(role_id) is not None
+                    ]
+                )
+
+            await thread.send(f"{member.mention} {role_mentions}", embed=embed, view=view)
             await interaction.response.send_message("Ticket created!", ephemeral=True)
 
     async def close_ticket(self, interaction: nextcord.Interaction, thread: nextcord.Thread):
