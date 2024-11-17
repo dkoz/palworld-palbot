@@ -82,14 +82,25 @@ async def get_palgame_settings():
             "battle_cooldown": 90,
             "battle_reward_min": 20,
             "battle_reward_max": 50,
-            "battle_experience": 100
+            "battle_experience": 100,
+            "adventure_cooldown": 90,
+            "adventure_reward_min": 50,
+            "adventure_reward_max": 200,
+            "adventure_experience_min": 100,
+            "adventure_experience_max": 500
         }
 
 async def update_palgame_settings(new_settings):
     async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT setting_value FROM economy_settings WHERE setting_key = ?', ('palgame_config',))
+        result = await cursor.fetchone()
+        current_settings = json.loads(result[0]) if result else {}
+
+        current_settings.update(new_settings)
+
         await db.execute('''
             INSERT INTO economy_settings (setting_key, setting_value)
             VALUES (?, ?)
             ON CONFLICT(setting_key) DO UPDATE SET setting_value = excluded.setting_value;
-        ''', ('palgame_config', json.dumps(new_settings)))
+        ''', ('palgame_config', json.dumps(current_settings)))
         await db.commit()

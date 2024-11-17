@@ -8,7 +8,8 @@ import os
 from utils.palgame import (
     get_pals,
     add_experience,
-    level_up
+    level_up,
+    get_palgame_settings
 )
 from utils.database import add_points
 from utils.errorhandling import restrict_command
@@ -16,19 +17,18 @@ from utils.errorhandling import restrict_command
 class AdventureCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.cooldowns = {}
         self.pals = self.load_pals()
-        self.COOLDOWN_PERIOD = 5 * 60
+        self.cooldowns = {}
 
     def load_pals(self):
         with open(os.path.join('gamedata', 'game.json'), 'r') as file:
             return json.load(file)
 
-    def check_cooldown(self, user_id):
+    def check_cooldown(self, user_id, cooldown_period):
         if user_id in self.cooldowns:
             time_elapsed = time.time() - self.cooldowns[user_id]
-            if time_elapsed < self.COOLDOWN_PERIOD:
-                return self.COOLDOWN_PERIOD - time_elapsed
+            if time_elapsed < cooldown_period:
+                return cooldown_period - time_elapsed
         return None
 
     def update_cooldown(self, user_id):
@@ -64,7 +64,14 @@ class AdventureCog(commands.Cog):
     ):
         user_id = str(interaction.user.id)
 
-        remaining_time = self.check_cooldown(user_id)
+        settings = await get_palgame_settings()
+        cooldown_period = settings.get("adventure_cooldown", 90)
+        reward_min = settings.get("adventure_reward_min", 50)
+        reward_max = settings.get("adventure_reward_max", 200)
+        experience_min = settings.get("adventure_experience_min", 100)
+        experience_max = settings.get("adventure_experience_max", 500)
+
+        remaining_time = self.check_cooldown(user_id, cooldown_period)
         if remaining_time is not None:
             remaining_minutes = int(remaining_time // 60)
             remaining_seconds = int(remaining_time % 60)
@@ -85,8 +92,8 @@ class AdventureCog(commands.Cog):
         adventure_success = random.random() < 0.85
 
         if adventure_success:
-            currency_earned = random.randint(50, 200)
-            experience_gained = random.randint(100, 500)
+            currency_earned = random.randint(reward_min, reward_max)
+            experience_gained = random.randint(experience_min, experience_max)
             await add_experience(user_id, pal_name, experience_gained)
             leveled_up = await level_up(user_id, pal_name)
             await add_points(user_id, interaction.user.name, currency_earned)
