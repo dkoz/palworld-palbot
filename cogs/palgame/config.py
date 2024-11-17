@@ -139,7 +139,12 @@ class PalGameSettingsCog(commands.Cog):
     async def before_refresh_settings(self):
         await self.bot.wait_until_ready()
 
-    @nextcord.slash_command(name="gamesettings", description="Manage PalGame settings")
+    @nextcord.slash_command(
+        name="gamesettings",
+        description="Manage PalGame settings",
+        default_member_permissions=nextcord.Permissions(administrator=True),
+        dm_permission=False
+    )
     async def palgame(self, interaction: nextcord.Interaction):
         pass
 
