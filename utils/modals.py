@@ -1,7 +1,23 @@
 import nextcord
 from nextcord import ui, Interaction
-from utils.database import add_server, update_economy_setting
+from utils.database import add_server, update_economy_setting, get_economy_setting
 from utils.translations import t
+
+async def fetch_economy_settings():
+    return {
+        "currency_name": await get_economy_setting("currency_name") or "",
+        "invite_reward": await get_economy_setting("invite_reward") or "0",
+        "work_reward_min": await get_economy_setting("work_reward_min") or "0",
+        "work_reward_max": await get_economy_setting("work_reward_max") or "0",
+        "daily_reward": await get_economy_setting("daily_reward") or "0",
+        "work_timer": await get_economy_setting("work_timer") or "0",
+        "daily_timer": await get_economy_setting("daily_timer") or "0",
+        "work_description": await get_economy_setting("work_description") or "",
+        "role_bonuses": await get_economy_setting("role_bonuses") or "",
+        "vote_slug": await get_economy_setting("vote_slug") or "",
+        "vote_apikey": await get_economy_setting("vote_apikey") or "",
+        "vote_reward": await get_economy_setting("vote_reward") or "0",
+    }
 
 class AddServerModal(ui.Modal):
     def __init__(self):
@@ -52,29 +68,34 @@ class AddServerModal(ui.Modal):
             t("Modals", "addserver.success").format(server_name=self.server_name.value),
             ephemeral=True
         )
-       
+
 class EconomySettingsModal(ui.Modal):
-    def __init__(self):
+    def __init__(self, settings):
         super().__init__(title=t("Modals", "economysettings.title"))
-        
+
         self.currency_name = ui.TextInput(
             label=t("Modals", "economysettings.currency_name.label"),
+            default_value=settings["currency_name"],
             placeholder=t("Modals", "economysettings.currency_name.placeholder")
         )
         self.invite_reward = ui.TextInput(
             label=t("Modals", "economysettings.invite_reward.label"),
+            default_value=settings["invite_reward"],
             placeholder=t("Modals", "economysettings.invite_reward.placeholder")
         )
         self.work_reward_min = ui.TextInput(
             label=t("Modals", "economysettings.work_reward_min.label"),
+            default_value=settings["work_reward_min"],
             placeholder=t("Modals", "economysettings.work_reward_min.placeholder")
         )
         self.work_reward_max = ui.TextInput(
             label=t("Modals", "economysettings.work_reward_max.label"),
+            default_value=settings["work_reward_max"],
             placeholder=t("Modals", "economysettings.work_reward_max.placeholder")
         )
         self.daily_reward = ui.TextInput(
             label=t("Modals", "economysettings.daily_reward.label"),
+            default_value=settings["daily_reward"],
             placeholder=t("Modals", "economysettings.daily_reward.placeholder")
         )
 
@@ -100,16 +121,18 @@ class EconomySettingsModal(ui.Modal):
                 t("Modals", "economysettings.error").format(error=e),
                 ephemeral=True
             )
-    
+
 class TimerSettingsModal(ui.Modal):
-    def __init__(self):
+    def __init__(self, settings):
         super().__init__(title=t("Modals", "timersettings.title"))
         self.work_timer = ui.TextInput(
             label=t("Modals", "timersettings.work_timer.label"),
+            default_value=settings["work_timer"],
             placeholder=t("Modals", "timersettings.work_timer.placeholder")
         )
         self.daily_timer = ui.TextInput(
             label=t("Modals", "timersettings.daily_timer.label"),
+            default_value=settings["daily_timer"],
             placeholder=t("Modals", "timersettings.daily_timer.placeholder")
         )
 
@@ -131,16 +154,18 @@ class TimerSettingsModal(ui.Modal):
             )
 
 class EtcEconomySettingsModal(ui.Modal):
-    def __init__(self):
+    def __init__(self, settings):
         super().__init__(title=t("Modals", "etceconomysettings.title"))
-        
+
         self.work_description = ui.TextInput(
             label=t("Modals", "etceconomysettings.work_description.label"),
+            default_value=settings["work_description"],
             placeholder=t("Modals", "etceconomysettings.work_description.placeholder"),
             style=nextcord.TextInputStyle.paragraph
         )
         self.role_bonuses = ui.TextInput(
             label=t("Modals", "etceconomysettings.role_bonuses.label"),
+            default_value=settings["role_bonuses"],
             placeholder=t("Modals", "etceconomysettings.role_bonuses.placeholder"),
             style=nextcord.TextInputStyle.paragraph
         )
@@ -164,21 +189,24 @@ class EtcEconomySettingsModal(ui.Modal):
             )
 
 class VoteSettingsModal(ui.Modal):
-    def __init__(self):
+    def __init__(self, settings):
         super().__init__(title=t("Modals", "etceconomysettings.title"))
-        
+
         self.vote_slug = ui.TextInput(
             label=t("Modals", "etceconomysettings.vote_slug.label"),
+            default_value=settings["vote_slug"],
             placeholder=t("Modals", "etceconomysettings.vote_slug.placeholder"),
             required=False
         )
         self.vote_apikey = ui.TextInput(
             label=t("Modals", "etceconomysettings.vote_apikey.label"),
+            default_value=settings["vote_apikey"],
             placeholder=t("Modals", "etceconomysettings.vote_apikey.placeholder"),
             required=False
         )
         self.vote_reward = ui.TextInput(
             label=t("Modals", "etceconomysettings.vote_reward.label"),
+            default_value=settings["vote_reward"],
             placeholder=t("Modals", "etceconomysettings.vote_reward.placeholder"),
             required=False
         )

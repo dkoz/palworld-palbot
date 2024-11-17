@@ -12,7 +12,8 @@ from utils.modals import (
     EconomySettingsModal,
     TimerSettingsModal,
     EtcEconomySettingsModal,
-    VoteSettingsModal
+    VoteSettingsModal,
+    fetch_economy_settings
 )
 from utils.translations import t
 from utils.errorhandling import restrict_command
@@ -174,19 +175,20 @@ class EconomyManageCog(commands.Cog):
     @restrict_command()
     async def economy_settings(self, interaction: nextcord.Interaction):
         try:
-            modal = EconomySettingsModal()
+            settings = await fetch_economy_settings()
+            modal = EconomySettingsModal(settings)
             await interaction.response.send_modal(modal)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
-            
-    # Timer settings
+
     @economyset.subcommand(
         name="timers", description=t("EconomyManageCog", "economyset.timers.description")
     )
     @restrict_command()
     async def timer_settings(self, interaction: nextcord.Interaction):
         try:
-            modal = TimerSettingsModal()
+            settings = await fetch_economy_settings()
+            modal = TimerSettingsModal(settings)
             await interaction.response.send_modal(modal)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
@@ -197,7 +199,8 @@ class EconomyManageCog(commands.Cog):
     @restrict_command()
     async def etc_settings(self, interaction: nextcord.Interaction):
         try:
-            modal = EtcEconomySettingsModal()
+            settings = await fetch_economy_settings()
+            modal = EtcEconomySettingsModal(settings)
             await interaction.response.send_modal(modal)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
@@ -208,7 +211,8 @@ class EconomyManageCog(commands.Cog):
     @restrict_command()
     async def vote_settings(self, interaction: nextcord.Interaction):
         try:
-            modal = VoteSettingsModal()
+            settings = await fetch_economy_settings()
+            modal = VoteSettingsModal(settings)
             await interaction.response.send_modal(modal)
         except Exception as e:
             await interaction.response.send_message(f"Unexpected error: {e}", ephemeral=True)
