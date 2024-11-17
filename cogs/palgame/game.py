@@ -8,7 +8,8 @@ import time
 import os
 from utils.palgame import (
     add_pal,
-    check_pal
+    check_pal,
+    get_palgame_settings
 )
 from utils.database import add_points
 from utils.errorhandling import restrict_command
@@ -41,7 +42,11 @@ class PalGameCog(commands.Cog):
     @restrict_command()
     async def catch(self, interaction: Interaction):
         user_id = str(interaction.user.id)
-        cooldown_period = 90
+
+        settings = await get_palgame_settings()
+        cooldown_period = settings.get("catch_cooldown", 90)
+        reward_min = settings.get("catch_reward_min", 10)
+        reward_max = settings.get("catch_reward_max", 50)
 
         remaining_time = self.check_cooldown(user_id, cooldown_period)
         if remaining_time is not None:
@@ -54,7 +59,7 @@ class PalGameCog(commands.Cog):
         pal_name = random_pal['Name']
 
         if await self.user_has_pal(user_id, pal_name):
-            points_awarded = random.randint(10, 50)
+            points_awarded = random.randint(reward_min, reward_max)
             await add_points(user_id, interaction.user.name, points_awarded)
             
             embed = nextcord.Embed(
@@ -65,13 +70,13 @@ class PalGameCog(commands.Cog):
             await interaction.response.send_message(embed=embed)
             return
 
-        view = self.create_catch_view(random_pal, interaction.user)
+        view = self.create_catch_view(random_pal, interaction.user, reward_min, reward_max)
         embed = nextcord.Embed(title="A wild Pal appeared!")
         embed.add_field(name=random_pal['Name'], value=random_pal['Description'], inline=False)
         embed.set_thumbnail(url=random_pal['WikiImage'])
         await interaction.response.send_message(embed=embed, view=view)
 
-    def create_catch_view(self, pal, user):
+    def create_catch_view(self, pal, user, reward_min, reward_max):
         view = View()
 
         catch_button = Button(style=ButtonStyle.green, label="Catch")
@@ -103,7 +108,7 @@ class PalGameCog(commands.Cog):
                 await interaction.response.send_message("You can't interact with this button.", ephemeral=True)
                 return
 
-            points_awarded = random.randint(10, 50)
+            points_awarded = random.randint(reward_min, reward_max)
             await add_points(str(user.id), user.name, points_awarded)
             embed = nextcord.Embed(
                 title="Butchered!", 

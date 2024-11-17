@@ -7,7 +7,8 @@ from utils.palgame import (
     get_pals,
     add_experience,
     level_up,
-    get_stats
+    get_stats,
+    get_palgame_settings
 )
 from utils.database import add_points
 import random
@@ -60,7 +61,12 @@ class BattleCog(commands.Cog):
         pal_name: str = nextcord.SlashOption(description="Choose your Pal", autocomplete=True)
     ):
         user_id = str(interaction.user.id)
-        cooldown_period = 90
+
+        settings = await get_palgame_settings()
+        cooldown_period = settings.get("battle_cooldown", 90)
+        reward_min = settings.get("battle_reward_min", 10)
+        reward_max = settings.get("battle_reward_max", 50)
+        experience_reward = settings.get("battle_experience", 100)
 
         remaining_time = self.check_cooldown(user_id, cooldown_period)
         if remaining_time is not None:
@@ -87,7 +93,7 @@ class BattleCog(commands.Cog):
         user_stamina = pal_data['Stats']['Stamina']
         opponent_stamina = opponent_pal['Stats']['Stamina']
 
-        view = self.create_battle_view(pal_data, interaction.user, opponent_pal, user_pal_stats[0], user_pal_stats[1], user_hp, opponent_hp, user_stamina, opponent_stamina)
+        view = self.create_battle_view(pal_data, interaction.user, opponent_pal, user_pal_stats[0], user_pal_stats[1], user_hp, opponent_hp, user_stamina, opponent_stamina, reward_min, reward_max, experience_reward)
         
         embed = nextcord.Embed(title=f"Battle: {pal_name} VS {opponent_pal['Name']}", description="Choose your action:", color=nextcord.Color.blue())
         embed.add_field(name=f"{pal_name} Stats", value=self.format_stats(pal_data, user_pal_stats[0]), inline=False)
@@ -103,25 +109,26 @@ class BattleCog(commands.Cog):
                 f"Defense: {stats['Defense'] + (level * 2)}\n"
                 f"Stamina: {stats['Stamina'] + (level * 5)}")
 
-    def create_battle_view(self, pal_data, user, opponent_pal, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina):
-        view = nextcord.ui.View(timeout=300)   
+    def create_battle_view(self, pal_data, user, opponent_pal, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina, reward_min, reward_max, experience_reward):
+        view = nextcord.ui.View(timeout=300)
 
         for skill in pal_data['Skills']:
             if level >= skill['Level']:
                 button = nextcord.ui.Button(label=skill['Name'], style=nextcord.ButtonStyle.primary)
                 button.callback = lambda inter, s=skill, p_data=pal_data: self.skill_callback(
-                    inter, user, opponent_pal, s, p_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina)
+                    inter, user, opponent_pal, s, p_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina, reward_min, reward_max, experience_reward
+                )
                 view.add_item(button)
         return view
 
-    async def skill_callback(self, interaction, user, opponent_pal, skill, pal_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina):
+    async def skill_callback(self, interaction, user, opponent_pal, skill, pal_data, level, experience, user_hp, opponent_hp, user_stamina, opponent_stamina, reward_min, reward_max, experience_reward):
         if interaction.user.id != user.id:
             await interaction.response.send_message("You can't interact with this button.", ephemeral=True)
             return
-        
+
         if interaction.response.is_done():
             return
-        
+
         if user_stamina <= 0:
             await interaction.response.send_message(f"{pal_data['Name']} is too exhausted to use {skill['Name']}! You need to rest.")
             return
@@ -139,9 +146,8 @@ class BattleCog(commands.Cog):
         if opponent_hp <= 0:
             result_text += f"\n{opponent_pal['Name']} has been defeated!"
 
-            base_experience = 50
             rarity_multiplier = opponent_pal.get('Rarity', 1)
-            experience_gained = base_experience * rarity_multiplier
+            experience_gained = experience_reward * rarity_multiplier
             new_experience += experience_gained
             result_text += f"\n{pal_data['Name']} gained {experience_gained} experience points."
 
@@ -163,8 +169,7 @@ class BattleCog(commands.Cog):
             else:
                 result_text += f"\n{pal_data['Name']} is still at Level {level}."
 
-            base_points = random.randint(10, 20)
-            points_awarded = int(base_points * rarity_multiplier)
+            points_awarded = random.randint(reward_min, reward_max)
             await add_points(str(interaction.user.id), user.name, points_awarded)
             result_text += f"\nYou earned {points_awarded} points for winning the battle!"
 
@@ -188,7 +193,7 @@ class BattleCog(commands.Cog):
             return
 
         embed = nextcord.Embed(title="Battle Update", description=result_text, color=nextcord.Color.orange())
-        view = self.create_battle_view(pal_data, user, opponent_pal, level, new_experience, user_hp, opponent_hp, user_stamina, opponent_stamina)
+        view = self.create_battle_view(pal_data, user, opponent_pal, level, new_experience, user_hp, opponent_hp, user_stamina, opponent_stamina, reward_min, reward_max, experience_reward)
         await interaction.response.edit_message(embed=embed, view=view)
 
     def calculate_damage(self, skill_power, attack_type, user_pal, opponent_pal):
@@ -200,8 +205,8 @@ class BattleCog(commands.Cog):
     @battle.on_autocomplete("pal_name")
     async def on_autocomplete_pal(self, interaction: nextcord.Interaction, current: str):
         if interaction.guild is None:
-            return[]
-        
+            return []
+
         await self.pal_autocomplete(interaction, current)
 
 def setup(bot):

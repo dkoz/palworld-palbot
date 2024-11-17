@@ -1,5 +1,6 @@
 import aiosqlite
 import os
+import json
 
 DATABASE_PATH = os.path.join('data', 'palbot.db')
 
@@ -67,3 +68,28 @@ async def check_pal(user_id, pal_name):
             SELECT 1 FROM user_pals WHERE user_id = ? AND pal_name = ?
         ''', (user_id, pal_name))
         return await cursor.fetchone() is not None
+    
+async def get_palgame_settings():
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        cursor = await db.execute('SELECT setting_value FROM economy_settings WHERE setting_key = ?', ('palgame_config',))
+        result = await cursor.fetchone()
+        if result:
+            return json.loads(result[0])
+        return {
+            "catch_cooldown": 90,
+            "catch_reward_min": 10,
+            "catch_reward_max": 50,
+            "battle_cooldown": 90,
+            "battle_reward_min": 20,
+            "battle_reward_max": 50,
+            "battle_experience": 100
+        }
+
+async def update_palgame_settings(new_settings):
+    async with aiosqlite.connect(DATABASE_PATH) as db:
+        await db.execute('''
+            INSERT INTO economy_settings (setting_key, setting_value)
+            VALUES (?, ?)
+            ON CONFLICT(setting_key) DO UPDATE SET setting_value = excluded.setting_value;
+        ''', ('palgame_config', json.dumps(new_settings)))
+        await db.commit()
