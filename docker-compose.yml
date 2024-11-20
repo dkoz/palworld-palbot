@@ -4,6 +4,7 @@ services:
     build: .
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
     env_file:
       - .env
     restart: unless-stopped
