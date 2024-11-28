@@ -8,9 +8,6 @@
 
  Support the development on [Patreon](https://www.patreon.com/palbotinn) and visit our [Website](https://palbot.gg).
 
- > [!IMPORTANT]  
- > Due to personal reasons, I won't be able to keep maintaining the bot for much longer. I'll still fix any bugs that pop up, but I won’t be adding new features or continuing work on Pal Game for the time being.
-
 ## Features:
  - **Server Management:** Easily add, edit, and delete servers directly through the bot, enabling RCON, server queries, and other functionalities to operate smoothly.
  - **RCON Integration:** Seamlessly control your server using RCON commands.
@@ -24,6 +21,9 @@
    - **Kits**: Effortlessly distribute custom kits with items, pals, and eggs to players across your Palworld servers.
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
  - **Localization Support**: Translate your server's features and messages into multiple languages, allowing players to enjoy a localized experience. This feature supports community-contributed translations, ensuring that the language used is both accurate and culturally relevant.
+ - **Discord Admninistration**: Manage your discord server directly from the bot.
+   - **Admin Commands**: Effortlessly manage members with commands like kick, ban, timeout, and more.
+   - **Ticket System**: Create a customized thread based ticket system with ease.
 
  ## Installation:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
