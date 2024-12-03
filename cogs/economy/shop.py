@@ -192,13 +192,13 @@ class ShopCog(commands.Cog):
             try:
                 response = await self.rcon_util.rcon_command(server_info, command)
 
-                if "Failed to parse UID" in response:
+                if "Failed to parse UID" in response or "Failed to find player by UID/SteamID" in response:
                     await set_points(user_id, user_name, points)
                     await interaction.followup.send(
                         t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
                         ephemeral=True
                     )
-                    logging.error(f"Failed to parse UID for user {user_name} (ID: {user_id}) while purchasing {item_name}. Points refunded.")
+                    logging.error(f"Failed to find player {user_name} (ID: {user_id}) while purchasing {item_name}. Points refunded.")
                     return
 
                 await asyncio.sleep(1)
@@ -274,13 +274,13 @@ class ShopCog(commands.Cog):
             try:
                 response = await self.rcon_util.rcon_command(server_info, command)
 
-                if "Failed to parse UID" in response:
+                if "Failed to parse UID" in response or "Failed to find player by UID/SteamID" in response:
                     await set_points(user_id, user_name, points)
                     await interaction.followup.send(
                         t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
                         ephemeral=True
                     )
-                    logging.error(f"Failed to parse UID for user {user_name} (ID: {user_id}) while redeeming {item_name}. Points refunded.")
+                    logging.error(f"Failed to find player {user_name} (ID: {user_id}) while redeeming {item_name}. Points refunded.")
                     return
 
                 await asyncio.sleep(1)
