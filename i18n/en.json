@@ -295,7 +295,8 @@
             "itemid": "Select an item to give.",
             "palid": "Select a Pal to give.",
             "level": "Level of the Pal.",
-            "eggid": "Select an egg to give."
+            "eggid": "Select an egg to give.",
+            "palfilter": "Filter keywords for Pal deletion."
         },
         "reloadcfg": {
             "description": "Reload server configuration.",
@@ -307,6 +308,12 @@
             "server_not_found": "Server {server} not found.",
             "pal_not_found": "Pal ID not found.",
             "response": "Giving {palid} to {steamid}.\nPalcon: {response}",
+            "title": "Palguard Pal - {server}"
+        },
+        "deletepals": {
+            "description": "Delete Pals from a player.",
+            "server_not_found": "Server {server} not found.",
+            "response": "Palcon: {response}",
             "title": "Palguard Pal - {server}"
         },
         "giveitem": {

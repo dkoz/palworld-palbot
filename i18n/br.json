@@ -295,7 +295,8 @@
             "itemid": "Selecione um item para dar.",
             "palid": "Selecione um Pal para dar.",
             "level": "Nível do Pal.",
-            "eggid": "Selecione um ovo para dar."
+            "eggid": "Selecione um ovo para dar.",
+            "palfilter": "Filtrar palavras-chave para exclusão de Pals."
         },
         "reloadcfg": {
             "description": "Recarregar a configuração do servidor.",
@@ -308,6 +309,12 @@
             "pal_not_found": "ID do Pal não encontrado.",
             "response": "Dando {palid} a {steamid}.\nPalcon: {response}",
             "title": "Palguard Pal - {server}"
+        },
+        "deletepals": {
+            "description": "Excluir Pals de um jogador.",
+            "server_not_found": "Servidor {server} não encontrado.",
+            "response": "Palcon: {response}",
+            "title": "Palguard Pals - {server}"
         },
         "giveitem": {
             "description": "Dar um item a um jogador.",

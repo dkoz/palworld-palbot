@@ -295,7 +295,8 @@
             "itemid": "Wählen Sie einen Gegenstand zum Geben.",
             "palid": "Wählen Sie einen Pal zum Geben.",
             "level": "Level des Pals.",
-            "eggid": "Wählen Sie ein Ei zum Geben."
+            "eggid": "Wählen Sie ein Ei zum Geben.",
+            "palfilter": "Schlüsselwörter für die Pal-Löschung filtern."
         },
         "reloadcfg": {
             "description": "Server-Konfiguration neu laden.",
@@ -307,6 +308,12 @@
             "server_not_found": "Server {server} nicht gefunden.",
             "pal_not_found": "Pal-ID nicht gefunden.",
             "response": "Geben von {palid} an {steamid}.\nPalcon: {response}",
+            "title": "Palguard Pal - {server}"
+        },
+        "deletepals": {
+            "description": "Lösche Pals bei einem Spieler.",
+            "server_not_found": "Server {server} nicht gefunden.",
+            "response": "Palcon: {response}",
             "title": "Palguard Pal - {server}"
         },
         "giveitem": {

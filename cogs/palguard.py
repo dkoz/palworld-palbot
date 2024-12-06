@@ -392,6 +392,38 @@ class PalguardCog(commands.Cog):
     ):
         await self.autocomplete_server(interaction, current)
 
+    @palguard.subcommand(description=t("PalguardCog", "deletepals.description"))
+    @restrict_command()
+    async def deletepals(
+        self,
+        interaction: nextcord.Interaction,
+        steamid: str = nextcord.SlashOption(description=t("PalguardCog", "description.userid")),
+        palfilter: str = nextcord.SlashOption(description=t("PalguardCog", "description.palfilter")),
+        server: str = nextcord.SlashOption(
+            description=t("PalguardCog", "description.server"), autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(
+                t("PalguardCog", "deletepals.server_not_found").format(server=server), ephemeral=True
+            )
+            return
+        response = await self.rcon_util.rcon_command(server_info, f"deletepals {steamid} {palfilter}")
+        embed = nextcord.Embed(
+            title=t("PalguardCog", "deletepals.title").format(server=server),
+            description=t("PalguardCog", "deletepals.response").format(response=response),
+            color=nextcord.Color.blurple()
+        )
+        await interaction.followup.send(embed=embed)
+        
+    @deletepals.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
     # Palguard Whitelist Functions
     @nextcord.slash_command(
         name="whitelist",
