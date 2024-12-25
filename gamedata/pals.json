@@ -25,8 +25,12 @@
             "id": "BOSS_BlackMetalDragon"
         },
         {
-            "name": "Axel & Orserk (Boss)",
-            "id": "GYM_ThunderDragonMan"
+            "name": "Azurmane",
+            "id": "BlueThunderHorse"
+        },
+        {
+            "name": "Azurmane (Boss)",
+            "id": "BOSS_BlueThunderHorse"
         },
         {
             "name": "Azurobe",
@@ -37,20 +41,24 @@
             "id": "BOSS_BlueDragon"
         },
         {
+            "name": "Bastigor",
+            "id": "SnowTigerBeastman"
+        },
+        {
+            "name": "Bastigor (Boss)",
+            "id": "BOSS_SnowTigerBeastman"
+        },
+        {
+            "name": "Bastigor (Gym)",
+            "id": "GYM_SnowTigerBeastman"
+        },
+        {
             "name": "Beakon",
             "id": "ThunderBird"
         },
         {
             "name": "Beakon (Boss)",
             "id": "BOSS_ThunderBird"
-        },
-        {
-            "name": "Bearded Dragon",
-            "id": "BeardedDragon"
-        },
-        {
-            "name": "Bearded Dragon (Boss)",
-            "id": "BOSS_BeardedDragon"
         },
         {
             "name": "Beegarde",
@@ -61,12 +69,40 @@
             "id": "BOSS_SoldierBee"
         },
         {
+            "name": "Bellanoir",
+            "id": "NightLady"
+        },
+        {
+            "name": "Bellanoir (Boss)",
+            "id": "BOSS_NightLady"
+        },
+        {
+            "name": "Bellanoir (Raid)",
+            "id": "RAID_NightLady"
+        },
+        {
+            "name": "Bellanoir Libero (Boss)",
+            "id": "BOSS_NightLady_Dark"
+        },
+        {
+            "name": "Bellanoir Libero (Raid)",
+            "id": "RAID_NightLady_Dark"
+        },
+        {
             "name": "Blazamut",
             "id": "KingBahamut"
         },
         {
             "name": "Blazamut (Boss)",
             "id": "BOSS_KingBahamut"
+        },
+        {
+            "name": "Blazamut Ryu (Boss)",
+            "id": "BOSS_KingBahamut_Dragon"
+        },
+        {
+            "name": "Blazamut Ryu (Raid)",
+            "id": "RAID_KingBahamut_Dragon"
         },
         {
             "name": "Blazehowl",
@@ -78,7 +114,7 @@
         },
         {
             "name": "Blazehowl Noct",
-            "id": "Manticore_Dark"
+            "id": "PREDATOR_Manticore_Dark"
         },
         {
             "name": "Blazehowl Noct (Boss)",
@@ -109,10 +145,6 @@
             "id": "BOSS_SakuraSaurus"
         },
         {
-            "name": "Broncherry Aqua",
-            "id": "SakuraSaurus_Water"
-        },
-        {
             "name": "Broncherry Aqua (Boss)",
             "id": "BOSS_SakuraSaurus_Water"
         },
@@ -125,12 +157,24 @@
             "id": "BOSS_Ronin"
         },
         {
+            "name": "Bushi Noct",
+            "id": "PREDATOR_Ronin_Dark"
+        },
+        {
+            "name": "Bushi Noct (Boss)",
+            "id": "BOSS_Ronin_Dark"
+        },
+        {
             "name": "Caprity",
             "id": "BerryGoat"
         },
         {
             "name": "Caprity (Boss)",
             "id": "BOSS_BerryGoat"
+        },
+        {
+            "name": "Caprity Noct (Boss)",
+            "id": "BOSS_BerryGoat_Dark"
         },
         {
             "name": "Cattiva",
@@ -157,6 +201,14 @@
             "id": "BOSS_FlyingManta"
         },
         {
+            "name": "Celesdir",
+            "id": "WhiteDeer"
+        },
+        {
+            "name": "Celesdir (Boss)",
+            "id": "BOSS_WhiteDeer"
+        },
+        {
             "name": "Chikipi",
             "id": "ChickenPal"
         },
@@ -171,6 +223,10 @@
         {
             "name": "Chillet (Boss)",
             "id": "BOSS_WeaselDragon"
+        },
+        {
+            "name": "Chillet Ignis (Boss)",
+            "id": "BOSS_WeaselDragon_Fire"
         },
         {
             "name": "Cinnamoth",
@@ -189,12 +245,28 @@
             "id": "BOSS_WoolFox"
         },
         {
+            "name": "Croajiro",
+            "id": "KendoFrog"
+        },
+        {
+            "name": "Croajiro (Boss)",
+            "id": "BOSS_KendoFrog"
+        },
+        {
             "name": "Cryolinx",
             "id": "WhiteTiger"
         },
         {
             "name": "Cryolinx (Boss)",
             "id": "BOSS_WhiteTiger"
+        },
+        {
+            "name": "Cryolinx Terra",
+            "id": "PREDATOR_WhiteTiger_Ground"
+        },
+        {
+            "name": "Cryolinx Terra (Boss)",
+            "id": "BOSS_WhiteTiger_Ground"
         },
         {
             "name": "Daedream",
@@ -205,8 +277,16 @@
             "id": "BOSS_DreamDemon"
         },
         {
-            "name": "Dark Mutant (Boss)",
-            "id": "BOSS_DarkMutant"
+            "name": "Dazemu",
+            "id": "FeatherOstrich"
+        },
+        {
+            "name": "Dazemu",
+            "id": "PREDATOR_FeatherOstrich"
+        },
+        {
+            "name": "Dazemu (Boss)",
+            "id": "BOSS_FeatherOstrich"
         },
         {
             "name": "Dazzi",
@@ -215,6 +295,10 @@
         {
             "name": "Dazzi (Boss)",
             "id": "BOSS_RaijinDaughter"
+        },
+        {
+            "name": "Dazzi Noct (Boss)",
+            "id": "BOSS_RaijinDaughter_Water"
         },
         {
             "name": "Depresso",
@@ -229,6 +313,10 @@
             "id": "DrillGame"
         },
         {
+            "name": "Digtoise",
+            "id": "PREDATOR_DrillGame"
+        },
+        {
             "name": "Digtoise (Boss)",
             "id": "BOSS_DrillGame"
         },
@@ -237,12 +325,12 @@
             "id": "FlowerDinosaur"
         },
         {
-            "name": "Dinossom (Boss)",
-            "id": "BOSS_FlowerDinosaur"
+            "name": "Dinossom",
+            "id": "PREDATOR_FlowerDinosaur"
         },
         {
-            "name": "Dinossom Lux",
-            "id": "FlowerDinosaur_Electric"
+            "name": "Dinossom (Boss)",
+            "id": "BOSS_FlowerDinosaur"
         },
         {
             "name": "Dinossom Lux (Boss)",
@@ -253,8 +341,24 @@
             "id": "Garm"
         },
         {
+            "name": "Direhowl",
+            "id": "PREDATOR_Garm"
+        },
+        {
             "name": "Direhowl (Boss)",
             "id": "BOSS_Garm"
+        },
+        {
+            "name": "Dogen",
+            "id": "SifuDog"
+        },
+        {
+            "name": "Dogen",
+            "id": "PREDATOR_SifuDog"
+        },
+        {
+            "name": "Dogen (Boss)",
+            "id": "BOSS_SifuDog"
         },
         {
             "name": "Dragostrophe",
@@ -281,10 +385,6 @@
             "id": "BOSS_Deer"
         },
         {
-            "name": "Eikthyrdeer Terra",
-            "id": "Deer_Ground"
-        },
-        {
             "name": "Eikthyrdeer Terra (Boss)",
             "id": "BOSS_Deer_Ground"
         },
@@ -301,12 +401,12 @@
             "id": "FairyDragon"
         },
         {
-            "name": "Elphidran (Boss)",
-            "id": "BOSS_FairyDragon"
+            "name": "Elphidran",
+            "id": "PREDATOR_FairyDragon"
         },
         {
-            "name": "Elphidran Aqua",
-            "id": "FairyDragon_Water"
+            "name": "Elphidran (Boss)",
+            "id": "BOSS_FairyDragon"
         },
         {
             "name": "Elphidran Aqua (Boss)",
@@ -321,12 +421,16 @@
             "id": "BOSS_Horus"
         },
         {
-            "name": "Feather Ostrich",
-            "id": "FeatherOstrich"
+            "name": "Faleris (Gym)",
+            "id": "GYM_Horus"
         },
         {
-            "name": "Feather Ostrich (Boss)",
-            "id": "BOSS_FeatherOstrich"
+            "name": "Faleris Aqua",
+            "id": "PREDATOR_Horus_Water"
+        },
+        {
+            "name": "Faleris Aqua (Boss)",
+            "id": "BOSS_Horus_Water"
         },
         {
             "name": "Felbat",
@@ -343,6 +447,10 @@
         {
             "name": "Fenglope (Boss)",
             "id": "BOSS_FengyunDeeper"
+        },
+        {
+            "name": "Fenglope Lux (Boss)",
+            "id": "BOSS_FengyunDeeper_Electric"
         },
         {
             "name": "Flambelle",
@@ -377,16 +485,16 @@
             "id": "BOSS_Kitsunebi"
         },
         {
+            "name": "Foxparks Cryst (Boss)",
+            "id": "BOSS_Kitsunebi_Ice"
+        },
+        {
             "name": "Frostallion",
             "id": "IceHorse"
         },
         {
             "name": "Frostallion (Boss)",
             "id": "BOSS_IceHorse"
-        },
-        {
-            "name": "Frostallion Noct",
-            "id": "IceHorse_Dark"
         },
         {
             "name": "Frostallion Noct (Boss)",
@@ -417,16 +525,24 @@
             "id": "BOSS_Eagle"
         },
         {
+            "name": "Gildane",
+            "id": "GoldenHorse"
+        },
+        {
+            "name": "Gildane",
+            "id": "PREDATOR_GoldenHorse"
+        },
+        {
+            "name": "Gildane (Boss)",
+            "id": "BOSS_GoldenHorse"
+        },
+        {
             "name": "Gobfin",
             "id": "SharkKid"
         },
         {
             "name": "Gobfin (Boss)",
             "id": "BOSS_SharkKid"
-        },
-        {
-            "name": "Gobfin Ignis",
-            "id": "SharkKid_Fire"
         },
         {
             "name": "Gobfin Ignis (Boss)",
@@ -437,16 +553,16 @@
             "id": "Gorilla"
         },
         {
+            "name": "Gorirat",
+            "id": "PREDATOR_Gorilla"
+        },
+        {
             "name": "Gorirat (Boss)",
             "id": "BOSS_Gorilla"
         },
         {
-            "name": "Grass Dragon",
-            "id": "GrassDragon"
-        },
-        {
-            "name": "Grass Dragon (Boss)",
-            "id": "BOSS_GrassDragon"
+            "name": "Gorirat Terra (Boss)",
+            "id": "BOSS_Gorilla_Ground"
         },
         {
             "name": "Grintale",
@@ -465,16 +581,12 @@
             "id": "BOSS_ElecPanda"
         },
         {
-            "name": "Gumoss",
-            "id": "PlantSlime_Flower"
+            "name": "Grizzbolt (Gym)",
+            "id": "GYM_ElecPanda"
         },
         {
             "name": "Gumoss",
             "id": "PlantSlime"
-        },
-        {
-            "name": "Gumoss (Boss)",
-            "id": "BOSS_PlantSlime_Flower"
         },
         {
             "name": "Gumoss (Boss)",
@@ -489,10 +601,6 @@
             "id": "BOSS_WindChimes"
         },
         {
-            "name": "Hangyu Cryst",
-            "id": "WindChimes_Ice"
-        },
-        {
             "name": "Hangyu Cryst (Boss)",
             "id": "BOSS_WindChimes_Ice"
         },
@@ -505,28 +613,20 @@
             "id": "BOSS_HadesBird"
         },
         {
+            "name": "Helzephyr Lux",
+            "id": "PREDATOR_HadesBird_Electric"
+        },
+        {
+            "name": "Helzephyr Lux (Boss)",
+            "id": "BOSS_HadesBird_Electric"
+        },
+        {
             "name": "Hoocrates",
             "id": "WizardOwl"
         },
         {
             "name": "Hoocrates (Boss)",
             "id": "BOSS_WizardOwl"
-        },
-        {
-            "name": "Ice Kingpaca",
-            "id": "KingAlpaca_Ice"
-        },
-        {
-            "name": "Ice Kingpaca (Boss)",
-            "id": "BOSS_KingAlpaca_Ice"
-        },
-        {
-            "name": "Ice Reptyro",
-            "id": "VolcanicMonster_Ice"
-        },
-        {
-            "name": "Ice Reptyro (Boss)",
-            "id": "BOSS_VolcanicMonster_Ice"
         },
         {
             "name": "Incineram",
@@ -538,7 +638,7 @@
         },
         {
             "name": "Incineram Noct",
-            "id": "Baphomet_Dark"
+            "id": "PREDATOR_Baphomet_Dark"
         },
         {
             "name": "Incineram Noct (Boss)",
@@ -561,10 +661,6 @@
             "id": "BOSS_Hedgehog"
         },
         {
-            "name": "Jolthog Cryst",
-            "id": "Hedgehog_Ice"
-        },
-        {
             "name": "Jolthog Cryst (Boss)",
             "id": "BOSS_Hedgehog_Ice"
         },
@@ -578,7 +674,7 @@
         },
         {
             "name": "Jormuntide Ignis",
-            "id": "Umihebi_Fire"
+            "id": "PREDATOR_Umihebi_Fire"
         },
         {
             "name": "Jormuntide Ignis (Boss)",
@@ -593,6 +689,10 @@
             "id": "BOSS_CatMage"
         },
         {
+            "name": "Katress Ignis (Boss)",
+            "id": "BOSS_CatMage_Fire"
+        },
+        {
             "name": "Kelpsea",
             "id": "Kelpie"
         },
@@ -601,12 +701,16 @@
             "id": "BOSS_Kelpie"
         },
         {
-            "name": "Kelpsea Ignis",
-            "id": "Kelpie_Fire"
-        },
-        {
             "name": "Kelpsea Ignis (Boss)",
             "id": "BOSS_Kelpie_Fire"
+        },
+        {
+            "name": "Kikit",
+            "id": "SmallArmadillo"
+        },
+        {
+            "name": "Kikit (Boss)",
+            "id": "BOSS_SmallArmadillo"
         },
         {
             "name": "Killamari",
@@ -625,12 +729,32 @@
             "id": "BOSS_KingAlpaca"
         },
         {
+            "name": "Kingpaca Cryst (Boss)",
+            "id": "BOSS_KingAlpaca_Ice"
+        },
+        {
             "name": "Kitsun",
             "id": "AmaterasuWolf"
         },
         {
+            "name": "Kitsun",
+            "id": "PREDATOR_AmaterasuWolf"
+        },
+        {
             "name": "Kitsun (Boss)",
             "id": "BOSS_AmaterasuWolf"
+        },
+        {
+            "name": "Kitsun Noct (Boss)",
+            "id": "BOSS_AmaterasuWolf_Dark"
+        },
+        {
+            "name": "Knocklem",
+            "id": "WingGolem"
+        },
+        {
+            "name": "Knocklem (Boss)",
+            "id": "BOSS_WingGolem"
         },
         {
             "name": "Lamball",
@@ -649,10 +773,6 @@
             "id": "BOSS_LizardMan"
         },
         {
-            "name": "Leezpunk Ignis",
-            "id": "LizardMan_Fire"
-        },
-        {
             "name": "Leezpunk Ignis (Boss)",
             "id": "BOSS_LizardMan_Fire"
         },
@@ -665,10 +785,6 @@
             "id": "BOSS_Carbunclo"
         },
         {
-            "name": "Lily & Lyleen (Boss)",
-            "id": "GYM_LilyQueen"
-        },
-        {
             "name": "Loupmoon",
             "id": "Werewolf"
         },
@@ -677,12 +793,32 @@
             "id": "BOSS_Werewolf"
         },
         {
+            "name": "Loupmoon Cryst",
+            "id": "PREDATOR_Werewolf_Ice"
+        },
+        {
+            "name": "Loupmoon Cryst (Boss)",
+            "id": "BOSS_Werewolf_Ice"
+        },
+        {
             "name": "Lovander",
             "id": "PinkLizard"
         },
         {
+            "name": "Lovander",
+            "id": "PREDATOR_PinkLizard"
+        },
+        {
             "name": "Lovander (Boss)",
             "id": "BOSS_PinkLizard"
+        },
+        {
+            "name": "Lullu",
+            "id": "LeafPrincess"
+        },
+        {
+            "name": "Lullu (Boss)",
+            "id": "BOSS_LeafPrincess"
         },
         {
             "name": "Lunaris",
@@ -701,8 +837,8 @@
             "id": "BOSS_LilyQueen"
         },
         {
-            "name": "Lyleen Noct",
-            "id": "LilyQueen_Dark"
+            "name": "Lyleen (Gym)",
+            "id": "GYM_LilyQueen"
         },
         {
             "name": "Lyleen Noct (Boss)",
@@ -717,10 +853,6 @@
             "id": "BOSS_GrassMammoth"
         },
         {
-            "name": "Mammorest Cryst",
-            "id": "GrassMammoth_Ice"
-        },
-        {
             "name": "Mammorest Cryst (Boss)",
             "id": "BOSS_GrassMammoth_Ice"
         },
@@ -729,12 +861,12 @@
             "id": "GhostBeast"
         },
         {
-            "name": "Maraith (Boss)",
-            "id": "BOSS_GhostBeast"
+            "name": "Maraith",
+            "id": "PREDATOR_GhostBeast"
         },
         {
-            "name": "Marcus & Faleris (Boss)",
-            "id": "GYM_Horus"
+            "name": "Maraith (Boss)",
+            "id": "BOSS_GhostBeast"
         },
         {
             "name": "Mau",
@@ -743,10 +875,6 @@
         {
             "name": "Mau (Boss)",
             "id": "BOSS_Bastet"
-        },
-        {
-            "name": "Mau Cryst",
-            "id": "Bastet_Ice"
         },
         {
             "name": "Mau Cryst (Boss)",
@@ -769,16 +897,28 @@
             "id": "BOSS_DarkScorpion"
         },
         {
+            "name": "Menasting Terra (Boss)",
+            "id": "BOSS_DarkScorpion_Ground"
+        },
+        {
+            "name": "Mimog",
+            "id": "MimicDog"
+        },
+        {
+            "name": "Mimog (Boss)",
+            "id": "BOSS_MimicDog"
+        },
+        {
             "name": "Mossanda",
             "id": "GrassPanda"
         },
         {
-            "name": "Mossanda (Boss)",
-            "id": "BOSS_GrassPanda"
+            "name": "Mossanda",
+            "id": "PREDATOR_GrassPanda"
         },
         {
-            "name": "Mossanda Lux",
-            "id": "GrassPanda_Electric"
+            "name": "Mossanda (Boss)",
+            "id": "BOSS_GrassPanda"
         },
         {
             "name": "Mossanda Lux (Boss)",
@@ -801,6 +941,14 @@
             "id": "BOSS_BlackCentaur"
         },
         {
+            "name": "Nitemary",
+            "id": "GhostRabbit"
+        },
+        {
+            "name": "Nitemary (Boss)",
+            "id": "BOSS_GhostRabbit"
+        },
+        {
             "name": "Nitewing",
             "id": "HawkBird"
         },
@@ -817,12 +965,36 @@
             "id": "BOSS_NightFox"
         },
         {
+            "name": "Nyafia ",
+            "id": "BadCatgirl"
+        },
+        {
+            "name": "Nyafia  (Boss)",
+            "id": "BOSS_BadCatgirl"
+        },
+        {
+            "name": "Omascul",
+            "id": "MysteryMask"
+        },
+        {
+            "name": "Omascul",
+            "id": "PREDATOR_MysteryMask"
+        },
+        {
+            "name": "Omascul (Boss)",
+            "id": "BOSS_MysteryMask"
+        },
+        {
             "name": "Orserk",
             "id": "ThunderDragonMan"
         },
         {
             "name": "Orserk (Boss)",
             "id": "BOSS_ThunderDragonMan"
+        },
+        {
+            "name": "Orserk (Gym)",
+            "id": "GYM_ThunderDragonMan"
         },
         {
             "name": "Paladius",
@@ -857,12 +1029,24 @@
             "id": "BOSS_FlowerDoll"
         },
         {
-            "name": "Pink Kangaroo",
-            "id": "PinkKangaroo"
+            "name": "Prixter",
+            "id": "ScorpionMan"
         },
         {
-            "name": "Pink Kangaroo (Boss)",
-            "id": "BOSS_PinkKangaroo"
+            "name": "Prixter",
+            "id": "PREDATOR_ScorpionMan"
+        },
+        {
+            "name": "Prixter (Boss)",
+            "id": "BOSS_ScorpionMan"
+        },
+        {
+            "name": "Prunelia",
+            "id": "BlueberryFairy"
+        },
+        {
+            "name": "Prunelia (Boss)",
+            "id": "BOSS_BlueberryFairy"
         },
         {
             "name": "Pyrin",
@@ -871,10 +1055,6 @@
         {
             "name": "Pyrin (Boss)",
             "id": "BOSS_FireKirin"
-        },
-        {
-            "name": "Pyrin Noct",
-            "id": "FireKirin_Dark"
         },
         {
             "name": "Pyrin Noct (Boss)",
@@ -889,8 +1069,16 @@
             "id": "BOSS_SkyDragon"
         },
         {
+            "name": "Quivern Botan (Boss)",
+            "id": "BOSS_SkyDragon_Grass"
+        },
+        {
             "name": "Ragnahawk",
             "id": "RedArmorBird"
+        },
+        {
+            "name": "Ragnahawk",
+            "id": "PREDATOR_RedArmorBird"
         },
         {
             "name": "Ragnahawk (Boss)",
@@ -899,6 +1087,10 @@
         {
             "name": "Rayhound",
             "id": "ThunderDog"
+        },
+        {
+            "name": "Rayhound",
+            "id": "PREDATOR_ThunderDog"
         },
         {
             "name": "Rayhound (Boss)",
@@ -917,12 +1109,12 @@
             "id": "LazyDragon"
         },
         {
-            "name": "Relaxaurus (Boss)",
-            "id": "BOSS_LazyDragon"
+            "name": "Relaxaurus",
+            "id": "PREDATOR_LazyDragon"
         },
         {
-            "name": "Relaxaurus Lux",
-            "id": "LazyDragon_Electric"
+            "name": "Relaxaurus (Boss)",
+            "id": "BOSS_LazyDragon"
         },
         {
             "name": "Relaxaurus Lux (Boss)",
@@ -937,6 +1129,14 @@
             "id": "BOSS_VolcanicMonster"
         },
         {
+            "name": "Reptyro Cryst",
+            "id": "PREDATOR_VolcanicMonster_Ice"
+        },
+        {
+            "name": "Reptyro Cryst (Boss)",
+            "id": "BOSS_VolcanicMonster_Ice"
+        },
+        {
             "name": "Ribbuny",
             "id": "PinkRabbit"
         },
@@ -945,16 +1145,16 @@
             "id": "BOSS_PinkRabbit"
         },
         {
+            "name": "Ribbuny Botan (Boss)",
+            "id": "BOSS_PinkRabbit_Grass"
+        },
+        {
             "name": "Robinquill",
             "id": "RobinHood"
         },
         {
             "name": "Robinquill (Boss)",
             "id": "BOSS_RobinHood"
-        },
-        {
-            "name": "Robinquill Terra",
-            "id": "RobinHood_Ground"
         },
         {
             "name": "Robinquill Terra (Boss)",
@@ -977,12 +1177,16 @@
             "id": "BOSS_Boar"
         },
         {
-            "name": "Scorpion Man",
-            "id": "ScorpionMan"
+            "name": "Selyne",
+            "id": "MoonQueen"
         },
         {
-            "name": "Scorpion Man (Boss)",
-            "id": "BOSS_ScorpionMan"
+            "name": "Selyne (Boss)",
+            "id": "BOSS_MoonQueen"
+        },
+        {
+            "name": "Selyne (Gym)",
+            "id": "GYM_MoonQueen"
         },
         {
             "name": "Shadowbeak",
@@ -993,12 +1197,60 @@
             "id": "BOSS_BlackGriffon"
         },
         {
+            "name": "Shadowbeak (Gym)",
+            "id": "GYM_BlackGriffon"
+        },
+        {
+            "name": "Shroomer",
+            "id": "MushroomDragon"
+        },
+        {
+            "name": "Shroomer",
+            "id": "PREDATOR_MushroomDragon"
+        },
+        {
+            "name": "Shroomer (Boss)",
+            "id": "BOSS_MushroomDragon"
+        },
+        {
+            "name": "Shroomer Noct (Boss)",
+            "id": "BOSS_MushroomDragon_Dark"
+        },
+        {
             "name": "Sibelyx",
             "id": "WhiteMoth"
         },
         {
             "name": "Sibelyx (Boss)",
             "id": "BOSS_WhiteMoth"
+        },
+        {
+            "name": "Silvegis",
+            "id": "WhiteShieldDragon"
+        },
+        {
+            "name": "Silvegis (Boss)",
+            "id": "BOSS_WhiteShieldDragon"
+        },
+        {
+            "name": "Smokie",
+            "id": "BlackPuppy"
+        },
+        {
+            "name": "Smokie (Boss)",
+            "id": "BOSS_BlackPuppy"
+        },
+        {
+            "name": "Sootseer",
+            "id": "CandleGhost"
+        },
+        {
+            "name": "Sootseer",
+            "id": "PREDATOR_CandleGhost"
+        },
+        {
+            "name": "Sootseer (Boss)",
+            "id": "BOSS_CandleGhost"
         },
         {
             "name": "Sparkit",
@@ -1009,16 +1261,36 @@
             "id": "BOSS_ElecCat"
         },
         {
+            "name": "Splatterina",
+            "id": "GrimGirl"
+        },
+        {
+            "name": "Splatterina",
+            "id": "PREDATOR_GrimGirl"
+        },
+        {
+            "name": "Splatterina (Boss)",
+            "id": "BOSS_GrimGirl"
+        },
+        {
+            "name": "Starryon",
+            "id": "NightBlueHorse"
+        },
+        {
+            "name": "Starryon",
+            "id": "PREDATOR_NightBlueHorse"
+        },
+        {
+            "name": "Starryon (Boss)",
+            "id": "BOSS_NightBlueHorse"
+        },
+        {
             "name": "Surfent",
             "id": "Serpent"
         },
         {
             "name": "Surfent (Boss)",
             "id": "BOSS_Serpent"
-        },
-        {
-            "name": "Surfent Terra",
-            "id": "Serpent_Ground"
         },
         {
             "name": "Surfent Terra (Boss)",
@@ -1031,10 +1303,6 @@
         {
             "name": "Suzaku (Boss)",
             "id": "BOSS_Suzaku"
-        },
-        {
-            "name": "Suzaku Aqua",
-            "id": "Suzaku_Water"
         },
         {
             "name": "Suzaku Aqua (Boss)",
@@ -1065,20 +1333,24 @@
             "id": "BOSS_Monkey"
         },
         {
+            "name": "Tarantriss",
+            "id": "PurpleSpider"
+        },
+        {
+            "name": "Tarantriss",
+            "id": "PREDATOR_PurpleSpider"
+        },
+        {
+            "name": "Tarantriss (Boss)",
+            "id": "BOSS_PurpleSpider"
+        },
+        {
             "name": "Teafant",
             "id": "Ganesha"
         },
         {
             "name": "Teafant (Boss)",
             "id": "BOSS_Ganesha"
-        },
-        {
-            "name": "Tentacle Turtle",
-            "id": "TentacleTurtle"
-        },
-        {
-            "name": "Tentacle Turtle (Boss)",
-            "id": "BOSS_TentacleTurtle"
         },
         {
             "name": "Tocotoco",
@@ -1105,6 +1377,350 @@
             "id": "BOSS_Kirin"
         },
         {
+            "name": "Unknown Pal (blackgriffon_2) (Gym)",
+            "id": "GYM_BlackGriffon_2"
+        },
+        {
+            "name": "Unknown Pal (blackgriffon_2_avatar) (Gym)",
+            "id": "GYM_BlackGriffon_2_Avatar"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "Baphomet_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "FireKirin_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "IceHorse_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "FoxMage_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "LilyQueen_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "Manticore_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "Ronin_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "NightLady_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "MushroomDragon_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "BerryGoat_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "AmaterasuWolf_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark)",
+            "id": "KendoFrog_Dark"
+        },
+        {
+            "name": "Unknown Pal (dark_oilrig)",
+            "id": "Baphomet_Dark_Oilrig"
+        },
+        {
+            "name": "Unknown Pal (darkalien_max)",
+            "id": "SUMMON_DarkAlien_MAX"
+        },
+        {
+            "name": "Unknown Pal (darkmechadragon_2) (Raid)",
+            "id": "RAID_DarkMechaDragon_2"
+        },
+        {
+            "name": "Unknown Pal (dragon)",
+            "id": "KingBahamut_Dragon"
+        },
+        {
+            "name": "Unknown Pal (eleclizard)",
+            "id": "ElecLizard"
+        },
+        {
+            "name": "Unknown Pal (eleclizard) (Boss)",
+            "id": "BOSS_ElecLizard"
+        },
+        {
+            "name": "Unknown Pal (elecpanda_2) (Gym)",
+            "id": "GYM_ElecPanda_2"
+        },
+        {
+            "name": "Unknown Pal (electric)",
+            "id": "LazyDragon_Electric"
+        },
+        {
+            "name": "Unknown Pal (electric)",
+            "id": "FlowerDinosaur_Electric"
+        },
+        {
+            "name": "Unknown Pal (electric)",
+            "id": "GrassPanda_Electric"
+        },
+        {
+            "name": "Unknown Pal (electric)",
+            "id": "HadesBird_Electric"
+        },
+        {
+            "name": "Unknown Pal (electric)",
+            "id": "FengyunDeeper_Electric"
+        },
+        {
+            "name": "Unknown Pal (fire)",
+            "id": "SharkKid_Fire"
+        },
+        {
+            "name": "Unknown Pal (fire)",
+            "id": "Umihebi_Fire"
+        },
+        {
+            "name": "Unknown Pal (fire)",
+            "id": "LizardMan_Fire"
+        },
+        {
+            "name": "Unknown Pal (fire)",
+            "id": "Kelpie_Fire"
+        },
+        {
+            "name": "Unknown Pal (fire)",
+            "id": "CatMage_Fire"
+        },
+        {
+            "name": "Unknown Pal (fire)",
+            "id": "WeaselDragon_Fire"
+        },
+        {
+            "name": "Unknown Pal (flower)",
+            "id": "PlantSlime_Flower"
+        },
+        {
+            "name": "Unknown Pal (grass)",
+            "id": "Yeti_Grass"
+        },
+        {
+            "name": "Unknown Pal (grass)",
+            "id": "SkyDragon_Grass"
+        },
+        {
+            "name": "Unknown Pal (grass)",
+            "id": "PinkRabbit_Grass"
+        },
+        {
+            "name": "Unknown Pal (ground)",
+            "id": "Deer_Ground"
+        },
+        {
+            "name": "Unknown Pal (ground)",
+            "id": "Gorilla_Ground"
+        },
+        {
+            "name": "Unknown Pal (ground)",
+            "id": "Serpent_Ground"
+        },
+        {
+            "name": "Unknown Pal (ground)",
+            "id": "RobinHood_Ground"
+        },
+        {
+            "name": "Unknown Pal (ground)",
+            "id": "HerculesBeetle_Ground"
+        },
+        {
+            "name": "Unknown Pal (ground)",
+            "id": "DarkScorpion_Ground"
+        },
+        {
+            "name": "Unknown Pal (ground)",
+            "id": "WhiteTiger_Ground"
+        },
+        {
+            "name": "Unknown Pal (hoodghost)",
+            "id": "HoodGhost"
+        },
+        {
+            "name": "Unknown Pal (hoodghost) (Boss)",
+            "id": "BOSS_HoodGhost"
+        },
+        {
+            "name": "Unknown Pal (horus_2) (Gym)",
+            "id": "GYM_Horus_2"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "Bastet_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "Hedgehog_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "WindChimes_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "VolcanicMonster_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "BirdDragon_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "GrassMammoth_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "KingAlpaca_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "Kitsunebi_Ice"
+        },
+        {
+            "name": "Unknown Pal (ice)",
+            "id": "Werewolf_Ice"
+        },
+        {
+            "name": "Unknown Pal (icenarwhal)",
+            "id": "IceNarwhal"
+        },
+        {
+            "name": "Unknown Pal (icenarwhal) (Boss)",
+            "id": "BOSS_IceNarwhal"
+        },
+        {
+            "name": "Unknown Pal (jellyfishfairy)",
+            "id": "JellyfishFairy"
+        },
+        {
+            "name": "Unknown Pal (jellyfishfairy) (Boss)",
+            "id": "BOSS_JellyfishFairy"
+        },
+        {
+            "name": "Unknown Pal (kingbahamut_dragon_2) (Raid)",
+            "id": "RAID_KingBahamut_Dragon_2"
+        },
+        {
+            "name": "Unknown Pal (kingwhale)",
+            "id": "KingWhale"
+        },
+        {
+            "name": "Unknown Pal (kingwhale) (Boss)",
+            "id": "BOSS_KingWhale"
+        },
+        {
+            "name": "Unknown Pal (lilyqueen_2) (Gym)",
+            "id": "GYM_LilyQueen_2"
+        },
+        {
+            "name": "Unknown Pal (moonqueen_2) (Gym)",
+            "id": "GYM_MoonQueen_2"
+        },
+        {
+            "name": "Unknown Pal (moonqueen_2_servant) (Gym)",
+            "id": "GYM_MoonQueen_2_Servant"
+        },
+        {
+            "name": "Unknown Pal (nightlady_dark_2) (Raid)",
+            "id": "RAID_NightLady_Dark_2"
+        },
+        {
+            "name": "Unknown Pal (octopusgirl)",
+            "id": "OctopusGirl"
+        },
+        {
+            "name": "Unknown Pal (octopusgirl) (Boss)",
+            "id": "BOSS_OctopusGirl"
+        },
+        {
+            "name": "Unknown Pal (oilrig)",
+            "id": "WingGolem_Oilrig"
+        },
+        {
+            "name": "Unknown Pal (oilrig)",
+            "id": "DarkAlien_Oilrig"
+        },
+        {
+            "name": "Unknown Pal (oilrig)",
+            "id": "Horus_Oilrig"
+        },
+        {
+            "name": "Unknown Pal (oilrig)",
+            "id": "HadesBird_Oilrig"
+        },
+        {
+            "name": "Unknown Pal (oilrig)",
+            "id": "LizardMan_Oilrig"
+        },
+        {
+            "name": "Unknown Pal (plantslime_flower) (Boss)",
+            "id": "BOSS_PlantSlime_Flower"
+        },
+        {
+            "name": "Unknown Pal (rockbeast)",
+            "id": "RockBeast"
+        },
+        {
+            "name": "Unknown Pal (rockbeast) (Boss)",
+            "id": "BOSS_RockBeast"
+        },
+        {
+            "name": "Unknown Pal (sekhmet)",
+            "id": "Sekhmet"
+        },
+        {
+            "name": "Unknown Pal (sekhmet) (Boss)",
+            "id": "BOSS_Sekhmet"
+        },
+        {
+            "name": "Unknown Pal (snowtigerbeastman_2) (Gym)",
+            "id": "GYM_SnowTigerBeastman_2"
+        },
+        {
+            "name": "Unknown Pal (thunderdragonman_2) (Gym)",
+            "id": "GYM_ThunderDragonMan_2"
+        },
+        {
+            "name": "Unknown Pal (water)",
+            "id": "Suzaku_Water"
+        },
+        {
+            "name": "Unknown Pal (water)",
+            "id": "FairyDragon_Water"
+        },
+        {
+            "name": "Unknown Pal (water)",
+            "id": "SakuraSaurus_Water"
+        },
+        {
+            "name": "Unknown Pal (water)",
+            "id": "RaijinDaughter_Water"
+        },
+        {
+            "name": "Unknown Pal (water)",
+            "id": "Horus_Water"
+        },
+        {
+            "name": "Unknown Pal (whitealiendragon_max)",
+            "id": "SUMMON_WhiteAlienDragon_MAX"
+        },
+        {
             "name": "Vaelet",
             "id": "VioletFairy"
         },
@@ -1117,12 +1733,12 @@
             "id": "BirdDragon"
         },
         {
-            "name": "Vanwyrm (Boss)",
-            "id": "BOSS_BirdDragon"
+            "name": "Vanwyrm",
+            "id": "PREDATOR_BirdDragon"
         },
         {
-            "name": "Vanwyrm Cryst",
-            "id": "BirdDragon_Ice"
+            "name": "Vanwyrm (Boss)",
+            "id": "BOSS_BirdDragon"
         },
         {
             "name": "Vanwyrm Cryst (Boss)",
@@ -1137,10 +1753,6 @@
             "id": "BOSS_GrassRabbitMan"
         },
         {
-            "name": "Victor & Shadowbeak (Boss)",
-            "id": "GYM_BlackGriffon"
-        },
-        {
             "name": "Vixy",
             "id": "CuteFox"
         },
@@ -1149,20 +1761,16 @@
             "id": "BOSS_CuteFox"
         },
         {
-            "name": "Warsect",
+            "name": "Warsect ",
             "id": "HerculesBeetle"
         },
         {
-            "name": "Warsect (Boss)",
+            "name": "Warsect  (Boss)",
             "id": "BOSS_HerculesBeetle"
         },
         {
-            "name": "Water Lizard",
-            "id": "WaterLizard"
-        },
-        {
-            "name": "Water Lizard (Boss)",
-            "id": "BOSS_WaterLizard"
+            "name": "Warsect Terra (Boss)",
+            "id": "BOSS_HerculesBeetle_Ground"
         },
         {
             "name": "Wixen",
@@ -1171,6 +1779,10 @@
         {
             "name": "Wixen (Boss)",
             "id": "BOSS_FoxMage"
+        },
+        {
+            "name": "Wixen Noct (Boss)",
+            "id": "BOSS_FoxMage_Dark"
         },
         {
             "name": "Woolipop",
@@ -1185,108 +1797,52 @@
             "id": "Yeti"
         },
         {
-            "name": "Wumpo (Boss)",
-            "id": "BOSS_Yeti"
+            "name": "Wumpo",
+            "id": "PREDATOR_Yeti"
         },
         {
-            "name": "Wumpo Botan",
-            "id": "Yeti_Grass"
+            "name": "Wumpo (Boss)",
+            "id": "BOSS_Yeti"
         },
         {
             "name": "Wumpo Botan (Boss)",
             "id": "BOSS_Yeti_Grass"
         },
         {
-            "name": "Zoe & Grizzbolt (Boss)",
-            "id": "GYM_ElecPanda"
+            "name": "Xenogard",
+            "id": "WhiteAlienDragon"
         },
         {
-            "name": "Bellanoir",
-            "id": "NightLady"
+            "name": "Xenogard",
+            "id": "SUMMON_WhiteAlienDragon"
         },
         {
-            "name": "Bellanoir (Boss)",
-            "id": "BOSS_NightLady"
+            "name": "Xenogard (Boss)",
+            "id": "BOSS_WhiteAlienDragon"
         },
         {
-            "name": "Bellanoir Libero",
-            "id": "NightLady_Dark"
+            "name": "Xenolord ",
+            "id": "DarkMechaDragon"
         },
         {
-            "name": "Bellanoir Libero (Boss)",
-            "id": "BOSS_NightLady_Dark"
+            "name": "Xenolord  (Boss)",
+            "id": "BOSS_DarkMechaDragon"
         },
         {
-            "name": "Selyne",
-            "id": "MoonQueen"
+            "name": "Xenolord  (Raid)",
+            "id": "RAID_DarkMechaDragon"
         },
         {
-            "name": "Selyne (Boss)",
-            "id": "BOSS_MoonQueen"
+            "name": "Xenovader",
+            "id": "DarkAlien"
         },
         {
-            "name": "Croajiro",
-            "id": "KendoFrog"
+            "name": "Xenovader",
+            "id": "SUMMON_DarkAlien"
         },
         {
-            "name": "Croajiro (Boss)",
-            "id": "BOSS_KendoFrog"
-        },
-        {
-            "name": "Lullu",
-            "id": "LeafPrincess"
-        },
-        {
-            "name": "Lullu (Boss)",
-            "id": "BOSS_LeafPrincess"
-        },
-        {
-            "name": "Shroomer",
-            "id": "MushroomDragon"
-        },
-        {
-            "name": "Shroomer (Boss)",
-            "id": "BOSS_MushroomDragon"
-        },
-        {
-            "name": "Shroomer Noct",
-            "id": "MushroomDragon_Dark"
-        },
-        {
-            "name": "Shroomer Noct (Boss)",
-            "id": "BOSS_MushroomDragon_Dark"
-        },
-        {
-            "name": "Kikit",
-            "id": "SmallArmadillo"
-        },
-        {
-            "name": "Kikit (Boss)",
-            "id": "BOSS_SmallArmadillo"
-        },
-        {
-            "name": "Sootseer",
-            "id": "CandleGhost"
-        },
-        {
-            "name": "Sootseer (Boss)",
-            "id": "BOSS_CandleGhost"
-        },
-        {
-            "name": "Prixter",
-            "id": "ScorpionMan"
-        },
-        {
-            "name": "Prixter (Boss)",
-            "id": "BOSS_ScorpionMan"
-        },
-        {
-            "name": "Knocklem",
-            "id": "WingGolem"
-        },
-        {
-            "name": "Knocklem (Boss)",
-            "id": "BOSS_WingGolem"
+            "name": "Xenovader (Boss)",
+            "id": "BOSS_DarkAlien"
         },
         {
             "name": "Yakumo",
@@ -1297,44 +1853,68 @@
             "id": "BOSS_GuardianDog"
         },
         {
-            "name": "Dogen",
-            "id": "SifuDog"
+            "name": "en_text",
+            "id": "BrownRabbit"
         },
         {
-            "name": "Dogen (Boss)",
-            "id": "BOSS_SifuDog"
+            "name": "en_text",
+            "id": "PinkKangaroo"
         },
         {
-            "name": "Dazemu",
-            "id": "FeatherOstrich"
+            "name": "en_text",
+            "id": "TentacleTurtle"
         },
         {
-            "name": "Dazemu (Boss)",
-            "id": "BOSS_FeatherOstrich"
+            "name": "en_text",
+            "id": "BeardedDragon"
         },
         {
-            "name": "Mimog",
-            "id": "MimicDog"
+            "name": "en_text",
+            "id": "WaterLizard"
         },
         {
-            "name": "Mimog (Boss)",
-            "id": "BOSS_MimicDog"
+            "name": "en_text",
+            "id": "GrassDragon"
         },
         {
-            "name": "Xenovader",
-            "id": "DarkAlien"
+            "name": "en_text",
+            "id": "DarkMutant"
         },
         {
-            "name": "Xenovader (Boss)",
-            "id": "BOSS_DarkAlien"
+            "name": "en_text",
+            "id": "VolcanoDragon"
         },
         {
-            "name": "Xenogard",
-            "id": "WhiteAlienDragon"
+            "name": "en_text (Boss)",
+            "id": "BOSS_BeardedDragon"
         },
         {
-            "name": "Xenogard (Boss)",
-            "id": "BOSS_WhiteAlienDragon"
+            "name": "en_text (Boss)",
+            "id": "BOSS_BrownRabbit"
+        },
+        {
+            "name": "en_text (Boss)",
+            "id": "BOSS_DarkMutant"
+        },
+        {
+            "name": "en_text (Boss)",
+            "id": "BOSS_GrassDragon"
+        },
+        {
+            "name": "en_text (Boss)",
+            "id": "BOSS_PinkKangaroo"
+        },
+        {
+            "name": "en_text (Boss)",
+            "id": "BOSS_TentacleTurtle"
+        },
+        {
+            "name": "en_text (Boss)",
+            "id": "BOSS_WaterLizard"
+        },
+        {
+            "name": "en_text (Boss)",
+            "id": "BOSS_VolcanoDragon"
         }
     ]
 }
