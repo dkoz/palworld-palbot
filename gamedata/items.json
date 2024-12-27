@@ -2801,7 +2801,7 @@
             "id": "SkillUnlock_Umihebi"
         },
         {
-            "name": "Katana",
+            "name": "Katana (NPC)",
             "id": "Katana_NPC"
         },
         {
@@ -5969,199 +5969,199 @@
             "id": "GYM_Head_Grass"
         },
         {
-            "name": "en Text",
+            "name": "ClawsPendant",
             "id": "ClawsPendant"
         },
         {
-            "name": "en Text",
+            "name": "ClothHat",
             "id": "ClothHat"
         },
         {
-            "name": "en Text",
+            "name": "FangNecklace",
             "id": "FangNecklace"
         },
         {
-            "name": "en Text",
+            "name": "Berries2",
             "id": "Berries2"
         },
         {
-            "name": "en Text",
+            "name": "EnergyDrink",
             "id": "EnergyDrink"
         },
         {
-            "name": "en Text",
+            "name": "FarmCrop_Tmp",
             "id": "FarmCrop_Tmp"
         },
         {
-            "name": "en Text",
+            "name": "FishMeat",
             "id": "FishMeat"
         },
         {
-            "name": "en Text",
+            "name": "FishMeat2",
             "id": "FishMeat2"
         },
         {
-            "name": "en Text",
+            "name": "Meat2",
             "id": "Meat2"
         },
         {
-            "name": "en Text",
+            "name": "Seed_Tmp",
             "id": "Seed_Tmp"
         },
         {
-            "name": "en Text",
+            "name": "VenisonBoiledInTomato",
             "id": "VenisonBoiledInTomato"
         },
         {
-            "name": "en Text",
+            "name": "Potato_old",
             "id": "Potato_old"
         },
         {
-            "name": "en Text",
+            "name": "Corn",
             "id": "Corn"
         },
         {
-            "name": "en Text",
+            "name": "Pumpkin",
             "id": "Pumpkin"
         },
         {
-            "name": "en Text",
+            "name": "Baked_Potato",
             "id": "Baked_Potato"
         },
         {
-            "name": "en Text",
+            "name": "AnimalSkin2",
             "id": "AnimalSkin2"
         },
         {
-            "name": "en Text",
+            "name": "Scales",
             "id": "Scales"
         },
         {
-            "name": "en Text",
+            "name": "Scales2",
             "id": "Scales2"
         },
         {
-            "name": "en Text",
+            "name": "Claws2",
             "id": "Claws2"
         },
         {
-            "name": "en Text",
+            "name": "ElectronicCircuit",
             "id": "ElectronicCircuit"
         },
         {
-            "name": "en Text",
+            "name": "Fang2",
             "id": "Fang2"
         },
         {
-            "name": "en Text",
+            "name": "Flint",
             "id": "Flint"
         },
         {
-            "name": "en Text",
+            "name": "IronOre",
             "id": "IronOre"
         },
         {
-            "name": "en Text",
+            "name": "Kitsunebi_Fire",
             "id": "Kitsunebi_Fire"
         },
         {
-            "name": "en Text",
+            "name": "LargeBullet",
             "id": "LargeBullet"
         },
         {
-            "name": "en Text",
+            "name": "Leather2",
             "id": "Leather2"
         },
         {
-            "name": "en Text",
+            "name": "Sharkkid_Scale",
             "id": "Sharkkid_Scale"
         },
         {
-            "name": "en Text",
+            "name": "SmallBullet",
             "id": "SmallBullet"
         },
         {
-            "name": "en Text",
+            "name": "PAL_Growth_Stone_S",
             "id": "PAL_Growth_Stone_S"
         },
         {
-            "name": "en Text",
+            "name": "PAL_Growth_Stone_M",
             "id": "PAL_Growth_Stone_M"
         },
         {
-            "name": "en Text",
+            "name": "PAL_Growth_Stone_L",
             "id": "PAL_Growth_Stone_L"
         },
         {
-            "name": "en Text",
+            "name": "PAL_Growth_Stone_XL",
             "id": "PAL_Growth_Stone_XL"
         },
         {
-            "name": "en Text",
+            "name": "WaterBucket",
             "id": "WaterBucket"
         },
         {
-            "name": "en Text",
+            "name": "CashFang",
             "id": "CashFang"
         },
         {
-            "name": "en Text",
+            "name": "CashScales",
             "id": "CashScales"
         },
         {
-            "name": "en Text",
+            "name": "Sand",
             "id": "Sand"
         },
         {
-            "name": "en Text",
+            "name": "MonsterEquipWeapon_Dummy",
             "id": "MonsterEquipWeapon_Dummy"
         },
         {
-            "name": "en Text",
+            "name": "MateItem01",
             "id": "MateItem01"
         },
         {
-            "name": "en Text",
+            "name": "CaptureRope",
             "id": "CaptureRope"
         },
         {
-            "name": "en Text",
+            "name": "Launcher_Meat",
             "id": "Launcher_Meat"
         },
         {
-            "name": "en Text",
+            "name": "PenguinLauncher",
             "id": "PenguinLauncher"
         },
         {
-            "name": "en Text",
+            "name": "SniperRifle_Default",
             "id": "SniperRifle_Default"
         },
         {
-            "name": "en Text",
+            "name": "ThrowStone",
             "id": "ThrowStone"
         },
         {
-            "name": "en Text",
+            "name": "RecurveBow",
             "id": "RecurveBow"
         },
         {
-            "name": "en Text",
+            "name": "AirGrapplingGun",
             "id": "AirGrapplingGun"
         },
         {
-            "name": "en Text",
+            "name": "AssaultRifle_Default2",
             "id": "AssaultRifle_Default2"
         },
         {
-            "name": "en Text",
+            "name": "AssaultRifle_Default3",
             "id": "AssaultRifle_Default3"
         },
         {
-            "name": "en Text",
+            "name": "AssaultRifle_Default4",
             "id": "AssaultRifle_Default4"
         },
         {
-            "name": "en Text",
+            "name": "AssaultRifle_Default5",
             "id": "AssaultRifle_Default5"
         },
         {
