@@ -24,6 +24,7 @@
  - **Discord Admninistration**: Manage your discord server directly from the bot.
    - **Admin Commands**: Effortlessly manage members with commands like kick, ban, timeout, and more.
    - **Ticket System**: Create a customized thread based ticket system with ease.
+ - **Chat Relay**: This will allow you to send and receive messages between the server and discord.
 
  ## Installation:
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.

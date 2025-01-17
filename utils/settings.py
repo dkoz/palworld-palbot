@@ -10,6 +10,10 @@ bot_prefix = os.getenv("BOT_PREFIX", "!")
 bot_activity = os.getenv("BOT_ACTIVITY", "Palworld")
 steam_api_key = os.getenv("STEAM_API_KEY", "No key found")
 bot_language = os.getenv("BOT_LANGUAGE", "en")
+chatlog_path = os.getenv("CHATLOG_PATH", r"C:\path\to\server\Pal\Binaries\Win64\palguard\logs")
+chatlog_webhookurl = os.getenv("CHATLOG_WEBHOOKURL", "https://discord.com/api/webhooks/yourwebhookurl")
+chatlog_servername = os.getenv("CHATLOG_SERVERNAME", "Palworld Server")
+chatlog_channel = int(os.getenv("CHATLOG_CHANNEL", 12345678910))
 whitelist_check = os.getenv('GUILD_WHITELIST')
 
 # Logic for the guild whitelist.
