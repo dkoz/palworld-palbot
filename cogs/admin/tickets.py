@@ -238,7 +238,7 @@ class TicketSystem(commands.Cog):
                 log_channel = self.bot.get_channel(self.data['log_channel_id'])
                 if log_channel:
                     embed = nextcord.Embed(title="Ticket Opened", color=nextcord.Color.green())
-                    embed.set_thumbnail(url=member.avatar.url)
+                    embed.set_thumbnail(url=member.avatar.url if member.avatar else member.default_avatar.url)
                     embed.add_field(name="Created By", value=f"{member.display_name}", inline=False)
                     embed.add_field(name="User ID", value=member.id, inline=False)
                     embed.add_field(name="Opened", value=interaction.created_at.strftime("%Y-%m-%d %H:%M:%S"), inline=False)
