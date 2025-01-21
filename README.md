@@ -8,6 +8,13 @@
 
  Support the development on [Patreon](https://www.patreon.com/palbotinn) and visit our [Website](https://palbot.gg).
 
+## Requirements
+> These are the requirements for Palbot to function.
+- [Python 3.11](https://www.python.org/downloads/release/python-3119/)
+- [Palguard 1.1273](https://github.com/Ultimeit/palguard/releases/tag/v1.1273)
+
+ Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
+
 ## Features:
  - **Server Management:** Easily add, edit, and delete servers directly through the bot, enabling RCON, server queries, and other functionalities to operate smoothly.
  - **RCON Integration:** Seamlessly control your server using RCON commands.
@@ -25,6 +32,3 @@
    - **Admin Commands**: Effortlessly manage members with commands like kick, ban, timeout, and more.
    - **Ticket System**: Create a customized thread based ticket system with ease.
  - **Chat Relay**: This will allow you to send and receive messages between the server and discord.
-
- ## Installation:
- Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
