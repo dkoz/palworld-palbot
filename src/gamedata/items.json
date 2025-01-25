@@ -1,0 +1,6344 @@
+{
+    "items": [
+        {
+            "name": "Gasoline",
+            "id": "Gasoline"
+        },
+        {
+            "name": "Propellant",
+            "id": "Propellant"
+        },
+        {
+            "name": "5 Blueprints of Long-eared Headband +4",
+            "id": "Blueprint_Head003_5"
+        },
+        {
+            "name": "5 Blueprints of Naemochi Hat +4",
+            "id": "Blueprint_Head015_5"
+        },
+        {
+            "name": "5 Diagrams of Agricultural Hat +4",
+            "id": "Blueprint_Head011_5"
+        },
+        {
+            "name": "5 Schematic Diagrams of the Silk Hat +4",
+            "id": "Blueprint_Head007_5"
+        },
+        {
+            "name": "Ability Glasses",
+            "id": "Accessory_TalentChecker"
+        },
+        {
+            "name": "Advanced Arrow",
+            "id": "SFArrow"
+        },
+        {
+            "name": "Advanced Bow",
+            "id": "SFBow"
+        },
+        {
+            "name": "Advanced Bow +1",
+            "id": "SFBow_2"
+        },
+        {
+            "name": "Advanced Bow +2",
+            "id": "SFBow_3"
+        },
+        {
+            "name": "Advanced Bow +3",
+            "id": "SFBow_4"
+        },
+        {
+            "name": "Advanced Bow +4",
+            "id": "SFBow_5"
+        },
+        {
+            "name": "Advanced Bow Schematic 1 +1",
+            "id": "Blueprint_SFBow_2"
+        },
+        {
+            "name": "Advanced Bow Schematic 2 +2",
+            "id": "Blueprint_SFBow_3"
+        },
+        {
+            "name": "Advanced Bow Schematic 3 +3",
+            "id": "Blueprint_SFBow_4"
+        },
+        {
+            "name": "Advanced Bow Schematic 4 +4",
+            "id": "Blueprint_SFBow_5"
+        },
+        {
+            "name": "Advanced Recovery Meds",
+            "id": "Potion_Extreme"
+        },
+        {
+            "name": "Advanced Shield",
+            "id": "Shield_SF"
+        },
+        {
+            "name": "Air Dash Boots",
+            "id": "Accessory_AirDash1"
+        },
+        {
+            "name": "All-Purpose Pal Extract\u00e2\u02dc\u20201",
+            "id": "Rankup_1"
+        },
+        {
+            "name": "All-Purpose Pal Extract\u00e2\u02dc\u20202 +1",
+            "id": "Rankup_2"
+        },
+        {
+            "name": "All-Purpose Pal Extract\u00e2\u02dc\u20203 +2",
+            "id": "Rankup_3"
+        },
+        {
+            "name": "All-Purpose Pal Extract\u00e2\u02dc\u20204 +3",
+            "id": "Rankup_4"
+        },
+        {
+            "name": "Ancient Civilization Core",
+            "id": "AncientParts2"
+        },
+        {
+            "name": "Ancient Civilization Parts",
+            "id": "PalCrystal_Ex"
+        },
+        {
+            "name": "Ancient Pal Manuscript",
+            "id": "AncientParts3"
+        },
+        {
+            "name": "Ancient Technical Manual",
+            "id": "AncientTechnologyBook_G1"
+        },
+        {
+            "name": "Animal Skin",
+            "id": "AnimalSkin"
+        },
+        {
+            "name": "Anti-Gravity Belt",
+            "id": "Accessory_JumpPower_Increase"
+        },
+        {
+            "name": "Antibiotic_Good",
+            "id": "Antibiotic_Good"
+        },
+        {
+            "name": "Antibiotic_Normal",
+            "id": "Antibiotic_Normal"
+        },
+        {
+            "name": "Antibiotic_Super",
+            "id": "Antibiotic_Super"
+        },
+        {
+            "name": "Anubis Bounty Token",
+            "id": "BossDefeatReward_Anubis"
+        },
+        {
+            "name": "Applied Cooling Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Cool"
+        },
+        {
+            "name": "Applied Fire Starting Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_EmitFlame"
+        },
+        {
+            "name": "Applied Gathering Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Collection"
+        },
+        {
+            "name": "Applied Lumberjack Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Deforest"
+        },
+        {
+            "name": "Applied Manual Labor Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Handcraft"
+        },
+        {
+            "name": "Applied Mining Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Mining"
+        },
+        {
+            "name": "Applied Pharmacology Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_ProductMedicine"
+        },
+        {
+            "name": "Applied Power Generation Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_GenerateElectricity"
+        },
+        {
+            "name": "Applied Seed Sowing Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Seeding"
+        },
+        {
+            "name": "Applied Transportation Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Transport"
+        },
+        {
+            "name": "Applied Watering Technique\u00e2\u2026\u00a0",
+            "id": "WorkSuitability_AddTicket_Watering"
+        },
+        {
+            "name": "Arrow",
+            "id": "Arrow"
+        },
+        {
+            "name": "Arsox Saddle",
+            "id": "SkillUnlock_FlameBuffalo"
+        },
+        {
+            "name": "Assault Rifle",
+            "id": "AssaultRifle_Default1"
+        },
+        {
+            "name": "Assault Rifle Ammo",
+            "id": "AssaultRifleBullet"
+        },
+        {
+            "name": "Assault Rifle Schematic 1",
+            "id": "Blueprint_AssaultRifle_Default2"
+        },
+        {
+            "name": "Assault Rifle Schematic 2",
+            "id": "Blueprint_AssaultRifle_Default3"
+        },
+        {
+            "name": "Assault Rifle Schematic 3",
+            "id": "Blueprint_AssaultRifle_Default4"
+        },
+        {
+            "name": "Assault Rifle Schematic 4",
+            "id": "Blueprint_AssaultRifle_Default5"
+        },
+        {
+            "name": "Astegon Bounty Token",
+            "id": "BossDefeatReward_BlackMetalDragon"
+        },
+        {
+            "name": "Astegon Saddle",
+            "id": "SkillUnlock_BlackMetalDragon"
+        },
+        {
+            "name": "Attack Pendant",
+            "id": "Accessory_AT_1"
+        },
+        {
+            "name": "Attack Pendant +1",
+            "id": "Accessory_AT_2"
+        },
+        {
+            "name": "Attack Pendant +2",
+            "id": "Accessory_AT_3"
+        },
+        {
+            "name": "Average Feed Bag",
+            "id": "AutoMealPouch_Tier2"
+        },
+        {
+            "name": "Axe4 +2",
+            "id": "Axe_Tier_03"
+        },
+        {
+            "name": "Axel Hat",
+            "id": "GYM_Head_Electric"
+        },
+        {
+            "name": "Azurmane Bounty Token",
+            "id": "BossDefeatReward_BlueThunderHorse"
+        },
+        {
+            "name": "Azurmane Saddle",
+            "id": "SkillUnlock_BlueThunderHorse"
+        },
+        {
+            "name": "Azurobe Bounty Token",
+            "id": "BossDefeatReward_BlueDragon"
+        },
+        {
+            "name": "Azurobe Saddle",
+            "id": "SkillUnlock_BlueDragon"
+        },
+        {
+            "name": "BLT",
+            "id": "BLT"
+        },
+        {
+            "name": "Baked Berries",
+            "id": "Baked_Berries"
+        },
+        {
+            "name": "Baked Mushroom",
+            "id": "BakedMushroom"
+        },
+        {
+            "name": "Bastigor's Hammer",
+            "id": "SkillUnlock_SnowTigerBeastman"
+        },
+        {
+            "name": "Bat",
+            "id": "Bat2"
+        },
+        {
+            "name": "Beakon Bounty Token",
+            "id": "BossDefeatReward_ThunderBird"
+        },
+        {
+            "name": "Beakon Saddle",
+            "id": "SkillUnlock_ThunderBird"
+        },
+        {
+            "name": "Beam Sword",
+            "id": "BeamSword"
+        },
+        {
+            "name": "Beautiful Flower",
+            "id": "Poppy"
+        },
+        {
+            "name": "Beegarde's Spear",
+            "id": "Spear_SoldierBee"
+        },
+        {
+            "name": "Beer",
+            "id": "Beer"
+        },
+        {
+            "name": "Bellanoir Libero (Ultra) Slab +1",
+            "id": "PalSummon_NightLady_Dark_2"
+        },
+        {
+            "name": "Bellanoir Libero (Ultra) Slab Fragment +1",
+            "id": "PalSummon_NightLady_Dark_Parts_2"
+        },
+        {
+            "name": "Bellanoir Libero's Slab",
+            "id": "PalSummon_NightLady_Dark"
+        },
+        {
+            "name": "Bellanoir Libero's Slab Fragment",
+            "id": "PalSummon_NightLady_Dark_Parts"
+        },
+        {
+            "name": "Bellanoir's Slab",
+            "id": "PalSummon_NightLady"
+        },
+        {
+            "name": "Bellanoir's Slab Fragment",
+            "id": "PalSummon_NightLady_Parts"
+        },
+        {
+            "name": "Berry Seeds",
+            "id": "BerrySeeds"
+        },
+        {
+            "name": "Bjorn Hat",
+            "id": "GYM_Head_Viking"
+        },
+        {
+            "name": "Blazamut Bounty Token",
+            "id": "BossDefeatReward_KingBahamut"
+        },
+        {
+            "name": "Blazamut Ryu (Ultra) Slab +1",
+            "id": "PalSummon_KingBahamut_Dragon_2"
+        },
+        {
+            "name": "Blazamut Ryu (Ultra) Slab Fragment +1",
+            "id": "PalSummon_KingBahamut_Dragon_Parts_2"
+        },
+        {
+            "name": "Blazamut Ryu Saddle",
+            "id": "SkillUnlock_KingBahamut_Dragon"
+        },
+        {
+            "name": "Blazamut Ryu Slab",
+            "id": "PalSummon_KingBahamut_Dragon"
+        },
+        {
+            "name": "Blazamut Ryu Slab Fragment",
+            "id": "PalSummon_KingBahamut_Dragon_Parts"
+        },
+        {
+            "name": "Blazamut Saddle",
+            "id": "SkillUnlock_KingBahamut"
+        },
+        {
+            "name": "Blazehowl Noct Saddle",
+            "id": "SkillUnlock_Manticore_Dark"
+        },
+        {
+            "name": "Blazehowl Saddle",
+            "id": "SkillUnlock_Manticore"
+        },
+        {
+            "name": "Blueprint 5 of University Hat +4",
+            "id": "Blueprint_Head010_5"
+        },
+        {
+            "name": "Blueprint for Golden Crown 5 +4",
+            "id": "Blueprint_Head002_5"
+        },
+        {
+            "name": "Blueprint of Bowler Hat 5 +4",
+            "id": "Blueprint_Head012_5"
+        },
+        {
+            "name": "Blueprint of Capppen Hat 5 +4",
+            "id": "Blueprint_Head016_5"
+        },
+        {
+            "name": "Blueprint of Exploration Hat 5 +4",
+            "id": "Blueprint_Head009_5"
+        },
+        {
+            "name": "Blueprint of Helmet 5 +4",
+            "id": "Blueprint_Head006_5"
+        },
+        {
+            "name": "Blueprint of Soft Hat 5 +4",
+            "id": "Blueprint_Head005_5"
+        },
+        {
+            "name": "Blueprint of the King's Crown 5 +4",
+            "id": "Blueprint_Head001_5"
+        },
+        {
+            "name": "Blueprint of the Tricorn Hat 5 +4",
+            "id": "Blueprint_Head008_5"
+        },
+        {
+            "name": "Bolognese Sauce",
+            "id": "MeatSauce"
+        },
+        {
+            "name": "Boltmane Saddle",
+            "id": "SkillUnlock_ElecLion"
+        },
+        {
+            "name": "Bone",
+            "id": "Bone"
+        },
+        {
+            "name": "Bowler Hat",
+            "id": "Head012"
+        },
+        {
+            "name": "Bowler Hat +1",
+            "id": "Head012_2"
+        },
+        {
+            "name": "Bowler Hat +2",
+            "id": "Head012_3"
+        },
+        {
+            "name": "Bowler Hat +3",
+            "id": "Head012_4"
+        },
+        {
+            "name": "Bowler Hat +4",
+            "id": "Head012_5"
+        },
+        {
+            "name": "Bowler Hat Schematic 1",
+            "id": "Blueprint_Head012_1"
+        },
+        {
+            "name": "Bowler Hat Schematic 2 +1",
+            "id": "Blueprint_Head012_2"
+        },
+        {
+            "name": "Bowler Hat Schematic 3 +2",
+            "id": "Blueprint_Head012_3"
+        },
+        {
+            "name": "Bowler Hat Schematic 4 +3",
+            "id": "Blueprint_Head012_4"
+        },
+        {
+            "name": "Box of Mystery Accessories +1",
+            "id": "UnlockEquipmentSlot_Accessory_02"
+        },
+        {
+            "name": "Bread",
+            "id": "Pan"
+        },
+        {
+            "name": "Broiled Dumud",
+            "id": "BakedMeat_LazyCatfish"
+        },
+        {
+            "name": "Broncherry Aqua Bounty Token",
+            "id": "BossDefeatReward_SakuraSaurus_Water"
+        },
+        {
+            "name": "Broncherry Aqua Saddle",
+            "id": "SkillUnlock_SakuraSaurus_Water"
+        },
+        {
+            "name": "Broncherry Bounty Token",
+            "id": "BossDefeatReward_SakuraSaurus"
+        },
+        {
+            "name": "Broncherry Fried Noodles",
+            "id": "Yakisoba"
+        },
+        {
+            "name": "Broncherry Meat",
+            "id": "Meat_SakuraSaurus"
+        },
+        {
+            "name": "Broncherry Rib Roast",
+            "id": "BakedMeat_SakuraSaurus"
+        },
+        {
+            "name": "Broncherry Saddle",
+            "id": "SkillUnlock_SakuraSaurus"
+        },
+        {
+            "name": "Burden Elixir +1",
+            "id": "Elixir_weight_02"
+        },
+        {
+            "name": "Burden Remedy",
+            "id": "Elixir_weight_01"
+        },
+        {
+            "name": "Bushi Bounty Token",
+            "id": "BossDefeatReward_Ronin"
+        },
+        {
+            "name": "Cake",
+            "id": "Cake"
+        },
+        {
+            "name": "Caprity Meat",
+            "id": "Meat_BerryGoat"
+        },
+        {
+            "name": "Caprity Noct Bounty Token",
+            "id": "BossDefeatReward_BerryGoat_Dark"
+        },
+        {
+            "name": "Carbon Fiber",
+            "id": "CarbonFiber"
+        },
+        {
+            "name": "Carbonara",
+            "id": "Carbonara"
+        },
+        {
+            "name": "Carrot",
+            "id": "Carrot"
+        },
+        {
+            "name": "Carrot Seeds",
+            "id": "CarrotSeeds"
+        },
+        {
+            "name": "Carrying Lotus (L) +1",
+            "id": "Lotus_weight_02"
+        },
+        {
+            "name": "Carrying Lotus (S)",
+            "id": "Lotus_weight_01"
+        },
+        {
+            "name": "Cattiva Hat",
+            "id": "HeadEquip033"
+        },
+        {
+            "name": "Cavern Mushroom",
+            "id": "CaveMushroom"
+        },
+        {
+            "name": "Cawgnito Hat",
+            "id": "HeadEquip027"
+        },
+        {
+            "name": "Celaray's Gloves",
+            "id": "SkillUnlock_FlyingManta"
+        },
+        {
+            "name": "Celesdir Bounty Token",
+            "id": "BossDefeatReward_WhiteDeer"
+        },
+        {
+            "name": "Celesdir Saddle",
+            "id": "SkillUnlock_WhiteDeer"
+        },
+        {
+            "name": "Cement",
+            "id": "Cement"
+        },
+        {
+            "name": "Charcoal",
+            "id": "Charcoal"
+        },
+        {
+            "name": "Cheeseburger",
+            "id": "CheeseBurger"
+        },
+        {
+            "name": "Chikipi Poultry",
+            "id": "Meat_ChickenPal"
+        },
+        {
+            "name": "Chikipi Saut\u00c3\u00a9",
+            "id": "ChickenSaute"
+        },
+        {
+            "name": "Chillet Bounty Token",
+            "id": "BossDefeatReward_WeaselDragon"
+        },
+        {
+            "name": "Chillet Ignis Saddle",
+            "id": "SkillUnlock_WeaselDragon_Fire"
+        },
+        {
+            "name": "Chillet Saddle",
+            "id": "SkillUnlock_WeaselDragon"
+        },
+        {
+            "name": "Chromite",
+            "id": "Chromium"
+        },
+        {
+            "name": "Circuit Board",
+            "id": "MachineParts2"
+        },
+        {
+            "name": "Claw",
+            "id": "Claws"
+        },
+        {
+            "name": "Cloth",
+            "id": "Cloth"
+        },
+        {
+            "name": "Cloth Outfit",
+            "id": "ClothArmor"
+        },
+        {
+            "name": "Cloth Outfit Schematic 1 +1",
+            "id": "Blueprint_ClothArmor_2"
+        },
+        {
+            "name": "Cloth Outfit Schematic 2 +2",
+            "id": "Blueprint_ClothArmor_3"
+        },
+        {
+            "name": "Cloth Outfit Schematic 3 +3",
+            "id": "Blueprint_ClothArmor_4"
+        },
+        {
+            "name": "Cloth Outfit Schematic 4 +4",
+            "id": "Blueprint_ClothArmor_5"
+        },
+        {
+            "name": "Coal",
+            "id": "Coal"
+        },
+        {
+            "name": "Coarse Ammo",
+            "id": "RoughBullet"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor",
+            "id": "SFArmorCold"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor +1",
+            "id": "SFArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor +2",
+            "id": "SFArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor +3",
+            "id": "SFArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor +4",
+            "id": "SFArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor Schematic 1 +1",
+            "id": "Blueprint_SFArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor Schematic 2 +2",
+            "id": "Blueprint_SFArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor Schematic 3 +3",
+            "id": "Blueprint_SFArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Hexolite Armor Schematic 4 +4",
+            "id": "Blueprint_SFArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Metal Armor",
+            "id": "CopperArmorCold"
+        },
+        {
+            "name": "Cold Resistant Metal Armor +1",
+            "id": "CopperArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Metal Armor +2",
+            "id": "CopperArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Metal Armor +3",
+            "id": "CopperArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Metal Armor +4",
+            "id": "CopperArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Metal Armor Schematic 1 +1",
+            "id": "Blueprint_CopperArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Metal Armor Schematic 2 +2",
+            "id": "Blueprint_CopperArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Metal Armor Schematic 3 +3",
+            "id": "Blueprint_CopperArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Metal Armor Schematic 4 +4",
+            "id": "Blueprint_CopperArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor",
+            "id": "StealArmorCold"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor +1",
+            "id": "StealArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor +2",
+            "id": "StealArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor +3",
+            "id": "StealArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor +4",
+            "id": "StealArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor Schematic 1 +1",
+            "id": "Blueprint_StealArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor Schematic 2 +2",
+            "id": "Blueprint_StealArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor Schematic 3 +3",
+            "id": "Blueprint_StealArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Pal Metal Armor Schematic 4 +4",
+            "id": "Blueprint_StealArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor",
+            "id": "FurArmorCold"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor +1",
+            "id": "FurArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor +2",
+            "id": "FurArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor +3",
+            "id": "FurArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor +4",
+            "id": "FurArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor Schematic 1 +1",
+            "id": "Blueprint_FurArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor Schematic 2 +2",
+            "id": "Blueprint_FurArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor Schematic 3 +3",
+            "id": "Blueprint_FurArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Pelt Armor Schematic 4 +4",
+            "id": "Blueprint_FurArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor",
+            "id": "PlasticArmorCold"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor +1",
+            "id": "PlasticArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor +2",
+            "id": "PlasticArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor +3",
+            "id": "PlasticArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor +4",
+            "id": "PlasticArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor Schematic 1 +1",
+            "id": "Blueprint_PlasticArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor Schematic 2 +2",
+            "id": "Blueprint_PlasticArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor Schematic 3 +3",
+            "id": "Blueprint_PlasticArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Plasteel Armor Schematic 4 +4",
+            "id": "Blueprint_PlasticArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor",
+            "id": "IronArmorCold"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor +1",
+            "id": "IronArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor +2",
+            "id": "IronArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor +3",
+            "id": "IronArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor +4",
+            "id": "IronArmorCold_5"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor Schematic 1 +1",
+            "id": "Blueprint_IronArmorCold_2"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor Schematic 2 +2",
+            "id": "Blueprint_IronArmorCold_3"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor Schematic 3 +3",
+            "id": "Blueprint_IronArmorCold_4"
+        },
+        {
+            "name": "Cold Resistant Refined Metal Armor Schematic 4 +4",
+            "id": "Blueprint_IronArmorCold_5"
+        },
+        {
+            "name": "Common Egg",
+            "id": "PalEgg_Normal_01"
+        },
+        {
+            "name": "Common Egg +1",
+            "id": "PalEgg_Normal_02"
+        },
+        {
+            "name": "Common Shield",
+            "id": "Shield_01"
+        },
+        {
+            "name": "Compound Bow",
+            "id": "CompoundBow"
+        },
+        {
+            "name": "Compound Bow +1",
+            "id": "CompoundBow_2"
+        },
+        {
+            "name": "Compound Bow +2",
+            "id": "CompoundBow_3"
+        },
+        {
+            "name": "Compound Bow +3",
+            "id": "CompoundBow_4"
+        },
+        {
+            "name": "Compound Bow +4",
+            "id": "CompoundBow_5"
+        },
+        {
+            "name": "Compound Bow Schematic 1 +1",
+            "id": "Blueprint_CompoundBow_2"
+        },
+        {
+            "name": "Compound Bow Schematic 2 +2",
+            "id": "Blueprint_CompoundBow_3"
+        },
+        {
+            "name": "Compound Bow Schematic 3 +3",
+            "id": "Blueprint_CompoundBow_4"
+        },
+        {
+            "name": "Compound Bow Schematic 4 +4",
+            "id": "Blueprint_CompoundBow_5"
+        },
+        {
+            "name": "Computer",
+            "id": "Computer"
+        },
+        {
+            "name": "Concentrated All-Pupose Pal Extract",
+            "id": "Rankup_Arbitrary"
+        },
+        {
+            "name": "Copper Key",
+            "id": "TreasureBoxKey01"
+        },
+        {
+            "name": "Corn Soup",
+            "id": "CornSoup"
+        },
+        {
+            "name": "Cotton Candy",
+            "id": "Sweet"
+        },
+        {
+            "name": "Crossbow",
+            "id": "BowGun"
+        },
+        {
+            "name": "Crossbow",
+            "id": "BowGun_NPC"
+        },
+        {
+            "name": "Crossbow Schematic 1 +1",
+            "id": "Blueprint_BowGun_2"
+        },
+        {
+            "name": "Crossbow Schematic 2 +2",
+            "id": "Blueprint_BowGun_3"
+        },
+        {
+            "name": "Crossbow Schematic 3 +3",
+            "id": "Blueprint_BowGun_4"
+        },
+        {
+            "name": "Crossbow Schematic 4 +4",
+            "id": "Blueprint_BowGun_5"
+        },
+        {
+            "name": "Crude Oil",
+            "id": "CrudeOil"
+        },
+        {
+            "name": "Cryolinx Terra Bounty Token",
+            "id": "BossDefeatReward_WhiteTiger_Ground"
+        },
+        {
+            "name": "Curry",
+            "id": "Curry_old"
+        },
+        {
+            "name": "Curve Module",
+            "id": "SphereModule_Curve"
+        },
+        {
+            "name": "Daedream's Necklace",
+            "id": "SkillUnlock_DreamDemon"
+        },
+        {
+            "name": "Damp Egg",
+            "id": "PalEgg_Water_01"
+        },
+        {
+            "name": "Damp Egg +1",
+            "id": "PalEgg_Water_02"
+        },
+        {
+            "name": "Dark Egg",
+            "id": "PalEgg_Dark_01"
+        },
+        {
+            "name": "Dark Egg +1",
+            "id": "PalEgg_Dark_02"
+        },
+        {
+            "name": "Dark Fragment",
+            "id": "PalDarkParts"
+        },
+        {
+            "name": "Dark Grenade",
+            "id": "FragGrenade_Dark"
+        },
+        {
+            "name": "Dark Skill Fruit: Apocalypse",
+            "id": "SkillCard_Apocalypse"
+        },
+        {
+            "name": "Dark Skill Fruit: Dark Arrow",
+            "id": "SkillCard_DarkArrow"
+        },
+        {
+            "name": "Dark Skill Fruit: Dark Cannon",
+            "id": "SkillCard_DarkCanon"
+        },
+        {
+            "name": "Dark Skill Fruit: Dark Laser",
+            "id": "SkillCard_DarkLaser"
+        },
+        {
+            "name": "Dark Skill Fruit: Nightmare Ball",
+            "id": "SkillCard_ShadowBall"
+        },
+        {
+            "name": "Dark Skill Fruit: Poison Blast",
+            "id": "SkillCard_PoisonShot"
+        },
+        {
+            "name": "Dark Skill Fruit: Psycho Gravity",
+            "id": "SkillCard_Psychokinesis"
+        },
+        {
+            "name": "Dark Skill Fruit: Shadow Burst",
+            "id": "SkillCard_DarkWave"
+        },
+        {
+            "name": "Dark Skill Fruit: Spirit Flame",
+            "id": "SkillCard_GhostFlame"
+        },
+        {
+            "name": "Dark Skill Fruit: Umbral Surge",
+            "id": "SkillCard_DarkPulse"
+        },
+        {
+            "name": "Dazemu Saddle",
+            "id": "SkillUnlock_FeatherOstrich"
+        },
+        {
+            "name": "Dazzi Cloud",
+            "id": "PalItem_RaijinDaughter"
+        },
+        {
+            "name": "Dazzi Hat",
+            "id": "HeadEquip032"
+        },
+        {
+            "name": "Dazzi Hat +1",
+            "id": "HeadEquip032_2"
+        },
+        {
+            "name": "Dazzi Hat +2",
+            "id": "HeadEquip032_3"
+        },
+        {
+            "name": "Dazzi Hat +3",
+            "id": "HeadEquip032_4"
+        },
+        {
+            "name": "Dazzi Hat +4",
+            "id": "HeadEquip032_5"
+        },
+        {
+            "name": "Dazzi Hat Schematic 1",
+            "id": "Blueprint_HeadEquip032_1"
+        },
+        {
+            "name": "Dazzi Hat Schematic 2 +1",
+            "id": "Blueprint_HeadEquip032_2"
+        },
+        {
+            "name": "Dazzi Hat Schematic 3 +2",
+            "id": "Blueprint_HeadEquip032_3"
+        },
+        {
+            "name": "Dazzi Hat Schematic 4 +3",
+            "id": "Blueprint_HeadEquip032_4"
+        },
+        {
+            "name": "Dazzi Noct Bounty Token",
+            "id": "BossDefeatReward_RaijinDaughter_Water"
+        },
+        {
+            "name": "Dazzi Noct's Necklace",
+            "id": "SkillUnlock_RaijinDaughter_Water"
+        },
+        {
+            "name": "Dazzi's Necklace",
+            "id": "SkillUnlock_RaijinDaughter"
+        },
+        {
+            "name": "Decal Gun 1",
+            "id": "DecalGun_1"
+        },
+        {
+            "name": "Decal Gun 2 +1",
+            "id": "DecalGun_2"
+        },
+        {
+            "name": "Decal Gun 3 +2",
+            "id": "DecalGun_3"
+        },
+        {
+            "name": "Decal Gun 4 +3",
+            "id": "DecalGun_4"
+        },
+        {
+            "name": "Decal Gun 5 +4",
+            "id": "DecalGun_5"
+        },
+        {
+            "name": "Decal Ink",
+            "id": "InkBullet"
+        },
+        {
+            "name": "Defense Pendant",
+            "id": "Accessory_defense_1"
+        },
+        {
+            "name": "Defense Pendant +1",
+            "id": "Accessory_defense_2"
+        },
+        {
+            "name": "Defense Pendant +2",
+            "id": "Accessory_defense_3"
+        },
+        {
+            "name": "Design Blueprint of Clemence Hat 5 +4",
+            "id": "Blueprint_Head017_5"
+        },
+        {
+            "name": "Design Plan 5 for the Crutchli Hat +4",
+            "id": "Blueprint_Head013_5"
+        },
+        {
+            "name": "Design of Witch Hat No. 5 +4",
+            "id": "Blueprint_Head004_5"
+        },
+        {
+            "name": "Diamond",
+            "id": "Diamond"
+        },
+        {
+            "name": "Digtoise's Headband",
+            "id": "SkillUnlock_DrillGame"
+        },
+        {
+            "name": "Dinossom Lux Bounty Token",
+            "id": "BossDefeatReward_FlowerDinosaur_Electric"
+        },
+        {
+            "name": "Dinossom Lux Saddle",
+            "id": "SkillUnlock_FlowerDinosaur_Electric"
+        },
+        {
+            "name": "Dinossom Saddle",
+            "id": "SkillUnlock_FlowerDinosaur"
+        },
+        {
+            "name": "Direhowl's Saddled Harness",
+            "id": "SkillUnlock_Garm"
+        },
+        {
+            "name": "Dog Coin",
+            "id": "DogCoin"
+        },
+        {
+            "name": "Double Air Dash Boots",
+            "id": "Accessory_AirDash2"
+        },
+        {
+            "name": "Double Jump Boots",
+            "id": "Accessory_JumpCount_Increase1"
+        },
+        {
+            "name": "Double-Barreled Shotgun",
+            "id": "DoubleBarrelShotgun"
+        },
+        {
+            "name": "Double-Barreled Shotgun +1",
+            "id": "DoubleBarrelShotgun_2"
+        },
+        {
+            "name": "Double-Barreled Shotgun +2",
+            "id": "DoubleBarrelShotgun_3"
+        },
+        {
+            "name": "Double-Barreled Shotgun +3",
+            "id": "DoubleBarrelShotgun_4"
+        },
+        {
+            "name": "Double-Barreled Shotgun +4",
+            "id": "DoubleBarrelShotgun_5"
+        },
+        {
+            "name": "Double-Barreled Shotgun Schematic 1 +1",
+            "id": "Blueprint_DoubleBarrelShotgun_2"
+        },
+        {
+            "name": "Double-Barreled Shotgun Schematic 2 +2",
+            "id": "Blueprint_DoubleBarrelShotgun_3"
+        },
+        {
+            "name": "Double-Barreled Shotgun Schematic 3 +3",
+            "id": "Blueprint_DoubleBarrelShotgun_4"
+        },
+        {
+            "name": "Double-Barreled Shotgun Schematic 4 +4",
+            "id": "Blueprint_DoubleBarrelShotgun_5"
+        },
+        {
+            "name": "Dragon Egg",
+            "id": "PalEgg_Dragon_01"
+        },
+        {
+            "name": "Dragon Egg +1",
+            "id": "PalEgg_Dragon_02"
+        },
+        {
+            "name": "Dragon Grenade",
+            "id": "FragGrenade_Dragon"
+        },
+        {
+            "name": "Dragon Skill Fruit: Beam Slicer",
+            "id": "SkillCard_BeamSlicer"
+        },
+        {
+            "name": "Dragon Skill Fruit: Blast Cannon",
+            "id": "SkillCard_BlastCanon"
+        },
+        {
+            "name": "Dragon Skill Fruit: Comet",
+            "id": "SkillCard_Commet"
+        },
+        {
+            "name": "Dragon Skill Fruit: Draconic Breath",
+            "id": "SkillCard_DragonBreath"
+        },
+        {
+            "name": "Dragon Skill Fruit: Dragon Burst",
+            "id": "SkillCard_DragonWave"
+        },
+        {
+            "name": "Dragon Skill Fruit: Dragon Cannon",
+            "id": "SkillCard_DragonCanon"
+        },
+        {
+            "name": "Dragon Skill Fruit: Dragon Meteor",
+            "id": "SkillCard_DragonMeteor"
+        },
+        {
+            "name": "Dragostrophe's Shotgun",
+            "id": "SkillUnlock_BlackFurDragon"
+        },
+        {
+            "name": "Dumud Bounty Token",
+            "id": "BossDefeatReward_LazyCatfish"
+        },
+        {
+            "name": "Dumud Chowder",
+            "id": "Chowder"
+        },
+        {
+            "name": "Dumud Helm",
+            "id": "HeadEquip030"
+        },
+        {
+            "name": "Dung",
+            "id": "Unko_S"
+        },
+        {
+            "name": "Earth Skill Fruit: Bog Blast",
+            "id": "SkillCard_MudShot"
+        },
+        {
+            "name": "Earth Skill Fruit: Rock Lance",
+            "id": "SkillCard_RockLance"
+        },
+        {
+            "name": "Earth Skill Fruit: Rockburst",
+            "id": "SkillCard_Tremor"
+        },
+        {
+            "name": "Earth Skill Fruit: Sand Tornado",
+            "id": "SkillCard_SandTornado"
+        },
+        {
+            "name": "Earth Skill Fruit: Sand Twister",
+            "id": "SkillCard_SandTwister"
+        },
+        {
+            "name": "Earth Skill Fruit: Stone Blast",
+            "id": "SkillCard_StoneShotgun"
+        },
+        {
+            "name": "Earth Skill Fruit: Stone Cannon",
+            "id": "SkillCard_ThrowRock"
+        },
+        {
+            "name": "Egg",
+            "id": "Egg"
+        },
+        {
+            "name": "Eikthyrdeer Loco Moco",
+            "id": "DeerLocoMoco"
+        },
+        {
+            "name": "Eikthyrdeer Saddle",
+            "id": "SkillUnlock_Deer"
+        },
+        {
+            "name": "Eikthyrdeer Stew",
+            "id": "DeerStew"
+        },
+        {
+            "name": "Eikthyrdeer Terra Saddle",
+            "id": "SkillUnlock_Deer_Ground"
+        },
+        {
+            "name": "Eikthyrdeer Venison",
+            "id": "Meat_Deer"
+        },
+        {
+            "name": "Electric Egg",
+            "id": "PalEgg_Electricity_01"
+        },
+        {
+            "name": "Electric Egg +1",
+            "id": "PalEgg_Electricity_02"
+        },
+        {
+            "name": "Electric Organ",
+            "id": "ElectricOrgan"
+        },
+        {
+            "name": "Electric Skill Fruit: Electric Ball",
+            "id": "SkillCard_ThunderBall"
+        },
+        {
+            "name": "Electric Skill Fruit: Lightning Bolt",
+            "id": "SkillCard_Thunderbolt"
+        },
+        {
+            "name": "Electric Skill Fruit: Lightning Streak",
+            "id": "SkillCard_LineThunder"
+        },
+        {
+            "name": "Electric Skill Fruit: Lightning Strike",
+            "id": "SkillCard_LightningStrike"
+        },
+        {
+            "name": "Electric Skill Fruit: Lock-on Laser",
+            "id": "SkillCard_LockonLaser"
+        },
+        {
+            "name": "Electric Skill Fruit: Plasma Funnel",
+            "id": "SkillCard_ThunderFunnel"
+        },
+        {
+            "name": "Electric Skill Fruit: Shockwave",
+            "id": "SkillCard_ElecWave"
+        },
+        {
+            "name": "Electric Skill Fruit: Spark Blast",
+            "id": "SkillCard_SpreadPulse"
+        },
+        {
+            "name": "Electric Skill Fruit: Thunder Rain",
+            "id": "SkillCard_ThunderRain"
+        },
+        {
+            "name": "Electric Skill Fruit: Thunderstorm",
+            "id": "SkillCard_ThunderStorm"
+        },
+        {
+            "name": "Electric Skill Fruit: Tri-Lightning",
+            "id": "SkillCard_ThreeThunder"
+        },
+        {
+            "name": "Electric Skill Fruit: TriSpark",
+            "id": "SkillCard_TriSpark"
+        },
+        {
+            "name": "Elizabee Bounty Token",
+            "id": "BossDefeatReward_QueenBee"
+        },
+        {
+            "name": "Elizabee's Staff",
+            "id": "Spear_QueenBee"
+        },
+        {
+            "name": "Elphidran Aqua Saddle",
+            "id": "SkillUnlock_FairyDragon_Water"
+        },
+        {
+            "name": "Elphidran Bounty Token",
+            "id": "BossDefeatReward_FairyDragon"
+        },
+        {
+            "name": "Elphidran Saddle",
+            "id": "SkillUnlock_FairyDragon"
+        },
+        {
+            "name": "Emerald",
+            "id": "Eemerald"
+        },
+        {
+            "name": "Energy Cartridge",
+            "id": "LaserBullet"
+        },
+        {
+            "name": "Exotic Sphere",
+            "id": "PalSphere_Exotic"
+        },
+        {
+            "name": "Exploration Cap Schematic 1",
+            "id": "Blueprint_Head009_1"
+        },
+        {
+            "name": "Exploration Cap Schematic 2 +1",
+            "id": "Blueprint_Head009_2"
+        },
+        {
+            "name": "Exploration Cap Schematic 3 +2",
+            "id": "Blueprint_Head009_3"
+        },
+        {
+            "name": "Exploration Cap Schematic 4 +3",
+            "id": "Blueprint_Head009_4"
+        },
+        {
+            "name": "Explorer Cap",
+            "id": "Head009"
+        },
+        {
+            "name": "Explorer Cap +1",
+            "id": "Head009_2"
+        },
+        {
+            "name": "Explorer Cap +2",
+            "id": "Head009_3"
+        },
+        {
+            "name": "Explorer Cap +3",
+            "id": "Head009_4"
+        },
+        {
+            "name": "Explorer Cap +4",
+            "id": "Head009_5"
+        },
+        {
+            "name": "Faleris Aqua Bounty Token",
+            "id": "BossDefeatReward_Horus_Water"
+        },
+        {
+            "name": "Faleris Aqua Saddle",
+            "id": "SkillUnlock_Horus_Water"
+        },
+        {
+            "name": "Faleris Saddle",
+            "id": "SkillUnlock_Horus"
+        },
+        {
+            "name": "Fang",
+            "id": "Fang"
+        },
+        {
+            "name": "Farming Hat",
+            "id": "Head011"
+        },
+        {
+            "name": "Farming Hat +1",
+            "id": "Head011_2"
+        },
+        {
+            "name": "Farming Hat +2",
+            "id": "Head011_3"
+        },
+        {
+            "name": "Farming Hat +3",
+            "id": "Head011_4"
+        },
+        {
+            "name": "Farming Hat +4",
+            "id": "Head011_5"
+        },
+        {
+            "name": "Farming Hat Schematic 1",
+            "id": "Blueprint_Head011_1"
+        },
+        {
+            "name": "Farming Hat Schematic 2 +1",
+            "id": "Blueprint_Head011_2"
+        },
+        {
+            "name": "Farming Hat Schematic 3 +2",
+            "id": "Blueprint_Head011_3"
+        },
+        {
+            "name": "Farming Hat Schematic 4 +3",
+            "id": "Blueprint_Head011_4"
+        },
+        {
+            "name": "Feathered Hair Band",
+            "id": "FurHelmet"
+        },
+        {
+            "name": "Feathered Hair Band +1",
+            "id": "FurHelmet_2"
+        },
+        {
+            "name": "Feathered Hair Band +2",
+            "id": "FurHelmet_3"
+        },
+        {
+            "name": "Feathered Hair Band +3",
+            "id": "FurHelmet_4"
+        },
+        {
+            "name": "Feathered Hair Band +4",
+            "id": "FurHelmet_5"
+        },
+        {
+            "name": "Feathered Hair Band Schematic 1 +1",
+            "id": "Blueprint_FurHelmet_2"
+        },
+        {
+            "name": "Feathered Hair Band Schematic 2 +2",
+            "id": "Blueprint_FurHelmet_3"
+        },
+        {
+            "name": "Feathered Hair Band Schematic 3 +3",
+            "id": "Blueprint_FurHelmet_4"
+        },
+        {
+            "name": "Feathered Hair Band Schematic 4 +4",
+            "id": "Blueprint_FurHelmet_5"
+        },
+        {
+            "name": "Felbat Bounty Token",
+            "id": "BossDefeatReward_CatVampire"
+        },
+        {
+            "name": "Fenglope Bounty Token",
+            "id": "BossDefeatReward_FengyunDeeper"
+        },
+        {
+            "name": "Fenglope Lux Bounty Token",
+            "id": "BossDefeatReward_FengyunDeeper_Electric"
+        },
+        {
+            "name": "Fenglope Lux Saddle",
+            "id": "SkillUnlock_FengyunDeeper_Electric"
+        },
+        {
+            "name": "Fenglope Saddle",
+            "id": "SkillUnlock_FengyunDeeper"
+        },
+        {
+            "name": "Fiber",
+            "id": "Fiber"
+        },
+        {
+            "name": "Fire Arrow",
+            "id": "Arrow_Fire"
+        },
+        {
+            "name": "Fire Arrow Crossbow",
+            "id": "BowGun_Fire"
+        },
+        {
+            "name": "Fire Arrow Crossbow +1",
+            "id": "BowGun_Fire_2"
+        },
+        {
+            "name": "Fire Arrow Crossbow +2",
+            "id": "BowGun_Fire_3"
+        },
+        {
+            "name": "Fire Arrow Crossbow +3",
+            "id": "BowGun_Fire_4"
+        },
+        {
+            "name": "Fire Arrow Crossbow +4",
+            "id": "BowGun_Fire_5"
+        },
+        {
+            "name": "Fire Arrow Crossbow Schematic 1 +1",
+            "id": "Blueprint_BowGun_Fire_2"
+        },
+        {
+            "name": "Fire Arrow Crossbow Schematic 2 +2",
+            "id": "Blueprint_BowGun_Fire_3"
+        },
+        {
+            "name": "Fire Arrow Crossbow Schematic 3 +3",
+            "id": "Blueprint_BowGun_Fire_4"
+        },
+        {
+            "name": "Fire Arrow Crossbow Schematic 4 +4",
+            "id": "Blueprint_BowGun_Fire_5"
+        },
+        {
+            "name": "Fire Bow",
+            "id": "Bow_Fire"
+        },
+        {
+            "name": "Fire Skill Fruit: Fire Ball",
+            "id": "SkillCard_FireBall"
+        },
+        {
+            "name": "Fire Skill Fruit: Flame Funnel",
+            "id": "SkillCard_FlameFunnel"
+        },
+        {
+            "name": "Fire Skill Fruit: Flame Wall",
+            "id": "SkillCard_FlameWall"
+        },
+        {
+            "name": "Fire Skill Fruit: Flare Arrow",
+            "id": "SkillCard_FlareArrow"
+        },
+        {
+            "name": "Fire Skill Fruit: Flare Storm",
+            "id": "SkillCard_FlareTornado"
+        },
+        {
+            "name": "Fire Skill Fruit: Ignis Blast",
+            "id": "SkillCard_FireBlast"
+        },
+        {
+            "name": "Fire Skill Fruit: Ignis Breath",
+            "id": "SkillCard_Flamethrower"
+        },
+        {
+            "name": "Fire Skill Fruit: Ignis Rage",
+            "id": "SkillCard_Inferno"
+        },
+        {
+            "name": "Fire Skill Fruit: Spirit Fire",
+            "id": "SkillCard_FireSeed"
+        },
+        {
+            "name": "Fire Skill Fruit: Volcanic Rain",
+            "id": "SkillCard_Eruption"
+        },
+        {
+            "name": "Fishing Rod_Good",
+            "id": "FishingRod_Good"
+        },
+        {
+            "name": "Fishing Rod_Legendary",
+            "id": "FishingRod_Legendary"
+        },
+        {
+            "name": "Fishing Rod_Old",
+            "id": "FishingRod_Old"
+        },
+        {
+            "name": "Fishing Rod_Super",
+            "id": "FishingRod_Super"
+        },
+        {
+            "name": "Five Shot Bow",
+            "id": "Bow_Fifth"
+        },
+        {
+            "name": "Flame Organ",
+            "id": "FireOrgan"
+        },
+        {
+            "name": "Flamethrower Fuel",
+            "id": "FlamethrowerBullet"
+        },
+        {
+            "name": "Flamethrower Schematic 1 +1",
+            "id": "Blueprint_FlameThrower_2"
+        },
+        {
+            "name": "Flamethrower Schematic 2 +2",
+            "id": "Blueprint_FlameThrower_3"
+        },
+        {
+            "name": "Flamethrower Schematic 3 +3",
+            "id": "Blueprint_FlameThrower_4"
+        },
+        {
+            "name": "Flamethrower Schematic 4 +4",
+            "id": "Blueprint_FlameThrower_5"
+        },
+        {
+            "name": "Flopie's Necklace",
+            "id": "SkillUnlock_FlowerRabbit"
+        },
+        {
+            "name": "Flour",
+            "id": "Flour"
+        },
+        {
+            "name": "Foxparks Cryst Bounty Token",
+            "id": "BossDefeatReward_Kitsunebi_Ice"
+        },
+        {
+            "name": "Foxparks Cryst's Harness",
+            "id": "SkillUnlock_Kitsunebi_Ice"
+        },
+        {
+            "name": "Foxparks's Harness",
+            "id": "SkillUnlock_Kitsunebi"
+        },
+        {
+            "name": "Frag Grenade",
+            "id": "FragGrenade_NPC"
+        },
+        {
+            "name": "Frag Grenade",
+            "id": "FragGrenade"
+        },
+        {
+            "name": "Frag Grenade Mk2",
+            "id": "FragGrenade_Super"
+        },
+        {
+            "name": "French Fries",
+            "id": "PotatoChips"
+        },
+        {
+            "name": "Fried Chikipi",
+            "id": "FriedChicken"
+        },
+        {
+            "name": "Fried Egg",
+            "id": "FriedEggs"
+        },
+        {
+            "name": "Fried Kelpsea",
+            "id": "FriedKelpie"
+        },
+        {
+            "name": "Frostallion Bounty Token",
+            "id": "BossDefeatReward_IceHorse"
+        },
+        {
+            "name": "Frostallion Noct Bounty Token",
+            "id": "BossDefeatReward_IceHorse_Dark"
+        },
+        {
+            "name": "Frostallion Noct Saddle",
+            "id": "SkillUnlock_IceHorse_Dark"
+        },
+        {
+            "name": "Frostallion Saddle",
+            "id": "SkillUnlock_IceHorse"
+        },
+        {
+            "name": "Frozen Egg",
+            "id": "PalEgg_Ice_01"
+        },
+        {
+            "name": "Frozen Egg +1",
+            "id": "PalEgg_Ice_02"
+        },
+        {
+            "name": "Future Technical Manual",
+            "id": "TechnologyBook_G3"
+        },
+        {
+            "name": "Galeclaw Nikujaga",
+            "id": "MeatAndPotatoes"
+        },
+        {
+            "name": "Galeclaw Poultry",
+            "id": "Meat_Eagle"
+        },
+        {
+            "name": "Galeclaw's Gloves",
+            "id": "SkillUnlock_Eagle"
+        },
+        {
+            "name": "Gas Mask",
+            "id": "GasMask"
+        },
+        {
+            "name": "Gatling Gun",
+            "id": "GatlingGun_NPC"
+        },
+        {
+            "name": "Gatling Gun",
+            "id": "GatlingGun"
+        },
+        {
+            "name": "Gatling Gun +1",
+            "id": "GatlingGun_2"
+        },
+        {
+            "name": "Gatling Gun +2",
+            "id": "GatlingGun_3"
+        },
+        {
+            "name": "Gatling Gun +3",
+            "id": "GatlingGun_4"
+        },
+        {
+            "name": "Gatling Gun +4",
+            "id": "GatlingGun_5"
+        },
+        {
+            "name": "Gatling Gun Ammo",
+            "id": "GatlingBullet"
+        },
+        {
+            "name": "Gatling Gun Schematic 1 +1",
+            "id": "Blueprint_GatlingGun_2"
+        },
+        {
+            "name": "Gatling Gun Schematic 2 +2",
+            "id": "Blueprint_GatlingGun_3"
+        },
+        {
+            "name": "Gatling Gun Schematic 3 +3",
+            "id": "Blueprint_GatlingGun_4"
+        },
+        {
+            "name": "Gatling Gun Schematic 4 +4",
+            "id": "Blueprint_GatlingGun_5"
+        },
+        {
+            "name": "Giant Feed Bag",
+            "id": "AutoMealPouch_Tier5"
+        },
+        {
+            "name": "Giant Pal Soul",
+            "id": "PalUpgradeStone4"
+        },
+        {
+            "name": "Giant Pouch +3",
+            "id": "AdditionalInventory_004"
+        },
+        {
+            "name": "Giga Glider",
+            "id": "Glider_Super"
+        },
+        {
+            "name": "Giga Shield +2",
+            "id": "Shield_03"
+        },
+        {
+            "name": "Giga Sphere",
+            "id": "PalSphere_Giga"
+        },
+        {
+            "name": "Gildane Bounty Token",
+            "id": "BossDefeatReward_GoldenHorse"
+        },
+        {
+            "name": "Gildane Saddle",
+            "id": "SkillUnlock_GoldenHorse"
+        },
+        {
+            "name": "Gold Coin",
+            "id": "Money"
+        },
+        {
+            "name": "Gold Key",
+            "id": "TreasureBoxKey03"
+        },
+        {
+            "name": "Golden Crown",
+            "id": "Head002"
+        },
+        {
+            "name": "Golden Crown +1",
+            "id": "Head002_2"
+        },
+        {
+            "name": "Golden Crown +2",
+            "id": "Head002_3"
+        },
+        {
+            "name": "Golden Crown +3",
+            "id": "Head002_4"
+        },
+        {
+            "name": "Golden Crown +4",
+            "id": "Head002_5"
+        },
+        {
+            "name": "Golden Crown Schematic 1",
+            "id": "Blueprint_Head002_1"
+        },
+        {
+            "name": "Golden Crown Schematic 2 +1",
+            "id": "Blueprint_Head002_2"
+        },
+        {
+            "name": "Golden Crown Schematic 3 +2",
+            "id": "Blueprint_Head002_3"
+        },
+        {
+            "name": "Golden Crown Schematic 4 +3",
+            "id": "Blueprint_Head002_4"
+        },
+        {
+            "name": "Graduation Cap",
+            "id": "Head010"
+        },
+        {
+            "name": "Graduation Cap +1",
+            "id": "Head010_2"
+        },
+        {
+            "name": "Graduation Cap +2",
+            "id": "Head010_3"
+        },
+        {
+            "name": "Graduation Cap +3",
+            "id": "Head010_4"
+        },
+        {
+            "name": "Graduation Cap +4",
+            "id": "Head010_5"
+        },
+        {
+            "name": "Graduation Cap Schematic 1",
+            "id": "Blueprint_Head010_1"
+        },
+        {
+            "name": "Graduation Cap Schematic 2 +1",
+            "id": "Blueprint_Head010_2"
+        },
+        {
+            "name": "Graduation Cap Schematic 3 +2",
+            "id": "Blueprint_Head010_3"
+        },
+        {
+            "name": "Graduation Cap Schematic 4 +3",
+            "id": "Blueprint_Head010_4"
+        },
+        {
+            "name": "Grape",
+            "id": "Grape"
+        },
+        {
+            "name": "Grass Grenade",
+            "id": "FragGrenade_Leaf"
+        },
+        {
+            "name": "Grass Skill Fruit: Circle Vine",
+            "id": "SkillCard_RootLance"
+        },
+        {
+            "name": "Grass Skill Fruit: Grass Tornado",
+            "id": "SkillCard_GrassTornado"
+        },
+        {
+            "name": "Grass Skill Fruit: Multicutter",
+            "id": "SkillCard_SpecialCutter"
+        },
+        {
+            "name": "Grass Skill Fruit: Seed Machine Gun",
+            "id": "SkillCard_SeedMachinegun"
+        },
+        {
+            "name": "Grass Skill Fruit: Seed Mine",
+            "id": "SkillCard_SeedMine"
+        },
+        {
+            "name": "Grass Skill Fruit: Solar Blast",
+            "id": "SkillCard_SolarBeam"
+        },
+        {
+            "name": "Grass Skill Fruit: Spine Vine",
+            "id": "SkillCard_RootAttack"
+        },
+        {
+            "name": "Grass Skill Fruit: Wind Cutter",
+            "id": "SkillCard_WindCutter"
+        },
+        {
+            "name": "Gratin",
+            "id": "Gratin"
+        },
+        {
+            "name": "Grenade Ammo",
+            "id": "GrenadeBullet"
+        },
+        {
+            "name": "Grenade Launcher",
+            "id": "GrenadeLauncher"
+        },
+        {
+            "name": "Grenade Launcher",
+            "id": "GrenadeLauncher_NPC"
+        },
+        {
+            "name": "Grenade Launcher +1",
+            "id": "GrenadeLauncher_2"
+        },
+        {
+            "name": "Grenade Launcher +2",
+            "id": "GrenadeLauncher_3"
+        },
+        {
+            "name": "Grenade Launcher +3",
+            "id": "GrenadeLauncher_4"
+        },
+        {
+            "name": "Grenade Launcher +4",
+            "id": "GrenadeLauncher_5"
+        },
+        {
+            "name": "Grenade Launcher Schematic 1 +1",
+            "id": "Blueprint_GrenadeLauncher_2"
+        },
+        {
+            "name": "Grenade Launcher Schematic 2 +2",
+            "id": "Blueprint_GrenadeLauncher_3"
+        },
+        {
+            "name": "Grenade Launcher Schematic 3 +3",
+            "id": "Blueprint_GrenadeLauncher_4"
+        },
+        {
+            "name": "Grenade Launcher Schematic 4 +4",
+            "id": "Blueprint_GrenadeLauncher_5"
+        },
+        {
+            "name": "Grilled Chikipi",
+            "id": "BakedMeat_ChickenPal"
+        },
+        {
+            "name": "Grilled Fish",
+            "id": "GrilledFish"
+        },
+        {
+            "name": "Grilled Galeclaw",
+            "id": "BakedMeat_Eagle"
+        },
+        {
+            "name": "Grilled Kelpsea",
+            "id": "BakedMeat_Kelpie"
+        },
+        {
+            "name": "Grilled Lamball",
+            "id": "GenghisKhan"
+        },
+        {
+            "name": "Grilled Meat",
+            "id": "GrilledMeat"
+        },
+        {
+            "name": "Grinning Curly Hat Blueprint 5 +4",
+            "id": "Blueprint_Head014_5"
+        },
+        {
+            "name": "Grinning Tocotoco Cap",
+            "id": "Head014"
+        },
+        {
+            "name": "Grinning Tocotoco Cap +1",
+            "id": "Head014_2"
+        },
+        {
+            "name": "Grinning Tocotoco Cap +2",
+            "id": "Head014_3"
+        },
+        {
+            "name": "Grinning Tocotoco Cap +3",
+            "id": "Head014_4"
+        },
+        {
+            "name": "Grinning Tocotoco Cap +4",
+            "id": "Head014_5"
+        },
+        {
+            "name": "Grinning Tocotoco Cap Schematic 1",
+            "id": "Blueprint_Head014_1"
+        },
+        {
+            "name": "Grinning Tocotoco Cap Schematic 2 +1",
+            "id": "Blueprint_Head014_2"
+        },
+        {
+            "name": "Grinning Tocotoco Cap Schematic 3 +2",
+            "id": "Blueprint_Head014_3"
+        },
+        {
+            "name": "Grinning Tocotoco Cap Schematic 4 +3",
+            "id": "Blueprint_Head014_4"
+        },
+        {
+            "name": "Grintale Bounty Token",
+            "id": "BossDefeatReward_NaughtyCat"
+        },
+        {
+            "name": "Grintale Saddle",
+            "id": "SkillUnlock_NaughtyCat"
+        },
+        {
+            "name": "Grizzbolt's Minigun",
+            "id": "SkillUnlock_ElecPanda"
+        },
+        {
+            "name": "Ground Grenade",
+            "id": "FragGrenade_Ground"
+        },
+        {
+            "name": "Guided Missile Launcher",
+            "id": "GuidedMissileLauncher"
+        },
+        {
+            "name": "Guided Missile Launcher +1",
+            "id": "GuidedMissileLauncher_2"
+        },
+        {
+            "name": "Guided Missile Launcher +2",
+            "id": "GuidedMissileLauncher_3"
+        },
+        {
+            "name": "Guided Missile Launcher +3",
+            "id": "GuidedMissileLauncher_4"
+        },
+        {
+            "name": "Guided Missile Launcher +4",
+            "id": "GuidedMissileLauncher_5"
+        },
+        {
+            "name": "Guided Missile Launcher Schematic 1 +1",
+            "id": "Blueprint_GuidedMissileLauncher_2"
+        },
+        {
+            "name": "Guided Missile Launcher Schematic 2 +2",
+            "id": "Blueprint_GuidedMissileLauncher_3"
+        },
+        {
+            "name": "Guided Missile Launcher Schematic 3 +3",
+            "id": "Blueprint_GuidedMissileLauncher_4"
+        },
+        {
+            "name": "Guided Missile Launcher Schematic 4 +4",
+            "id": "Blueprint_GuidedMissileLauncher_5"
+        },
+        {
+            "name": "Gumoss Bounty Token",
+            "id": "BossDefeatReward_PlantSlime"
+        },
+        {
+            "name": "Gumoss Cap",
+            "id": "Head015"
+        },
+        {
+            "name": "Gumoss Cap +1",
+            "id": "Head015_2"
+        },
+        {
+            "name": "Gumoss Cap +2",
+            "id": "Head015_3"
+        },
+        {
+            "name": "Gumoss Cap +3",
+            "id": "Head015_4"
+        },
+        {
+            "name": "Gumoss Cap +4",
+            "id": "Head015_5"
+        },
+        {
+            "name": "Gumoss Cap Schematic 1",
+            "id": "Blueprint_Head015_1"
+        },
+        {
+            "name": "Gumoss Cap Schematic 2 +1",
+            "id": "Blueprint_Head015_2"
+        },
+        {
+            "name": "Gumoss Cap Schematic 3 +2",
+            "id": "Blueprint_Head015_3"
+        },
+        {
+            "name": "Gumoss Cap Schematic 4 +3",
+            "id": "Blueprint_Head015_4"
+        },
+        {
+            "name": "Gumoss Leaf",
+            "id": "PalItem_PlantSlime"
+        },
+        {
+            "name": "Gunpowder",
+            "id": "Gunpowder"
+        },
+        {
+            "name": "Gunpowder",
+            "id": "Gunpowder2"
+        },
+        {
+            "name": "Hamburger",
+            "id": "Hamburger"
+        },
+        {
+            "name": "Hand-Held Torch",
+            "id": "Torch"
+        },
+        {
+            "name": "Handgun",
+            "id": "HandGun_Default"
+        },
+        {
+            "name": "Handgun Ammo",
+            "id": "HandgunBullet"
+        },
+        {
+            "name": "Handgun Schematic 1 +1",
+            "id": "Blueprint_HandGun_Default_2"
+        },
+        {
+            "name": "Handgun Schematic 2 +2",
+            "id": "Blueprint_HandGun_Default_3"
+        },
+        {
+            "name": "Handgun Schematic 3 +3",
+            "id": "Blueprint_HandGun_Default_4"
+        },
+        {
+            "name": "Handgun Schematic 4 +4",
+            "id": "Blueprint_HandGun_Default_5"
+        },
+        {
+            "name": "Hangyu Cryst's Glove",
+            "id": "SkillUnlock_WindChimes_Ice"
+        },
+        {
+            "name": "Hangyu's Gloves",
+            "id": "SkillUnlock_WindChimes"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor",
+            "id": "SFArmorHeat"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor +1",
+            "id": "SFArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor +2",
+            "id": "SFArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor +3",
+            "id": "SFArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor +4",
+            "id": "SFArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor Schematic 1 +1",
+            "id": "Blueprint_SFArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor Schematic 2 +2",
+            "id": "Blueprint_SFArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor Schematic 3 +3",
+            "id": "Blueprint_SFArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Hexolite Armor Schematic 4 +4",
+            "id": "Blueprint_SFArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Metal Armor",
+            "id": "CopperArmorHeat"
+        },
+        {
+            "name": "Heat Resistant Metal Armor +1",
+            "id": "CopperArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Metal Armor +2",
+            "id": "CopperArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Metal Armor +3",
+            "id": "CopperArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Metal Armor +4",
+            "id": "CopperArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Metal Armor Schematic 1 +1",
+            "id": "Blueprint_CopperArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Metal Armor Schematic 2 +2",
+            "id": "Blueprint_CopperArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Metal Armor Schematic 3 +3",
+            "id": "Blueprint_CopperArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Metal Armor Schematic 4 +4",
+            "id": "Blueprint_CopperArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor",
+            "id": "StealArmorHeat"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor +1",
+            "id": "StealArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor +2",
+            "id": "StealArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor +3",
+            "id": "StealArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor +4",
+            "id": "StealArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor Schematic 1 +1",
+            "id": "Blueprint_StealArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor Schematic 2 +2",
+            "id": "Blueprint_StealArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor Schematic 3 +3",
+            "id": "Blueprint_StealArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Pal Metal Armor Schematic 4 +4",
+            "id": "Blueprint_StealArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor",
+            "id": "FurArmorHeat"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor +1",
+            "id": "FurArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor +2",
+            "id": "FurArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor +3",
+            "id": "FurArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor +4",
+            "id": "FurArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor Schematic 1 +1",
+            "id": "Blueprint_FurArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor Schematic 2 +2",
+            "id": "Blueprint_FurArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor Schematic 3 +3",
+            "id": "Blueprint_FurArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Pelt Armor Schematic 4 +4",
+            "id": "Blueprint_FurArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor",
+            "id": "PlasticArmorHeat"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor +1",
+            "id": "PlasticArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor +2",
+            "id": "PlasticArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor +3",
+            "id": "PlasticArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor +4",
+            "id": "PlasticArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor Schematic 1 +1",
+            "id": "Blueprint_PlasticArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor Schematic 2 +2",
+            "id": "Blueprint_PlasticArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor Schematic 3 +3",
+            "id": "Blueprint_PlasticArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Plasteel Armor Schematic 4 +4",
+            "id": "Blueprint_PlasticArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor",
+            "id": "IronArmorHeat"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor +1",
+            "id": "IronArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor +2",
+            "id": "IronArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor +3",
+            "id": "IronArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor +4",
+            "id": "IronArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor Schematic 1 +1",
+            "id": "Blueprint_IronArmorHeat_2"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor Schematic 2 +2",
+            "id": "Blueprint_IronArmorHeat_3"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor Schematic 3 +3",
+            "id": "Blueprint_IronArmorHeat_4"
+        },
+        {
+            "name": "Heat Resistant Refined Metal Armor Schematic 4 +4",
+            "id": "Blueprint_IronArmorHeat_5"
+        },
+        {
+            "name": "Heat Resistant Undershirt",
+            "id": "Accessory_HeatResist_1"
+        },
+        {
+            "name": "Heat Resistant Undershirt +1",
+            "id": "Accessory_HeatResist_2"
+        },
+        {
+            "name": "Heat Resistant Undershirt +2",
+            "id": "Accessory_HeatResist_3"
+        },
+        {
+            "name": "Heavy Weight Module",
+            "id": "SphereModule_Heavy"
+        },
+        {
+            "name": "Helmet",
+            "id": "Head006"
+        },
+        {
+            "name": "Helmet +1",
+            "id": "Head006_2"
+        },
+        {
+            "name": "Helmet +2",
+            "id": "Head006_3"
+        },
+        {
+            "name": "Helmet +3",
+            "id": "Head006_4"
+        },
+        {
+            "name": "Helmet +4",
+            "id": "Head006_5"
+        },
+        {
+            "name": "Helmet Schematic 1",
+            "id": "Blueprint_Head006_1"
+        },
+        {
+            "name": "Helmet Schematic 2 +1",
+            "id": "Blueprint_Head006_2"
+        },
+        {
+            "name": "Helmet Schematic 3 +2",
+            "id": "Blueprint_Head006_3"
+        },
+        {
+            "name": "Helmet Schematic 4 +3",
+            "id": "Blueprint_Head006_4"
+        },
+        {
+            "name": "Helzephyr Lux Saddle",
+            "id": "SkillUnlock_HadesBird_Electric"
+        },
+        {
+            "name": "Helzephyr Saddle",
+            "id": "SkillUnlock_HadesBird"
+        },
+        {
+            "name": "Herb Roasted Caprity",
+            "id": "BakedMeat_BerryGoat"
+        },
+        {
+            "name": "Herb Roasted Lamball",
+            "id": "GrilledSheepHerbs"
+        },
+        {
+            "name": "Hexolite",
+            "id": "StainlessSteel"
+        },
+        {
+            "name": "Hexolite Armor",
+            "id": "SFArmor"
+        },
+        {
+            "name": "Hexolite Armor +1",
+            "id": "SFArmor_2"
+        },
+        {
+            "name": "Hexolite Armor +2",
+            "id": "SFArmor_3"
+        },
+        {
+            "name": "Hexolite Armor +3",
+            "id": "SFArmor_4"
+        },
+        {
+            "name": "Hexolite Armor +4",
+            "id": "SFArmor_5"
+        },
+        {
+            "name": "Hexolite Armor Schematic 1 +1",
+            "id": "Blueprint_SFArmor_2"
+        },
+        {
+            "name": "Hexolite Armor Schematic 2 +2",
+            "id": "Blueprint_SFArmor_3"
+        },
+        {
+            "name": "Hexolite Armor Schematic 3 +3",
+            "id": "Blueprint_SFArmor_4"
+        },
+        {
+            "name": "Hexolite Armor Schematic 4 +4",
+            "id": "Blueprint_SFArmor_5"
+        },
+        {
+            "name": "Hexolite Helmet",
+            "id": "SFHelmet"
+        },
+        {
+            "name": "Hexolite Helmet +1",
+            "id": "SFHelmet_2"
+        },
+        {
+            "name": "Hexolite Helmet +2",
+            "id": "SFHelmet_3"
+        },
+        {
+            "name": "Hexolite Helmet +3",
+            "id": "SFHelmet_4"
+        },
+        {
+            "name": "Hexolite Helmet +4",
+            "id": "SFHelmet_5"
+        },
+        {
+            "name": "Hexolite Helmet Schematic 1 +1",
+            "id": "Blueprint_SFHelmet_2"
+        },
+        {
+            "name": "Hexolite Helmet Schematic 2 +2",
+            "id": "Blueprint_SFHelmet_3"
+        },
+        {
+            "name": "Hexolite Helmet Schematic 3 +3",
+            "id": "Blueprint_SFHelmet_4"
+        },
+        {
+            "name": "Hexolite Helmet Schematic 4 +4",
+            "id": "Blueprint_SFHelmet_5"
+        },
+        {
+            "name": "Hexolite Quartz",
+            "id": "RainbowCrystal"
+        },
+        {
+            "name": "High Grade Medical Supplies",
+            "id": "LuxuryMedicines"
+        },
+        {
+            "name": "High Grade Technical Manual",
+            "id": "TechnologyBook_G1"
+        },
+        {
+            "name": "High Quality Cloth",
+            "id": "Cloth2"
+        },
+        {
+            "name": "High Quality Pal Oil",
+            "id": "PalOil"
+        },
+        {
+            "name": "High Quality Recovery Meds",
+            "id": "Potion_High"
+        },
+        {
+            "name": "Hip Lantern",
+            "id": "Lantern"
+        },
+        {
+            "name": "Homeward Thundercloud",
+            "id": "Homeward"
+        },
+        {
+            "name": "Homing Module",
+            "id": "SphereModule_Homing"
+        },
+        {
+            "name": "Homing Sphere Launcher",
+            "id": "HomingSphereLauncher"
+        },
+        {
+            "name": "Honey",
+            "id": "Honey"
+        },
+        {
+            "name": "Hop",
+            "id": "Hop"
+        },
+        {
+            "name": "Horn",
+            "id": "Horn"
+        },
+        {
+            "name": "Horns of Supremacy",
+            "id": "HeadEquip041"
+        },
+        {
+            "name": "Hot Dog",
+            "id": "HotDog"
+        },
+        {
+            "name": "Hot Milk",
+            "id": "HotMilk"
+        },
+        {
+            "name": "Huge Common Egg +4",
+            "id": "PalEgg_Normal_05"
+        },
+        {
+            "name": "Huge Damp Egg +4",
+            "id": "PalEgg_Water_05"
+        },
+        {
+            "name": "Huge Dark Egg +4",
+            "id": "PalEgg_Dark_05"
+        },
+        {
+            "name": "Huge Dragon Egg +4",
+            "id": "PalEgg_Dragon_05"
+        },
+        {
+            "name": "Huge Dung",
+            "id": "Unko_L"
+        },
+        {
+            "name": "Huge Electric Egg +4",
+            "id": "PalEgg_Electricity_05"
+        },
+        {
+            "name": "Huge Feed Bag",
+            "id": "AutoMealPouch_Tier4"
+        },
+        {
+            "name": "Huge Frozen Egg +4",
+            "id": "PalEgg_Ice_05"
+        },
+        {
+            "name": "Huge Rocky Egg +4",
+            "id": "PalEgg_Earth_05"
+        },
+        {
+            "name": "Huge Scorching Egg +4",
+            "id": "PalEgg_Fire_05"
+        },
+        {
+            "name": "Huge Verdant Egg +4",
+            "id": "PalEgg_Leaf_05"
+        },
+        {
+            "name": "Hyper Glider",
+            "id": "Glider_Legendary"
+        },
+        {
+            "name": "Hyper Shield +3",
+            "id": "Shield_04"
+        },
+        {
+            "name": "Hyper Sphere",
+            "id": "PalSphere_Tera"
+        },
+        {
+            "name": "Ice Grenade",
+            "id": "FragGrenade_Ice"
+        },
+        {
+            "name": "Ice Kingpaca Bounty Token",
+            "id": "BossDefeatReward_KingAlpaca_Ice"
+        },
+        {
+            "name": "Ice Organ",
+            "id": "IceOrgan"
+        },
+        {
+            "name": "Ice Skill Fruit: Blizzard Spike",
+            "id": "SkillCard_IcicleThrow"
+        },
+        {
+            "name": "Ice Skill Fruit: Crystal Breath",
+            "id": "SkillCard_FrostBreath"
+        },
+        {
+            "name": "Ice Skill Fruit: Diamond Rain",
+            "id": "SkillCard_DiamondFall"
+        },
+        {
+            "name": "Ice Skill Fruit: Ice Missile",
+            "id": "SkillCard_IceMissile"
+        },
+        {
+            "name": "Ice Skill Fruit: Iceberg",
+            "id": "SkillCard_BlizzardLance"
+        },
+        {
+            "name": "Ice Skill Fruit: Icicle Cutter",
+            "id": "SkillCard_IceBlade"
+        },
+        {
+            "name": "Ice Skill Fruit: Icicle Line",
+            "id": "SkillCard_IcicleLine"
+        },
+        {
+            "name": "Incendiary Grenade",
+            "id": "FragGrenade_Fire"
+        },
+        {
+            "name": "Ingot",
+            "id": "CopperIngot"
+        },
+        {
+            "name": "Innovative Technical Manual",
+            "id": "TechnologyBook_G2"
+        },
+        {
+            "name": "Jam-Filled Bun",
+            "id": "JamBun"
+        },
+        {
+            "name": "Jetragon Bounty Token",
+            "id": "BossDefeatReward_JetDragon"
+        },
+        {
+            "name": "Jetragon's Missile Launcher",
+            "id": "SkillUnlock_JetDragon"
+        },
+        {
+            "name": "Jolthog Cryst's Gloves",
+            "id": "SkillUnlock_Hedgehog_Ice"
+        },
+        {
+            "name": "Jolthog's Gloves",
+            "id": "SkillUnlock_Hedgehog"
+        },
+        {
+            "name": "Jormuntide Bounty Token",
+            "id": "BossDefeatReward_Umihebi"
+        },
+        {
+            "name": "Jormuntide Ignis Saddle",
+            "id": "SkillUnlock_Umihebi_Fire"
+        },
+        {
+            "name": "Jormuntide Saddle",
+            "id": "SkillUnlock_Umihebi"
+        },
+        {
+            "name": "Katana (NPC)",
+            "id": "Katana_NPC"
+        },
+        {
+            "name": "Katana",
+            "id": "Katana"
+        },
+        {
+            "name": "Katress Bounty Token",
+            "id": "BossDefeatReward_CatMage"
+        },
+        {
+            "name": "Katress Cap",
+            "id": "Head017"
+        },
+        {
+            "name": "Katress Cap +1",
+            "id": "Head017_2"
+        },
+        {
+            "name": "Katress Cap +2",
+            "id": "Head017_3"
+        },
+        {
+            "name": "Katress Cap +3",
+            "id": "Head017_4"
+        },
+        {
+            "name": "Katress Cap +4",
+            "id": "Head017_5"
+        },
+        {
+            "name": "Katress Cap Schematic 1",
+            "id": "Blueprint_Head017_1"
+        },
+        {
+            "name": "Katress Cap Schematic 2 +1",
+            "id": "Blueprint_Head017_2"
+        },
+        {
+            "name": "Katress Cap Schematic 3 +2",
+            "id": "Blueprint_Head017_3"
+        },
+        {
+            "name": "Katress Cap Schematic 4 +3",
+            "id": "Blueprint_Head017_4"
+        },
+        {
+            "name": "Katress Hair",
+            "id": "PalItem_CatMage"
+        },
+        {
+            "name": "Killamari Cap",
+            "id": "HeadEquip026"
+        },
+        {
+            "name": "Killamari Cap +1",
+            "id": "HeadEquip026_2"
+        },
+        {
+            "name": "Killamari Cap +2",
+            "id": "HeadEquip026_3"
+        },
+        {
+            "name": "Killamari Cap +3",
+            "id": "HeadEquip026_4"
+        },
+        {
+            "name": "Killamari Cap +4",
+            "id": "HeadEquip026_5"
+        },
+        {
+            "name": "Killamari Cap Schematic 1",
+            "id": "Blueprint_HeadEquip026_1"
+        },
+        {
+            "name": "Killamari Cap Schematic 2 +1",
+            "id": "Blueprint_HeadEquip026_2"
+        },
+        {
+            "name": "Killamari Cap Schematic 3 +2",
+            "id": "Blueprint_HeadEquip026_3"
+        },
+        {
+            "name": "Killamari Cap Schematic 4 +3",
+            "id": "Blueprint_HeadEquip026_4"
+        },
+        {
+            "name": "Killamari Tentacle",
+            "id": "PalItem_NegativeOctopus"
+        },
+        {
+            "name": "Killamari's Gloves",
+            "id": "SkillUnlock_NegativeOctopus"
+        },
+        {
+            "name": "Kingpaca Bounty Token",
+            "id": "BossDefeatReward_KingAlpaca"
+        },
+        {
+            "name": "Kingpaca Cryst Saddle",
+            "id": "SkillUnlock_KingAlpaca_Ice"
+        },
+        {
+            "name": "Kingpaca Saddle",
+            "id": "SkillUnlock_KingAlpaca"
+        },
+        {
+            "name": "Kitsun Noct Bounty Token",
+            "id": "BossDefeatReward_AmaterasuWolf_Dark"
+        },
+        {
+            "name": "Kitsun Noct Saddle",
+            "id": "SkillUnlock_AmaterasuWolf_Dark"
+        },
+        {
+            "name": "Kitsun Saddle",
+            "id": "SkillUnlock_AmaterasuWolf"
+        },
+        {
+            "name": "Kncklem Bounty Token",
+            "id": "BossDefeatReward_WingGolem"
+        },
+        {
+            "name": "Lamball Helm",
+            "id": "HeadEquip029"
+        },
+        {
+            "name": "Lamball Kebab",
+            "id": "BakedMeat_SheepBall"
+        },
+        {
+            "name": "Lamball Mutton",
+            "id": "Meat_SheepBall"
+        },
+        {
+            "name": "Large Common Egg +2",
+            "id": "PalEgg_Normal_03"
+        },
+        {
+            "name": "Large Common Egg +3",
+            "id": "PalEgg_Normal_04"
+        },
+        {
+            "name": "Large Damp Egg +2",
+            "id": "PalEgg_Water_03"
+        },
+        {
+            "name": "Large Damp Egg +3",
+            "id": "PalEgg_Water_04"
+        },
+        {
+            "name": "Large Dark Egg +2",
+            "id": "PalEgg_Dark_03"
+        },
+        {
+            "name": "Large Dark Egg +3",
+            "id": "PalEgg_Dark_04"
+        },
+        {
+            "name": "Large Dragon Egg +2",
+            "id": "PalEgg_Dragon_03"
+        },
+        {
+            "name": "Large Dragon Egg +3",
+            "id": "PalEgg_Dragon_04"
+        },
+        {
+            "name": "Large Electric Egg +2",
+            "id": "PalEgg_Electricity_03"
+        },
+        {
+            "name": "Large Electric Egg +3",
+            "id": "PalEgg_Electricity_04"
+        },
+        {
+            "name": "Large Feed Bag",
+            "id": "AutoMealPouch_Tier3"
+        },
+        {
+            "name": "Large Frozen Egg +2",
+            "id": "PalEgg_Ice_03"
+        },
+        {
+            "name": "Large Frozen Egg +3",
+            "id": "PalEgg_Ice_04"
+        },
+        {
+            "name": "Large Pal Soul",
+            "id": "PalUpgradeStone3"
+        },
+        {
+            "name": "Large Pouch +2",
+            "id": "AdditionalInventory_003"
+        },
+        {
+            "name": "Large Rocky Egg +2",
+            "id": "PalEgg_Earth_03"
+        },
+        {
+            "name": "Large Rocky Egg +3",
+            "id": "PalEgg_Earth_04"
+        },
+        {
+            "name": "Large Scorching Egg +2",
+            "id": "PalEgg_Fire_03"
+        },
+        {
+            "name": "Large Scorching Egg +3",
+            "id": "PalEgg_Fire_04"
+        },
+        {
+            "name": "Large Verdant Egg +2",
+            "id": "PalEgg_Leaf_03"
+        },
+        {
+            "name": "Large Verdant Egg +3",
+            "id": "PalEgg_Leaf_04"
+        },
+        {
+            "name": "Laser Gatling Cartridge",
+            "id": "LaserGatlingBullet"
+        },
+        {
+            "name": "Laser Gatling Gun",
+            "id": "LaserGatlingGun"
+        },
+        {
+            "name": "Laser Gatling Gun +1",
+            "id": "LaserGatlingGun_2"
+        },
+        {
+            "name": "Laser Gatling Gun +2",
+            "id": "LaserGatlingGun_3"
+        },
+        {
+            "name": "Laser Gatling Gun +3",
+            "id": "LaserGatlingGun_4"
+        },
+        {
+            "name": "Laser Gatling Gun +4",
+            "id": "LaserGatlingGun_5"
+        },
+        {
+            "name": "Laser Gatling Gun Schematic 1 +1",
+            "id": "Blueprint_LaserGatlingGun_2"
+        },
+        {
+            "name": "Laser Gatling Gun Schematic 2 +2",
+            "id": "Blueprint_LaserGatlingGun_3"
+        },
+        {
+            "name": "Laser Gatling Gun Schematic 3 +3",
+            "id": "Blueprint_LaserGatlingGun_4"
+        },
+        {
+            "name": "Laser Gatling Gun Schematic 4 +4",
+            "id": "Blueprint_LaserGatlingGun_5"
+        },
+        {
+            "name": "Laser Rifle",
+            "id": "LaserRifle_NPC"
+        },
+        {
+            "name": "Laser Rifle",
+            "id": "LaserRifle"
+        },
+        {
+            "name": "Laser Rifle +1",
+            "id": "LaserRifle_2"
+        },
+        {
+            "name": "Laser Rifle +2",
+            "id": "LaserRifle_3"
+        },
+        {
+            "name": "Laser Rifle +3",
+            "id": "LaserRifle_4"
+        },
+        {
+            "name": "Laser Rifle +4",
+            "id": "LaserRifle_5"
+        },
+        {
+            "name": "Laser Rifle Schematic 1 +1",
+            "id": "Blueprint_LaserRifle_2"
+        },
+        {
+            "name": "Laser Rifle Schematic 2 +2",
+            "id": "Blueprint_LaserRifle_3"
+        },
+        {
+            "name": "Laser Rifle Schematic 3 +3",
+            "id": "Blueprint_LaserRifle_4"
+        },
+        {
+            "name": "Laser Rifle Schematic 4 +4",
+            "id": "Blueprint_LaserRifle_5"
+        },
+        {
+            "name": "Leather",
+            "id": "Leather"
+        },
+        {
+            "name": "Leezpunk Crest",
+            "id": "PalItem_LizardMan"
+        },
+        {
+            "name": "Leezpunk Hood",
+            "id": "HeadEquip025"
+        },
+        {
+            "name": "Leezpunk Hood +1",
+            "id": "HeadEquip025_2"
+        },
+        {
+            "name": "Leezpunk Hood +2",
+            "id": "HeadEquip025_3"
+        },
+        {
+            "name": "Leezpunk Hood +3",
+            "id": "HeadEquip025_4"
+        },
+        {
+            "name": "Leezpunk Hood +4",
+            "id": "HeadEquip025_5"
+        },
+        {
+            "name": "Leezpunk Hood Schematic 1",
+            "id": "Blueprint_HeadEquip025_1"
+        },
+        {
+            "name": "Leezpunk Hood Schematic 2 +1",
+            "id": "Blueprint_HeadEquip025_2"
+        },
+        {
+            "name": "Leezpunk Hood Schematic 3 +2",
+            "id": "Blueprint_HeadEquip025_3"
+        },
+        {
+            "name": "Leezpunk Hood Schematic 4 +3",
+            "id": "Blueprint_HeadEquip025_4"
+        },
+        {
+            "name": "Legendary Sphere",
+            "id": "PalSphere_Legend"
+        },
+        {
+            "name": "Lettuce",
+            "id": "Lettuce"
+        },
+        {
+            "name": "Lettuce Seeds",
+            "id": "LettuceSeeds"
+        },
+        {
+            "name": "Life Fruit",
+            "id": "Fruit_hp_01"
+        },
+        {
+            "name": "Life Lotus (L) +1",
+            "id": "Lotus_hp_02"
+        },
+        {
+            "name": "Life Lotus (S)",
+            "id": "Lotus_hp_01"
+        },
+        {
+            "name": "Life Pendant",
+            "id": "Accessory_HP_1"
+        },
+        {
+            "name": "Life Pendant +1",
+            "id": "Accessory_HP_2"
+        },
+        {
+            "name": "Life Pendant +2",
+            "id": "Accessory_HP_3"
+        },
+        {
+            "name": "Lifmunk Effigy",
+            "id": "Relic"
+        },
+        {
+            "name": "Lifmunk's Submachine Gun",
+            "id": "SkillUnlock_Carbunclo"
+        },
+        {
+            "name": "Lightweight Hexolite Armor",
+            "id": "SFArmorWeight"
+        },
+        {
+            "name": "Lightweight Hexolite Armor +1",
+            "id": "SFArmorWeight_2"
+        },
+        {
+            "name": "Lightweight Hexolite Armor +2",
+            "id": "SFArmorWeight_3"
+        },
+        {
+            "name": "Lightweight Hexolite Armor +3",
+            "id": "SFArmorWeight_4"
+        },
+        {
+            "name": "Lightweight Hexolite Armor +4",
+            "id": "SFArmorWeight_5"
+        },
+        {
+            "name": "Lightweight Hexolite Armor Schematic 1 +1",
+            "id": "Blueprint_SFArmorWeight_2"
+        },
+        {
+            "name": "Lightweight Hexolite Armor Schematic 2 +2",
+            "id": "Blueprint_SFArmorWeight_3"
+        },
+        {
+            "name": "Lightweight Hexolite Armor Schematic 3 +3",
+            "id": "Blueprint_SFArmorWeight_4"
+        },
+        {
+            "name": "Lightweight Hexolite Armor Schematic 4 +4",
+            "id": "Blueprint_SFArmorWeight_5"
+        },
+        {
+            "name": "Lightweight Plasteel Armor",
+            "id": "PlasticArmorWeight"
+        },
+        {
+            "name": "Lightweight Plasteel Armor +1",
+            "id": "PlasticArmorWeight_2"
+        },
+        {
+            "name": "Lightweight Plasteel Armor +2",
+            "id": "PlasticArmorWeight_3"
+        },
+        {
+            "name": "Lightweight Plasteel Armor +3",
+            "id": "PlasticArmorWeight_4"
+        },
+        {
+            "name": "Lightweight Plasteel Armor +4",
+            "id": "PlasticArmorWeight_5"
+        },
+        {
+            "name": "Lightweight Plasteel Armor Schematic 1 +1",
+            "id": "Blueprint_PlasticArmorWeight_2"
+        },
+        {
+            "name": "Lightweight Plasteel Armor Schematic 2 +2",
+            "id": "Blueprint_PlasticArmorWeight_3"
+        },
+        {
+            "name": "Lightweight Plasteel Armor Schematic 3 +3",
+            "id": "Blueprint_PlasticArmorWeight_4"
+        },
+        {
+            "name": "Lightweight Plasteel Armor Schematic 4 +4",
+            "id": "Blueprint_PlasticArmorWeight_5"
+        },
+        {
+            "name": "Lightz Helmet",
+            "id": "LightzHelmet"
+        },
+        {
+            "name": "Lily Hat",
+            "id": "GYM_Head_Forest"
+        },
+        {
+            "name": "Lily's Spear",
+            "id": "Spear_ForestBoss"
+        },
+        {
+            "name": "Lockpicking Tool v1",
+            "id": "Unlock_Picking_Tier1"
+        },
+        {
+            "name": "Lockpicking Tool v2",
+            "id": "Unlock_Picking_Tier2"
+        },
+        {
+            "name": "Lockpicking Tool v3",
+            "id": "Unlock_Picking_Tier3"
+        },
+        {
+            "name": "Long-Eared Headband",
+            "id": "Head003"
+        },
+        {
+            "name": "Long-Eared Headband +1",
+            "id": "Head003_2"
+        },
+        {
+            "name": "Long-Eared Headband +2",
+            "id": "Head003_3"
+        },
+        {
+            "name": "Long-Eared Headband +3",
+            "id": "Head003_4"
+        },
+        {
+            "name": "Long-Eared Headband +4",
+            "id": "Head003_5"
+        },
+        {
+            "name": "Long-Eared Headband Schematic 1",
+            "id": "Blueprint_Head003_1"
+        },
+        {
+            "name": "Long-Eared Headband Schematic 2 +1",
+            "id": "Blueprint_Head003_2"
+        },
+        {
+            "name": "Long-Eared Headband Schematic 3 +2",
+            "id": "Blueprint_Head003_3"
+        },
+        {
+            "name": "Long-Eared Headband Schematic 4 +3",
+            "id": "Blueprint_Head003_4"
+        },
+        {
+            "name": "Loupmoon Cryst Bounty Token",
+            "id": "BossDefeatReward_Werewolf_Ice"
+        },
+        {
+            "name": "Low Grade Medical Supplies",
+            "id": "Herbs"
+        },
+        {
+            "name": "Low Quality Recovery Meds",
+            "id": "Potion_Low"
+        },
+        {
+            "name": "Lunairs Bounty Token",
+            "id": "BossDefeatReward_Mutant"
+        },
+        {
+            "name": "LuxuryOmelette",
+            "id": "LuxuryOmelette"
+        },
+        {
+            "name": "Lyleen Floral Cap",
+            "id": "HeadEquip023"
+        },
+        {
+            "name": "Lyleen Noct Bounty Token",
+            "id": "BossDefeatReward_LilyQueen_Dark"
+        },
+        {
+            "name": "Machine Gun Ammo",
+            "id": "MachingunBullet"
+        },
+        {
+            "name": "Magnum Ammo",
+            "id": "MagnumBullet"
+        },
+        {
+            "name": "Makeshift Assault Rifle",
+            "id": "MakeshiftAssaultRifle"
+        },
+        {
+            "name": "Makeshift Assault Rifle +1",
+            "id": "MakeshiftAssaultRifle_2"
+        },
+        {
+            "name": "Makeshift Assault Rifle +2",
+            "id": "MakeshiftAssaultRifle_3"
+        },
+        {
+            "name": "Makeshift Assault Rifle +3",
+            "id": "MakeshiftAssaultRifle_4"
+        },
+        {
+            "name": "Makeshift Assault Rifle +4",
+            "id": "MakeshiftAssaultRifle_5"
+        },
+        {
+            "name": "Makeshift Assault Rifle Schematic 1 +1",
+            "id": "Blueprint_MakeshiftAssaultRifle_2"
+        },
+        {
+            "name": "Makeshift Assault Rifle Schematic 2 +2",
+            "id": "Blueprint_MakeshiftAssaultRifle_3"
+        },
+        {
+            "name": "Makeshift Assault Rifle Schematic 3 +3",
+            "id": "Blueprint_MakeshiftAssaultRifle_4"
+        },
+        {
+            "name": "Makeshift Assault Rifle Schematic 4 +4",
+            "id": "Blueprint_MakeshiftAssaultRifle_5"
+        },
+        {
+            "name": "Makeshift Handgun",
+            "id": "MakeshiftHandgun"
+        },
+        {
+            "name": "Makeshift Handgun +1",
+            "id": "MakeshiftHandgun_2"
+        },
+        {
+            "name": "Makeshift Handgun +2",
+            "id": "MakeshiftHandgun_3"
+        },
+        {
+            "name": "Makeshift Handgun +3",
+            "id": "MakeshiftHandgun_4"
+        },
+        {
+            "name": "Makeshift Handgun +4",
+            "id": "MakeshiftHandgun_5"
+        },
+        {
+            "name": "Makeshift Handgun Schematic 1 +1",
+            "id": "Blueprint_MakeshiftHandgun_2"
+        },
+        {
+            "name": "Makeshift Handgun Schematic 2 +2",
+            "id": "Blueprint_MakeshiftHandgun_3"
+        },
+        {
+            "name": "Makeshift Handgun Schematic 3 +3",
+            "id": "Blueprint_MakeshiftHandgun_4"
+        },
+        {
+            "name": "Makeshift Handgun Schematic 4 +4",
+            "id": "Blueprint_MakeshiftHandgun_5"
+        },
+        {
+            "name": "Makeshift SMG",
+            "id": "MakeshiftSubmachineGun"
+        },
+        {
+            "name": "Makeshift SMG +1",
+            "id": "MakeshiftSubmachineGun_2"
+        },
+        {
+            "name": "Makeshift SMG +2",
+            "id": "MakeshiftSubmachineGun_3"
+        },
+        {
+            "name": "Makeshift SMG +3",
+            "id": "MakeshiftSubmachineGun_4"
+        },
+        {
+            "name": "Makeshift SMG +4",
+            "id": "MakeshiftSubmachineGun_5"
+        },
+        {
+            "name": "Makeshift SMG Schematic 1 +1",
+            "id": "Blueprint_MakeshiftSubmachineGun_2"
+        },
+        {
+            "name": "Makeshift SMG Schematic 2 +2",
+            "id": "Blueprint_MakeshiftSubmachineGun_3"
+        },
+        {
+            "name": "Makeshift SMG Schematic 3 +3",
+            "id": "Blueprint_MakeshiftSubmachineGun_4"
+        },
+        {
+            "name": "Makeshift SMG Schematic 4 +4",
+            "id": "Blueprint_MakeshiftSubmachineGun_5"
+        },
+        {
+            "name": "Makeshift Shotgun",
+            "id": "MakeshiftShotgun"
+        },
+        {
+            "name": "Makeshift Shotgun +1",
+            "id": "MakeshiftShotgun_2"
+        },
+        {
+            "name": "Makeshift Shotgun +2",
+            "id": "MakeshiftShotgun_3"
+        },
+        {
+            "name": "Makeshift Shotgun +3",
+            "id": "MakeshiftShotgun_4"
+        },
+        {
+            "name": "Makeshift Shotgun +4",
+            "id": "MakeshiftShotgun_5"
+        },
+        {
+            "name": "Makeshift Shotgun Schematic 1 +1",
+            "id": "Blueprint_MakeshiftShotgun_2"
+        },
+        {
+            "name": "Makeshift Shotgun Schematic 2 +2",
+            "id": "Blueprint_MakeshiftShotgun_3"
+        },
+        {
+            "name": "Makeshift Shotgun Schematic 3 +3",
+            "id": "Blueprint_MakeshiftShotgun_4"
+        },
+        {
+            "name": "Makeshift Shotgun Schematic 4 +4",
+            "id": "Blueprint_MakeshiftShotgun_5"
+        },
+        {
+            "name": "Mammorest Bounty Token",
+            "id": "BossDefeatReward_GrassMammoth"
+        },
+        {
+            "name": "Mammorest Cryst Saddle",
+            "id": "SkillUnlock_GrassMammoth_Ice"
+        },
+        {
+            "name": "Mammorest Curry",
+            "id": "Curry"
+        },
+        {
+            "name": "Mammorest Meat",
+            "id": "Meat_GrassMammoth"
+        },
+        {
+            "name": "Mammorest Saddle",
+            "id": "SkillUnlock_GrassMammoth"
+        },
+        {
+            "name": "Mammorest Steak",
+            "id": "BakedMeat_GrassMammoth"
+        },
+        {
+            "name": "Maraith Saddle",
+            "id": "SkillUnlock_GhostBeast"
+        },
+        {
+            "name": "Marcus Hat",
+            "id": "GYM_Head_Desert"
+        },
+        {
+            "name": "Marinated Mushrooms",
+            "id": "MarinatedMushrooms"
+        },
+        {
+            "name": "Meat Cleaver",
+            "id": "MeatCutterKnife"
+        },
+        {
+            "name": "Medical Supplies",
+            "id": "Medicines"
+        },
+        {
+            "name": "Medium Pal Soul",
+            "id": "PalUpgradeStone2"
+        },
+        {
+            "name": "Medium Pouch +1",
+            "id": "AdditionalInventory_002"
+        },
+        {
+            "name": "Mega Glider",
+            "id": "Glider_Good"
+        },
+        {
+            "name": "Mega Shield +1",
+            "id": "Shield_02"
+        },
+        {
+            "name": "Mega Sphere",
+            "id": "PalSphere_Mega"
+        },
+        {
+            "name": "Melpaca Saddle",
+            "id": "SkillUnlock_Alpaca"
+        },
+        {
+            "name": "Memory Wiping Medicine",
+            "id": "StatusPointResetSan"
+        },
+        {
+            "name": "Menasting Bounty Token",
+            "id": "BossDefeatReward_DarkScorpion"
+        },
+        {
+            "name": "Menasting Terra Bounty Token",
+            "id": "BossDefeatReward_DarkScorpion_Ground"
+        },
+        {
+            "name": "Meowmere",
+            "id": "YakushimaBlade"
+        },
+        {
+            "name": "Metal Armor",
+            "id": "CopperArmor"
+        },
+        {
+            "name": "Metal Armor Schematic 1 +1",
+            "id": "Blueprint_CopperArmor_2"
+        },
+        {
+            "name": "Metal Armor Schematic 2 +2",
+            "id": "Blueprint_CopperArmor_3"
+        },
+        {
+            "name": "Metal Armor Schematic 3 +3",
+            "id": "Blueprint_CopperArmor_4"
+        },
+        {
+            "name": "Metal Armor Schematic 4 +4",
+            "id": "Blueprint_CopperArmor_5"
+        },
+        {
+            "name": "Metal Axe",
+            "id": "Axe_Tier_01"
+        },
+        {
+            "name": "Metal Detector",
+            "id": "MetalDetector"
+        },
+        {
+            "name": "Metal Helm",
+            "id": "CopperHelmet"
+        },
+        {
+            "name": "Metal Helm +1",
+            "id": "CopperHelmet_2"
+        },
+        {
+            "name": "Metal Helm +2",
+            "id": "CopperHelmet_3"
+        },
+        {
+            "name": "Metal Helm +3",
+            "id": "CopperHelmet_4"
+        },
+        {
+            "name": "Metal Helm +4",
+            "id": "CopperHelmet_5"
+        },
+        {
+            "name": "Metal Helm Schematic 1 +1",
+            "id": "Blueprint_CopperHelmet_2"
+        },
+        {
+            "name": "Metal Helm Schematic 2 +2",
+            "id": "Blueprint_CopperHelmet_3"
+        },
+        {
+            "name": "Metal Helm Schematic 3 +3",
+            "id": "Blueprint_CopperHelmet_4"
+        },
+        {
+            "name": "Metal Helm Schematic 4 +4",
+            "id": "Blueprint_CopperHelmet_5"
+        },
+        {
+            "name": "Metal Pickaxe",
+            "id": "Pickaxe_Tier_01"
+        },
+        {
+            "name": "Metal Spear +1",
+            "id": "Spear_2"
+        },
+        {
+            "name": "Meteor Launcher",
+            "id": "Launcher_Meteor"
+        },
+        {
+            "name": "Meteorite Ammo",
+            "id": "MeteorBullet"
+        },
+        {
+            "name": "Meteorite Fragment",
+            "id": "MeteorDrop"
+        },
+        {
+            "name": "Might Elixir +1",
+            "id": "Elixir_attack_02"
+        },
+        {
+            "name": "Might Remedy",
+            "id": "Elixir_attack_01"
+        },
+        {
+            "name": "Milk",
+            "id": "Milk"
+        },
+        {
+            "name": "Mind Control Meds",
+            "id": "MindControlDrug"
+        },
+        {
+            "name": "Minestrone",
+            "id": "Minestrone"
+        },
+        {
+            "name": "Missile Ammo",
+            "id": "MissileBullet"
+        },
+        {
+            "name": "Monarch's Crown",
+            "id": "Head001"
+        },
+        {
+            "name": "Monarch's Crown +1",
+            "id": "Head001_2"
+        },
+        {
+            "name": "Monarch's Crown +2",
+            "id": "Head001_3"
+        },
+        {
+            "name": "Monarch's Crown +3",
+            "id": "Head001_4"
+        },
+        {
+            "name": "Monarch's Crown +4",
+            "id": "Head001_5"
+        },
+        {
+            "name": "Monarch's Crown Schematic 1",
+            "id": "Blueprint_Head001_1"
+        },
+        {
+            "name": "Monarch's Crown Schematic 2 +1",
+            "id": "Blueprint_Head001_2"
+        },
+        {
+            "name": "Monarch's Crown Schematic 3 +2",
+            "id": "Blueprint_Head001_3"
+        },
+        {
+            "name": "Monarch's Crown Schematic 4 +3",
+            "id": "Blueprint_Head001_4"
+        },
+        {
+            "name": "Mossanda Lux Bounty Token",
+            "id": "BossDefeatReward_GrassPanda_Electric"
+        },
+        {
+            "name": "Mossanda Lux's Grenade Launcher",
+            "id": "SkillUnlock_GrassPanda_Electric"
+        },
+        {
+            "name": "Mossanda's Grenade Launcher",
+            "id": "SkillUnlock_GrassPanda"
+        },
+        {
+            "name": "Mozzarina Cheeseburger +1",
+            "id": "Cheeseburger_2"
+        },
+        {
+            "name": "Mozzarina Hamburger +1",
+            "id": "Hamburger_2"
+        },
+        {
+            "name": "Mozzarina Meat",
+            "id": "Meat_CowPal"
+        },
+        {
+            "name": "Mozzarina Steak",
+            "id": "BakedMeat_CowPal"
+        },
+        {
+            "name": "Multi Guided Missile Launcher",
+            "id": "MultiGuidedMissileLauncher"
+        },
+        {
+            "name": "Multi Guided Missile Launcher +1",
+            "id": "MultiGuidedMissileLauncher_2"
+        },
+        {
+            "name": "Multi Guided Missile Launcher +2",
+            "id": "MultiGuidedMissileLauncher_3"
+        },
+        {
+            "name": "Multi Guided Missile Launcher +3",
+            "id": "MultiGuidedMissileLauncher_4"
+        },
+        {
+            "name": "Multi Guided Missile Launcher +4",
+            "id": "MultiGuidedMissileLauncher_5"
+        },
+        {
+            "name": "Multi Guided Missile Launcher Schematic",
+            "id": "Blueprint_MultiGuidedMissileLauncher"
+        },
+        {
+            "name": "Multi Guided Missile Launcher Schematic 1 +1",
+            "id": "Blueprint_MultiGuidedMissileLauncher_2"
+        },
+        {
+            "name": "Multi Guided Missile Launcher Schematic 2 +2",
+            "id": "Blueprint_MultiGuidedMissileLauncher_3"
+        },
+        {
+            "name": "Multi Guided Missile Launcher Schematic 3 +3",
+            "id": "Blueprint_MultiGuidedMissileLauncher_4"
+        },
+        {
+            "name": "Multi Guided Missile Launcher Schematic 4 +4",
+            "id": "Blueprint_MultiGuidedMissileLauncher_5"
+        },
+        {
+            "name": "Multiclimate Undershirt",
+            "id": "Accessory_HeatColdResist_1"
+        },
+        {
+            "name": "Multiclimate Undershirt +1",
+            "id": "Accessory_HeatColdResist_2"
+        },
+        {
+            "name": "Multiclimate Undershirt +2",
+            "id": "Accessory_HeatColdResist_3"
+        },
+        {
+            "name": "Mushroom",
+            "id": "Mushroom"
+        },
+        {
+            "name": "Mushroom Quiche",
+            "id": "Quiche"
+        },
+        {
+            "name": "Mushroom Soup",
+            "id": "MushroomSoup"
+        },
+        {
+            "name": "Mushroom Stew",
+            "id": "MushroomStew"
+        },
+        {
+            "name": "Musket",
+            "id": "Musket"
+        },
+        {
+            "name": "Musket +1",
+            "id": "Musket_2"
+        },
+        {
+            "name": "Musket +2",
+            "id": "Musket_3"
+        },
+        {
+            "name": "Musket +3",
+            "id": "Musket_4"
+        },
+        {
+            "name": "Musket +4",
+            "id": "Musket_5"
+        },
+        {
+            "name": "Musket Schematic 1 +1",
+            "id": "Blueprint_Musket_2"
+        },
+        {
+            "name": "Musket Schematic 2 +2",
+            "id": "Blueprint_Musket_3"
+        },
+        {
+            "name": "Musket Schematic 3 +3",
+            "id": "Blueprint_Musket_4"
+        },
+        {
+            "name": "Musket Schematic 4 +4",
+            "id": "Blueprint_Musket_5"
+        },
+        {
+            "name": "Mysterious Accessory Box",
+            "id": "UnlockEquipmentSlot_Accessory_01"
+        },
+        {
+            "name": "Mysterious Mushroom",
+            "id": "PoisonMushroom"
+        },
+        {
+            "name": "Mysterious Mushroom Juice",
+            "id": "MushroomJuice"
+        },
+        {
+            "name": "Nail",
+            "id": "MachineParts"
+        },
+        {
+            "name": "Necromus Saddle",
+            "id": "SkillUnlock_BlackCentaur"
+        },
+        {
+            "name": "Night Vision Goggles",
+            "id": "NightVisionGoggles"
+        },
+        {
+            "name": "Nightstar Sand",
+            "id": "NightStone"
+        },
+        {
+            "name": "Nitemary Bounty Token",
+            "id": "BossDefeatReward_GhostRabbit"
+        },
+        {
+            "name": "Nitewing Bounty Token",
+            "id": "BossDefeatReward_HawkBird"
+        },
+        {
+            "name": "Nitewing Saddle",
+            "id": "SkillUnlock_HawkBird"
+        },
+        {
+            "name": "Normal Parachute",
+            "id": "Glider_Old"
+        },
+        {
+            "name": "Nyafia Bounty Token",
+            "id": "BossDefeatReward_BadCatgirl"
+        },
+        {
+            "name": "Nyafia's Shotgun",
+            "id": "SkillUnlock_BadCatgirl"
+        },
+        {
+            "name": "Old Bow",
+            "id": "WeakerBow"
+        },
+        {
+            "name": "Old Bow Schematic 1 +1",
+            "id": "Blueprint_WeakerBow_2"
+        },
+        {
+            "name": "Old Bow Schematic 2 +2",
+            "id": "Blueprint_WeakerBow_3"
+        },
+        {
+            "name": "Old Bow Schematic 3 +3",
+            "id": "Blueprint_WeakerBow_4"
+        },
+        {
+            "name": "Old Bow Schematic 4 +4",
+            "id": "Blueprint_WeakerBow_5"
+        },
+        {
+            "name": "Old Revolver",
+            "id": "OldRevolver"
+        },
+        {
+            "name": "Old Revolver +1",
+            "id": "OldRevolver_2"
+        },
+        {
+            "name": "Old Revolver +2",
+            "id": "OldRevolver_3"
+        },
+        {
+            "name": "Old Revolver +3",
+            "id": "OldRevolver_4"
+        },
+        {
+            "name": "Old Revolver +4",
+            "id": "OldRevolver_5"
+        },
+        {
+            "name": "Old Revolver Schematic 1 +1",
+            "id": "Blueprint_OldRevolver_2"
+        },
+        {
+            "name": "Old Revolver Schematic 2 +2",
+            "id": "Blueprint_OldRevolver_3"
+        },
+        {
+            "name": "Old Revolver Schematic 3 +3",
+            "id": "Blueprint_OldRevolver_4"
+        },
+        {
+            "name": "Old Revolver Schematic 4 +4",
+            "id": "Blueprint_OldRevolver_5"
+        },
+        {
+            "name": "Omascul Bounty Token",
+            "id": "BossDefeatReward_MysteryMask"
+        },
+        {
+            "name": "Omelet",
+            "id": "Omelet"
+        },
+        {
+            "name": "Onion",
+            "id": "Onion"
+        },
+        {
+            "name": "Onion Seeds",
+            "id": "OnionSeeds"
+        },
+        {
+            "name": "Ore",
+            "id": "CopperOre"
+        },
+        {
+            "name": "Pal Fluids",
+            "id": "PalFluid"
+        },
+        {
+            "name": "Pal Metal Armor",
+            "id": "StealArmor"
+        },
+        {
+            "name": "Pal Metal Armor Schematic 1 +1",
+            "id": "Blueprint_StealArmor_2"
+        },
+        {
+            "name": "Pal Metal Armor Schematic 2 +2",
+            "id": "Blueprint_StealArmor_3"
+        },
+        {
+            "name": "Pal Metal Armor Schematic 3 +3",
+            "id": "Blueprint_StealArmor_4"
+        },
+        {
+            "name": "Pal Metal Armor Schematic 4 +4",
+            "id": "Blueprint_StealArmor_5"
+        },
+        {
+            "name": "Pal Metal Axe",
+            "id": "Axe_Steal"
+        },
+        {
+            "name": "Pal Metal Helm",
+            "id": "StealHelmet"
+        },
+        {
+            "name": "Pal Metal Helm +1",
+            "id": "StealHelmet_2"
+        },
+        {
+            "name": "Pal Metal Helm +2",
+            "id": "StealHelmet_3"
+        },
+        {
+            "name": "Pal Metal Helm +3",
+            "id": "StealHelmet_4"
+        },
+        {
+            "name": "Pal Metal Helm +4",
+            "id": "StealHelmet_5"
+        },
+        {
+            "name": "Pal Metal Helm Schematic 1 +1",
+            "id": "Blueprint_StealHelmet_2"
+        },
+        {
+            "name": "Pal Metal Helm Schematic 2 +2",
+            "id": "Blueprint_StealHelmet_3"
+        },
+        {
+            "name": "Pal Metal Helm Schematic 3 +3",
+            "id": "Blueprint_StealHelmet_4"
+        },
+        {
+            "name": "Pal Metal Helm Schematic 4 +4",
+            "id": "Blueprint_StealHelmet_5"
+        },
+        {
+            "name": "Pal Metal Ingot",
+            "id": "StealIngot"
+        },
+        {
+            "name": "Pal Metal Pickaxe",
+            "id": "Pickaxe_Steal"
+        },
+        {
+            "name": "Pal Sphere",
+            "id": "PalSphere"
+        },
+        {
+            "name": "Pal Sphere",
+            "id": "PalSphere_Debug"
+        },
+        {
+            "name": "Paladius Saddle",
+            "id": "SkillUnlock_SaintCentaur"
+        },
+        {
+            "name": "Paldium Clump",
+            "id": "Pal_crystal_L"
+        },
+        {
+            "name": "Paldium Fragment",
+            "id": "Pal_crystal_S"
+        },
+        {
+            "name": "Pancake",
+            "id": "Pancake"
+        },
+        {
+            "name": "Pelt Armor",
+            "id": "FurArmor"
+        },
+        {
+            "name": "Pelt Armor Schematic 1 +1",
+            "id": "Blueprint_FurArmor_2"
+        },
+        {
+            "name": "Pelt Armor Schematic 2 +2",
+            "id": "Blueprint_FurArmor_3"
+        },
+        {
+            "name": "Pelt Armor Schematic 3 +3",
+            "id": "Blueprint_FurArmor_4"
+        },
+        {
+            "name": "Pelt Armor Schematic 4 +4",
+            "id": "Blueprint_FurArmor_5"
+        },
+        {
+            "name": "Pendant of Diligence",
+            "id": "Accessory_WorkSpeed_1"
+        },
+        {
+            "name": "Pendant of Diligence +1",
+            "id": "Accessory_WorkSpeed_2"
+        },
+        {
+            "name": "Pendant of Diligence +2",
+            "id": "Accessory_WorkSpeed_3"
+        },
+        {
+            "name": "Pengullet Rocket Launcher",
+            "id": "SkillUnlock_Penguin"
+        },
+        {
+            "name": "Penking Bounty Token",
+            "id": "BossDefeatReward_CaptainPenguin"
+        },
+        {
+            "name": "Penking Cap",
+            "id": "Head016"
+        },
+        {
+            "name": "Penking Cap +1",
+            "id": "Head016_2"
+        },
+        {
+            "name": "Penking Cap +2",
+            "id": "Head016_3"
+        },
+        {
+            "name": "Penking Cap +3",
+            "id": "Head016_4"
+        },
+        {
+            "name": "Penking Cap +4",
+            "id": "Head016_5"
+        },
+        {
+            "name": "Penking Cap Schematic 1",
+            "id": "Blueprint_Head016_1"
+        },
+        {
+            "name": "Penking Cap Schematic 2 +1",
+            "id": "Blueprint_Head016_2"
+        },
+        {
+            "name": "Penking Cap Schematic 3 +2",
+            "id": "Blueprint_Head016_3"
+        },
+        {
+            "name": "Penking Cap Schematic 4 +3",
+            "id": "Blueprint_Head016_4"
+        },
+        {
+            "name": "Penking Plume",
+            "id": "PalItem_CaptainPenguin"
+        },
+        {
+            "name": "Petallia Bounty Token",
+            "id": "BossDefeatReward_FlowerDoll"
+        },
+        {
+            "name": "Pizza",
+            "id": "Pizza"
+        },
+        {
+            "name": "Plasma Cannon",
+            "id": "EnergyRocketLauncher"
+        },
+        {
+            "name": "Plasma Cannon +1",
+            "id": "EnergyRocketLauncher_2"
+        },
+        {
+            "name": "Plasma Cannon +2",
+            "id": "EnergyRocketLauncher_3"
+        },
+        {
+            "name": "Plasma Cannon +3",
+            "id": "EnergyRocketLauncher_4"
+        },
+        {
+            "name": "Plasma Cannon +4",
+            "id": "EnergyRocketLauncher_5"
+        },
+        {
+            "name": "Plasma Cannon Schematic 1 +1",
+            "id": "Blueprint_EnergyRocketLauncher_2"
+        },
+        {
+            "name": "Plasma Cannon Schematic 2 +2",
+            "id": "Blueprint_EnergyRocketLauncher_3"
+        },
+        {
+            "name": "Plasma Cannon Schematic 3 +3",
+            "id": "Blueprint_EnergyRocketLauncher_4"
+        },
+        {
+            "name": "Plasma Cannon Schematic 4 +4",
+            "id": "Blueprint_EnergyRocketLauncher_5"
+        },
+        {
+            "name": "Plasma Cartridge",
+            "id": "EnergyLauncherBullet"
+        },
+        {
+            "name": "Plasteel",
+            "id": "Plastic"
+        },
+        {
+            "name": "Plasteel Armor",
+            "id": "PlasticArmor"
+        },
+        {
+            "name": "Plasteel Armor +1",
+            "id": "PlasticArmor_2"
+        },
+        {
+            "name": "Plasteel Armor +2",
+            "id": "PlasticArmor_3"
+        },
+        {
+            "name": "Plasteel Armor +3",
+            "id": "PlasticArmor_4"
+        },
+        {
+            "name": "Plasteel Armor +4",
+            "id": "PlasticArmor_5"
+        },
+        {
+            "name": "Plasteel Armor Schematic 1 +1",
+            "id": "Blueprint_PlasticArmor_2"
+        },
+        {
+            "name": "Plasteel Armor Schematic 2 +2",
+            "id": "Blueprint_PlasticArmor_3"
+        },
+        {
+            "name": "Plasteel Armor Schematic 3 +3",
+            "id": "Blueprint_PlasticArmor_4"
+        },
+        {
+            "name": "Plasteel Armor Schematic 4 +4",
+            "id": "Blueprint_PlasticArmor_5"
+        },
+        {
+            "name": "Plasteel Helmet",
+            "id": "PlasticHelmet"
+        },
+        {
+            "name": "Plasteel Helmet +1",
+            "id": "PlasticHelmet_2"
+        },
+        {
+            "name": "Plasteel Helmet +2",
+            "id": "PlasticHelmet_3"
+        },
+        {
+            "name": "Plasteel Helmet +3",
+            "id": "PlasticHelmet_4"
+        },
+        {
+            "name": "Plasteel Helmet +4",
+            "id": "PlasticHelmet_5"
+        },
+        {
+            "name": "Plasteel Helmet Schematic 1 +1",
+            "id": "Blueprint_PlasticHelmet_2"
+        },
+        {
+            "name": "Plasteel Helmet Schematic 2 +2",
+            "id": "Blueprint_PlasticHelmet_3"
+        },
+        {
+            "name": "Plasteel Helmet Schematic 3 +3",
+            "id": "Blueprint_PlasticHelmet_4"
+        },
+        {
+            "name": "Plasteel Helmet Schematic 4 +4",
+            "id": "Blueprint_PlasticHelmet_5"
+        },
+        {
+            "name": "Poison Arrow",
+            "id": "Arrow_Poison"
+        },
+        {
+            "name": "Poison Arrow Crossbow",
+            "id": "BowGun_Poison"
+        },
+        {
+            "name": "Poison Arrow Crossbow +1",
+            "id": "BowGun_Poison_2"
+        },
+        {
+            "name": "Poison Arrow Crossbow +2",
+            "id": "BowGun_Poison_3"
+        },
+        {
+            "name": "Poison Arrow Crossbow +3",
+            "id": "BowGun_Poison_4"
+        },
+        {
+            "name": "Poison Arrow Crossbow +4",
+            "id": "BowGun_Poison_5"
+        },
+        {
+            "name": "Poison Arrow Crossbow Schematic 1 +1",
+            "id": "Blueprint_BowGun_Poison_2"
+        },
+        {
+            "name": "Poison Arrow Crossbow Schematic 2 +2",
+            "id": "Blueprint_BowGun_Poison_3"
+        },
+        {
+            "name": "Poison Arrow Crossbow Schematic 3 +3",
+            "id": "Blueprint_BowGun_Poison_4"
+        },
+        {
+            "name": "Poison Arrow Crossbow Schematic 4 +4",
+            "id": "Blueprint_BowGun_Poison_5"
+        },
+        {
+            "name": "Poison Bow",
+            "id": "Bow_Poison"
+        },
+        {
+            "name": "Polymer",
+            "id": "Polymer"
+        },
+        {
+            "name": "Potage",
+            "id": "Potage"
+        },
+        {
+            "name": "Potato",
+            "id": "Potato"
+        },
+        {
+            "name": "Potato Seeds",
+            "id": "PotatoSeeds"
+        },
+        {
+            "name": "PotatoSeedPotatoes",
+            "id": "PotatoSeedPotatoes"
+        },
+        {
+            "name": "Power Fruit",
+            "id": "Fruit_attack_01"
+        },
+        {
+            "name": "Power Lotus (L) +1",
+            "id": "Lotus_attack_02"
+        },
+        {
+            "name": "Power Lotus (S)",
+            "id": "Lotus_attack_01"
+        },
+        {
+            "name": "Precious Claw +3",
+            "id": "PalItem_ToSell_04"
+        },
+        {
+            "name": "Precious Dragon Stone",
+            "id": "PalItem_ToSell_01"
+        },
+        {
+            "name": "Precious Entrails +2",
+            "id": "PalItem_ToSell_03"
+        },
+        {
+            "name": "Precious Pelt +4",
+            "id": "PalItem_ToSell_05"
+        },
+        {
+            "name": "Precious Plume +1",
+            "id": "PalItem_ToSell_02"
+        },
+        {
+            "name": "Predator Core",
+            "id": "PredatorCrystal"
+        },
+        {
+            "name": "Prunelia Bounty Token",
+            "id": "BossDefeatReward_BlueberryFairy"
+        },
+        {
+            "name": "Pump-Action Shotgun",
+            "id": "PumpActionShotgun"
+        },
+        {
+            "name": "Pump-Action Shotgun Schematic 1 +1",
+            "id": "Blueprint_PumpActionShotgun_2"
+        },
+        {
+            "name": "Pump-Action Shotgun Schematic 2 +2",
+            "id": "Blueprint_PumpActionShotgun_3"
+        },
+        {
+            "name": "Pump-Action Shotgun Schematic 3 +3",
+            "id": "Blueprint_PumpActionShotgun_4"
+        },
+        {
+            "name": "Pump-Action Shotgun Schematic 4 +4",
+            "id": "Blueprint_PumpActionShotgun_5"
+        },
+        {
+            "name": "Pure Quartz",
+            "id": "Quartz"
+        },
+        {
+            "name": "Pyrin Noct Saddle",
+            "id": "SkillUnlock_FireKirin_Dark"
+        },
+        {
+            "name": "Pyrin Saddle",
+            "id": "SkillUnlock_FireKirin"
+        },
+        {
+            "name": "Quadruple Jump Boots",
+            "id": "Accessory_JumpCount_Increase3"
+        },
+        {
+            "name": "Quivern Botan Saddle",
+            "id": "SkillUnlock_SkyDragon_Grass"
+        },
+        {
+            "name": "Quivern Bounty Token",
+            "id": "BossDefeatReward_SkyDragon"
+        },
+        {
+            "name": "Quivern Saddle",
+            "id": "SkillUnlock_SkyDragon"
+        },
+        {
+            "name": "Radar Sphere",
+            "id": "PalSphere_Robbery"
+        },
+        {
+            "name": "Ragnahawk Saddle",
+            "id": "SkillUnlock_RedArmorBird"
+        },
+        {
+            "name": "Raw Dumud",
+            "id": "Meat_LazyCatfish"
+        },
+        {
+            "name": "Raw Kelpsea",
+            "id": "Meat_Kelpie"
+        },
+        {
+            "name": "Rayhound Saddle",
+            "id": "SkillUnlock_ThunderDog"
+        },
+        {
+            "name": "Recovery Meds",
+            "id": "Potion"
+        },
+        {
+            "name": "Red Berries",
+            "id": "Berries"
+        },
+        {
+            "name": "Refined Ingot",
+            "id": "IronIngot"
+        },
+        {
+            "name": "Refined Metal Armor",
+            "id": "IronArmor"
+        },
+        {
+            "name": "Refined Metal Armor Schematic 1 +1",
+            "id": "Blueprint_IronArmor_2"
+        },
+        {
+            "name": "Refined Metal Armor Schematic 2 +2",
+            "id": "Blueprint_IronArmor_3"
+        },
+        {
+            "name": "Refined Metal Armor Schematic 3 +3",
+            "id": "Blueprint_IronArmor_4"
+        },
+        {
+            "name": "Refined Metal Armor Schematic 4 +4",
+            "id": "Blueprint_IronArmor_5"
+        },
+        {
+            "name": "Refined Metal Axe +1",
+            "id": "Axe_Tier_02"
+        },
+        {
+            "name": "Refined Metal Helm",
+            "id": "IronHelmet"
+        },
+        {
+            "name": "Refined Metal Helm +1",
+            "id": "IronHelmet_2"
+        },
+        {
+            "name": "Refined Metal Helm +2",
+            "id": "IronHelmet_3"
+        },
+        {
+            "name": "Refined Metal Helm +3",
+            "id": "IronHelmet_4"
+        },
+        {
+            "name": "Refined Metal Helm +4",
+            "id": "IronHelmet_5"
+        },
+        {
+            "name": "Refined Metal Helm Schematic 1 +1",
+            "id": "Blueprint_IronHelmet_2"
+        },
+        {
+            "name": "Refined Metal Helm Schematic 2 +2",
+            "id": "Blueprint_IronHelmet_3"
+        },
+        {
+            "name": "Refined Metal Helm Schematic 3 +3",
+            "id": "Blueprint_IronHelmet_4"
+        },
+        {
+            "name": "Refined Metal Helm Schematic 4 +4",
+            "id": "Blueprint_IronHelmet_5"
+        },
+        {
+            "name": "Refined Metal Pickaxe +1",
+            "id": "Pickaxe_Tier_02"
+        },
+        {
+            "name": "Refined Metal Spear +2",
+            "id": "Spear_3"
+        },
+        {
+            "name": "Reindrix Saddle",
+            "id": "SkillUnlock_IceDeer"
+        },
+        {
+            "name": "Reindrix Stew",
+            "id": "StewedIceDeer"
+        },
+        {
+            "name": "Reindrix Venison",
+            "id": "Meat_IceDeer"
+        },
+        {
+            "name": "Reinforced Arrow",
+            "id": "ReinforcedArrow"
+        },
+        {
+            "name": "Relaxaurus Bounty Token",
+            "id": "BossDefeatReward_LazyDragon_Electric"
+        },
+        {
+            "name": "Relaxaurus Lux's Missile Launcher",
+            "id": "SkillUnlock_LazyDragon_Electric"
+        },
+        {
+            "name": "Relaxaurus's Missile Launcher",
+            "id": "SkillUnlock_LazyDragon"
+        },
+        {
+            "name": "Repair Kit",
+            "id": "RepairKit"
+        },
+        {
+            "name": "Reptyro Cryst Saddle",
+            "id": "SkillUnlock_VolcanicMonster_Ice"
+        },
+        {
+            "name": "Reptyro Saddle",
+            "id": "SkillUnlock_VolcanicMonster"
+        },
+        {
+            "name": "Revival Potion",
+            "id": "PalRevive"
+        },
+        {
+            "name": "Ribbuny Botan Bounty Token",
+            "id": "BossDefeatReward_PinkRabbit_Grass"
+        },
+        {
+            "name": "Ribbuny Headband",
+            "id": "HeadEquip028"
+        },
+        {
+            "name": "Ribbuny Headband +1",
+            "id": "HeadEquip028_2"
+        },
+        {
+            "name": "Ribbuny Headband +2",
+            "id": "HeadEquip028_3"
+        },
+        {
+            "name": "Ribbuny Headband +3",
+            "id": "HeadEquip028_4"
+        },
+        {
+            "name": "Ribbuny Headband +4",
+            "id": "HeadEquip028_5"
+        },
+        {
+            "name": "Ribbuny Headband Schematic 1",
+            "id": "Blueprint_HeadEquip028_1"
+        },
+        {
+            "name": "Ribbuny Headband Schematic 2 +1",
+            "id": "Blueprint_HeadEquip028_2"
+        },
+        {
+            "name": "Ribbuny Headband Schematic 3 +2",
+            "id": "Blueprint_HeadEquip028_3"
+        },
+        {
+            "name": "Ribbuny Headband Schematic 4 +3",
+            "id": "Blueprint_HeadEquip028_4"
+        },
+        {
+            "name": "Ribbuny Ribbon",
+            "id": "PalItem_PinkRabbit"
+        },
+        {
+            "name": "Rifle Ammo",
+            "id": "RifleBullet"
+        },
+        {
+            "name": "Ring of Dark Resistance",
+            "id": "Accessory_DarkResist_1"
+        },
+        {
+            "name": "Ring of Dark Resistance +1",
+            "id": "Accessory_DarkResist_2"
+        },
+        {
+            "name": "Ring of Dark Resistance +2",
+            "id": "Accessory_DarkResist_3"
+        },
+        {
+            "name": "Ring of Dragon Resistance",
+            "id": "Accessory_DragonResist_1"
+        },
+        {
+            "name": "Ring of Dragon Resistance +1",
+            "id": "Accessory_DragonResist_2"
+        },
+        {
+            "name": "Ring of Dragon Resistance +2",
+            "id": "Accessory_DragonResist_3"
+        },
+        {
+            "name": "Ring of Earth Resistance",
+            "id": "Accessory_EarthResist_1"
+        },
+        {
+            "name": "Ring of Earth Resistance +1",
+            "id": "Accessory_EarthResist_2"
+        },
+        {
+            "name": "Ring of Earth Resistance +2",
+            "id": "Accessory_EarthResist_3"
+        },
+        {
+            "name": "Ring of Fire Resistance",
+            "id": "Accessory_FireResist_1"
+        },
+        {
+            "name": "Ring of Fire Resistance +1",
+            "id": "Accessory_FireResist_2"
+        },
+        {
+            "name": "Ring of Fire Resistance +2",
+            "id": "Accessory_FireResist_3"
+        },
+        {
+            "name": "Ring of Freight",
+            "id": "Accessory_MaxWeightUp_01"
+        },
+        {
+            "name": "Ring of Freight +1",
+            "id": "Accessory_MaxWeightUp_02"
+        },
+        {
+            "name": "Ring of Freight +2",
+            "id": "Accessory_MaxWeightUp_03"
+        },
+        {
+            "name": "Ring of Grass Resistance",
+            "id": "Accessory_LeafResist_1"
+        },
+        {
+            "name": "Ring of Grass Resistance +1",
+            "id": "Accessory_LeafResist_2"
+        },
+        {
+            "name": "Ring of Grass Resistance +2",
+            "id": "Accessory_LeafResist_3"
+        },
+        {
+            "name": "Ring of Ice Resistance",
+            "id": "Accessory_IceResist_1"
+        },
+        {
+            "name": "Ring of Ice Resistance +1",
+            "id": "Accessory_IceResist_2"
+        },
+        {
+            "name": "Ring of Ice Resistance +2",
+            "id": "Accessory_IceResist_3"
+        },
+        {
+            "name": "Ring of Lightning Resistance",
+            "id": "Accessory_ThunderResist_1"
+        },
+        {
+            "name": "Ring of Lightning Resistance +1",
+            "id": "Accessory_ThunderResist_2"
+        },
+        {
+            "name": "Ring of Lightning Resistance +2",
+            "id": "Accessory_ThunderResist_3"
+        },
+        {
+            "name": "Ring of Mercy",
+            "id": "Accessory_Nonkilling"
+        },
+        {
+            "name": "Ring of Neutral Resistance",
+            "id": "Accessory_NormalResist_1"
+        },
+        {
+            "name": "Ring of Neutral Resistance +1",
+            "id": "Accessory_NormalResist_2"
+        },
+        {
+            "name": "Ring of Neutral Resistance +2",
+            "id": "Accessory_NormalResist_3"
+        },
+        {
+            "name": "Ring of Water Resistance",
+            "id": "Accessory_AquaResist_1"
+        },
+        {
+            "name": "Ring of Water Resistance +1",
+            "id": "Accessory_AquaResist_2"
+        },
+        {
+            "name": "Ring of Water Resistance +2",
+            "id": "Accessory_AquaResist_3"
+        },
+        {
+            "name": "Roast Eikthyrdeer",
+            "id": "BakedMeat_Deer"
+        },
+        {
+            "name": "Roast Reindrix",
+            "id": "BakedMeat_IceDeer"
+        },
+        {
+            "name": "Roast Rushoar",
+            "id": "BakedMeat_Boar"
+        },
+        {
+            "name": "Rocket Ammo",
+            "id": "ExplosiveBullet"
+        },
+        {
+            "name": "Rocket Launcher",
+            "id": "Launcher_Default"
+        },
+        {
+            "name": "Rocket Launcher Schematic 1 +1",
+            "id": "Blueprint_Launcher_Default_2"
+        },
+        {
+            "name": "Rocket Launcher Schematic 2 +2",
+            "id": "Blueprint_Launcher_Default_3"
+        },
+        {
+            "name": "Rocket Launcher Schematic 3 +3",
+            "id": "Blueprint_Launcher_Default_4"
+        },
+        {
+            "name": "Rocket Launcher Schematic 4 +4",
+            "id": "Blueprint_Launcher_Default_5"
+        },
+        {
+            "name": "Rocky Egg",
+            "id": "PalEgg_Earth_01"
+        },
+        {
+            "name": "Rocky Egg +1",
+            "id": "PalEgg_Earth_02"
+        },
+        {
+            "name": "Ruby",
+            "id": "Ruby"
+        },
+        {
+            "name": "Rushoar Bacon 'n' Eggs",
+            "id": "BaconEggs"
+        },
+        {
+            "name": "Rushoar Gyoza",
+            "id": "Gyoza"
+        },
+        {
+            "name": "Rushoar Hot Dog +1",
+            "id": "HotDog_2"
+        },
+        {
+            "name": "Rushoar Pork",
+            "id": "Meat_Boar"
+        },
+        {
+            "name": "Rushoar Saddle",
+            "id": "SkillUnlock_Boar"
+        },
+        {
+            "name": "SMG",
+            "id": "SubmachineGun"
+        },
+        {
+            "name": "SMG +1",
+            "id": "SubmachineGun_2"
+        },
+        {
+            "name": "SMG +2",
+            "id": "SubmachineGun_3"
+        },
+        {
+            "name": "SMG +3",
+            "id": "SubmachineGun_4"
+        },
+        {
+            "name": "SMG +4",
+            "id": "SubmachineGun_5"
+        },
+        {
+            "name": "SMG Schematic 1 +1",
+            "id": "Blueprint_SubmachineGun_2"
+        },
+        {
+            "name": "SMG Schematic 2 +2",
+            "id": "Blueprint_SubmachineGun_3"
+        },
+        {
+            "name": "SMG Schematic 3 +3",
+            "id": "Blueprint_SubmachineGun_4"
+        },
+        {
+            "name": "SMG Schematic 4 +4",
+            "id": "Blueprint_SubmachineGun_5"
+        },
+        {
+            "name": "Salad",
+            "id": "Salad"
+        },
+        {
+            "name": "Sandwich",
+            "id": "Sandwich"
+        },
+        {
+            "name": "Sapphire",
+            "id": "Sapphire"
+        },
+        {
+            "name": "Saya Hat",
+            "id": "GYM_Head_Sakurajima"
+        },
+        {
+            "name": "Scatter Sphere Launcher",
+            "id": "SphereLauncher"
+        },
+        {
+            "name": "Scorching Egg",
+            "id": "PalEgg_Fire_01"
+        },
+        {
+            "name": "Scorching Egg +1",
+            "id": "PalEgg_Fire_02"
+        },
+        {
+            "name": "Seafood Soup",
+            "id": "SeafoodSoup"
+        },
+        {
+            "name": "Selyne Saddle",
+            "id": "SkillUnlock_MoonQueen"
+        },
+        {
+            "name": "Semi-Auto Rifle",
+            "id": "SemiAutoRifle"
+        },
+        {
+            "name": "Semi-Auto Rifle +1",
+            "id": "SemiAutoRifle_2"
+        },
+        {
+            "name": "Semi-Auto Rifle +2",
+            "id": "SemiAutoRifle_3"
+        },
+        {
+            "name": "Semi-Auto Rifle +3",
+            "id": "SemiAutoRifle_4"
+        },
+        {
+            "name": "Semi-Auto Rifle +4",
+            "id": "SemiAutoRifle_5"
+        },
+        {
+            "name": "Semi-Auto Rifle Schematic 1 +1",
+            "id": "Blueprint_SemiAutoRifle_2"
+        },
+        {
+            "name": "Semi-Auto Rifle Schematic 2 +2",
+            "id": "Blueprint_SemiAutoRifle_3"
+        },
+        {
+            "name": "Semi-Auto Rifle Schematic 3 +3",
+            "id": "Blueprint_SemiAutoRifle_4"
+        },
+        {
+            "name": "Semi-Auto Rifle Schematic 4 +4",
+            "id": "Blueprint_SemiAutoRifle_5"
+        },
+        {
+            "name": "Semi-Auto Shotgun",
+            "id": "SemiAutoShotgun"
+        },
+        {
+            "name": "Semi-Auto Shotgun +1",
+            "id": "SemiAutoShotgun_2"
+        },
+        {
+            "name": "Semi-Auto Shotgun +2",
+            "id": "SemiAutoShotgun_3"
+        },
+        {
+            "name": "Semi-Auto Shotgun +3",
+            "id": "SemiAutoShotgun_4"
+        },
+        {
+            "name": "Semi-Auto Shotgun +4",
+            "id": "SemiAutoShotgun_5"
+        },
+        {
+            "name": "Semi-Auto Shotgun Schematic 1 +1",
+            "id": "Blueprint_SemiAutoShotgun_2"
+        },
+        {
+            "name": "Semi-Auto Shotgun Schematic 2 +2",
+            "id": "Blueprint_SemiAutoShotgun_3"
+        },
+        {
+            "name": "Semi-Auto Shotgun Schematic 3 +3",
+            "id": "Blueprint_SemiAutoShotgun_4"
+        },
+        {
+            "name": "Semi-Auto Shotgun Schematic 4 +4",
+            "id": "Blueprint_SemiAutoShotgun_5"
+        },
+        {
+            "name": "Shadowbeak Saddle",
+            "id": "SkillUnlock_BlackGriffon"
+        },
+        {
+            "name": "Shock Grenade",
+            "id": "FragGrenade_Elec"
+        },
+        {
+            "name": "Shotgun Shell",
+            "id": "ShotgunBullet"
+        },
+        {
+            "name": "Shroomer Noct Saddle",
+            "id": "SkillUnlock_MushroomDragon_Dark"
+        },
+        {
+            "name": "Shroomer Saddle",
+            "id": "SkillUnlock_MushroomDragon"
+        },
+        {
+            "name": "Sibelyx Bounty Token",
+            "id": "BossDefeatReward_WhiteMoth"
+        },
+        {
+            "name": "Sibelyx Hat",
+            "id": "HeadEquip024"
+        },
+        {
+            "name": "Silicon",
+            "id": "Silicon"
+        },
+        {
+            "name": "Silk Hat",
+            "id": "Head007"
+        },
+        {
+            "name": "Silk Hat +1",
+            "id": "Head007_2"
+        },
+        {
+            "name": "Silk Hat +2",
+            "id": "Head007_3"
+        },
+        {
+            "name": "Silk Hat +3",
+            "id": "Head007_4"
+        },
+        {
+            "name": "Silk Hat +4",
+            "id": "Head007_5"
+        },
+        {
+            "name": "Silk Hat Schematic 1",
+            "id": "Blueprint_Head007_1"
+        },
+        {
+            "name": "Silk Hat Schematic 2 +1",
+            "id": "Blueprint_Head007_2"
+        },
+        {
+            "name": "Silk Hat Schematic 3 +2",
+            "id": "Blueprint_Head007_3"
+        },
+        {
+            "name": "Silk Hat Schematic 4 +3",
+            "id": "Blueprint_Head007_4"
+        },
+        {
+            "name": "Silvegis Bounty Token",
+            "id": "BossDefeatReward_WhiteShieldDragon"
+        },
+        {
+            "name": "Silvegis Saddle",
+            "id": "SkillUnlock_WhiteShieldDragon"
+        },
+        {
+            "name": "Silver Key",
+            "id": "TreasureBoxKey02"
+        },
+        {
+            "name": "Single-Shot Rifle",
+            "id": "SingleShotRifle"
+        },
+        {
+            "name": "Single-Shot Rifle +1",
+            "id": "SingleShotRifle_2"
+        },
+        {
+            "name": "Single-Shot Rifle +2",
+            "id": "SingleShotRifle_3"
+        },
+        {
+            "name": "Single-Shot Rifle +3",
+            "id": "SingleShotRifle_4"
+        },
+        {
+            "name": "Single-Shot Rifle +4",
+            "id": "SingleShotRifle_5"
+        },
+        {
+            "name": "Single-Shot Rifle Schematic 1 +1",
+            "id": "Blueprint_SingleShotRifle_2"
+        },
+        {
+            "name": "Single-Shot Rifle Schematic 2 +2",
+            "id": "Blueprint_SingleShotRifle_3"
+        },
+        {
+            "name": "Single-Shot Rifle Schematic 3 +3",
+            "id": "Blueprint_SingleShotRifle_4"
+        },
+        {
+            "name": "Single-Shot Rifle Schematic 4 +4",
+            "id": "Blueprint_SingleShotRifle_5"
+        },
+        {
+            "name": "Single-Shot Sphere Launcher",
+            "id": "SphereLauncher_Once"
+        },
+        {
+            "name": "Skill Fruit: Air Blade",
+            "id": "SkillCard_AirBlade"
+        },
+        {
+            "name": "Skill Fruit: Air Cannon",
+            "id": "SkillCard_AirCanon"
+        },
+        {
+            "name": "Skill Fruit: Holy Burst",
+            "id": "SkillCard_HolyBlast"
+        },
+        {
+            "name": "Skill Fruit: Implode",
+            "id": "SkillCard_SelfDestruct"
+        },
+        {
+            "name": "Skill Fruit: Pal Blast",
+            "id": "SkillCard_HyperBeam"
+        },
+        {
+            "name": "Skill Fruit: Power Bomb",
+            "id": "SkillCard_PowerBall"
+        },
+        {
+            "name": "Skill Fruit: Power Shot",
+            "id": "SkillCard_PowerShot"
+        },
+        {
+            "name": "Slider Module",
+            "id": "SphereModule_Curve2"
+        },
+        {
+            "name": "Small Feed Bag",
+            "id": "AutoMealPouch_Tier1"
+        },
+        {
+            "name": "Small Pal Soul",
+            "id": "PalUpgradeStone"
+        },
+        {
+            "name": "Small Pouch",
+            "id": "AdditionalInventory_001"
+        },
+        {
+            "name": "Smokie Bounty Token",
+            "id": "BossDefeatReward_BlackPuppy"
+        },
+        {
+            "name": "Smokie's Harness",
+            "id": "SkillUnlock_BlackPuppy"
+        },
+        {
+            "name": "Sniper Module",
+            "id": "SphereModule_Sniper"
+        },
+        {
+            "name": "Sniper Module \u00e2\u2026\u00a1",
+            "id": "SphereModule_Sniper2"
+        },
+        {
+            "name": "Soft Hat",
+            "id": "Head005"
+        },
+        {
+            "name": "Soft Hat +1",
+            "id": "Head005_2"
+        },
+        {
+            "name": "Soft Hat +2",
+            "id": "Head005_3"
+        },
+        {
+            "name": "Soft Hat +3",
+            "id": "Head005_4"
+        },
+        {
+            "name": "Soft Hat +4",
+            "id": "Head005_5"
+        },
+        {
+            "name": "Soft Hat Schematic 1",
+            "id": "Blueprint_Head005_1"
+        },
+        {
+            "name": "Soft Hat Schematic 2 +1",
+            "id": "Blueprint_Head005_2"
+        },
+        {
+            "name": "Soft Hat Schematic 3 +2",
+            "id": "Blueprint_Head005_3"
+        },
+        {
+            "name": "Soft Hat Schematic 4 +3",
+            "id": "Blueprint_Head005_4"
+        },
+        {
+            "name": "Speed Elixir +1",
+            "id": "Elixir_workspeed_02"
+        },
+        {
+            "name": "Speed Lotus (L) +1",
+            "id": "Lotus_workspeed_02"
+        },
+        {
+            "name": "Speed Lotus (S)",
+            "id": "Lotus_workspeed_01"
+        },
+        {
+            "name": "Speed Remedy",
+            "id": "Elixir_workspeed_01"
+        },
+        {
+            "name": "Splatterina Bounty Token",
+            "id": "BossDefeatReward_GrimGirl"
+        },
+        {
+            "name": "Spring Rolls",
+            "id": "SpringRolls"
+        },
+        {
+            "name": "Stamina Elixir +1",
+            "id": "Elixir_stamina_02"
+        },
+        {
+            "name": "Stamina Lotus (L) +1",
+            "id": "Lotus_stamina_02"
+        },
+        {
+            "name": "Stamina Lotus (S)",
+            "id": "Lotus_stamina_01"
+        },
+        {
+            "name": "Stamina Remedy",
+            "id": "Elixir_stamina_01"
+        },
+        {
+            "name": "Starryon Bounty Token",
+            "id": "BossDefeatReward_NightBlueHorse"
+        },
+        {
+            "name": "Starryon Saddle",
+            "id": "SkillUnlock_NightBlueHorse"
+        },
+        {
+            "name": "Stew",
+            "id": "Stew"
+        },
+        {
+            "name": "Stewed Galeclaw",
+            "id": "Eaglestew"
+        },
+        {
+            "name": "Stir-Fried Vegetables",
+            "id": "StirFriedVegetables"
+        },
+        {
+            "name": "Stir-Fried Veggies",
+            "id": "FriedVegetables"
+        },
+        {
+            "name": "Stone",
+            "id": "Stone"
+        },
+        {
+            "name": "Stone Axe",
+            "id": "Axe_Tier_00"
+        },
+        {
+            "name": "Stone Pickaxe",
+            "id": "Pickaxe_Tier_00"
+        },
+        {
+            "name": "Stone Spear",
+            "id": "Spear"
+        },
+        {
+            "name": "Stout Fruit",
+            "id": "Fruit__defense_01"
+        },
+        {
+            "name": "Strange Juice",
+            "id": "Narcotic"
+        },
+        {
+            "name": "Stun Baton",
+            "id": "ElecBaton"
+        },
+        {
+            "name": "Successful Bounty Token",
+            "id": "BountyProof_1"
+        },
+        {
+            "name": "Sulfur",
+            "id": "Sulfur"
+        },
+        {
+            "name": "Summoning Altar",
+            "id": "PalSummon"
+        },
+        {
+            "name": "Surfent Saddle",
+            "id": "SkillUnlock_Serpent"
+        },
+        {
+            "name": "Surfent Terra Saddle",
+            "id": "SkillUnlock_Serpent_Ground"
+        },
+        {
+            "name": "Suspicious Juice",
+            "id": "Opium"
+        },
+        {
+            "name": "Suzaku Aqua Saddle",
+            "id": "SkillUnlock_Suzaku_Water"
+        },
+        {
+            "name": "Suzaku Bounty Token",
+            "id": "BossDefeatReward_Suzaku"
+        },
+        {
+            "name": "Suzaku Saddle",
+            "id": "SkillUnlock_Suzaku"
+        },
+        {
+            "name": "Swee Cap",
+            "id": "HeadEquip031"
+        },
+        {
+            "name": "Swee Cap +1",
+            "id": "HeadEquip031_2"
+        },
+        {
+            "name": "Swee Cap +2",
+            "id": "HeadEquip031_3"
+        },
+        {
+            "name": "Swee Cap +3",
+            "id": "HeadEquip031_4"
+        },
+        {
+            "name": "Swee Cap +4",
+            "id": "HeadEquip031_5"
+        },
+        {
+            "name": "Swee Cap Schematic 1",
+            "id": "Blueprint_HeadEquip031_1"
+        },
+        {
+            "name": "Swee Cap Schematic 2 +1",
+            "id": "Blueprint_HeadEquip031_2"
+        },
+        {
+            "name": "Swee Cap Schematic 3 +2",
+            "id": "Blueprint_HeadEquip031_3"
+        },
+        {
+            "name": "Swee Cap Schematic 4 +3",
+            "id": "Blueprint_HeadEquip031_4"
+        },
+        {
+            "name": "Swee Hair",
+            "id": "PalItem_MopBaby"
+        },
+        {
+            "name": "Sweepa Bounty Token",
+            "id": "BossDefeatReward_MopKing"
+        },
+        {
+            "name": "Sweepa Saddle",
+            "id": "SkillUnlock_MopKing"
+        },
+        {
+            "name": "Sword",
+            "id": "Sword"
+        },
+        {
+            "name": "Tanzee's Assault Rifle",
+            "id": "SkillUnlock_Monkey"
+        },
+        {
+            "name": "Tarantris Bounty Token",
+            "id": "BossDefeatReward_PurpleSpider"
+        },
+        {
+            "name": "Tarantriss Saddle",
+            "id": "SkillUnlock_PurpleSpider"
+        },
+        {
+            "name": "Thermal Undershirt",
+            "id": "Accessory_CoolResist_1"
+        },
+        {
+            "name": "Thermal Undershirt +1",
+            "id": "Accessory_CoolResist_2"
+        },
+        {
+            "name": "Thermal Undershirt +2",
+            "id": "Accessory_CoolResist_3"
+        },
+        {
+            "name": "Three Shot Bow",
+            "id": "Bow_Triple"
+        },
+        {
+            "name": "Tocotoco Cap",
+            "id": "Head013"
+        },
+        {
+            "name": "Tocotoco Cap +1",
+            "id": "Head013_2"
+        },
+        {
+            "name": "Tocotoco Cap +2",
+            "id": "Head013_3"
+        },
+        {
+            "name": "Tocotoco Cap +3",
+            "id": "Head013_4"
+        },
+        {
+            "name": "Tocotoco Cap +4",
+            "id": "Head013_5"
+        },
+        {
+            "name": "Tocotoco Cap Schematic 1",
+            "id": "Blueprint_Head013_1"
+        },
+        {
+            "name": "Tocotoco Cap Schematic 2 +1",
+            "id": "Blueprint_Head013_2"
+        },
+        {
+            "name": "Tocotoco Cap Schematic 3 +2",
+            "id": "Blueprint_Head013_3"
+        },
+        {
+            "name": "Tocotoco Cap Schematic 4 +3",
+            "id": "Blueprint_Head013_4"
+        },
+        {
+            "name": "Tocotoco Feather",
+            "id": "PalItem_ColorfulBird"
+        },
+        {
+            "name": "Tocotoco's Gloves",
+            "id": "SkillUnlock_ColorfulBird"
+        },
+        {
+            "name": "Tomato",
+            "id": "Tomato"
+        },
+        {
+            "name": "Tomato Seeds",
+            "id": "TomatoSeeds"
+        },
+        {
+            "name": "Training Crystal",
+            "id": "LvUP_01"
+        },
+        {
+            "name": "Training Manual (L) +2",
+            "id": "ExpBoost_03"
+        },
+        {
+            "name": "Training Manual (M) +1",
+            "id": "ExpBoost_02"
+        },
+        {
+            "name": "Training Manual (S)",
+            "id": "ExpBoost_01"
+        },
+        {
+            "name": "Training Manual (XL) +3",
+            "id": "ExpBoost_04"
+        },
+        {
+            "name": "Tricorne",
+            "id": "Head008"
+        },
+        {
+            "name": "Tricorne +1",
+            "id": "Head008_2"
+        },
+        {
+            "name": "Tricorne +2",
+            "id": "Head008_3"
+        },
+        {
+            "name": "Tricorne +3",
+            "id": "Head008_4"
+        },
+        {
+            "name": "Tricorne +4",
+            "id": "Head008_5"
+        },
+        {
+            "name": "Tricorne Schematic 1",
+            "id": "Blueprint_Head008_1"
+        },
+        {
+            "name": "Tricorne Schematic 2 +1",
+            "id": "Blueprint_Head008_2"
+        },
+        {
+            "name": "Tricorne Schematic 3 +2",
+            "id": "Blueprint_Head008_3"
+        },
+        {
+            "name": "Tricorne Schematic 4 +3",
+            "id": "Blueprint_Head008_4"
+        },
+        {
+            "name": "Triple Jump Boots",
+            "id": "Accessory_JumpCount_Increase2"
+        },
+        {
+            "name": "Tropical Outfit",
+            "id": "ClothArmorHeat"
+        },
+        {
+            "name": "Tropical Outfit +1",
+            "id": "ClothArmorHeat_2"
+        },
+        {
+            "name": "Tropical Outfit +2",
+            "id": "ClothArmorHeat_3"
+        },
+        {
+            "name": "Tropical Outfit +3",
+            "id": "ClothArmorHeat_4"
+        },
+        {
+            "name": "Tropical Outfit +4",
+            "id": "ClothArmorHeat_5"
+        },
+        {
+            "name": "Tropical Outfit Schematic 1 +1",
+            "id": "Blueprint_ClothArmorHeat_2"
+        },
+        {
+            "name": "Tropical Outfit Schematic 2 +2",
+            "id": "Blueprint_ClothArmorHeat_3"
+        },
+        {
+            "name": "Tropical Outfit Schematic 3 +3",
+            "id": "Blueprint_ClothArmorHeat_4"
+        },
+        {
+            "name": "Tropical Outfit Schematic 4 +4",
+            "id": "Blueprint_ClothArmorHeat_5"
+        },
+        {
+            "name": "Tundra Outfit",
+            "id": "ClothArmorCold"
+        },
+        {
+            "name": "Tundra Outfit +1",
+            "id": "ClothArmorCold_2"
+        },
+        {
+            "name": "Tundra Outfit +2",
+            "id": "ClothArmorCold_3"
+        },
+        {
+            "name": "Tundra Outfit +3",
+            "id": "ClothArmorCold_4"
+        },
+        {
+            "name": "Tundra Outfit +4",
+            "id": "ClothArmorCold_5"
+        },
+        {
+            "name": "Tundra Outfit Schematic 1 +1",
+            "id": "Blueprint_ClothArmorCold_2"
+        },
+        {
+            "name": "Tundra Outfit Schematic 2 +2",
+            "id": "Blueprint_ClothArmorCold_3"
+        },
+        {
+            "name": "Tundra Outfit Schematic 3 +3",
+            "id": "Blueprint_ClothArmorCold_4"
+        },
+        {
+            "name": "Tundra Outfit Schematic 4 +4",
+            "id": "Blueprint_ClothArmorCold_5"
+        },
+        {
+            "name": "Twin Knights Bounty Token",
+            "id": "BossDefeatReward_SaintCentaur"
+        },
+        {
+            "name": "Ultimate Sphere",
+            "id": "PalSphere_Ultimate"
+        },
+        {
+            "name": "Ultra Shield +4",
+            "id": "Shield_05"
+        },
+        {
+            "name": "Ultra Sphere",
+            "id": "PalSphere_Master"
+        },
+        {
+            "name": "Univolt Bounty Token",
+            "id": "BossDefeatReward_Kirin"
+        },
+        {
+            "name": "Univolt Saddle",
+            "id": "SkillUnlock_Kirin"
+        },
+        {
+            "name": "Unknown Item (AssaultRifle_NPC)",
+            "id": "AssaultRifle_NPC"
+        },
+        {
+            "name": "Unknown Item (BelieverFatCane)",
+            "id": "BelieverFatCane"
+        },
+        {
+            "name": "Unknown Item (BlueprintTest)",
+            "id": "BlueprintTest"
+        },
+        {
+            "name": "Unknown Item (Blueprint_HeadEquip025_5) +4",
+            "id": "Blueprint_HeadEquip025_5"
+        },
+        {
+            "name": "Unknown Item (Blueprint_HeadEquip026_5) +4",
+            "id": "Blueprint_HeadEquip026_5"
+        },
+        {
+            "name": "Unknown Item (Blueprint_HeadEquip028_5) +4",
+            "id": "Blueprint_HeadEquip028_5"
+        },
+        {
+            "name": "Unknown Item (Blueprint_HeadEquip031_5) +4",
+            "id": "Blueprint_HeadEquip031_5"
+        },
+        {
+            "name": "Unknown Item (Blueprint_HeadEquip032_5) +4",
+            "id": "Blueprint_HeadEquip032_5"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_AttackUp)",
+            "id": "Debug_Handgun_AttackUp"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Burn)",
+            "id": "Debug_Handgun_Burn"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Darkness)",
+            "id": "Debug_Handgun_Darkness"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_DefenseUp)",
+            "id": "Debug_Handgun_DefenseUp"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Electrical)",
+            "id": "Debug_Handgun_Electrical"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Freeze)",
+            "id": "Debug_Handgun_Freeze"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_IvyCling)",
+            "id": "Debug_Handgun_IvyCling"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Muddy)",
+            "id": "Debug_Handgun_Muddy"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Poison)",
+            "id": "Debug_Handgun_Poison"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Stun)",
+            "id": "Debug_Handgun_Stun"
+        },
+        {
+            "name": "Unknown Item (Debug_Handgun_Wetness)",
+            "id": "Debug_Handgun_Wetness"
+        },
+        {
+            "name": "Unknown Item (FlameThrower)",
+            "id": "FlameThrower"
+        },
+        {
+            "name": "Unknown Item (FlameThrower_2) +1",
+            "id": "FlameThrower_2"
+        },
+        {
+            "name": "Unknown Item (FlameThrower_3) +2",
+            "id": "FlameThrower_3"
+        },
+        {
+            "name": "Unknown Item (FlameThrower_4) +3",
+            "id": "FlameThrower_4"
+        },
+        {
+            "name": "Unknown Item (FlameThrower_5) +4",
+            "id": "FlameThrower_5"
+        },
+        {
+            "name": "Unknown Item (FlameThrower_NPC)",
+            "id": "FlameThrower_NPC"
+        },
+        {
+            "name": "Unknown Item (Glider_Tera)",
+            "id": "Glider_Tera"
+        },
+        {
+            "name": "Unknown Item (GrapplingGun)",
+            "id": "GrapplingGun"
+        },
+        {
+            "name": "Unknown Item (GrapplingGun2)",
+            "id": "GrapplingGun2"
+        },
+        {
+            "name": "Unknown Item (GrapplingGun3)",
+            "id": "GrapplingGun3"
+        },
+        {
+            "name": "Unknown Item (GrapplingGun4)",
+            "id": "GrapplingGun4"
+        },
+        {
+            "name": "Unknown Item (Handgun_NPC)",
+            "id": "Handgun_NPC"
+        },
+        {
+            "name": "Unknown Item (Meat)",
+            "id": "Meat"
+        },
+        {
+            "name": "Unknown Item (MissileLauncher_NPC)",
+            "id": "MissileLauncher_NPC"
+        },
+        {
+            "name": "Unknown Item (PV_AssaultRifle_Default1)",
+            "id": "PV_AssaultRifle_Default1"
+        },
+        {
+            "name": "Unknown Item (PV_Glider_Manta)",
+            "id": "PV_Glider_Manta"
+        },
+        {
+            "name": "Unknown Item (PalGenderReverseTest)",
+            "id": "PalGenderReverseTest"
+        },
+        {
+            "name": "Unknown Item (PalPassiveSkillChangeTest)",
+            "id": "PalPassiveSkillChangeTest"
+        },
+        {
+            "name": "Unknown Item (RocketLauncher_NPC)",
+            "id": "RocketLauncher_NPC"
+        },
+        {
+            "name": "Unknown Item (Shield_Ultra)",
+            "id": "Shield_Ultra"
+        },
+        {
+            "name": "Unknown Item (Shotgun_NPC)",
+            "id": "Shotgun_NPC"
+        },
+        {
+            "name": "Unknown Item (TEST_BossDefeatReward)",
+            "id": "TEST_BossDefeatReward"
+        },
+        {
+            "name": "Unknown Item (TEST_CaptureItemModifier)",
+            "id": "TEST_CaptureItemModifier"
+        },
+        {
+            "name": "Vaelet Bounty Token",
+            "id": "BossDefeatReward_VioletFairy"
+        },
+        {
+            "name": "Vanwyrm Cryst Saddle",
+            "id": "SkillUnlock_BirdDragon_Ice"
+        },
+        {
+            "name": "Vanwyrm Saddle",
+            "id": "SkillUnlock_BirdDragon"
+        },
+        {
+            "name": "Venom Gland",
+            "id": "Venom"
+        },
+        {
+            "name": "Verdant Egg",
+            "id": "PalEgg_Leaf_01"
+        },
+        {
+            "name": "Verdant Egg +1",
+            "id": "PalEgg_Leaf_02"
+        },
+        {
+            "name": "Verdash Bounty Token",
+            "id": "BossDefeatReward_GrassRabbitMan"
+        },
+        {
+            "name": "Victor Hat",
+            "id": "GYM_Head_Snow"
+        },
+        {
+            "name": "Vital Elixir +1",
+            "id": "Elixir_hp_02"
+        },
+        {
+            "name": "Vital Remedy",
+            "id": "Elixir_hp_01"
+        },
+        {
+            "name": "Warsect Bounty Token",
+            "id": "BossDefeatReward_HerculesBeetle"
+        },
+        {
+            "name": "Warsect Terra Bounty Token",
+            "id": "BossDefeatReward_HerculesBeetle_Ground"
+        },
+        {
+            "name": "Water Grenade",
+            "id": "FragGrenade_Water"
+        },
+        {
+            "name": "Water Skill Fruit: Acid Rain",
+            "id": "SkillCard_AcidRain"
+        },
+        {
+            "name": "Water Skill Fruit: Aqua Burst",
+            "id": "SkillCard_WaterBall"
+        },
+        {
+            "name": "Water Skill Fruit: Aqua Gun",
+            "id": "SkillCard_WaterGun"
+        },
+        {
+            "name": "Water Skill Fruit: Bubble Blast",
+            "id": "SkillCard_BubbleShot"
+        },
+        {
+            "name": "Water Skill Fruit: Hydro Jet",
+            "id": "SkillCard_AquaJet"
+        },
+        {
+            "name": "Water Skill Fruit: Hydro Laser",
+            "id": "SkillCard_HydroPump"
+        },
+        {
+            "name": "Water Skill Fruit: Splash",
+            "id": "SkillCard_LineGeyser"
+        },
+        {
+            "name": "Water Skill Fruit: Wall Splash",
+            "id": "SkillCard_WallSplash"
+        },
+        {
+            "name": "Wheat",
+            "id": "Wheat"
+        },
+        {
+            "name": "Wheat Seeds",
+            "id": "WheatSeeds"
+        },
+        {
+            "name": "Wine",
+            "id": "Wine"
+        },
+        {
+            "name": "Witch Hat",
+            "id": "Head004"
+        },
+        {
+            "name": "Witch Hat +1",
+            "id": "Head004_2"
+        },
+        {
+            "name": "Witch Hat +2",
+            "id": "Head004_3"
+        },
+        {
+            "name": "Witch Hat +3",
+            "id": "Head004_4"
+        },
+        {
+            "name": "Witch Hat +4",
+            "id": "Head004_5"
+        },
+        {
+            "name": "Witch Hat Schematic 1",
+            "id": "Blueprint_Head004_1"
+        },
+        {
+            "name": "Witch Hat Schematic 2 +1",
+            "id": "Blueprint_Head004_2"
+        },
+        {
+            "name": "Witch Hat Schematic 3 +2",
+            "id": "Blueprint_Head004_3"
+        },
+        {
+            "name": "Witch Hat Schematic 4 +3",
+            "id": "Blueprint_Head004_4"
+        },
+        {
+            "name": "Witch's Crown (Ultra)",
+            "id": "HeadEquip001_purple"
+        },
+        {
+            "name": "Wood",
+            "id": "Wood"
+        },
+        {
+            "name": "Wooden Club",
+            "id": "Bat"
+        },
+        {
+            "name": "Wooden Club",
+            "id": "Bat_NPC"
+        },
+        {
+            "name": "Wool",
+            "id": "Wool"
+        },
+        {
+            "name": "Wumpo Botan Bounty Token",
+            "id": "BossDefeatReward_Yeti_Grass"
+        },
+        {
+            "name": "Wumpo Botan Saddle",
+            "id": "SkillUnlock_Yeti_Grass"
+        },
+        {
+            "name": "Wumpo Saddle",
+            "id": "SkillUnlock_Yeti"
+        },
+        {
+            "name": "Xenogard Saddle",
+            "id": "SkillUnlock_WhiteAlienDragon"
+        },
+        {
+            "name": "Xenolord (Ultra) Slab +1",
+            "id": "PalSummon_DarkMechaDragon_2"
+        },
+        {
+            "name": "Xenolord (Ultra) Slab Fragment +1",
+            "id": "PalSummon_DarkMechaDragon_Parts_2"
+        },
+        {
+            "name": "Xenolord Saddle",
+            "id": "SkillUnlock_DarkMechaDragon"
+        },
+        {
+            "name": "Xenolord Slab",
+            "id": "PalSummon_DarkMechaDragon"
+        },
+        {
+            "name": "Xenolord Slab Fragment",
+            "id": "PalSummon_DarkMechaDragon_Parts"
+        },
+        {
+            "name": "Xenolord's head",
+            "id": "HeadEquip044"
+        },
+        {
+            "name": "Yakumo Saddle",
+            "id": "SkillUnlock_GuardianDog"
+        },
+        {
+            "name": "Zoe Hat",
+            "id": "GYM_Head_Grass"
+        },
+        {
+            "name": "ClawsPendant",
+            "id": "ClawsPendant"
+        },
+        {
+            "name": "ClothHat",
+            "id": "ClothHat"
+        },
+        {
+            "name": "FangNecklace",
+            "id": "FangNecklace"
+        },
+        {
+            "name": "Berries2",
+            "id": "Berries2"
+        },
+        {
+            "name": "EnergyDrink",
+            "id": "EnergyDrink"
+        },
+        {
+            "name": "FarmCrop_Tmp",
+            "id": "FarmCrop_Tmp"
+        },
+        {
+            "name": "FishMeat",
+            "id": "FishMeat"
+        },
+        {
+            "name": "FishMeat2",
+            "id": "FishMeat2"
+        },
+        {
+            "name": "Meat2",
+            "id": "Meat2"
+        },
+        {
+            "name": "Seed_Tmp",
+            "id": "Seed_Tmp"
+        },
+        {
+            "name": "VenisonBoiledInTomato",
+            "id": "VenisonBoiledInTomato"
+        },
+        {
+            "name": "Potato_old",
+            "id": "Potato_old"
+        },
+        {
+            "name": "Corn",
+            "id": "Corn"
+        },
+        {
+            "name": "Pumpkin",
+            "id": "Pumpkin"
+        },
+        {
+            "name": "Baked_Potato",
+            "id": "Baked_Potato"
+        },
+        {
+            "name": "AnimalSkin2",
+            "id": "AnimalSkin2"
+        },
+        {
+            "name": "Scales",
+            "id": "Scales"
+        },
+        {
+            "name": "Scales2",
+            "id": "Scales2"
+        },
+        {
+            "name": "Claws2",
+            "id": "Claws2"
+        },
+        {
+            "name": "ElectronicCircuit",
+            "id": "ElectronicCircuit"
+        },
+        {
+            "name": "Fang2",
+            "id": "Fang2"
+        },
+        {
+            "name": "Flint",
+            "id": "Flint"
+        },
+        {
+            "name": "IronOre",
+            "id": "IronOre"
+        },
+        {
+            "name": "Kitsunebi_Fire",
+            "id": "Kitsunebi_Fire"
+        },
+        {
+            "name": "LargeBullet",
+            "id": "LargeBullet"
+        },
+        {
+            "name": "Leather2",
+            "id": "Leather2"
+        },
+        {
+            "name": "Sharkkid_Scale",
+            "id": "Sharkkid_Scale"
+        },
+        {
+            "name": "SmallBullet",
+            "id": "SmallBullet"
+        },
+        {
+            "name": "PAL_Growth_Stone_S",
+            "id": "PAL_Growth_Stone_S"
+        },
+        {
+            "name": "PAL_Growth_Stone_M",
+            "id": "PAL_Growth_Stone_M"
+        },
+        {
+            "name": "PAL_Growth_Stone_L",
+            "id": "PAL_Growth_Stone_L"
+        },
+        {
+            "name": "PAL_Growth_Stone_XL",
+            "id": "PAL_Growth_Stone_XL"
+        },
+        {
+            "name": "WaterBucket",
+            "id": "WaterBucket"
+        },
+        {
+            "name": "CashFang",
+            "id": "CashFang"
+        },
+        {
+            "name": "CashScales",
+            "id": "CashScales"
+        },
+        {
+            "name": "Sand",
+            "id": "Sand"
+        },
+        {
+            "name": "MonsterEquipWeapon_Dummy",
+            "id": "MonsterEquipWeapon_Dummy"
+        },
+        {
+            "name": "MateItem01",
+            "id": "MateItem01"
+        },
+        {
+            "name": "CaptureRope",
+            "id": "CaptureRope"
+        },
+        {
+            "name": "Launcher_Meat",
+            "id": "Launcher_Meat"
+        },
+        {
+            "name": "PenguinLauncher",
+            "id": "PenguinLauncher"
+        },
+        {
+            "name": "SniperRifle_Default",
+            "id": "SniperRifle_Default"
+        },
+        {
+            "name": "ThrowStone",
+            "id": "ThrowStone"
+        },
+        {
+            "name": "RecurveBow",
+            "id": "RecurveBow"
+        },
+        {
+            "name": "AirGrapplingGun",
+            "id": "AirGrapplingGun"
+        },
+        {
+            "name": "AssaultRifle_Default2",
+            "id": "AssaultRifle_Default2"
+        },
+        {
+            "name": "AssaultRifle_Default3",
+            "id": "AssaultRifle_Default3"
+        },
+        {
+            "name": "AssaultRifle_Default4",
+            "id": "AssaultRifle_Default4"
+        },
+        {
+            "name": "AssaultRifle_Default5",
+            "id": "AssaultRifle_Default5"
+        },
+        {
+            "name": "en Text +1",
+            "id": "ClothArmor_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "FurArmor_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "CopperArmor_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "IronArmor_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "StealArmor_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "WeakerBow_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "BowGun_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "PumpActionShotgun_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "HandGun_Default_2"
+        },
+        {
+            "name": "en Text +1",
+            "id": "Launcher_Default_2"
+        },
+        {
+            "name": "en Text +2",
+            "id": "ClothArmor_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "FurArmor_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "CopperArmor_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "IronArmor_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "StealArmor_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "Pickaxe_Tier_03"
+        },
+        {
+            "name": "en Text +2",
+            "id": "WeakerBow_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "BowGun_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "PumpActionShotgun_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "HandGun_Default_3"
+        },
+        {
+            "name": "en Text +2",
+            "id": "Launcher_Default_3"
+        },
+        {
+            "name": "en Text +3",
+            "id": "ClothArmor_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "FurArmor_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "CopperArmor_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "IronArmor_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "StealArmor_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "WeakerBow_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "BowGun_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "PumpActionShotgun_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "HandGun_Default_4"
+        },
+        {
+            "name": "en Text +3",
+            "id": "Launcher_Default_4"
+        },
+        {
+            "name": "en Text +4",
+            "id": "ClothArmor_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "FurArmor_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "CopperArmor_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "IronArmor_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "StealArmor_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "WeakerBow_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "BowGun_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "PumpActionShotgun_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "HandGun_Default_5"
+        },
+        {
+            "name": "en Text +4",
+            "id": "Launcher_Default_5"
+        },
+        {
+            "name": "en-Text",
+            "id": "Accessory_AirDash3"
+        },
+        {
+            "name": "en-Text",
+            "id": "Accessory_AirDash4"
+        },
+        {
+            "name": "en_text's Power Converter",
+            "id": "SkillUnlock_DarkMutant"
+        }
+    ]
+}

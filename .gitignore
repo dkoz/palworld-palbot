@@ -6,5 +6,5 @@
 
 /dev/*
 /venv/*
-!gamedata/*.json
-!i18n/*.json
+!src/gamedata/*.json
+!src/i18n/*.json
