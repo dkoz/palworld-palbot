@@ -353,6 +353,20 @@
             "response": "Giving {amount} Lifmunk Effigy relics to {steamid}.\nPalcon: {response}",
             "title": "Palguard Relic - {server}"
         },
+        "settime": {
+            "description": "Set the server time to day or night.",
+            "server_not_found": "Server {server} not found.",
+            "title": "Set Time - {time} on {server}",
+            "response": "Time has been set to {time}.\nPalcon: {response}",
+            "time": "Choose the time of day to set (Day/Night)."
+        },
+        "resetoilrig": {
+            "description": "Reset the oil rig to the specified level.",
+            "server_not_found": "Server {server} not found.",
+            "title": "Reset Oil Rig - {level} on {server}",
+            "response": "Oil rig reset to {level}.\nPalcon: {response}",
+            "level": "Choose the level for resetting the oil rig (Level 30/Level 55/Level 60/All)."
+        },
         "whitelistadd": {
             "description": "Add a player to the whitelist.",
             "server_not_found": "Server {server} not found.",

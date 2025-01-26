@@ -353,6 +353,20 @@
             "response": "Geben von {amount} Lifmunk-Effigy Relikten an {steamid}.\nPalcon: {response}",
             "title": "Palguard Relikt - {server}"
         },
+        "settime": {
+            "description": "Stellen Sie die Serverzeit auf Tag oder Nacht ein.",
+            "server_not_found": "Server {server} nicht gefunden.",
+            "title": "Zeit Einstellen - {time} auf {server}",
+            "response": "Die Zeit wurde auf {time} eingestellt.\nPalcon: {response}",
+            "time": "Wählen Sie die Tageszeit aus, die eingestellt werden soll (Tag/Nacht)."
+        },
+        "resetoilrig": {
+            "description": "Setzen Sie die Ölplattform auf die angegebene Stufe zurück.",
+            "server_not_found": "Server {server} nicht gefunden.",
+            "title": "Ölplattform Zurücksetzen - {level} auf {server}",
+            "response": "Ölplattform wurde auf {level} zurückgesetzt.\nPalcon: {response}",
+            "level": "Wählen Sie das Level zum Zurücksetzen der Ölplattform (Level 30/Level 55/Level 60/Alle)."
+        },
         "whitelistadd": {
             "description": "Füge einen Spieler zur Whitelist hinzu.",
             "server_not_found": "Server {server} nicht gefunden.",

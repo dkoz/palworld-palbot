@@ -421,6 +421,80 @@ class PalguardCog(commands.Cog):
     ):
         await self.autocomplete_server(interaction, current)
 
+    @palguard.subcommand(description=t("PalguardCog", "settime.description"))
+    @restrict_command()
+    async def settime(
+        self,
+        interaction: nextcord.Interaction,
+        time: str = nextcord.SlashOption(
+            description=t("PalguardCog", "description.time"),
+            choices={"Day": "day", "Night": "night"}
+        ),
+        server: str = nextcord.SlashOption(
+            description=t("PalguardCog", "description.server"),
+            autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(
+                t("PalguardCog", "settime.server_not_found").format(server=server), ephemeral=True
+            )
+            return
+        response = await asyncio.create_task(
+            self.rcon_util.rcon_command(server_info, f"settime {time}")
+        )
+        embed = nextcord.Embed(
+            title=t("PalguardCog", "settime.title").format(server=server, time=time.capitalize()),
+            color=nextcord.Color.green()
+        )
+        embed.description = t("PalguardCog", "settime.response").format(response=response, time=time)
+        await interaction.followup.send(embed=embed)
+
+    @settime.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
+    @palguard.subcommand(description=t("PalguardCog", "resetoilrig.description"))
+    @restrict_command()
+    async def resetoilrig(
+        self,
+        interaction: nextcord.Interaction,
+        level: str = nextcord.SlashOption(
+            description=t("PalguardCog", "description.level"),
+            choices={"Level 30": "lv30", "Level 55": "lv55", "Level 60": "lv60", "All": "all"}
+        ),
+        server: str = nextcord.SlashOption(
+            description=t("PalguardCog", "description.server"),
+            autocomplete=True
+        ),
+    ):
+        await interaction.response.defer(ephemeral=True)
+        server_info = await self.get_server_info(server)
+        if not server_info:
+            await interaction.followup.send(
+                t("PalguardCog", "resetoilrig.server_not_found").format(server=server), ephemeral=True
+            )
+            return
+        response = await asyncio.create_task(
+            self.rcon_util.rcon_command(server_info, f"resetoilrig {level}")
+        )
+        embed = nextcord.Embed(
+            title=t("PalguardCog", "resetoilrig.title").format(server=server, level=level.upper()),
+            color=nextcord.Color.orange()
+        )
+        embed.description = t("PalguardCog", "resetoilrig.response").format(response=response, level=level)
+        await interaction.followup.send(embed=embed)
+
+    @resetoilrig.on_autocomplete("server")
+    async def on_autocomplete_rcon(
+        self, interaction: nextcord.Interaction, current: str
+    ):
+        await self.autocomplete_server(interaction, current)
+
     # Palguard Whitelist Functions
     @nextcord.slash_command(
         name="whitelist",

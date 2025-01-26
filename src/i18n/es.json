@@ -353,6 +353,20 @@
             "response": "Dando {amount} reliquias Lifmunk Effigy a {steamid}.\nPalcon: {response}",
             "title": "Palguard Reliquia - {server}"
         },
+        "settime": {
+            "description": "Establece la hora del servidor en día o noche.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "title": "Establecer Hora - {time} en {server}",
+            "response": "La hora se ha establecido en {time}.\nPalcon: {response}",
+            "time": "Elige la hora del día para establecer (Día/Noche)."
+        },
+        "resetoilrig": {
+            "description": "Restablece la plataforma petrolera al nivel especificado.",
+            "server_not_found": "Servidor {server} no encontrado.",
+            "title": "Restablecer Plataforma - {level} en {server}",
+            "response": "La plataforma se ha restablecido a {level}.\nPalcon: {response}",
+            "level": "Elige el nivel para restablecer la plataforma petrolera (Nivel 30/Nivel 55/Nivel 60/Todos)."
+        },
         "whitelistadd": {
             "description": "Agregar un jugador a la lista blanca.",
             "server_not_found": "Servidor {server} no encontrado.",

@@ -353,6 +353,20 @@
             "response": "Dando {amount} relíquias da Efígie Lifmunk a {steamid}.\nPalcon: {response}",
             "title": "Palguard Relíquia - {server}"
         },
+        "settime": {
+            "description": "Defina o horário do servidor para dia ou noite.",
+            "server_not_found": "Servidor {server} não encontrado.",
+            "title": "Definir Horário - {time} em {server}",
+            "response": "O horário foi definido como {time}.\nPalcon: {response}",
+            "time": "Escolha o horário do dia para definir (Dia/Noite)."
+        },
+        "resetoilrig": {
+            "description": "Redefina a plataforma de petróleo para o nível especificado.",
+            "server_not_found": "Servidor {server} não encontrado.",
+            "title": "Redefinir Plataforma - {level} em {server}",
+            "response": "A plataforma foi redefinida para {level}.\nPalcon: {response}",
+            "level": "Escolha o nível para redefinir a plataforma de petróleo (Nível 30/Nível 55/Nível 60/Todos)."
+        },
         "whitelistadd": {
             "description": "Adicionar um jogador à White List.",
             "server_not_found": "Servidor {server} não encontrado.",
