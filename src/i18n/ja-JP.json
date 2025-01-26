@@ -1,0 +1,526 @@
+{
+    "Modals": {
+        "addserver": {
+            "title": "新しいサーバーを追加",
+            "server_name": {
+                "label": "サーバー名",
+                "placeholder": "サーバーの一意の名前を入力してください"
+            },
+            "server_host": {
+                "label": "サーバーホスト",
+                "placeholder": "サーバーのホストIPまたはアドレスを入力してください"
+            },
+            "rcon_port": {
+                "label": "RCONポート",
+                "placeholder": "RCONポートを入力してください"
+            },
+            "connection_port": {
+                "label": "接続ポート",
+                "placeholder": "接続ポートを入力してください"
+            },
+            "admin_pass": {
+                "label": "管理者パスワード",
+                "placeholder": "管理者パスワードを入力してください"
+            },
+            "success": "サーバー「{server_name}」が正常に追加されました。"
+        },
+        "economysettings": {
+            "title": "経済設定",
+            "currency_name": {
+                "label": "通貨名",
+                "placeholder": "ポイント"
+            },
+            "invite_reward": {
+                "label": "招待報酬",
+                "placeholder": "10"
+            },
+            "work_reward_min": {
+                "label": "最小ワーク報酬",
+                "placeholder": "20"
+            },
+            "work_reward_max": {
+                "label": "最大ワーク報酬",
+                "placeholder": "50"
+            },
+            "daily_reward": {
+                "label": "デイリー報酬",
+                "placeholder": "200"
+            },
+            "success": "経済設定が正常に更新されました。",
+            "error": "予期しないエラーが発生しました: {error}"
+        },
+        "etceconomysettings": {
+            "title": "経済設定",
+            "work_description": {
+                "label": "作業の説明",
+                "placeholder": "['あなたは働いて {earned_points} {currency} を獲得しました！']"
+            },
+            "role_bonuses": {
+                "label": "ロール名",
+                "placeholder": "{'Server Booster': 10, 'Supporter': 5}"
+            },
+            "vote_slug": {
+                "label": "投票スラグ",
+                "placeholder": "servername-123456"
+            },
+            "vote_apikey": {
+                "label": "投票APIキー",
+                "placeholder": "1234567890"
+            },
+            "vote_reward": {
+                "label": "投票報酬",
+                "placeholder": "100"
+            },
+            "success": "経済設定が正常に更新されました。",
+            "error": "予期しないエラーが発生しました: {error}"
+        },
+        "timersettings": {
+            "title": "タイマー設定",
+            "work_timer": {
+                "label": "ワークタイマー（秒）",
+                "placeholder": "360"
+            },
+            "daily_timer": {
+                "label": "デイリータイマー（秒）",
+                "placeholder": "86400"
+            },
+            "success": "タイマー設定が正常に更新されました。",
+            "error": "予期しないエラーが発生しました: {error}"
+        },
+        "kitmodal": {
+            "title": "キットの管理",
+            "kit_name_label": "キット名",
+            "commands_label": "コマンド（JSONリスト）",
+            "description_label": "説明",
+            "price_label": "価格",
+            "success_message": "キット「{kit_name}」が保存されました。"
+        }
+    },
+    "PalconCog": {
+        "command": {
+            "description": "Palworldサーバーへリモートコマンドを送信します。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "response": "**応答:** {response}",
+            "server_description": "サーバーを選択してください"
+        },
+        "showplayers": {
+            "description": "サーバーの現在のプレイヤーリストを表示します。",
+            "title": "プレイヤーリスト: {server}"
+        },
+        "kickplayer": {
+            "description": "SteamIDを使用してサーバーからプレイヤーをキックします。",
+            "title": "KickPlayerコマンド - {server}"
+        },
+        "banplayer": {
+            "description": "SteamIDを使用してサーバーからプレイヤーをBANします。",
+            "title": "BanPlayerコマンド - {server}"
+        },
+        "unbanplayer": {
+            "description": "SteamIDを使用してプレイヤーのBANを解除します。",
+            "title": "UnbanPlayerコマンド - {server}"
+        },
+        "info": {
+            "description": "サーバーの情報を表示します。",
+            "title": "情報 - {server}"
+        },
+        "shutdown": {
+            "description": "サーバーをシャットダウンします。",
+            "title": "シャットダウン - {server}",
+            "time_description": "シャットダウンの実行時間",
+            "reason_description": "シャットダウンの理由"
+        },
+        "save": {
+            "description": "サーバーを保存します。",
+            "title": "保存 - {server}"
+        },
+        "broadcast": {
+            "description": "サーバーにメッセージをブロードキャストします。",
+            "title": "ブロードキャスト - {server}"
+        }
+    },
+    "StatusTracker": {
+        "status": {
+            "activity": "{total_players} 人のプレイヤー"
+        }
+    },
+    "ServerConfig": {
+        "addserver": {
+            "description": "ボットにサーバーを追加します。"
+        },
+        "removeserver": {
+            "description": "ボットからサーバーを削除します。",
+            "success": "サーバー「{server_name}」が正常に削除されました。",
+            "failed": "サーバーの削除に失敗しました。存在しない可能性があります。"
+        },
+        "editserver": {
+            "description": "サーバーの詳細を編集します。",
+            "notfound": "サーバー「{server_name}」が見つかりません。",
+            "success": "サーバー「{server_name}」が正常に更新されました。"
+        }
+    },
+    "QueryCog": {
+        "status": {
+            "title": "{server} のステータス",
+            "status": "ステータス",
+            "version": "バージョン",
+            "players": "プレイヤー",
+            "connection_info": "接続情報",
+            "players_online": "オンラインのプレイヤー",
+            "no_players_online": "オンラインのプレイヤーはいません。"
+        },
+        "query": {
+            "description": "サーバークエリログを管理するためのコマンドグループです。",
+            "add": {
+                "description": "サーバークエリの更新を投稿するチャンネルを設定します。",
+                "server_description": "サーバーを選択してください。",
+                "success": "サーバー {server} のクエリ更新チャンネルが設定されました。",
+                "failed": "サーバー {server} のクエリ更新チャンネルを設定できませんでした。"
+            },
+            "remove": {
+                "description": "サーバークエリの更新を投稿するチャンネル設定を削除します。",
+                "server_description": "サーバーを選択してください。",
+                "success": "サーバー {server} のクエリ更新チャンネル設定が削除されました。",
+                "failed": "サーバー {server} のクエリ更新チャンネル設定の削除に失敗しました。"
+            }
+        }
+    },
+    "PlayerInfoCog": {
+        "userdb": {
+            "description": "ユーザーデータベースを検索します。",
+            "search_by_steamid": "SteamIDでプレイヤーを検索",
+            "search_by_name": "名前でプレイヤーを検索",
+            "enter_steamid": "SteamIDを入力してください",
+            "enter_name": "プレイヤー名を入力してください",
+            "player_info_title": "プレイヤー情報",
+            "name": "名前",
+            "player_uid": "プレイヤーUID",
+            "steamid": "SteamID",
+            "no_player_found": "SteamID {steamid} のプレイヤーは見つかりませんでした",
+            "player_not_found": "名前「{name}」のプレイヤーは見つかりませんでした"
+        }
+    },
+    "PlayerListCog": {
+        "playerslist": {
+            "command_description": "インタラクティブな埋め込みでプレイヤーリストを表示します。",
+            "server_description": "サーバーを選択してください",
+            "title": "プレイヤーリスト: {server}",
+            "description": "現在オンラインのプレイヤー一覧：",
+            "names": "名前",
+            "uids": "プレイヤーUID",
+            "steamids": "SteamID",
+            "no_data": "データがありません",
+            "empty_title": "プレイヤーリスト: 空",
+            "no_players_online": "現在オンラインのプレイヤーはいません。"
+        },
+        "button": {
+            "previous": "前へ",
+            "next": "次へ"
+        },
+        "error": {
+            "title": "エラー",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "failed_to_retrieve": "プレイヤーデータを取得できませんでした。"
+        }
+    },
+    "ConnectCog": {
+        "unknown_player": "不明なプレイヤー",
+        "player_join": {
+            "title": "プレイヤーが参加",
+            "description": "サーバー {server} に参加しました: {player_name} (SteamID: {steamid})"
+        },
+        "player_leave": {
+            "title": "プレイヤーが退出",
+            "description": "サーバー {server} から退出しました: {player_name} (SteamID: {steamid})"
+        },
+        "footer_time": "時間: {timestamp}",
+        "eventlogs": {
+            "description": "サーバーイベントを記録するチャンネルを設定します。",
+            "server_description": "サーバーを選択してください。",
+            "success": "サーバー {server} のイベントログ用チャンネルが設定されました。",
+            "failed": "サーバー {server} のイベントログ用チャンネルを設定できませんでした。"
+        },
+        "removelogs": {
+            "description": "サーバーイベントを記録するチャンネル設定を削除します。",
+            "server_description": "サーバーを選択してください。",
+            "success": "サーバー {server} のイベントログ用チャンネルが削除されました。",
+            "failed": "サーバー {server} のイベントログ用チャンネルの削除に失敗しました。"
+        }
+    },
+    "GamedataCog": {
+        "search": {
+            "pal": {
+                "description": "パルを名前で検索します。",
+                "name_description": "検索するパルの名前",
+                "spawn_code": "スポーンコード: `{id}`",
+                "not_found": "パルが見つかりません。"
+            },
+            "item": {
+                "description": "アイテムを名前で検索します。",
+                "name_description": "検索するアイテムの名前",
+                "spawn_code": "スポーンコード: `{id}`",
+                "not_found": "アイテムが見つかりません。"
+            }
+        }
+    },
+    "KitsCog": {
+        "givekit": {
+            "description": "プレイヤーにキットを与えます。",
+            "kit_not_found": "キットが見つかりません。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "error_executing_command": "コマンド「{command}」の実行中にエラーが発生しました: {error}",
+            "package_delivery_title": "荷物の配達 - {server}",
+            "package_delivery_description": "{steamid} に {kit_name} キットを配達しています。"
+        },
+        "manage_kits": {
+            "description": "キットを追加または更新します。",
+            "modal_title": "キットの管理",
+            "error_loading_kit": "キットの詳細読み込み中にエラーが発生しました: {error}"
+        },
+        "delete_kit": {
+            "description": "キットを削除します。",
+            "success": "キット「{kit_name}」が削除されました。"
+        },
+        "uploadkits": {
+            "description": "JSONファイルからデータベースにキットをアップロードします。",
+            "invalid_file": "有効なJSONファイルをアップロードしてください。",
+            "success": "キットが正常にアップロードされました。",
+            "error": "キットのアップロード中にエラーが発生しました: {error}"
+        }
+    },
+    "PalguardCog": {
+        "description": {
+            "userid": "アイテムを渡すユーザーのID。",
+            "amount": "アイテムの数量。",
+            "server": "サーバーを選択してください。",
+            "itemid": "渡すアイテムを選択してください。",
+            "palid": "渡すパルを選択してください。",
+            "level": "パルのレベル。",
+            "eggid": "渡す卵を選択してください。",
+            "palfilter": "パル削除のためのフィルターキーワード。"
+        },
+        "reloadcfg": {
+            "description": "サーバー設定をリロードします。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "response": "**応答:** {response}"
+        },
+        "givepal": {
+            "description": "プレイヤーにパルを与えます。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "pal_not_found": "パルIDが見つかりません。",
+            "response": "{steamid} に {palid} を渡しています。\nPalcon: {response}",
+            "title": "Palguardパル - {server}"
+        },
+        "deletepals": {
+            "description": "プレイヤーからパルを削除します。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "response": "Palcon: {response}",
+            "title": "Palguardパル - {server}"
+        },
+        "giveitem": {
+            "description": "プレイヤーにアイテムを与えます。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "item_not_found": "アイテムIDが見つかりません。",
+            "response": "{steamid} に {itemid} を渡しています。\nPalcon: {response}",
+            "title": "Palguardアイテム - {server}"
+        },
+        "delitem": {
+            "description": "プレイヤーからアイテムを削除します。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "item_not_found": "アイテムIDが見つかりません。",
+            "response": "{steamid} から {itemid}x{amount} を削除します。\nPalcon: {response}",
+            "title": "Palguardアイテム - {server}"
+        },
+        "giveexp": {
+            "description": "プレイヤーに経験値を与えます。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "response": "{steamid} に {amount} の経験値を与えています。\nPalcon: {response}",
+            "title": "Palguard経験値 - {server}"
+        },
+        "giveegg": {
+            "description": "プレイヤーに卵を与えます。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "egg_not_found": "卵IDが見つかりません。",
+            "response": "{steamid} に {eggid} を渡しています。\nPalcon: {response}",
+            "title": "Palguard卵 - {server}"
+        },
+        "palguardhelp": {
+            "description": "Palguardコマンドの一覧です。",
+            "server_not_found": "サーバー {server} が見つかりません。"
+        },
+        "giverelic": {
+            "description": "プレイヤーにLifmunk Effigyのレリックを与えます。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "response": "{steamid} に Lifmunk Effigy のレリックを {amount} 個与えています。\nPalcon: {response}",
+            "title": "Palguardレリック - {server}"
+        },
+        "settime": {
+            "description": "サーバーの時刻を昼または夜に設定します。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "title": "時間設定 - {server} を {time} に設定",
+            "response": "時間が {time} に設定されました。\nPalcon: {response}",
+            "time": "設定する時刻を選択してください（昼/夜）。"
+        },
+        "resetoilrig": {
+            "description": "オイルリグを指定したレベルにリセットします。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "title": "オイルリグのリセット - {server} の {level}",
+            "response": "オイルリグが {level} にリセットされました。\nPalcon: {response}",
+            "level": "オイルリグのリセットレベルを選択してください（Level 30/Level 55/Level 60/All）。"
+        },
+        "whitelistadd": {
+            "description": "プレイヤーをホワイトリストに追加します。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "response": "{steamid} をホワイトリストに追加しています。",
+            "title": "ホワイトリスト追加 - {server}"
+        },
+        "whitelistremove": {
+            "description": "プレイヤーをホワイトリストから削除します。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "response": "{steamid} をホワイトリストから削除しています。",
+            "title": "ホワイトリスト削除 - {server}"
+        },
+        "whitelistget": {
+            "description": "ホワイトリストを取得します。",
+            "server_not_found": "サーバー {server} が見つかりません。",
+            "whitelist": "**ホワイトリスト:**"
+        }
+    },
+    "EconomyCog": {
+        "economyinfo": {
+            "description": "経済情報を表示します。",
+            "title": "経済情報",
+            "currency": "通貨",
+            "work_reward": "ワーク報酬",
+            "work_cooldown": "ワークのクールダウン",
+            "daily_cooldown": "デイリーのクールダウン"
+        },
+        "leaderboard": {
+            "description": "ポイントのトップリーダーボードを表示します。",
+            "title": "トップ {currency}"
+        },
+        "transfer": {
+            "description": "他のユーザーにポイントを送金します。",
+            "title": "{currency} の送金",
+            "insufficient_funds": "送金に必要な {currency} が足りません。",
+            "transfer_success": "{recipient_name} に {points} {currency} を送金しました。",
+            "transfer_error": "自分自身にはポイントを送金できません。",
+            "invalid_amount": "無効な金額です。0より大きい数値を入力してください。"
+        },
+        "balance": {
+            "description": "自分のポイントを確認します。",
+            "title": "あなたの {currency} 残高",
+            "bank": "あなたのアカウントには {points} {currency} があります。"
+        },
+        "profile": {
+            "description": "自分のプロフィールを確認します。",
+            "title": "{user_name} のプロフィール",
+            "discord_username": "Discordユーザー名",
+            "currency": "{currency}",
+            "steam_id": "Steam ID"
+        },
+        "topinvites": {
+            "description": "招待数のトップリーダーボードを表示します。",
+            "title": "招待トップ",
+            "no_data": "招待データがありません。"
+        },
+        "economyhelp": {
+            "description": "経済コマンドのヘルプを表示します。",
+            "title": "経済ヘルプ",
+            "commands": "コマンド"
+        },
+        "setsteam": {
+            "description": "自分のSteam IDを設定します。",
+            "linked": "Steamアカウント {steam_id} をあなたのアカウントにリンクしました。"
+        },
+        "work": {
+            "description": "働いてポイントを獲得します。",
+            "title": "ワーク",
+            "cooldown_message": "作業のペースが早すぎます。あと {remaining_time} お待ちください。"
+        },
+        "daily": {
+            "description": "デイリーポイントを受け取ります。",
+            "title": "デイリー報酬",
+            "claimed": "{earned_points} {currency} を受け取りました。",
+            "cooldown_message": "すでにデイリーポイントを受け取り済みです。あと {remaining_time} お待ちください。"
+        }
+    },
+    "EconomyManageCog": {
+        "economyset": {
+            "description": "経済管理。",
+            "addpoints": {
+                "description": "ユーザーにポイントを追加します。",
+                "title": "{currency} を追加",
+                "message": "{user_name} に {points} {currency} を追加しました。"
+            },
+            "checkpoints": {
+                "description": "ユーザーのポイントを確認します。",
+                "title": "{currency} を確認",
+                "message": "{user_name} は {points} {currency} を持っています。"
+            },
+            "setpoints": {
+                "description": "ユーザーのポイントを設定します。",
+                "title": "{currency} を設定",
+                "message": "{user_name} の {currency} を {points} に設定しました。"
+            },
+            "forcesteam": {
+                "description": "ユーザーのSteamアカウントを強制的にリンクします。",
+                "message": "Steamアカウント {steam_id} を {user_name} にリンクしました。"
+            },
+            "removepoints": {
+                "description": "ユーザーのポイントを削除します。",
+                "title": "{currency} を削除",
+                "message": "{user_name} から {points} {currency} を削除しました。",
+                "insufficient_funds": "{user_name} は削除するのに十分な {currency} を所持していません。"
+            },
+            "help": {
+                "description": "経済管理コマンドのヘルプを表示します。",
+                "title": "経済管理ヘルプ",
+                "commands": "`/economyset addpoints` - ユーザーにポイントを追加します。\n`/economyset checkpoints` - ユーザーのポイントを確認します。\n`/economyset setpoints` - ユーザーのポイントを設定します。\n`/economyset removepoints` - ユーザーのポイントを削除します。\n`/economyset forcesteam` - ユーザーのSteamアカウントを強制リンクします。"
+            },
+            "settings": {
+                "description": "経済設定を編集します。"
+            },
+            "timers": {
+                "description": "経済のタイマーを編集します。"
+            },
+            "etc": {
+                "description": "追加の経済設定を編集します。"
+            },
+            "vote": {
+                "description": "投票設定を編集します。"
+            }
+        }
+    },
+    "ShopCog": {
+        "shop": {
+            "description": "ショップコマンド。",
+            "menu": {
+                "description": "ショップで購入可能なアイテムを表示します。",
+                "title": "ショップアイテム",
+                "message": "ショップへようこそ！購入前にPalworldサーバーに接続していることを確認してください。",
+                "price_label": "価格"
+            },
+            "redeem": {
+                "description": "ポイントを使用してショップアイテムを交換します。",
+                "item_description": "交換するアイテムの名前。",
+                "server_description": "サーバーを選択してください。",
+                "error_retrieve_data": "データの取得中にエラーが発生しました。",
+                "error_no_steamid": "Steam IDがリンクされていません。",
+                "error_item_not_found": "アイテムが見つかりません。",
+                "error_not_enough_points": "このアイテムと交換するための{currency}が不足しています。",
+                "success_title": "{item_name} と交換しました",
+                "success_description": "サーバー {server} で {item_name} を {item_price} {currency} と交換しました。残高は {remaining_points} {currency} です。",
+                "error_user_not_found": "サーバーでユーザー {user_name} が見つかりませんでした。ポイントは返却されました。"
+            }
+        }
+    },
+    "VoteCog": {
+        "vote": {
+            "description": "投票報酬を受け取ります。",
+            "invalid_steam": "Steam IDがリンクされていません。",
+            "vote_success": "投票ありがとうございます！{self.vote_reward} {self.currency} の報酬を受け取りました。",
+            "vote_claimed": "すでに報酬を受け取り済みです。",
+            "vote_error": "過去12時間以内に投票していないか、すでに報酬を受け取っています。"
+        }
+    }
+}

@@ -4,7 +4,7 @@ import src.utils.settings as settings
 import logging
 
 class Translator:
-    def __init__(self, language="en"):
+    def __init__(self, language="en-US"):
         self.language = language
         self.translations = {}
         self.load_translations()
