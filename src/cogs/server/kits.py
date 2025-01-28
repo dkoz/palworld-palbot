@@ -101,8 +101,7 @@ class KitsCog(commands.Cog):
     @nextcord.slash_command(
         name="managekits",
         description=t("KitsCog", "manage_kits.description"),
-        default_member_permissions=nextcord.Permissions(administrator=True),
-        
+        default_member_permissions=nextcord.Permissions(administrator=True)
     )
     @restrict_command()
     async def manage_kits(self, interaction: nextcord.Interaction, kit_name: str = ""):
@@ -129,8 +128,7 @@ class KitsCog(commands.Cog):
     @nextcord.slash_command(
         name="deletekit",
         description=t("KitsCog", "delete_kit.description"),
-        default_member_permissions=nextcord.Permissions(administrator=True),
-        
+        default_member_permissions=nextcord.Permissions(administrator=True)
     )
     @restrict_command()
     async def delete_kit(self, interaction: nextcord.Interaction, kit_name: str):
@@ -182,38 +180,43 @@ class KitsCog(commands.Cog):
     @nextcord.slash_command(
         name="exportkits",
         description="Export all kits as a JSON file.",
-        default_member_permissions=nextcord.Permissions(administrator=True),
-        
+        default_member_permissions=nextcord.Permissions(administrator=True)
     )
     @restrict_command()
     async def exportkits(self, interaction: nextcord.Interaction):
         await interaction.response.defer(ephemeral=True)
 
+        file_path = "kits.json"
         try:
             kits = await fetch_all_kits()
             if not kits:
                 await interaction.followup.send("No kits found to export.", ephemeral=True)
                 return
 
-            kits_data = {
-                kit[0]: {
-                    'commands': json.loads(kit[1]),
-                    'description': kit[2],
-                    'price': kit[3]
-                } for kit in kits
-            }
+            kits_data = {}
+            for kit in kits:
+                try:
+                    kit_name = kit[0]
+                    commands = json.loads(kit[1])
+                    kits_data[kit_name] = {
+                        'commands': commands,
+                        'description': kit[2],
+                        'price': kit[3]
+                    }
+                except json.JSONDecodeError as e:
+                    await interaction.followup.send(
+                        f"Error decoding JSON for kit '{kit_name}': {str(e)}", ephemeral=True
+                    )
+                    return
 
-            kits_json = json.dumps(kits_data, indent=4)
-            file_path = "kits_exported.json"
-
-            with open(file_path, "w") as file:
+            kits_json = json.dumps(kits_data, indent=4, ensure_ascii=False)
+            with open(file_path, "w", encoding="utf-8") as file:
                 file.write(kits_json)
 
             await interaction.followup.send(file=nextcord.File(file_path), ephemeral=True)
-            os.remove(file_path)
-
         except Exception as e:
             await interaction.followup.send(f"An error occurred while exporting kits: {str(e)}", ephemeral=True)
+        finally:
             if os.path.exists(file_path):
                 os.remove(file_path)
 
