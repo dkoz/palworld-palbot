@@ -1,13 +1,13 @@
 {
     "Modals": {
         "addserver": {
-            "title": "Adicionar Novo Servidor",
+            "title": "Adicionar novo servidor",
             "server_name": {
-                "label": "Nome do Servidor",
+                "label": "Nome do servidor",
                 "placeholder": "Insira um nome único para o servidor"
             },
             "server_host": {
-                "label": "Host do Servidor",
+                "label": "Host do servidor",
                 "placeholder": "Insira o IP ou endereço do host do servidor"
             },
             "rcon_port": {
@@ -15,73 +15,73 @@
                 "placeholder": "Insira a porta RCON"
             },
             "connection_port": {
-                "label": "Porta de Conexão",
+                "label": "Porta de conexão",
                 "placeholder": "Insira a porta de conexão"
             },
             "admin_pass": {
-                "label": "Senha de Administrador",
+                "label": "Senha de administrador",
                 "placeholder": "Insira a senha de administrador"
             },
             "success": "Servidor '{server_name}' adicionado com sucesso."
         },
         "economysettings": {
-            "title": "Configurações de Economia",
+            "title": "Configurações de economia",
             "currency_name": {
-                "label": "Nome da Moeda",
+                "label": "Nome da moeda",
                 "placeholder": "Pontos"
             },
             "invite_reward": {
-                "label": "Recompensa por Convite",
+                "label": "Recompensa por convite",
                 "placeholder": "10"
             },
             "work_reward_min": {
-                "label": "Recompensa Mínima por Trabalho",
+                "label": "Recompensa mínima por trabalho",
                 "placeholder": "20"
             },
             "work_reward_max": {
-                "label": "Recompensa Máxima por Trabalho",
+                "label": "Recompensa máxima por trabalho",
                 "placeholder": "50"
             },
             "daily_reward": {
-                "label": "Recompensa Diária",
+                "label": "Recompensa diária",
                 "placeholder": "200"
             },
             "success": "Configurações de economia atualizadas com sucesso.",
             "error": "Erro inesperado: {error}"
         },
         "etceconomysettings": {
-            "title": "Configurações de Economia",
+            "title": "Configurações de economia",
             "work_description": {
-                "label": "Descrição do Trabalho",
+                "label": "Descrição do trabalho",
                 "placeholder": "['Você trabalhou e ganhou {earned_points} {currency}!']"
             },
             "role_bonuses": {
-                "label": "Nomes de Cargos",
-                "placeholder": "{'Server Booster': 10, 'Supporter': 5}"
+                "label": "Nomes de cargos",
+                "placeholder": "{'Server booster': 10, 'Supporter': 5}"
             },
             "vote_slug": {
-                "label": "Identificador de Voto",
+                "label": "Identificador de voto",
                 "placeholder": "servername-123456"
             },
             "vote_apikey": {
-                "label": "Chave de API de Voto",
+                "label": "Chave de API de voto",
                 "placeholder": "1234567890"
             },
             "vote_reward": {
-                "label": "Recompensa por Voto",
+                "label": "Recompensa por voto",
                 "placeholder": "100"
             },
             "success": "Configurações de economia atualizadas com sucesso.",
             "error": "Erro inesperado: {error}"
         },
         "timersettings": {
-            "title": "Configurações de Temporizador",
+            "title": "Configurações de temporizador",
             "work_timer": {
-                "label": "Temporizador de Trabalho (segundos)",
+                "label": "Temporizador de trabalho (segundos)",
                 "placeholder": "360"
             },
             "daily_timer": {
-                "label": "Temporizador Diário (segundos)",
+                "label": "Temporizador diário (segundos)",
                 "placeholder": "86400"
             },
             "success": "Configurações de temporizador atualizadas com sucesso.",
