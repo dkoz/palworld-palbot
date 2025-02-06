@@ -164,8 +164,8 @@
             "status": "Status",
             "version": "Versão",
             "players": "Jogadores",
-            "connection_info": "Informações de Conexão",
-            "players_online": "Jogadores Online",
+            "connection_info": "Informações de conexão",
+            "players_online": "Jogadores cnline",
             "no_players_online": "Nenhum jogador online."
         },
         "query": {
