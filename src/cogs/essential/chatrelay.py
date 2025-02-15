@@ -31,7 +31,7 @@ class ChatRelayCog(commands.Cog):
         if not server_details:
             return
 
-        broadcast_message = f"[Discord] {message.content}"
+        broadcast_message = f"[{message.author.name}]: {message.content}"
         server_info = {
             "name": self.server_name,
             "host": server_details[0],

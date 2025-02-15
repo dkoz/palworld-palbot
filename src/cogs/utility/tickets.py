@@ -229,7 +229,7 @@ class TicketSystem(commands.Cog):
         ticket_channel_id = self.data.get('ticket_channel_id')
         if ticket_channel_id:
             ticket_channel = self.bot.get_channel(ticket_channel_id)
-            thread = await ticket_channel.create_thread(name=f"ticket-{self.ticket_counter}-{member.display_name}", auto_archive_duration=60)
+            thread = await ticket_channel.create_thread(name=f"ticket-{self.ticket_counter}-{member.display_name}", auto_archive_duration=1440)
             self.ticket_counter += 1
             self.data['ticket_counter'] = self.ticket_counter
             self.save_config()
@@ -252,7 +252,7 @@ class TicketSystem(commands.Cog):
             close_button.callback = self.button_callback
             view = View(timeout=None)
             view.add_item(close_button)
-            embed = nextcord.Embed(title="Your Ticket", description="Support will be with you shortly. Click the button to close this ticket.")
+            embed = nextcord.Embed(title=f"{category} Ticket", description="Support will be with you shortly. Click the button to close this ticket.")
             embed.add_field(name="Explain your issue", value="Provide details about your issue to help us assist you.", inline=False)
 
             role_mentions = ''
