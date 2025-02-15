@@ -14,7 +14,7 @@
 ## Requirements
 > These are the requirements for Palbot to function.
 - [Python 3.12](https://www.python.org/downloads/release/python-3119/)
-- [Palguard 1.1273](https://github.com/Ultimeit/palguard/releases/tag/v1.1273)
+- [PalDefender 1.1273](https://github.com/Ultimeit/PalDefender/releases/tag/v1.1273)
 
  Please check our [wiki](https://github.com/dkoz/palworld-bot/wiki) for all guides related to the bot.
 
@@ -26,8 +26,9 @@
  - **Event Logs:** Keep track of player activity by logging join and leave events on your server.
  - **Status Tracking:** Enable the status tracker to monitor the collective number of players on all your servers.
  - **Pal Game:** A system where players catch and battle Pals, unlocking stronger abilities, growing their collection, and earning currency.
- - **Economy System**: Enhance your server's gameplay with a fully integrated economy system. Players can earn currency through various activities, trade with others, and purchase kits containing exclusive items, pals, and eggs. This system encourages player engagement and adds a new layer of strategy to your server's ecosystem.
- - **Palguard Integration**: Offers RCON integration for executing PalGuard commands, such as item and pal spawning. Features a customizable game database with a search function to easily spawn desired items or pals.
+ - **Economy System**: Players earn points through server activities such as commands, events, and interactions. Points accumulate over time and serve as the primary currency for transactions within the bot, allowing users to engage with various features and rewards.
+ - **Shop System**: A structured system where players can spend their earned points to purchase kits. Kits contain predefined sets of items, Pals, eggs, and other rewards. The shop allows for easy redemption and management of kits through commands, ensuring a seamless experience.
+ - **PalDefender Integration**: Offers RCON integration for executing PalGuard commands, such as item and pal spawning. Features a customizable game database with a search function to easily spawn desired items or pals.
    - **Kits**: Effortlessly distribute custom kits with items, pals, and eggs to players across your Palworld servers.
  - **Steam API Integration**: Seamlessly integrate with the Steam API to fetch player profiles and enhance server management with detailed user insights.
  - **Localization Support**: Translate your server's features and messages into multiple languages, allowing players to enjoy a localized experience. This feature supports community-contributed translations, ensuring that the language used is both accurate and culturally relevant.
