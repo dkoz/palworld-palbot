@@ -138,13 +138,13 @@ class ShopCog(commands.Cog):
     async def shop(self, _interaction: nextcord.Interaction):
         pass
 
-    @shop.subcommand(name="menu", description=t("ShopCog", "shop.description"))
+    @shop.subcommand(name="menu", description=t("ShopCog", "shop.menu.description"))
     @restrict_command()
     async def menu(
         self,
         interaction: nextcord.Interaction,
-        server: str = nextcord.SlashOption(description=t("ShopCog", "shop.server_description"), autocomplete=True),
-        category: str = nextcord.SlashOption(description="Select the shop category", required=False, default="main", autocomplete=True)
+        server: str = nextcord.SlashOption(description=t("ShopCog", "shop.redeem.server_description"), autocomplete=True),
+        category: str = nextcord.SlashOption(description=t("ShopCog", "shop.redeem.item_category"), required=False, default="main", autocomplete=True)
     ):
         filtered_items = {k: v for k, v in self.shop_items.items() if v["category"].lower() == category.lower()}
 

@@ -93,6 +93,7 @@
             "commands_label": "コマンド（JSONリスト）",
             "description_label": "説明",
             "price_label": "価格",
+            "category_label": "カテゴリ",
             "success_message": "キット「{kit_name}」が保存されました。"
         }
     },
@@ -504,6 +505,7 @@
                 "description": "ポイントを使用してショップアイテムを交換します。",
                 "item_description": "交換するアイテムの名前。",
                 "server_description": "サーバーを選択してください。",
+                "item_category": "アイテムのカテゴリ。",
                 "error_retrieve_data": "データの取得中にエラーが発生しました。",
                 "error_no_steamid": "Steam IDがリンクされていません。",
                 "error_item_not_found": "アイテムが見つかりません。",

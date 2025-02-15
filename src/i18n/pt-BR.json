@@ -93,6 +93,7 @@
             "commands_label": "Comandos (lista JSON)",
             "description_label": "Descrição",
             "price_label": "Preço",
+            "category_label": "Categoria",
             "success_message": "O kit '{kit_name}' foi salvo."
         }
     },
@@ -504,6 +505,7 @@
                 "description": "Troque seus pontos por um item da loja.",
                 "item_description": "O nome do item a ser trocado.",
                 "server_description": "Selecione um servidor.",
+                "item_category": "A categoria dos itens.",
                 "error_retrieve_data": "Houve um erro ao recuperar seus dados.",
                 "error_no_steamid": "Nenhum ID da Steam vinculado.",
                 "error_item_not_found": "Item não encontrado.",

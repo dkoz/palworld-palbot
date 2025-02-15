@@ -93,6 +93,7 @@
             "commands_label": "Comandos (lista JSON)",
             "description_label": "Descripción",
             "price_label": "Precio",
+            "category_label": "Categoría",
             "success_message": "El kit '{kit_name}' ha sido guardado."
         }
     },
@@ -504,6 +505,7 @@
                 "description": "Canjea tus puntos por un artículo de la tienda.",
                 "item_description": "El nombre del artículo a canjear.",
                 "server_description": "Selecciona un servidor.",
+                "item_category": "La categoría de los artículos.",
                 "error_retrieve_data": "Hubo un error al recuperar tus datos.",
                 "error_no_steamid": "No hay Steam ID vinculado.",
                 "error_item_not_found": "Artículo no encontrado.",

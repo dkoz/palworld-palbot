@@ -93,6 +93,7 @@
             "commands_label": "Commands (JSON list)",
             "description_label": "Description",
             "price_label": "Price",
+            "category_label": "Category",
             "success_message": "Kit '{kit_name}' has been saved."
         }
     },
@@ -504,6 +505,7 @@
                 "description": "Redeem your points for a shop item.",
                 "item_description": "The name of the item to redeem.",
                 "server_description": "Select a server.",
+                "item_category": "The category of the items.",
                 "error_retrieve_data": "There was an error retrieving your data.",
                 "error_no_steamid": "No Steam ID linked.",
                 "error_item_not_found": "Item not found.",

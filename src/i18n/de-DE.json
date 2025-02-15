@@ -93,6 +93,7 @@
             "commands_label": "Befehle (JSON-Liste)",
             "description_label": "Beschreibung",
             "price_label": "Preis",
+            "category_label": "Kategorie",
             "success_message": "Kit '{kit_name}' wurde gespeichert."
         }
     },
@@ -504,6 +505,7 @@
                 "description": "Tausche deine Punkte gegen einen Shop-Artikel ein.",
                 "item_description": "Name des einzulösenden Artikels.",
                 "server_description": "Wähle einen Server.",
+                "item_category": "Die Kategorie der Artikel.",
                 "error_retrieve_data": "Beim Abrufen deiner Daten ist ein Fehler aufgetreten.",
                 "error_no_steamid": "Kein Steam-ID verknüpft.",
                 "error_item_not_found": "Artikel nicht gefunden.",

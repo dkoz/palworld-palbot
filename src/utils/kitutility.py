@@ -86,7 +86,7 @@ class KitModal(nextcord.ui.Modal):
         self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.commands_label"), default_value=commands, style=nextcord.TextInputStyle.paragraph))
         self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.description_label"), default_value=description))
         self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.price_label"), default_value=price))
-        self.add_item(nextcord.ui.TextInput(label="Kit Category", default_value=category, placeholder="main"))
+        self.add_item(nextcord.ui.TextInput(label=t("Modals", "kitmodal.category_label"), default_value=category, placeholder="main"))
 
     async def callback(self, interaction: nextcord.Interaction):
         kit_name = self.children[0].value
