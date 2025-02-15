@@ -140,14 +140,34 @@ class ShopCog(commands.Cog):
 
     @shop.subcommand(name="menu", description=t("ShopCog", "shop.description"))
     @restrict_command()
-    async def menu(self, interaction: nextcord.Interaction, server: str = nextcord.SlashOption(description=t("ShopCog", "shop.server_description"), autocomplete=True)):
-        view = ShopView(self.shop_items, self.currency, self, server)
+    async def menu(
+        self,
+        interaction: nextcord.Interaction,
+        server: str = nextcord.SlashOption(description=t("ShopCog", "shop.server_description"), autocomplete=True),
+        category: str = nextcord.SlashOption(description="Select the shop category", required=False, default="main", autocomplete=True)
+    ):
+        filtered_items = {k: v for k, v in self.shop_items.items() if v["category"].lower() == category.lower()}
+
+        if not filtered_items and category.lower() != "main":
+            await interaction.response.send_message(f"No kits found for category '{category}'.", ephemeral=True)
+            return
+
+        view = ShopView(filtered_items, self.currency, self, server)
         embed = await view.generate_shop_embed()
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
     @menu.on_autocomplete("server")
     async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
         await self.autocomplete_server(interaction, current)
+
+    @menu.on_autocomplete("category")
+    async def on_autocomplete_category(self, interaction: nextcord.Interaction, current: str):
+        if interaction.guild is None:
+            return []
+        
+        categories = list({v["category"] for v in self.shop_items.values()})
+        filtered = [cat for cat in categories if current.lower() in cat.lower()][:25]
+        await interaction.response.send_autocomplete(filtered)
 
     async def purchase_item(self, interaction: nextcord.Interaction, item_name: str, server: str):
         user_id = str(interaction.user.id)

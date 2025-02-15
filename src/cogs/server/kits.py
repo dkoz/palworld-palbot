@@ -59,9 +59,7 @@ class KitsCog(commands.Cog):
         if not kit:
             await interaction.followup.send(t("KitsCog", "givekit.kit_not_found"), ephemeral=True)
             return
-        
-        commands, description, price = kit
-
+        commands, description, price, category = kit
         server_info = await self.get_server_info(server)
         if not server_info:
             await interaction.followup.send(t("KitsCog", "givekit.server_not_found").format(server=server), ephemeral=True)
@@ -107,16 +105,21 @@ class KitsCog(commands.Cog):
     async def manage_kits(self, interaction: nextcord.Interaction, kit_name: str = ""):
         try:
             kit = await get_kit(kit_name)
-            
-            commands = kit[0] if kit else "[]"
-            description = kit[1] if kit else ""
-            price = str(kit[2]) if kit else "0"
-            
-            modal = KitModal(t("Modals", "kitmodal.title"), kit_name, commands, description, price)
+            if kit:
+                commands = kit[0]
+                description = kit[1]
+                price = str(kit[2])
+                category = kit[3]
+            else:
+                commands = "[]"
+                description = ""
+                price = "0"
+                category = "main"
+            modal = KitModal(t("Modals", "kitmodal.title"), kit_name, commands, description, price, category)
             await interaction.response.send_modal(modal)
         except Exception as e:
             await interaction.response.send_message(t("KitsCog", "manage_kits.error_loading_kit").format(error=e), ephemeral=True)
-            
+
     @manage_kits.on_autocomplete("kit_name")
     async def on_autocomplete_kits(self, interaction: nextcord.Interaction, current: str):
         if interaction.guild is None:
@@ -133,7 +136,7 @@ class KitsCog(commands.Cog):
     @restrict_command()
     async def delete_kit(self, interaction: nextcord.Interaction, kit_name: str):
         await interaction.response.defer(ephemeral=True)
-        
+
         await delete_kit(kit_name)
         await self.bot.get_cog('ShopCog').load_shop_items()
         await interaction.followup.send(t("KitsCog", "delete_kit.success").format(kit_name=kit_name), ephemeral=True)
@@ -150,7 +153,6 @@ class KitsCog(commands.Cog):
         name="uploadkits",
         description=t("KitsCog", "uploadkits.description"),
         default_member_permissions=nextcord.Permissions(administrator=True),
-        
     )
     @restrict_command()
     async def uploadkits(self, interaction: nextcord.Interaction, json_file: nextcord.Attachment):
@@ -168,9 +170,8 @@ class KitsCog(commands.Cog):
                 commands = json.dumps(kit_data['commands'])
                 description = kit_data.get('description', '')
                 price = kit_data.get('price', 0)
-
-                await save_kit(kit_name, commands, description, price)
-                
+                category = kit_data.get('category', 'main')
+                await save_kit(kit_name, commands, description, price, category)
             await self.bot.get_cog('ShopCog').load_shop_items()
 
             await interaction.followup.send(t("KitsCog", "uploadkits.success"), ephemeral=True)
@@ -195,20 +196,14 @@ class KitsCog(commands.Cog):
 
             kits_data = {}
             for kit in kits:
-                try:
-                    kit_name = kit[0]
-                    commands = json.loads(kit[1])
-                    kits_data[kit_name] = {
-                        'commands': commands,
-                        'description': kit[2],
-                        'price': kit[3]
-                    }
-                except json.JSONDecodeError as e:
-                    await interaction.followup.send(
-                        f"Error decoding JSON for kit '{kit_name}': {str(e)}", ephemeral=True
-                    )
-                    return
-
+                kit_name = kit[0]
+                commands = json.loads(kit[1])
+                kits_data[kit_name] = {
+                    'commands': commands,
+                    'description': kit[2],
+                    'price': kit[3],
+                    'category': kit[4]
+                }
             kits_json = json.dumps(kits_data, indent=4, ensure_ascii=False)
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(kits_json)
