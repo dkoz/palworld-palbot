@@ -1,3 +1,6 @@
+ > [!CAUTION]  
+ > This project has been halted and all development has been moved to [Project Sphere](https://github.com/projectsphere/).
+
 ![Logo](.github/assets/palbot.png)
 # Palbot - Your Palworld Companion Discord Bot
 ![GitHub top language](https://img.shields.io/github/languages/top/dkoz/palworld-palbot?style=flat-square&logo=python&logoColor=white) ![GitHub Release](https://img.shields.io/github/v/release/dkoz/palworld-palbot?display_name=release&style=flat-square&logo=github) ![GitHub last commit](https://img.shields.io/github/last-commit/dkoz/palworld-palbot?style=flat-square&logo=github) ![Discord](https://img.shields.io/discord/1009881575187566632?style=flat-square&logo=discord&logoColor=white&label=support) [![Support me on Patreon](https://img.shields.io/badge/Patreon-Palbot_Inn-blue?style=flat-square&logo=patreon&logoColor=white)](https://patreon.com/palbotinn)
