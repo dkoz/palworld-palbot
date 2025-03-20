@@ -77,20 +77,32 @@ class ShopView(View):
     async def update_shop_message(self, interaction: nextcord.Interaction):
         self.add_shop_buttons()
         embed = await self.generate_shop_embed()
-        await interaction.response.edit_message(embed=embed, view=self)
+        try:
+            await interaction.response.edit_message(embed=embed, view=self)
+        except nextcord.errors.NotFound:
+            pass
 
     def get_purchase_callback(self, item_name: str):
         async def purchase_callback(interaction: nextcord.Interaction):
-            await self.cog.purchase_item(interaction, item_name, self.selected_server)
+            try:
+                await self.cog.purchase_item(interaction, item_name, self.selected_server)
+            except nextcord.errors.NotFound:
+                pass
         return purchase_callback
 
     async def previous_button_callback(self, interaction: nextcord.Interaction):
         self.current_page -= 1
-        await self.update_shop_message(interaction)
+        try:
+            await self.update_shop_message(interaction)
+        except nextcord.errors.NotFound:
+            pass
 
     async def next_button_callback(self, interaction: nextcord.Interaction):
         self.current_page += 1
-        await self.update_shop_message(interaction)
+        try:
+            await self.update_shop_message(interaction)
+        except nextcord.errors.NotFound:
+            pass
 
 class ShopCog(commands.Cog):
     def __init__(self, bot):
@@ -154,7 +166,10 @@ class ShopCog(commands.Cog):
 
         view = ShopView(filtered_items, self.currency, self, server)
         embed = await view.generate_shop_embed()
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        try:
+            await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        except nextcord.errors.NotFound:
+            pass
 
     @menu.on_autocomplete("server")
     async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
@@ -173,30 +188,45 @@ class ShopCog(commands.Cog):
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
 
-        await interaction.response.defer(ephemeral=True)
+        try:
+            await interaction.response.defer(ephemeral=True)
+        except nextcord.errors.NotFound:
+            return
 
         data = await get_points(user_id, user_name)
         if not data:
-            await interaction.followup.send(t("ShopCog", "shop.redeem.error_retrieve_data"), ephemeral=True)
+            try:
+                await interaction.followup.send(t("ShopCog", "shop.redeem.error_retrieve_data"), ephemeral=True)
+            except nextcord.errors.NotFound:
+                pass
             return
 
         user_name, points = data
         steam_id = await get_steam_id(user_id)
 
         if steam_id is None:
-            await interaction.followup.send(t("ShopCog", "shop.redeem.error_no_steamid"), ephemeral=True)
+            try:
+                await interaction.followup.send(t("ShopCog", "shop.redeem.error_no_steamid"), ephemeral=True)
+            except nextcord.errors.NotFound:
+                pass
             return
 
         item = self.shop_items.get(item_name)
         if not item:
-            await interaction.followup.send(t("ShopCog", "shop.redeem.error_item_not_found"), ephemeral=True)
+            try:
+                await interaction.followup.send(t("ShopCog", "shop.redeem.error_item_not_found"), ephemeral=True)
+            except nextcord.errors.NotFound:
+                pass
             return
 
         if points < item["price"]:
-            await interaction.followup.send(
-                t("ShopCog", "shop.redeem.error_not_enough_points").format(currency=self.currency),
-                ephemeral=True,
-            )
+            try:
+                await interaction.followup.send(
+                    t("ShopCog", "shop.redeem.error_not_enough_points").format(currency=self.currency),
+                    ephemeral=True,
+                )
+            except nextcord.errors.NotFound:
+                pass
             return
 
         new_points = points - item["price"]
@@ -204,7 +234,10 @@ class ShopCog(commands.Cog):
 
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            try:
+                await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            except nextcord.errors.NotFound:
+                pass
             return
 
         for command_template in json.loads(item["commands"]):
@@ -212,19 +245,25 @@ class ShopCog(commands.Cog):
             try:
                 response = await self.rcon_util.rcon_command(server_info, command)
 
-                if "Failed to parse UID" in response or "Failed to find player by UID/SteamID" in response:
+                if "Failed to parse UID" in response or "Failed to find player by UserId" in response:
                     await set_points(user_id, user_name, points)
-                    await interaction.followup.send(
-                        t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
-                        ephemeral=True
-                    )
+                    try:
+                        await interaction.followup.send(
+                            t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
+                            ephemeral=True
+                        )
+                    except nextcord.errors.NotFound:
+                        pass
                     logging.error(f"Failed to find player {user_name} (ID: {user_id}) while purchasing {item_name}. Points refunded.")
                     return
 
                 await asyncio.sleep(1)
 
             except Exception as e:
-                await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
+                try:
+                    await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
+                except nextcord.errors.NotFound:
+                    pass
                 return
 
         embed = nextcord.Embed(
@@ -237,7 +276,10 @@ class ShopCog(commands.Cog):
         
         logging.info(f"User {user_name} (ID: {user_id}) purchased {item_name} for {item['price']} {self.currency} on server {server}. Remaining points: {new_points}")
         
-        await interaction.followup.send(embed=embed, ephemeral=True)
+        try:
+            await interaction.followup.send(embed=embed, ephemeral=True)
+        except nextcord.errors.NotFound:
+            pass
         
     @shop.subcommand(name="redeem", description=t("ShopCog", "shop.redeem.description"))
     @restrict_command()
@@ -251,34 +293,50 @@ class ShopCog(commands.Cog):
             description=t("ShopCog", "shop.redeem.server_description"), autocomplete=True
         ),
     ):
-        await interaction.response.defer(ephemeral=True)
+        try:
+            await interaction.response.defer(ephemeral=True)
+        except nextcord.errors.NotFound:
+            return
+
         user_id = str(interaction.user.id)
         user_name = interaction.user.display_name
 
         data = await get_points(user_id, user_name)
         if not data:
-            await interaction.followup.send(
-                t("ShopCog", "shop.redeem.error_retrieve_data"), ephemeral=True
-            )
+            try:
+                await interaction.followup.send(
+                    t("ShopCog", "shop.redeem.error_retrieve_data"), ephemeral=True
+                )
+            except nextcord.errors.NotFound:
+                pass
             return
 
         user_name, points = data
         steam_id = await get_steam_id(user_id)
 
         if steam_id is None:
-            await interaction.followup.send(t("ShopCog", "shop.redeem.error_no_steamid"), ephemeral=True)
+            try:
+                await interaction.followup.send(t("ShopCog", "shop.redeem.error_no_steamid"), ephemeral=True)
+            except nextcord.errors.NotFound:
+                pass
             return
 
         item = self.shop_items.get(item_name)
         if not item:
-            await interaction.followup.send(t("ShopCog", "shop.redeem.error_item_not_found"), ephemeral=True)
+            try:
+                await interaction.followup.send(t("ShopCog", "shop.redeem.error_item_not_found"), ephemeral=True)
+            except nextcord.errors.NotFound:
+                pass
             return
 
         if points < item["price"]:
-            await interaction.followup.send(
-                t("ShopCog", "shop.redeem.error_not_enough_points").format(currency=self.currency),
-                ephemeral=True,
-            )
+            try:
+                await interaction.followup.send(
+                    t("ShopCog", "shop.redeem.error_not_enough_points").format(currency=self.currency),
+                    ephemeral=True,
+                )
+            except nextcord.errors.NotFound:
+                pass
             return
 
         new_points = points - item["price"]
@@ -286,7 +344,10 @@ class ShopCog(commands.Cog):
 
         server_info = await self.get_server_info(server)
         if not server_info:
-            await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            try:
+                await interaction.followup.send(f"Server {server} not found.", ephemeral=True)
+            except nextcord.errors.NotFound:
+                pass
             return
 
         for command_template in json.loads(item["commands"]):
@@ -294,19 +355,25 @@ class ShopCog(commands.Cog):
             try:
                 response = await self.rcon_util.rcon_command(server_info, command)
 
-                if "Failed to parse UID" in response or "Failed to find player by UID/SteamID" in response:
+                if "Failed to parse UID" in response or "Failed to find player by UserId" in response:
                     await set_points(user_id, user_name, points)
-                    await interaction.followup.send(
-                        t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
-                        ephemeral=True
-                    )
+                    try:
+                        await interaction.followup.send(
+                            t("ShopCog", "shop.redeem.error_user_not_found").format(user_name=user_name),
+                            ephemeral=True
+                        )
+                    except nextcord.errors.NotFound:
+                        pass
                     logging.error(f"Failed to find player {user_name} (ID: {user_id}) while redeeming {item_name}. Points refunded.")
                     return
 
                 await asyncio.sleep(1)
 
             except Exception as e:
-                await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
+                try:
+                    await interaction.followup.send(f"Error executing command '{command}': {e}", ephemeral=True)
+                except nextcord.errors.NotFound:
+                    pass
                 return
 
         embed = nextcord.Embed(
@@ -319,7 +386,10 @@ class ShopCog(commands.Cog):
         
         logging.info(f"User {user_name} (ID: {user_id}) redeemed {item_name} for {item['price']} {self.currency} on server {server}. Remaining points: {new_points}")
         
-        await interaction.followup.send(embed=embed, ephemeral=True)
+        try:
+            await interaction.followup.send(embed=embed, ephemeral=True)
+        except nextcord.errors.NotFound:
+            pass
 
     @redeem.on_autocomplete("server")
     async def on_autocomplete_server(self, interaction: nextcord.Interaction, current: str):
